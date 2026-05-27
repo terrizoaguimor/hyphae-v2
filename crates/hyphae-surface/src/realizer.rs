@@ -219,8 +219,20 @@ impl SurfaceRealizer {
                 // role is Contrast / Concession the polarity
                 // comes from the threshold logic; otherwise
                 // Continuation.
+                //
+                // ADR-0023: `SchemaId::ComparativeAnalysis` forces
+                // the inter-fragment role to `Contrast` regardless
+                // of the cascade-shape suggestion — the schema's
+                // comparative-judgment shape surfaces contrast
+                // even when the cascade topology would suggest
+                // continuation or causation.
                 let prev_fragment = &shape.steps[idx - 1].fragment;
-                let polarity = polarity_for_step(step.role, prev_fragment, fragment);
+                let effective_role = if matches!(schema, SchemaId::ComparativeAnalysis) {
+                    ConnectiveRole::Contrast
+                } else {
+                    step.role
+                };
+                let polarity = polarity_for_step(effective_role, prev_fragment, fragment);
                 let ctx = PickContext {
                     register: register_for_fragment(fragment),
                     polarity,
@@ -240,7 +252,7 @@ impl SurfaceRealizer {
                 let next_signal =
                     BoundarySignal::extract_with_rules(fragment_body(fragment), rules);
                 let connective = self.lexicon.pick_with_smoothing(
-                    step.role,
+                    effective_role,
                     &ctx,
                     idx,
                     Some(&prev_signal),
@@ -273,11 +285,13 @@ impl SurfaceRealizer {
             fragments_quoted.push(fragment.id);
         }
 
-        // ADR-0016: Summary schema pulls the closing line from
-        // `ConnectiveRole::Summary` ("Overall,", "On balance,", …)
-        // instead of `ConnectiveRole::Closing`. Every other schema
-        // keeps the existing closing slot.
-        let closing_role = if matches!(schema, SchemaId::Summary) {
+        // ADR-0016 + ADR-0023: Summary and ComparativeAnalysis
+        // both pull the closing line from `ConnectiveRole::Summary`
+        // ("Overall,", "On balance,", …). The synthesis shape
+        // they both need is the comparative-judgment / summary
+        // form, not the conversational reply form
+        // (`ConnectiveRole::Closing`).
+        let closing_role = if matches!(schema, SchemaId::Summary | SchemaId::ComparativeAnalysis) {
             ConnectiveRole::Summary
         } else {
             ConnectiveRole::Closing
@@ -763,6 +777,88 @@ mod tests {
                 .contains("That is what working memory holds on this."),
             "ES output must not leak the EN default closing: {}",
             out.text,
+        );
+    }
+
+    /// ADR-0023 — `Intent::Compare` produces
+    /// `SchemaId::ComparativeAnalysis`. The realizer forces the
+    /// inter-fragment connective tissue to use `Contrast` role
+    /// regardless of cascade-shape projection. The closing slot
+    /// uses `Summary` role.
+    #[test]
+    fn comparative_analysis_forces_contrast_inter_fragment() {
+        let realizer = SurfaceRealizer::new();
+        // Two fragments with ALIGNED valence — under DialogueReply
+        // shape projection this would emit a Continuation role.
+        // Under ComparativeAnalysis it must emit Contrast.
+        let mut frag_a = obs("the staging deploy completed at 09:14 UTC");
+        frag_a.valence = 0.6;
+        let mut frag_b = obs("the production deploy completed at 09:36 UTC");
+        frag_b.valence = 0.5;
+        let working_set = vec![frag_a, frag_b];
+
+        let out = realizer
+            .realize(&RealizationRequest {
+                intent: Intent::Compare,
+                query: "compare the two deploys",
+                working_set: &working_set,
+                ethics: None,
+                shape: None,
+            })
+            .unwrap();
+        assert_eq!(out.schema_used, SchemaId::ComparativeAnalysis);
+
+        // The inter-fragment tissue must include a Contrast-role
+        // phrase — at least one of the lexicon's Contrast entries
+        // appears. ConnectiveRole::Contrast covers both Hard
+        // (However, By contrast, etc.) and Soft (At the same time,
+        // Though, On the other hand etc.) polarities.
+        let lower = out.text.to_lowercase();
+        let contrast_markers = [
+            // Hard contrast
+            "however,",
+            "by contrast,",
+            "on the other hand,",
+            "yet,",
+            "but,",
+            "conversely,",
+            "whereas,",
+            "in contrast,",
+            // Soft contrast
+            "though,",
+            "at the same time,",
+            "even so,",
+            "all the same,",
+            "still,",
+            "while ",
+            "albeit,",
+        ];
+        assert!(
+            contrast_markers.iter().any(|m| lower.contains(m)),
+            "ComparativeAnalysis must use a Contrast-role inter-fragment phrase even with aligned valence; got: {}",
+            out.text,
+        );
+
+        // Closing must be from Summary role (not the DialogueReply
+        // default closing).
+        let summary_markers = [
+            "in summary,",
+            "overall,",
+            "on balance,",
+            "taking it together,",
+            "putting it together,",
+            "bringing",
+            "across the working set,",
+        ];
+        assert!(
+            summary_markers.iter().any(|m| lower.contains(m)),
+            "ComparativeAnalysis must close with a Summary-role phrase; got: {}",
+            out.text,
+        );
+        assert!(
+            !out.text
+                .contains("That is what working memory holds on this."),
+            "ComparativeAnalysis must NOT use the DialogueReply default closing",
         );
     }
 

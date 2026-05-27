@@ -4,7 +4,7 @@
 //! Schema definitions — what shape a composition takes.
 //!
 //! Per `docs/rfc/v1-living.md` §5.1, v0.1 shipped two schemas;
-//! ADR-0016 re-entered the Summary schema in v0.2:
+//! ADR-0016 + ADR-0023 added two more in v0.2:
 //!
 //! - [`SchemaId::DialogueReply`] — conversational response. Slots:
 //!   opening line, body fragments quoted in order, closing line,
@@ -17,10 +17,14 @@
 //!   shape as `DialogueReply` except the closing line pulls from
 //!   `ConnectiveRole::Summary` ("Overall,", "On balance,", "Taking
 //!   it together,", …) — see ADR-0016.
+//! - [`SchemaId::ComparativeAnalysis`] — comparative-judgment shape.
+//!   Inter-fragment slots use `ConnectiveRole::Contrast` regardless
+//!   of cascade-shape projection; closing slot shares the Summary
+//!   role with [`SchemaId::Summary`] — see ADR-0023.
 //!
 //! Still postponed (RFC §9): `IntrospectiveAssessment`,
-//! `NarrativeArc`, `ComparativeAnalysis`. Each re-enters with an
-//! explicit ADR demonstrating empirical need.
+//! `NarrativeArc`. Each re-enters with an explicit ADR
+//! demonstrating empirical need.
 
 use serde::{Deserialize, Serialize};
 
@@ -41,6 +45,14 @@ pub enum SchemaId {
     /// regardless of size (no silent downgrade) per ADR-0016
     /// §"Small working set behaviour".
     Summary,
+    /// **ADR-0023.** Comparative judgment shape. Inter-fragment
+    /// connectives are FORCED to `ConnectiveRole::Contrast`
+    /// regardless of the cascade-shape projection's suggestion;
+    /// the closing slot draws from `ConnectiveRole::Summary` (the
+    /// comparative synthesis line). For 1-fragment working sets
+    /// the schema falls through to DialogueReply-like behaviour
+    /// (no contrast to apply).
+    ComparativeAnalysis,
 }
 
 impl SchemaId {
@@ -51,6 +63,7 @@ impl SchemaId {
             Self::DialogueReply => "dialogue_reply",
             Self::GroundedAssertion => "grounded_assertion",
             Self::Summary => "summary",
+            Self::ComparativeAnalysis => "comparative_analysis",
         }
     }
 }
@@ -73,6 +86,10 @@ pub enum Intent {
     /// **ADR-0016.** The caller wants a multi-fragment synthesis
     /// with a summary-shaped closing line.
     Summarize,
+    /// **ADR-0023.** The caller wants a comparative analysis —
+    /// fragments interpreted as paired/contrasting positions with
+    /// a comparative-judgment closing.
+    Compare,
 }
 
 impl Intent {
@@ -86,6 +103,7 @@ impl Intent {
             Self::Dialogue => SchemaId::DialogueReply,
             Self::Assert => SchemaId::GroundedAssertion,
             Self::Summarize => SchemaId::Summary,
+            Self::Compare => SchemaId::ComparativeAnalysis,
         }
     }
 }
@@ -110,9 +128,18 @@ mod tests {
     }
 
     #[test]
+    fn intent_compare_maps_to_comparative_analysis() {
+        assert_eq!(
+            Intent::Compare.default_schema(),
+            SchemaId::ComparativeAnalysis
+        );
+    }
+
+    #[test]
     fn schema_id_tags_are_distinct_lowercase() {
         assert_eq!(SchemaId::DialogueReply.tag(), "dialogue_reply");
         assert_eq!(SchemaId::GroundedAssertion.tag(), "grounded_assertion");
         assert_eq!(SchemaId::Summary.tag(), "summary");
+        assert_eq!(SchemaId::ComparativeAnalysis.tag(), "comparative_analysis");
     }
 }

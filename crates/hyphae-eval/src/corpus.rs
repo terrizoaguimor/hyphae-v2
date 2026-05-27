@@ -162,7 +162,7 @@ impl Corpus {
     }
 }
 
-/// The native-EN baseline corpus, twenty-eight queries (v0.2)
+/// The native-EN baseline corpus, thirty queries (v0.2)
 /// covering:
 ///
 /// - 4 dialogue-reply queries with cascade-derived seeds (healthy
@@ -187,6 +187,11 @@ impl Corpus {
 ///   shallow-cascade single-source summary. Drive
 ///   `Intent::Summarize → SchemaId::Summary` and exercise the
 ///   Summary-role closing slot.
+/// - **2 ADR-0023 ComparativeAnalysis queries**: cross-service
+///   deploy comparison, cross-quarter metric comparison. Drive
+///   `Intent::Compare → SchemaId::ComparativeAnalysis` and
+///   exercise the forced-Contrast inter-fragment role +
+///   Summary closing.
 ///
 /// The corpus is intentionally small for v0.1 — the harness's value
 /// in v0.1 is the **honest scorer + bucket coverage**, not the
@@ -1045,6 +1050,67 @@ pub fn seed_corpus_en() -> Corpus {
         },
     });
 
+    // ── ADR-0023 ComparativeAnalysis queries (2) ──────────────
+    q.push(EvalQuery {
+        id: "compare-001".to_string(),
+        query: "compare the staging and production deploys".to_string(),
+        intent: Intent::Compare,
+        seeds: vec![
+            EvalSeed {
+                body: "the staging deploy completed cleanly at 09:14 UTC".to_string(),
+                valence: 0.6,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the production deploy required a hot patch at 09:36 UTC".to_string(),
+                valence: -0.2,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::ComparativeAnalysis,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "compare-002".to_string(),
+        query: "compare this quarter's metrics against the previous quarter".to_string(),
+        intent: Intent::Compare,
+        seeds: vec![
+            EvalSeed {
+                body: "weekly active users grew six percent quarter-over-quarter".to_string(),
+                valence: 0.6,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body:
+                    "the p95 request latency rose from 180 to 210 milliseconds quarter-over-quarter"
+                        .to_string(),
+                valence: -0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::ComparativeAnalysis,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
     q.push(EvalQuery {
         id: "summary-003".to_string(),
         query: "what's the overall state from the single touchpoint we have".to_string(),
@@ -1246,9 +1312,24 @@ mod tests {
     use super::*;
 
     #[test]
-    fn baseline_corpus_has_at_least_twenty_eight_queries() {
+    fn baseline_corpus_has_at_least_thirty_queries() {
         let corpus = seed_corpus_en();
-        assert!(corpus.len() >= 28);
+        assert!(corpus.len() >= 30);
+    }
+
+    #[test]
+    fn corpus_includes_compare_queries() {
+        use hyphae_surface::Intent;
+        let corpus = seed_corpus_en();
+        let compare_count = corpus
+            .queries()
+            .iter()
+            .filter(|q| matches!(q.intent, Intent::Compare))
+            .count();
+        assert!(
+            compare_count >= 2,
+            "ADR-0023 — corpus must contain ≥2 Compare queries, got {compare_count}",
+        );
     }
 
     #[test]

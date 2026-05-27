@@ -9,12 +9,13 @@
 //!
 //! Per `docs/rfc/v1-living.md` §5:
 //!
-//! - **Three schemas as of v0.2**: [`SchemaId::DialogueReply`],
-//!   [`SchemaId::GroundedAssertion`], and [`SchemaId::Summary`]
-//!   (the last re-entered per ADR-0016). The remaining v1
-//!   schemas (`IntrospectiveAssessment`, `NarrativeArc`,
-//!   `ComparativeAnalysis`) stay postponed per ADR-0001
-//!   §"Surface scope" until their own re-entry ADRs land.
+//! - **Four schemas as of v0.2**: [`SchemaId::DialogueReply`],
+//!   [`SchemaId::GroundedAssertion`], [`SchemaId::Summary`]
+//!   (ADR-0016), and [`SchemaId::ComparativeAnalysis`]
+//!   (ADR-0023). The remaining v1 schemas
+//!   (`IntrospectiveAssessment`, `NarrativeArc`) stay postponed
+//!   per ADR-0001 §"Surface scope" until their own re-entry
+//!   ADRs land.
 //! - **Composition by fragment quotation + connective tissue.**
 //!   The realizer NEVER paraphrases a fragment body. Quotes appear
 //!   verbatim; the realizer only emits the structural prose around
