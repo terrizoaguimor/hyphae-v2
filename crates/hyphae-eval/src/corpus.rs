@@ -187,7 +187,7 @@ impl Corpus {
 ///   shallow-cascade single-source summary. Drive
 ///   `Intent::Summarize → SchemaId::Summary` and exercise the
 ///   Summary-role closing slot.
-/// - **2 ADR-0023 ComparativeAnalysis queries**: cross-service
+/// - **2 ADR-0023 `ComparativeAnalysis` queries**: cross-service
 ///   deploy comparison, cross-quarter metric comparison. Drive
 ///   `Intent::Compare → SchemaId::ComparativeAnalysis` and
 ///   exercise the forced-Contrast inter-fragment role +
