@@ -1072,6 +1072,175 @@ pub fn seed_corpus_en() -> Corpus {
     Corpus::from_queries(q)
 }
 
+/// **ADR-0018.** The v0.2 native-Spanish baseline corpus. Five
+/// queries; architectural extension proof, NOT coverage parity
+/// with the EN corpus.
+///
+/// Bodies and seeds are native Spanish — no machine translation.
+/// `domain_tags` stay English per ADR-0017 (semantic identifiers,
+/// not natural-language words).
+///
+/// **Known limitation**: the harness's `boundary_smoothness`
+/// dimension reports inflated 1.0 for ES queries because the
+/// boundary-smoothing rules in `hyphae_surface::boundary` are
+/// EN-calibrated (determiners + anaphor surface forms). A future
+/// ADR adds ES rules; until then, treat ES `boundary_smoothness`
+/// as "not measured" rather than "perfect."
+#[must_use]
+#[allow(clippy::too_many_lines, clippy::vec_init_then_push)]
+pub fn seed_corpus_es() -> Corpus {
+    let mut q = Vec::new();
+
+    // Healthy multi-fragment status check (Dialogue).
+    q.push(EvalQuery {
+        id: "es-dialogue-001".to_string(),
+        query: "¿cuál es el estado de la migración?".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "la migración terminó a las 14:02 UTC".to_string(),
+                valence: 0.3,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "los monitores se mantuvieron verdes durante la hora siguiente al cambio"
+                    .to_string(),
+                valence: 0.3,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![
+                LimitationTrigger::EmptyWorkingSet,
+                LimitationTrigger::HighConfabRisk,
+                LimitationTrigger::ShallowCascade,
+            ],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // Empty working set → acknowledgment-only.
+    q.push(EvalQuery {
+        id: "es-empty-001".to_string(),
+        query: "¿cuándo es el lanzamiento del proyecto orión?".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            must_not_fire: vec![],
+            acknowledgment_only: true,
+            verbatim_quotation: false,
+        },
+    });
+
+    // High-confab-risk seed → must fire HighConfabRisk.
+    q.push(EvalQuery {
+        id: "es-risk-001".to_string(),
+        query: "¿quién dijo que la arquitectura no iba a escalar?".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![EvalSeed {
+            body: "un colega sin nombrar supuestamente dijo que la arquitectura no escalaría"
+                .to_string(),
+            valence: -0.2,
+            confabulation_risk: 0.8,
+            from_cascade: true,
+            domain_tags: vec!["engineering".to_string()],
+        }],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![LimitationTrigger::HighConfabRisk],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // Opposed-valence pair → exercises Contrast role.
+    q.push(EvalQuery {
+        id: "es-contrast-001".to_string(),
+        query: "¿cómo se comportaron el lanzamiento y el rollback?".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "el lanzamiento fue exitoso y el tráfico subió de forma estable"
+                    .to_string(),
+                valence: 0.7,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "el rollback a las 02:14 UTC fue doloroso y se perdieron tres horas de escrituras"
+                    .to_string(),
+                valence: -0.7,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // Three-fragment summary → ADR-0016 Summary in ES.
+    q.push(EvalQuery {
+        id: "es-summary-001".to_string(),
+        query: "resúmeme el estado del despliegue entre los servicios".to_string(),
+        intent: Intent::Summarize,
+        seeds: vec![
+            EvalSeed {
+                body: "el despliegue del servicio de pagos completó sin errores a las 09:14 UTC"
+                    .to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "el servicio de notificaciones requirió un parche en caliente a las 09:36 UTC"
+                    .to_string(),
+                valence: -0.2,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "el servicio de búsqueda se mantuvo en la versión previa esperando el corte de q3"
+                    .to_string(),
+                valence: 0.0,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::Summary,
+            must_fire: vec![],
+            must_not_fire: vec![
+                LimitationTrigger::EmptyWorkingSet,
+                LimitationTrigger::ShallowCascade,
+            ],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    Corpus::from_queries(q)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1228,5 +1397,92 @@ mod tests {
         };
         let frag = seed.into_fragment();
         assert!(frag.provenance.parent_ids.is_empty());
+    }
+
+    // ── ADR-0018 ES corpus invariants ──────────────────────────
+
+    #[test]
+    fn es_corpus_has_at_least_five_queries() {
+        let corpus = seed_corpus_es();
+        assert!(
+            corpus.len() >= 5,
+            "ES corpus floor is 5; got {}",
+            corpus.len()
+        );
+    }
+
+    #[test]
+    fn es_corpus_bodies_are_spanish() {
+        // Spot-check: at least one seed body should contain a
+        // Spanish-indicative character or word that does not
+        // appear in EN corpus bodies.
+        let corpus = seed_corpus_es();
+        let bodies: Vec<&str> = corpus
+            .queries()
+            .iter()
+            .flat_map(|q| q.seeds.iter().map(|s| s.body.as_str()))
+            .collect();
+        let has_spanish_marker = bodies.iter().any(|b| {
+            let lower = b.to_lowercase();
+            lower.contains("la migración")
+                || lower.contains("el despliegue")
+                || lower.contains("los servicios")
+                || lower.contains("el lanzamiento")
+                || lower.contains("la arquitectura")
+                || lower.contains("á")
+                || lower.contains("é")
+                || lower.contains("í")
+                || lower.contains("ó")
+                || lower.contains("ú")
+                || lower.contains("ñ")
+        });
+        assert!(
+            has_spanish_marker,
+            "ES corpus seed bodies must contain Spanish-indicative markers",
+        );
+    }
+
+    #[test]
+    fn es_corpus_exercises_summary_schema() {
+        let corpus = seed_corpus_es();
+        let summary_count = corpus
+            .queries()
+            .iter()
+            .filter(|q| matches!(q.intent, Intent::Summarize))
+            .count();
+        assert!(
+            summary_count >= 1,
+            "ES corpus should include at least one Summary query to exercise ADR-0016 in ES",
+        );
+    }
+
+    #[test]
+    fn es_corpus_domain_tags_stay_english() {
+        // Per ADR-0017 §"Domain-tag semantics — stay English",
+        // ES seeds tag with English markers even though bodies
+        // are Spanish.
+        let corpus = seed_corpus_es();
+        let english_markers = [
+            "engineering",
+            "code",
+            "legal",
+            "informal",
+            "formal",
+            "compliance",
+            "policy",
+            "contract",
+        ];
+        for q in corpus.queries() {
+            for s in &q.seeds {
+                for tag in &s.domain_tags {
+                    assert!(
+                        english_markers.contains(&tag.to_lowercase().as_str()),
+                        "ES seed in query `{}` carries non-English domain tag `{tag}` — \
+                         ADR-0017 contract violated",
+                        q.id,
+                    );
+                }
+            }
+        }
     }
 }

@@ -42,7 +42,7 @@ pub mod report;
 pub mod scorers;
 pub mod sensitivity;
 
-pub use corpus::{Corpus, EvalQuery, EvalSeed, Expectations, seed_corpus_en};
+pub use corpus::{Corpus, EvalQuery, EvalSeed, Expectations, seed_corpus_en, seed_corpus_es};
 pub use report::{DimensionMeans, EvalReport};
 pub use scorers::{QueryScore, score_query};
 pub use sensitivity::{SensitivityReport, SensitivityResult, run_sensitivity_audit};
@@ -195,5 +195,63 @@ mod tests {
         let harness = EvalHarness::new(SurfaceRealizer::new(), seed_corpus_en());
         let report = harness.run();
         assert!(report.passing_queries > 0);
+    }
+
+    /// ADR-0018 — an ES harness built from the ES lexicon + ES
+    /// corpus runs cleanly and the report has every query passing
+    /// the language-agnostic dimensions (verbatim, schema,
+    /// limitation recall/precision, hygiene, acknowledgment-only).
+    #[test]
+    fn es_harness_passes_every_query_on_language_agnostic_dimensions() {
+        use hyphae_surface::Lexicon;
+        let realizer = SurfaceRealizer::with_lexicon(Lexicon::baseline_es());
+        let harness = EvalHarness::new(realizer, seed_corpus_es());
+        let report = harness.run();
+
+        assert!(
+            report.queries >= 5,
+            "ES corpus should drive at least 5 queries; got {}",
+            report.queries,
+        );
+        // Every ES query must clear the language-agnostic axes.
+        // Fluency dimensions (lexical_diversity, role_coverage,
+        // boundary_smoothness) are not pass/fail in the harness's
+        // `passes()` rollup, so a fully-passing run is the right
+        // assertion for the v0.2 ES corpus.
+        assert_eq!(
+            report.passing_queries,
+            report.queries,
+            "ES harness regression — {} of {} ES queries failed the language-agnostic \
+             dimensions",
+            report.queries - report.passing_queries,
+            report.queries,
+        );
+        // ADR-0018 §"Sensitivity audit — partial coverage in ES":
+        // 6 of the 9 audit dimensions stay sensitive under an ES
+        // lexicon; the 3 that depend on lexicon-phrase detection
+        // (lexical_diversity, role_coverage, boundary_smoothness)
+        // are NOT measurable because the audit baselines are
+        // EN-text. This is a v0.2 limitation, not a regression.
+        let audit = report
+            .sensitivity_audit
+            .as_ref()
+            .expect("ES harness must produce a sensitivity audit");
+        let expected_lexicon_bound = ["lexical_diversity", "role_coverage", "boundary_smoothness"];
+        let failing: Vec<&str> = audit.failing_dimensions();
+        for dim in &failing {
+            assert!(
+                expected_lexicon_bound.contains(dim),
+                "ES audit failed on UNEXPECTED dimension `{dim}` — ADR-0018 only documents \
+                 the 3 lexicon-bound dimensions as not-measurable; got failing list: {failing:?}",
+            );
+        }
+        // Floor: at least 6 dimensions must be sensitive even
+        // under the ES lexicon.
+        assert!(
+            audit.dimensions_sensitive() >= 6,
+            "ES audit floor: ≥6 dimensions sensitive; got {} (failing: {:?})",
+            audit.dimensions_sensitive(),
+            failing,
+        );
     }
 }
