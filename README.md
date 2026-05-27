@@ -65,6 +65,39 @@ The hedge is intentional. A cognitive substrate that markets itself
 as *indispensable* should be regarded with the same suspicion as any
 other AI product that does so.
 
+## On the prose style
+
+If you run the chat REPL or the smoke binary, you will notice the
+output reads **template-rigid** compared to LLM prose:
+
+> *Drawing from working memory, "the migration completed at 14:02 UTC"
+> Therefore, "the deploy succeeded on the first attempt" That is what
+> working memory holds on this.*
+
+That is **the architectural feature, not a defect**. ADR-0001
+§"Hard Architectural Commitment 12":
+
+> Composition uses fragment quotation + connective tissue, not novel
+> language synthesis. Fragments are opaque content sources whose body
+> text is preserved verbatim. The surface realizer generates only the
+> structural prose connecting them. This boundary is load-bearing for
+> the no-LLM-in-cognition-path claim.
+
+A system that paraphrases its retrieved fragments is a system that
+can hallucinate them. Hyphae **chose audit over polish**. Every
+quoted body in the output is byte-identical to what was stored —
+verifiable against the hash-chained journal. The "connective tissue"
+between quotes is the only place the realizer composes; it draws
+from a hand-curated lexicon (currently ~250 EN entries, ~128 ES) and
+cascade-shape-projected discourse roles.
+
+The trade-off is conscious: if you want a system that sounds like a
+human improvising answers from your data, you want an LLM with
+retrieval. If you want a system that surfaces your data with a
+provable audit trail and never confabulates around it, that is what
+Hyphae offers. The prose feels stiff because the architecture
+refuses to lie about its sources.
+
 ## Status
 
 **v0.1 — substrate spec implemented end-to-end.** Eleven ADRs

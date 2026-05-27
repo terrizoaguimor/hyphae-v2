@@ -64,7 +64,11 @@ async fn main() -> Result<()> {
     let actor = ActorContext::new("chat:user", "memory:write");
     let mut stats = SessionStats::default();
 
-    println!("hyphae v0.1.0 chat — type `/help` for commands, `/quit` (or Ctrl-D) to exit\n");
+    println!("hyphae v0.1.0 chat — type `/help` for commands, `/quit` (or Ctrl-D) to exit");
+    println!(
+        "  (the prose reads template-rigid by design — no LLM in the cognition path;\n   \
+         quoted fragments are byte-identical to what you stored. See README \"On the prose style\".)\n"
+    );
 
     let stdin = std::io::stdin();
     let mut line = String::new();
