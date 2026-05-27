@@ -23,13 +23,15 @@
 
 use anyhow::Result;
 use hyphae_core::{
-    ActorContext, CognitiveFragment, DirectPathway, ExternalInputPayload, FragmentContent,
-    FragmentId, Pathway, PathwayId, PayloadKind, SubsystemId,
+    ActivationLevel, ActorContext, CascadeActivation, CascadeRetrieval, CognitiveFragment,
+    DirectPathway, ExternalInputPayload, FragmentContent, FragmentId, Pathway, PathwayId,
+    PayloadKind, SubsystemId,
 };
 use hyphae_eval::{EvalHarness, seed_corpus_en};
 use hyphae_substrate::Substrate;
 use hyphae_subsystems::{Composer, Episodic, InputGate, Predictive, Reward, Valence};
 use hyphae_surface::{Intent, RealizationRequest, SurfaceRealizer};
+use std::collections::HashMap;
 use tempfile::tempdir;
 
 const HRULE: &str = "─────────────────────────────────────────────────────────";
@@ -99,12 +101,33 @@ async fn main() -> Result<()> {
         working_set.len()
     );
 
-    // ── 6. Realize a Dialogue reply over the working set.
+    // ── 6. Build a CompositionShape via cascade-shape-driven
+    //       composition (ADR-0006), then realize.
+    //
+    // The smoke runner doesn't run the real cascade engine — it
+    // builds a synthetic CascadeRetrieval where one fragment is
+    // the anchor and the rest are first-hop supports of it. That
+    // exercises the Causation-role path in the shape projection.
+    let cascade_retrieval = build_synthetic_cascade(&working_set);
+    let shape = hyphae_surface::shape_from_cascade(&cascade_retrieval);
+    println!(
+        "hyphae-smoke: cascade-shape projection: {} step(s)",
+        shape.len()
+    );
+    for (i, step) in shape.steps.iter().enumerate() {
+        println!(
+            "  step {i}: role={:?}  depth={}  valence={:+.2}",
+            step.role, step.depth, step.fragment.valence
+        );
+    }
+    println!();
+
     let realizer = SurfaceRealizer::new();
     let request = RealizationRequest {
         intent: Intent::Dialogue,
         query: "what is the status of the migration?",
         working_set: &working_set,
+        shape: Some(&shape),
         ethics: None,
     };
     let realization = realizer.realize(&request)?;
@@ -238,6 +261,37 @@ fn build_working_set() -> Vec<CognitiveFragment> {
             f
         })
         .collect()
+}
+
+/// Build a synthetic `CascadeRetrieval` from a flat working set:
+/// the first fragment is the anchor (direct hit, distance 0), the
+/// rest are first-hop supports of the anchor in the cascade. This
+/// gives the shape projection genuine topology to work with — the
+/// projection produces a `Causation` step for each support when
+/// there are two or more, per ADR-0006 §"Projection algorithm".
+fn build_synthetic_cascade(working_set: &[CognitiveFragment]) -> CascadeRetrieval {
+    if working_set.is_empty() {
+        return CascadeRetrieval::empty();
+    }
+    let anchor = working_set[0].clone();
+    let anchor_id = anchor.id;
+    let direct = vec![(0.0_f32, anchor)];
+
+    let mut cascade = HashMap::new();
+    for (idx, frag) in working_set.iter().enumerate().skip(1) {
+        #[allow(clippy::cast_precision_loss)]
+        let activation = 0.9 - (idx as f32) * 0.15;
+        let act = CascadeActivation {
+            fragment_id: frag.id,
+            activation: ActivationLevel::new(activation.max(0.1)),
+            hops_from_source: 1,
+            parent_id: Some(anchor_id),
+            propagated: false,
+        };
+        cascade.insert(frag.id, (act, frag.clone()));
+    }
+
+    CascadeRetrieval { direct, cascade }
 }
 
 fn format_triggers(triggers: &[hyphae_surface::LimitationTrigger]) -> String {

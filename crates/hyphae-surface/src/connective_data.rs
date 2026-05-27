@@ -1,5 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 Celiums Solutions LLC
+//
+// The push_* helpers below load tens of entries in a flat sequence
+// each. After `cargo fmt` expansion they cross the `too_many_lines`
+// threshold; the lint is silenced module-locally because the data
+// shape (one entry per `add()` call) is more readable than
+// splitting into sub-helpers.
+#![allow(clippy::too_many_lines)]
 
 //! Hand-curated English connective dataset for v0.1 — ~300 entries
 //! organised by `(role, register, polarity, formality)` per

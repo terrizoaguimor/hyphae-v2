@@ -118,6 +118,7 @@ impl EvalHarness {
                 query: &query.query,
                 working_set: &working_set,
                 ethics: None,
+                shape: None,
             })
             .expect("v0.1 realizer maps every intent");
 

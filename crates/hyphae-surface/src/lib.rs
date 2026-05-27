@@ -31,12 +31,17 @@
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
 
+pub mod composition_shape;
 pub mod connective;
 pub mod connective_data;
 pub mod limitation;
 pub mod realizer;
 pub mod schema;
 
+pub use composition_shape::{
+    CompositionShape, CompositionStep, shape_from_cascade, shape_from_retrieval,
+    shape_from_working_set, working_set_of,
+};
 pub use connective::{
     Connective, ConnectiveRole, Formality, Lexicon, PickContext, Polarity, Register,
 };

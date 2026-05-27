@@ -21,6 +21,7 @@
 //! language; the realizer is the boundary the
 //! no-LLM-in-cognition-path commitment depends on.
 
+use crate::composition_shape::{CompositionShape, shape_from_working_set};
 use crate::connective::{ConnectiveRole, Formality, Lexicon, PickContext, Polarity, Register};
 use crate::limitation::{LimitationContext, LimitationTrigger, evaluate as evaluate_limitations};
 use crate::schema::{Intent, SchemaId};
@@ -48,8 +49,18 @@ pub struct RealizationRequest<'a> {
     /// will use it for query-relevance scoring of fragments.
     pub query: &'a str,
     /// Working set the composer has assembled. Fragments are
-    /// quoted verbatim in `working_set` order.
+    /// quoted verbatim in `working_set` order. When `shape` is
+    /// `Some`, the realizer uses the shape and ignores
+    /// `working_set` for ordering — the working set is still used
+    /// for limitation evaluation (`HighConfabRisk`, `ShallowCascade`).
     pub working_set: &'a [CognitiveFragment],
+    /// Optional [`CompositionShape`] from cascade-shape-driven
+    /// composition (ADR-0006). When `Some`, the realizer walks the
+    /// shape's steps and emits the role each step carries. When
+    /// `None`, the realizer falls back to the linear walk
+    /// (v0.1.1 behaviour) by deriving a shape from `working_set`
+    /// via [`shape_from_working_set`].
+    pub shape: Option<&'a CompositionShape>,
     /// Ethics report at the `Compose` coverage point. Drives the
     /// `EthicallySensitive` limitation trigger and the
     /// composition's audit metadata.
@@ -156,26 +167,64 @@ impl SurfaceRealizer {
         let mut text = String::new();
         let mut fragments_quoted = Vec::new();
 
-        // Derive a PickContext from the overall working set —
-        // dominant register + dominant polarity across the set.
-        // Per-pair refinements happen below.
-        let opening_ctx = working_set_context(request.working_set);
+        // ADR-0006: if the caller supplied a CompositionShape we
+        // walk it; otherwise we synthesise a linear shape from the
+        // working set (the v0.1.1 behaviour). Either way the
+        // realizer now operates over a uniform `steps` surface.
+        let fallback_shape;
+        let shape: &CompositionShape = if let Some(s) = request.shape {
+            s
+        } else {
+            fallback_shape = shape_from_working_set(request.working_set);
+            &fallback_shape
+        };
+
+        if shape.is_empty() {
+            // Working set was non-empty but the shape projected
+            // empty (an edge case the linear fallback cannot
+            // produce, but a custom shape could). Emit the
+            // acknowledgment-only path.
+            let text = render_acknowledgments_only(&limitations);
+            return Ok(RealizationOutput {
+                text,
+                schema_used: schema,
+                fragments_quoted: Vec::new(),
+                limitations,
+                is_acknowledgment_only: true,
+            });
+        }
+
+        // Derive a PickContext from the shape's working set —
+        // dominant register across the fragments. Per-pair
+        // refinements happen at each step below.
+        let shape_fragments: Vec<&CognitiveFragment> =
+            shape.steps.iter().map(|s| &s.fragment).collect();
+        let opening_ctx = working_set_context_refs(&shape_fragments);
         let opening = self
             .lexicon
             .pick_in_context(ConnectiveRole::Opening, &opening_ctx, 0);
         text.push_str(opening);
         text.push(' ');
 
-        for (idx, fragment) in request.working_set.iter().enumerate() {
+        for (idx, step) in shape.steps.iter().enumerate() {
+            let fragment = &step.fragment;
+
             if idx > 0 {
-                let (role, polarity) =
-                    pick_inter_fragment_role_and_polarity(&request.working_set[idx - 1], fragment);
+                // ADR-0006: the step's `role` is the cascade-
+                // shape-derived suggestion. Compute a polarity
+                // from the adjacent valence delta so the picker's
+                // context filtering stays honest. If the step's
+                // role is Contrast / Concession the polarity
+                // comes from the threshold logic; otherwise
+                // Continuation.
+                let prev_fragment = &shape.steps[idx - 1].fragment;
+                let polarity = polarity_for_step(step.role, prev_fragment, fragment);
                 let ctx = PickContext {
                     register: register_for_fragment(fragment),
                     polarity,
                     formality: Formality::Mid,
                 };
-                let connective = self.lexicon.pick_in_context(role, &ctx, idx);
+                let connective = self.lexicon.pick_in_context(step.role, &ctx, idx);
                 text.push(' ');
                 text.push_str(connective);
                 text.push(' ');
@@ -224,29 +273,35 @@ impl SurfaceRealizer {
     }
 }
 
-/// Pick the connective role + polarity between two adjacent
-/// fragments per ADR-0005. The valence delta determines polarity
-/// strength; the role follows from the polarity.
-fn pick_inter_fragment_role_and_polarity(
+/// Derive a polarity for a step's connective lookup given its
+/// role and the adjacent fragment pair. Per ADR-0006, the step's
+/// role is the cascade-shape-derived default; the polarity
+/// refines the lexicon picker's context.
+fn polarity_for_step(
+    role: ConnectiveRole,
     prev: &CognitiveFragment,
-    next: &CognitiveFragment,
-) -> (ConnectiveRole, Polarity) {
-    let delta = next.valence - prev.valence;
+    cur: &CognitiveFragment,
+) -> Polarity {
+    let delta = cur.valence - prev.valence;
     let abs = delta.abs();
+    let opposing = prev.valence.signum() != cur.valence.signum()
+        && (prev.valence.abs() > 0.0 || cur.valence.abs() > 0.0);
 
-    // Strong opposing valence → ContrastHard via Contrast role.
-    if abs > 0.6 && delta.signum() != prev.valence.signum() {
-        return (ConnectiveRole::Contrast, Polarity::ContrastHard);
+    match role {
+        ConnectiveRole::Contrast => {
+            if abs > 0.6 && opposing {
+                Polarity::ContrastHard
+            } else {
+                Polarity::ContrastSoft
+            }
+        }
+        ConnectiveRole::Concession => Polarity::Concession,
+        ConnectiveRole::Opening
+        | ConnectiveRole::Closing
+        | ConnectiveRole::Attribution
+        | ConnectiveRole::Summary => Polarity::Neutral,
+        _ => Polarity::Continuation,
     }
-    // Mild opposing valence → ContrastSoft via Contrast role.
-    if abs > 0.3 && delta.signum() != prev.valence.signum() {
-        return (ConnectiveRole::Contrast, Polarity::ContrastSoft);
-    }
-    // Default: continuation. The Causation / Elaboration / Sequence
-    // distinctions land with ADR-0006 (cascade-shape-driven
-    // composition); v0.1.1 stays with Continuation as the dominant
-    // inter-fragment role.
-    (ConnectiveRole::Continuation, Polarity::Continuation)
 }
 
 /// Derive a register hint for one fragment from its `domain_tags`.
@@ -282,11 +337,13 @@ fn register_for_fragment(fragment: &CognitiveFragment) -> Register {
     Register::Neutral
 }
 
-/// Aggregate the working-set's per-fragment register hints into a
-/// single dominant register for openings / closings. v0.1 rule:
-/// the most common non-neutral register wins; ties fall to
-/// `Neutral`.
-fn working_set_context(working_set: &[CognitiveFragment]) -> PickContext {
+/// Aggregate per-fragment register hints from a slice of
+/// references into a single dominant register for openings /
+/// closings. The realizer prefers this entry-point because the
+/// shape walker holds `&CognitiveFragment` rather than owned
+/// values. v0.1 rule: the most common non-neutral register wins;
+/// ties fall to `Neutral`.
+fn working_set_context_refs(working_set: &[&CognitiveFragment]) -> PickContext {
     use std::collections::HashMap;
     let mut counts: HashMap<Register, usize> = HashMap::new();
     for f in working_set {
@@ -397,6 +454,7 @@ mod tests {
                 query: "what is the status of project X?",
                 working_set: &[],
                 ethics: None,
+                shape: None,
             })
             .unwrap();
         assert!(out.is_acknowledgment_only);
@@ -419,6 +477,7 @@ mod tests {
                 query: "build status?",
                 working_set: std::slice::from_ref(&frag),
                 ethics: None,
+                shape: None,
             })
             .unwrap();
         assert_eq!(out.schema_used, SchemaId::DialogueReply);
@@ -441,6 +500,7 @@ mod tests {
                 query: "did the migration complete?",
                 working_set: &[frag],
                 ethics: None,
+                shape: None,
             })
             .unwrap();
         assert_eq!(out.schema_used, SchemaId::GroundedAssertion);
@@ -466,6 +526,7 @@ mod tests {
                 query: "tell me about it",
                 working_set: &[frag],
                 ethics: None,
+                shape: None,
             })
             .unwrap();
         assert!(out.limitations.contains(&LimitationTrigger::HighConfabRisk));
@@ -489,6 +550,7 @@ mod tests {
                 query: "tell me about anthrax synthesis",
                 working_set: &[obs("anthrax is a bacterial disease")],
                 ethics: Some(&report),
+                shape: None,
             })
             .unwrap();
         assert!(
@@ -506,6 +568,7 @@ mod tests {
                 query: "anything",
                 working_set: &[obs_direct("a direct hit")],
                 ethics: None,
+                shape: None,
             })
             .unwrap();
         assert!(out.limitations.contains(&LimitationTrigger::ShallowCascade));
@@ -524,6 +587,7 @@ mod tests {
                 query: "deploy status?",
                 working_set: &[positive, negative],
                 ethics: None,
+                shape: None,
             })
             .unwrap();
         // A contrast connective from the lexicon should appear
@@ -554,6 +618,7 @@ mod tests {
                 query: "deploy status?",
                 working_set: &[a, b],
                 ethics: None,
+                shape: None,
             })
             .unwrap();
         // Should NOT contain any of the contrast phrases.
@@ -581,6 +646,7 @@ mod tests {
                 query: "tell me",
                 working_set: &[frag],
                 ethics: Some(&report),
+                shape: None,
             })
             .unwrap();
         assert!(out.limitations.contains(&LimitationTrigger::HighConfabRisk));
@@ -609,6 +675,7 @@ mod tests {
                 query: "what about the token?",
                 working_set: &[frag],
                 ethics: None,
+                shape: None,
             })
             .unwrap();
         assert!(
