@@ -227,6 +227,14 @@ fn build_working_set() -> Vec<CognitiveFragment> {
             // ShallowCascade limitation trigger does not fire on
             // this healthy demo.
             f.provenance.parent_ids = vec![FragmentId::new()];
+            // Tag the fragments with technical-domain markers so
+            // the realizer's `register_for_fragment` heuristic
+            // picks `Register::Technical` for the inter-fragment
+            // connectives (per ADR-0005 §"Context-aware picker").
+            // This is what makes the lexicon expansion visible in
+            // the smoke output.
+            f.domain_tags.push("deploy".to_string());
+            f.domain_tags.push("infrastructure".to_string());
             f
         })
         .collect()
