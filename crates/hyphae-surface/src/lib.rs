@@ -42,7 +42,9 @@ pub mod realizer;
 pub mod schema;
 
 pub use boundary::{
-    BoundarySignal, is_continuation_of_same_subject, same_subject_repetition, should_exclude,
+    BoundaryRules, BoundarySignal, is_continuation_of_same_subject,
+    is_continuation_of_same_subject_with_rules, same_subject_repetition, should_exclude,
+    should_exclude_with_rules,
 };
 pub use composition_shape::{
     CompositionShape, CompositionStep, shape_from_cascade, shape_from_retrieval,

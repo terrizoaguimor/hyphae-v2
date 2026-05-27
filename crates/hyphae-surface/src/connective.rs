@@ -172,19 +172,37 @@ impl Default for PickContext {
 /// Pluggable lexicon. The default constructor returns the v0.1
 /// ~300-entry baseline; integrators extend with custom entries via
 /// [`Lexicon::add`] (register-specific, domain-specific, etc.).
+///
+/// **ADR-0019**: the lexicon also carries a static
+/// [`crate::boundary::BoundaryRules`] pointer that tells the
+/// boundary-smoothing module which language's determiners,
+/// anaphor tails, and stopwords to use. `baseline_en()` wires
+/// `BoundaryRules::ENGLISH`; `baseline_es()` wires
+/// `BoundaryRules::SPANISH`; `empty()` defaults to ENGLISH for
+/// back-compat.
 #[derive(Debug, Clone)]
 pub struct Lexicon {
     entries: Vec<Connective>,
+    boundary_rules: &'static crate::boundary::BoundaryRules,
 }
 
 impl Lexicon {
-    /// Construct an empty lexicon. Useful for tests that want a
-    /// blank slate before adding fixtures.
+    /// Construct an empty lexicon (English boundary rules).
+    /// Useful for tests that want a blank slate before adding
+    /// fixtures.
     #[must_use]
     pub fn empty() -> Self {
         Self {
             entries: Vec::new(),
+            boundary_rules: &crate::boundary::BoundaryRules::ENGLISH,
         }
+    }
+
+    /// **ADR-0019.** Read-only access to the lexicon's
+    /// language-specific boundary rules.
+    #[must_use]
+    pub fn boundary_rules(&self) -> &'static crate::boundary::BoundaryRules {
+        self.boundary_rules
     }
 
     /// The v0.1 English baseline — ~300 hand-curated entries
@@ -194,6 +212,7 @@ impl Lexicon {
     pub fn baseline_en() -> Self {
         Self {
             entries: crate::connective_data::baseline_en_data(),
+            boundary_rules: &crate::boundary::BoundaryRules::ENGLISH,
         }
     }
 
@@ -211,6 +230,7 @@ impl Lexicon {
     pub fn baseline_es() -> Self {
         Self {
             entries: crate::connective_data_es::baseline_es_data(),
+            boundary_rules: &crate::boundary::BoundaryRules::SPANISH,
         }
     }
 
@@ -276,15 +296,16 @@ impl Lexicon {
 
         // Rule 2 preference: when same-subject repetition is
         // detected, search continuation-of-same-subject phrases
-        // first.
+        // first. ADR-0019: use this lexicon's language rules.
+        let rules = self.boundary_rules;
         if crate::boundary::same_subject_repetition(prev, next) {
             let preferred: Vec<&Connective> = self
                 .entries
                 .iter()
                 .filter(|c| {
                     c.role == role
-                        && crate::boundary::is_continuation_of_same_subject(c)
-                        && !crate::boundary::should_exclude(c, prev, next)
+                        && crate::boundary::is_continuation_of_same_subject_with_rules(c, rules)
+                        && !crate::boundary::should_exclude_with_rules(c, prev, next, rules)
                 })
                 .collect();
             if !preferred.is_empty() {
@@ -316,7 +337,9 @@ impl Lexicon {
             let filtered: Vec<&Connective> = self
                 .entries
                 .iter()
-                .filter(|c| level(c) && !crate::boundary::should_exclude(c, prev, next))
+                .filter(|c| {
+                    level(c) && !crate::boundary::should_exclude_with_rules(c, prev, next, rules)
+                })
                 .collect();
             if !filtered.is_empty() {
                 return &filtered[seq % filtered.len()].phrase;

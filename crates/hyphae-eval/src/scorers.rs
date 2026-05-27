@@ -32,7 +32,8 @@
 
 use crate::corpus::EvalQuery;
 use hyphae_surface::{
-    BoundarySignal, ConnectiveRole, Lexicon, LimitationTrigger, RealizationOutput, should_exclude,
+    BoundarySignal, ConnectiveRole, Lexicon, LimitationTrigger, RealizationOutput,
+    should_exclude_with_rules,
 };
 use serde::{Deserialize, Serialize};
 
@@ -382,8 +383,12 @@ fn compute_boundary_smoothness(text: &str, lexicon: &Lexicon) -> f32 {
         // the bounding `"` characters.
         let between = &text[*pe + 1..*ns - 1];
         boundaries += 1;
-        let prev_sig = BoundarySignal::extract(prev_body);
-        let next_sig = BoundarySignal::extract(next_body);
+        // ADR-0019: use the lexicon's language-specific rules so
+        // ES boundary checks fire on ES bodies (and EN keeps EN
+        // semantics).
+        let rules = lexicon.boundary_rules();
+        let prev_sig = BoundarySignal::extract_with_rules(prev_body, rules);
+        let next_sig = BoundarySignal::extract_with_rules(next_body, rules);
         // Find which lexicon phrase appears in `between`. If
         // multiple match (Rule 3 + Rule 1 can coexist with one
         // phrase), the first matched one drives the verdict.
@@ -393,7 +398,9 @@ fn compute_boundary_smoothness(text: &str, lexicon: &Lexicon) -> f32 {
             if phrase.is_empty() {
                 continue;
             }
-            if lower_between.contains(&phrase) && should_exclude(entry, &prev_sig, &next_sig) {
+            if lower_between.contains(&phrase)
+                && should_exclude_with_rules(entry, &prev_sig, &next_sig, rules)
+            {
                 violations += 1;
                 break;
             }

@@ -230,8 +230,15 @@ impl SurfaceRealizer {
                 // adjacent quoted bodies and run the smoothing
                 // filter so the picker avoids the known
                 // redundancy patterns.
-                let prev_signal = BoundarySignal::extract(fragment_body(prev_fragment));
-                let next_signal = BoundarySignal::extract(fragment_body(fragment));
+                // ADR-0019: use the lexicon's language-specific
+                // boundary rules so ES bodies get ES determiner /
+                // anaphor / stopword analysis (and EN keeps the
+                // EN rules).
+                let rules = self.lexicon.boundary_rules();
+                let prev_signal =
+                    BoundarySignal::extract_with_rules(fragment_body(prev_fragment), rules);
+                let next_signal =
+                    BoundarySignal::extract_with_rules(fragment_body(fragment), rules);
                 let connective = self.lexicon.pick_with_smoothing(
                     step.role,
                     &ctx,
