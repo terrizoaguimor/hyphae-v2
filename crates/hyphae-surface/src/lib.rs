@@ -31,6 +31,7 @@
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
 
+pub mod boundary;
 pub mod composition_shape;
 pub mod connective;
 pub mod connective_data;
@@ -38,6 +39,9 @@ pub mod limitation;
 pub mod realizer;
 pub mod schema;
 
+pub use boundary::{
+    BoundarySignal, is_continuation_of_same_subject, same_subject_repetition, should_exclude,
+};
 pub use composition_shape::{
     CompositionShape, CompositionStep, shape_from_cascade, shape_from_retrieval,
     shape_from_working_set, working_set_of,

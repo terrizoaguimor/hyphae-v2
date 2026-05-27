@@ -21,6 +21,7 @@
 //! language; the realizer is the boundary the
 //! no-LLM-in-cognition-path commitment depends on.
 
+use crate::boundary::BoundarySignal;
 use crate::composition_shape::{CompositionShape, shape_from_working_set};
 use crate::connective::{ConnectiveRole, Formality, Lexicon, PickContext, Polarity, Register};
 use crate::limitation::{LimitationContext, LimitationTrigger, evaluate as evaluate_limitations};
@@ -224,7 +225,19 @@ impl SurfaceRealizer {
                     polarity,
                     formality: Formality::Mid,
                 };
-                let connective = self.lexicon.pick_in_context(step.role, &ctx, idx);
+                // ADR-0007: extract boundary signals from the two
+                // adjacent quoted bodies and run the smoothing
+                // filter so the picker avoids the known
+                // redundancy patterns.
+                let prev_signal = BoundarySignal::extract(fragment_body(prev_fragment));
+                let next_signal = BoundarySignal::extract(fragment_body(fragment));
+                let connective = self.lexicon.pick_with_smoothing(
+                    step.role,
+                    &ctx,
+                    idx,
+                    Some(&prev_signal),
+                    Some(&next_signal),
+                );
                 text.push(' ');
                 text.push_str(connective);
                 text.push(' ');

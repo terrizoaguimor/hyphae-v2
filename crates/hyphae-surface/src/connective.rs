@@ -234,6 +234,85 @@ impl Lexicon {
         self.pick_in_context(role, &PickContext::neutral(), seq)
     }
 
+    /// Pick a phrase with boundary smoothing applied (per
+    /// ADR-0007). The candidate set is filtered through
+    /// [`crate::boundary::should_exclude`] using `prev_signal` and
+    /// `next_signal`; when filtering empties the set, the chain
+    /// degrades to the unfiltered [`Self::pick_in_context`].
+    ///
+    /// When either boundary signal is `None`, this falls through
+    /// to [`Self::pick_in_context`] semantics — useful for
+    /// openings, closings, and attributions where there is no
+    /// adjacent prior quote to smooth against.
+    #[must_use]
+    pub fn pick_with_smoothing(
+        &self,
+        role: ConnectiveRole,
+        ctx: &PickContext,
+        seq: usize,
+        prev_signal: Option<&crate::boundary::BoundarySignal>,
+        next_signal: Option<&crate::boundary::BoundarySignal>,
+    ) -> &str {
+        let (Some(prev), Some(next)) = (prev_signal, next_signal) else {
+            return self.pick_in_context(role, ctx, seq);
+        };
+
+        // Rule 2 preference: when same-subject repetition is
+        // detected, search continuation-of-same-subject phrases
+        // first.
+        if crate::boundary::same_subject_repetition(prev, next) {
+            let preferred: Vec<&Connective> = self
+                .entries
+                .iter()
+                .filter(|c| {
+                    c.role == role
+                        && crate::boundary::is_continuation_of_same_subject(c)
+                        && !crate::boundary::should_exclude(c, prev, next)
+                })
+                .collect();
+            if !preferred.is_empty() {
+                return &preferred[seq % preferred.len()].phrase;
+            }
+        }
+
+        // Standard chain with the Rule 1 + Rule 3 filter applied
+        // at each level. Boxed predicates so the four levels share
+        // a uniform loop. (The boxed-Fn type is intentional —
+        // each closure captures a different subset of the
+        // context's axes; refactoring to a named type alias would
+        // not improve readability.)
+        #[allow(clippy::type_complexity)]
+        let levels: [Box<dyn Fn(&&Connective) -> bool>; 4] = [
+            Box::new(|c: &&Connective| {
+                c.role == role
+                    && c.register == ctx.register
+                    && c.polarity == ctx.polarity
+                    && c.formality == ctx.formality
+            }),
+            Box::new(|c: &&Connective| {
+                c.role == role && c.register == ctx.register && c.polarity == ctx.polarity
+            }),
+            Box::new(|c: &&Connective| c.role == role && c.polarity == ctx.polarity),
+            Box::new(|c: &&Connective| c.role == role),
+        ];
+        for level in &levels {
+            let filtered: Vec<&Connective> = self
+                .entries
+                .iter()
+                .filter(|c| level(c) && !crate::boundary::should_exclude(c, prev, next))
+                .collect();
+            if !filtered.is_empty() {
+                return &filtered[seq % filtered.len()].phrase;
+            }
+        }
+
+        tracing::trace!(
+            "pick_with_smoothing: smoothing filter starved the chain for {role:?}; \
+             falling back to the unfiltered picker"
+        );
+        self.pick_in_context(role, ctx, seq)
+    }
+
     /// Pick a phrase using a 4-level fallback chain. The picker
     /// **never panics on missing data** — every relaxation level
     /// falls through to the next, ending at a hard-coded
