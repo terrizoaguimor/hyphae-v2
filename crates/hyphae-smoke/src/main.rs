@@ -6,12 +6,25 @@
 //! End-to-end smoke runner for Hyphae v2.
 //!
 //! Starts the substrate, registers the six functional subsystems,
-//! ingests a small batch of observations, drives the surface
-//! realizer over a working set derived from those observations,
-//! and finally runs the eval harness against the v0.1 baseline
-//! corpus. The output is the **first time Hyphae runs as a system
-//! end-to-end** — the moment v0.1 stops being a blueprint and
-//! starts being a cognitive substrate that does something.
+//! ingests a small batch of observations (with the encoding flow
+//! routed through `Valence → Reward` so the learning loop receives
+//! real RPE signals), drains the learning loop through the
+//! substrate's audit pipeline, transitions to `Recall`, queries the
+//! substrate, lets the surface realizer compose against the real
+//! recall output, and finally runs the eval harness.
+//!
+//! This is the first run that exercises every v0.1 component in one
+//! pass:
+//!
+//! - **ADR-0011**: real recall fires the cascade activation
+//!   (`recall_signal → episodic.process → episodic.cascade`).
+//! - **ADR-0013**: real RPE emissions feed the
+//!   `LearningOrchestrator`, which drains via
+//!   `substrate.propose_learning_update`.
+//! - **ADR-0006/0007**: cascade-shape composition + boundary
+//!   smoothing produce the realizer's output.
+//! - **ADR-0008/0009/0010**: the eval harness reports fluency
+//!   dimensions, bucket coverage, and sensitivity audit status.
 //!
 //! Run:
 //!
@@ -24,11 +37,11 @@
 use anyhow::Result;
 use hyphae_core::{
     ActivationLevel, ActorContext, CascadeActivation, CascadeRetrieval, CognitiveFragment,
-    DirectPathway, ExternalInputPayload, FragmentContent, FragmentId, Pathway, PathwayId,
-    PayloadKind, SubsystemId,
+    DirectPathway, ExternalInputPayload, Pathway, PathwayId, PayloadKind, State, SubsystemId,
 };
 use hyphae_eval::{EvalHarness, seed_corpus_en};
-use hyphae_substrate::Substrate;
+use hyphae_learning::{FeedbackSignal, LearningOrchestrator, ParameterBounds, ParameterValue};
+use hyphae_substrate::{LearningTarget, Substrate};
 use hyphae_subsystems::{Composer, Episodic, InputGate, Predictive, Reward, Valence};
 use hyphae_surface::{Intent, RealizationRequest, SurfaceRealizer};
 use std::collections::HashMap;
@@ -37,6 +50,7 @@ use tempfile::tempdir;
 const HRULE: &str = "─────────────────────────────────────────────────────────";
 
 #[tokio::main]
+#[allow(clippy::too_many_lines)]
 async fn main() -> Result<()> {
     init_tracing();
     print_banner();
@@ -45,14 +59,11 @@ async fn main() -> Result<()> {
     let path = dir.path();
     println!("hyphae-smoke: substrate path = {}", path.display());
 
-    // ── 1. Construct the substrate.
-    //
-    // Substrate::new opens the redb state store and the fjall
-    // journal, wraps the journal in an Arc<Mutex<...>>, and
-    // constructs an EthicsEngine that shares the same journal
-    // handle — one chain per substrate per ADR-0003 §8.
+    // ── 1. Construct the substrate and the learning orchestrator.
     let mut substrate = Substrate::new(path)?;
-    println!("hyphae-smoke: substrate initialised in Encoding state\n");
+    let mut orchestrator = LearningOrchestrator::new();
+    println!("hyphae-smoke: substrate initialised in Encoding state");
+    println!("hyphae-smoke: learning orchestrator initialised (empty store)\n");
 
     // ── 2. Register the six functional subsystems.
     register_subsystems(&mut substrate)?;
@@ -60,24 +71,24 @@ async fn main() -> Result<()> {
     // ── 3. Register the pathways the encoding flow needs.
     register_pathways(&mut substrate);
 
-    // ── 4. Ingest a small batch of observations.
-    //
-    // Each ingest threads through Substrate::ingest, which:
-    //   - evaluates the content at the Remember coverage point,
-    //   - writes an external_input entry on the shared chain,
-    //   - hands the fragment to the InputGate subsystem,
-    //   - routes the emitted fragments via the registered
-    //     Encoding-kind pathways.
+    // ── 4. Encoding phase — ingest observations.
     let actor = ActorContext::new("smoke:operator", "memory:write");
     let observations = sample_observations();
     println!(
-        "hyphae-smoke: ingesting {} observations\n{HRULE}",
+        "hyphae-smoke: encoding phase — ingesting {} observations\n{HRULE}",
         observations.len()
     );
-    for obs in observations {
+    for obs in &observations {
         let out = substrate
-            .ingest(ExternalInputPayload::new(obs), actor.clone())
+            .ingest(ExternalInputPayload::new(*obs), actor.clone())
             .await?;
+        // ADR-0013: every emitted terminal is offered to the
+        // orchestrator. Reward terminals carry signed RPE on their
+        // valence axis; the orchestrator extracts the feedback
+        // signal.
+        for terminal in &out.terminals {
+            orchestrator.record_emission(terminal, Some(&out.ethics));
+        }
         println!("  • \"{obs}\"");
         println!(
             "      ethics @ Remember: audit_seq={:?}  cvar={:.4}  flags={}",
@@ -89,29 +100,68 @@ async fn main() -> Result<()> {
     }
     println!("{HRULE}\n");
 
-    // ── 5. Build a working set the realizer can compose against.
-    //
-    // In a future milestone the composer subsystem would assemble
-    // this from substrate.recall_signal() + the episodic cascade.
-    // The v0.1 smoke runner provides the working set directly so
-    // the realizer's behaviour is observable in isolation.
-    let working_set = build_working_set();
+    // ── 5. Learning phase — drain the orchestrator through the
+    //    substrate's audit pipeline.
     println!(
-        "hyphae-smoke: assembled working set: {} fragments (all cascade-derived)\n",
-        working_set.len()
+        "hyphae-smoke: learning phase — orchestrator carries {} pending signal(s)\n{HRULE}",
+        orchestrator.pending_signal_count()
     );
-
-    // ── 6. Build a CompositionShape via cascade-shape-driven
-    //       composition (ADR-0006), then realize.
-    //
-    // The smoke runner doesn't run the real cascade engine — it
-    // builds a synthetic CascadeRetrieval where one fragment is
-    // the anchor and the rest are first-hop supports of it. That
-    // exercises the Causation-role path in the shape projection.
-    let cascade_retrieval = build_synthetic_cascade(&working_set);
-    let shape = hyphae_surface::shape_from_cascade(&cascade_retrieval);
+    declare_bounds_for_pending_rpe(&mut orchestrator);
+    let learning_outputs = orchestrator
+        .drain_and_propose(&substrate, actor.clone())
+        .await?;
     println!(
-        "hyphae-smoke: cascade-shape projection: {} step(s)",
+        "  drained {} proposal(s) through substrate.propose_learning_update",
+        learning_outputs.len()
+    );
+    for (i, out) in learning_outputs.iter().enumerate() {
+        println!(
+            "  proposal {i}: audit_seq={:?}  ethics_cvar={:.4}",
+            out.audit_seq, out.ethics.cvar_score,
+        );
+    }
+    println!("{HRULE}\n");
+
+    // ── 6. Recall phase — transition to Recall and query.
+    substrate.transition_to(State::Recall).await?;
+    let cue = "what is the status of the migration?";
+    let recall_out = substrate.recall_signal(cue, actor.clone()).await?;
+    let working_set: Vec<CognitiveFragment> = recall_out
+        .terminals
+        .iter()
+        .filter(|f| {
+            !matches!(&f.content, hyphae_core::FragmentContent::Observation { body }
+                              if body == cue)
+        })
+        .cloned()
+        .collect();
+    let with_parent_ids = working_set
+        .iter()
+        .filter(|f| !f.provenance.parent_ids.is_empty())
+        .count();
+    println!("hyphae-smoke: recall phase — cue = \"{cue}\"\n{HRULE}");
+    println!(
+        "  recall_signal terminals: {} (after dropping cue passthrough: {})",
+        recall_out.terminals.len(),
+        working_set.len(),
+    );
+    println!(
+        "  fragments with parent_ids populated: {with_parent_ids} / {} (mixed: ADR-0011 \
+         cascade tags + encoding-time routing fan-out audit)",
+        working_set.len(),
+    );
+    println!(
+        "  ethics @ Recall: audit_seq={:?}  cvar={:.4}",
+        recall_out.ethics.audit_seq, recall_out.ethics.cvar_score,
+    );
+    println!("{HRULE}\n");
+
+    // ── 7. Composition phase — build a cascade view from the real
+    //    recall output, project the shape, realize.
+    let cascade_view = cascade_view_from_recall(&working_set);
+    let shape = hyphae_surface::shape_from_cascade(&cascade_view);
+    println!(
+        "hyphae-smoke: cascade-shape projection: {} step(s) (ADR-0006)",
         shape.len()
     );
     for (i, step) in shape.steps.iter().enumerate() {
@@ -125,14 +175,13 @@ async fn main() -> Result<()> {
     let realizer = SurfaceRealizer::new();
     let request = RealizationRequest {
         intent: Intent::Dialogue,
-        query: "what is the status of the migration?",
+        query: cue,
         working_set: &working_set,
         shape: Some(&shape),
         ethics: None,
     };
     let realization = realizer.realize(&request)?;
-    println!("hyphae-smoke: compose ─────────────────────────────────────");
-    println!();
+    println!("hyphae-smoke: compose ─────────────────────────────────────\n");
     println!("  query   : \"{}\"", request.query);
     println!("  schema  : {:?}", realization.schema_used);
     println!(
@@ -140,15 +189,13 @@ async fn main() -> Result<()> {
         realization.fragments_quoted.len()
     );
     println!("  flags   : {}", format_triggers(&realization.limitations));
-    println!();
-    println!("  composition:");
+    println!("\n  composition:");
     for line in realization.text.lines() {
         println!("    {line}");
     }
-    println!();
-    println!("{HRULE}\n");
+    println!("\n{HRULE}\n");
 
-    // ── 7. Run the eval harness over the v0.1 baseline corpus.
+    // ── 8. Run the eval harness over the v0.1 baseline corpus.
     let harness = EvalHarness::new(SurfaceRealizer::new(), seed_corpus_en());
     println!(
         "hyphae-smoke: running eval harness ({} queries)\n{HRULE}",
@@ -157,19 +204,12 @@ async fn main() -> Result<()> {
     let report = harness.run();
     println!("{}", report.render());
 
-    // ── 8. Drop the substrate cleanly. The journal flushes on
-    //    Drop; the tempdir is removed when `dir` falls out of
-    //    scope. A "real" deployment would persist the path.
+    // ── 9. Drop the substrate cleanly.
     drop(substrate);
     println!("hyphae-smoke: done.");
     Ok(())
 }
 
-/// Configure a minimal tracing subscriber for the smoke runner.
-/// Quiet by default — the smoke runner's own `println!` lines
-/// carry the user-facing narrative. Enable the substrate's per-step
-/// tracing by depending on a richer subscriber feature set in a
-/// future ADR; the smoke runner stays dependency-light.
 fn init_tracing() {
     let _ = tracing_subscriber::fmt()
         .with_max_level(tracing::Level::WARN)
@@ -199,9 +239,15 @@ fn register_subsystems(substrate: &mut Substrate) -> Result<()> {
 }
 
 fn register_pathways(substrate: &mut Substrate) {
-    // Encoding flow: input-gate fans the dispatched fragment to
-    // both episodic (for storage) and valence (for affective
-    // stamping).
+    // Encoding flow:
+    //   InputGate → Episodic   (storage)
+    //   InputGate → Valence    (affective stamp)
+    //   Valence   → Reward     (RPE; feeds the learning loop)
+    //
+    // Reward emits a `BottomUpPredictionError`-flavoured fragment
+    // carrying signed RPE on its valence axis. With no outgoing
+    // pathway from Reward the emission becomes a terminal of
+    // `substrate.ingest`, which the orchestrator observes.
     substrate.register_pathway(direct_pathway(
         1,
         PayloadKind::Encoding,
@@ -214,8 +260,14 @@ fn register_pathways(substrate: &mut Substrate) {
         SubsystemId::InputGate,
         SubsystemId::Valence,
     ));
+    substrate.register_pathway(direct_pathway(
+        3,
+        PayloadKind::Encoding,
+        SubsystemId::Valence,
+        SubsystemId::Reward,
+    ));
     println!(
-        "hyphae-smoke: registered 2 pathways (encoding fan-out: input-gate → {{episodic, valence}})\n"
+        "hyphae-smoke: registered 3 pathways (encoding: input-gate → {{episodic, valence → reward}})\n"
     );
 }
 
@@ -236,40 +288,39 @@ fn sample_observations() -> Vec<&'static str> {
     ]
 }
 
-fn build_working_set() -> Vec<CognitiveFragment> {
-    sample_observations()
-        .into_iter()
-        .map(|body| {
-            let mut f = CognitiveFragment::new(
-                FragmentContent::Observation {
-                    body: body.to_string(),
-                },
-                "smoke",
-            );
-            // Mark the fragments as cascade-derived so the
-            // ShallowCascade limitation trigger does not fire on
-            // this healthy demo.
-            f.provenance.parent_ids = vec![FragmentId::new()];
-            // Tag the fragments with technical-domain markers so
-            // the realizer's `register_for_fragment` heuristic
-            // picks `Register::Technical` for the inter-fragment
-            // connectives (per ADR-0005 §"Context-aware picker").
-            // This is what makes the lexicon expansion visible in
-            // the smoke output.
-            f.domain_tags.push("deploy".to_string());
-            f.domain_tags.push("infrastructure".to_string());
-            f
+/// Iterate the orchestrator's pending RPE signals and declare bounds
+/// for each synthesised target so `stage_pending` does not silently
+/// drop the proposal. v0.1 demo convention — a future ADR refines
+/// the edge attribution so bounds can be declared at startup.
+fn declare_bounds_for_pending_rpe(orch: &mut LearningOrchestrator) {
+    let edges: Vec<String> = orch
+        .loop_ref()
+        .pending_signals()
+        .iter()
+        .filter_map(|s| match s {
+            FeedbackSignal::RewardPredictionError { edge_hint, .. } => edge_hint.clone(),
+            _ => None,
         })
-        .collect()
+        .collect();
+    if !edges.is_empty() {
+        println!(
+            "  declaring bounds on {} synthesised conductivity-weight target(s)",
+            edges.len()
+        );
+    }
+    for edge_id in edges {
+        let target = LearningTarget::EpisodicConductivityWeight { edge_id };
+        let store = orch.loop_mut().store_mut();
+        store.set_bounds(&target, ParameterBounds::new(-1.0, 1.0));
+        store.seed(&target, ParameterValue::Scalar(0.0));
+    }
 }
 
-/// Build a synthetic `CascadeRetrieval` from a flat working set:
-/// the first fragment is the anchor (direct hit, distance 0), the
-/// rest are first-hop supports of the anchor in the cascade. This
-/// gives the shape projection genuine topology to work with — the
-/// projection produces a `Causation` step for each support when
-/// there are two or more, per ADR-0006 §"Projection algorithm".
-fn build_synthetic_cascade(working_set: &[CognitiveFragment]) -> CascadeRetrieval {
+/// Build a `CascadeRetrieval` view from the real recall terminals so
+/// the cascade-shape projection has topology to work with. The first
+/// element is treated as the direct anchor; the remaining terminals
+/// with non-empty `parent_ids` are first-hop cascade supports.
+fn cascade_view_from_recall(working_set: &[CognitiveFragment]) -> CascadeRetrieval {
     if working_set.is_empty() {
         return CascadeRetrieval::empty();
     }
@@ -279,6 +330,9 @@ fn build_synthetic_cascade(working_set: &[CognitiveFragment]) -> CascadeRetrieva
 
     let mut cascade = HashMap::new();
     for (idx, frag) in working_set.iter().enumerate().skip(1) {
+        if frag.provenance.parent_ids.is_empty() {
+            continue;
+        }
         #[allow(clippy::cast_precision_loss)]
         let activation = 0.9 - (idx as f32) * 0.15;
         let act = CascadeActivation {
