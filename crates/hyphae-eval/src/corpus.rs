@@ -162,7 +162,7 @@ impl Corpus {
     }
 }
 
-/// The native-EN baseline corpus, thirty-two queries (v0.2)
+/// The native-EN baseline corpus, thirty-four queries (v0.2)
 /// covering:
 ///
 /// - 4 dialogue-reply queries with cascade-derived seeds (healthy
@@ -197,6 +197,11 @@ impl Corpus {
 ///   assessment. Drive `Intent::Reflect →
 ///   SchemaId::IntrospectiveAssessment` and exercise the
 ///   forced-Concession inter-fragment role + Summary closing.
+/// - **2 ADR-0025 `NarrativeArc` queries**: q3 launch arc,
+///   customer escalation arc. Drive `Intent::Narrate →
+///   SchemaId::NarrativeArc` and exercise the temporal sort
+///   by `created_at` + forced-Sequence inter-fragment role +
+///   Summary closing.
 ///
 /// The corpus is intentionally small for v0.1 — the harness's value
 /// in v0.1 is the **honest scorer + bucket coverage**, not the
@@ -1116,6 +1121,82 @@ pub fn seed_corpus_en() -> Corpus {
         },
     });
 
+    // ── ADR-0025 NarrativeArc queries (2) ─────────────────────
+    q.push(EvalQuery {
+        id: "narrate-001".to_string(),
+        query: "walk me through how the q3 launch went".to_string(),
+        intent: Intent::Narrate,
+        seeds: vec![
+            EvalSeed {
+                body: "the engineering team froze the codebase at 17:00 UTC the night before"
+                    .to_string(),
+                valence: 0.2,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the deploy ran at 09:00 UTC on launch day and completed in fourteen minutes"
+                    .to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the monitoring dashboards stayed green for the four hours after cutover"
+                    .to_string(),
+                valence: 0.6,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::NarrativeArc,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "narrate-002".to_string(),
+        query: "tell me the story of the customer escalation".to_string(),
+        intent: Intent::Narrate,
+        seeds: vec![
+            EvalSeed {
+                body: "the customer filed a support ticket at 10:14 UTC".to_string(),
+                valence: -0.3,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the on-call engineer responded within twelve minutes".to_string(),
+                valence: 0.3,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the root cause was identified as a stale cache by 11:02 UTC".to_string(),
+                valence: 0.4,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::NarrativeArc,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
     // ── ADR-0024 IntrospectiveAssessment queries (2) ──────────
     q.push(EvalQuery {
         id: "reflect-001".to_string(),
@@ -1377,9 +1458,24 @@ mod tests {
     use super::*;
 
     #[test]
-    fn baseline_corpus_has_at_least_thirty_two_queries() {
+    fn baseline_corpus_has_at_least_thirty_four_queries() {
         let corpus = seed_corpus_en();
-        assert!(corpus.len() >= 32);
+        assert!(corpus.len() >= 34);
+    }
+
+    #[test]
+    fn corpus_includes_narrate_queries() {
+        use hyphae_surface::Intent;
+        let corpus = seed_corpus_en();
+        let narrate_count = corpus
+            .queries()
+            .iter()
+            .filter(|q| matches!(q.intent, Intent::Narrate))
+            .count();
+        assert!(
+            narrate_count >= 2,
+            "ADR-0025 — corpus must contain ≥2 Narrate queries, got {narrate_count}",
+        );
     }
 
     #[test]

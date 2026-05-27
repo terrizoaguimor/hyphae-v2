@@ -9,12 +9,12 @@
 //!
 //! Per `docs/rfc/v1-living.md` §5:
 //!
-//! - **Five schemas as of v0.2**: [`SchemaId::DialogueReply`],
-//!   [`SchemaId::GroundedAssertion`], [`SchemaId::Summary`]
-//!   (ADR-0016), [`SchemaId::ComparativeAnalysis`] (ADR-0023),
-//!   and [`SchemaId::IntrospectiveAssessment`] (ADR-0024). The
-//!   final postponed schema (`NarrativeArc`) requires
-//!   temporal-ordering shape projection beyond v0.2 scope.
+//! - **Six schemas as of v0.2** (all v1-postponed re-entered):
+//!   [`SchemaId::DialogueReply`], [`SchemaId::GroundedAssertion`],
+//!   [`SchemaId::Summary`] (ADR-0016),
+//!   [`SchemaId::ComparativeAnalysis`] (ADR-0023),
+//!   [`SchemaId::IntrospectiveAssessment`] (ADR-0024), and
+//!   [`SchemaId::NarrativeArc`] (ADR-0025).
 //! - **Composition by fragment quotation + connective tissue.**
 //!   The realizer NEVER paraphrases a fragment body. Quotes appear
 //!   verbatim; the realizer only emits the structural prose around

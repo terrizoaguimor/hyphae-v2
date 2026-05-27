@@ -181,6 +181,26 @@ impl SurfaceRealizer {
             &fallback_shape
         };
 
+        // ADR-0025: NarrativeArc re-orders the shape's steps by
+        // `fragment.created_at` ascending. Subsequent walk emits
+        // fragments in chronological order regardless of the
+        // cascade-shape's topology-derived order. The caller's
+        // working-set order is overridden when this schema fires;
+        // `created_at` is the substrate ingestion timestamp, which
+        // for most callers correlates with event order (caveat in
+        // ADR-0025 §"v0.2 caveat — created_at vs event-time").
+        let temporal_shape;
+        let shape: &CompositionShape = if matches!(schema, SchemaId::NarrativeArc) {
+            let mut sorted_steps = shape.steps.clone();
+            sorted_steps.sort_by_key(|s| s.fragment.created_at);
+            temporal_shape = CompositionShape {
+                steps: sorted_steps,
+            };
+            &temporal_shape
+        } else {
+            shape
+        };
+
         if shape.is_empty() {
             // Working set was non-empty but the shape projected
             // empty (an edge case the linear fallback cannot
@@ -234,6 +254,11 @@ impl SurfaceRealizer {
                     // hedge — the substrate admits uncertainty as it
                     // surfaces each fragment.
                     SchemaId::IntrospectiveAssessment => ConnectiveRole::Concession,
+                    // ADR-0025: force Sequence for narrative arc —
+                    // the fragments are temporally ordered (by
+                    // created_at) and the connective tissue marks
+                    // the chronological transitions.
+                    SchemaId::NarrativeArc => ConnectiveRole::Sequence,
                     _ => step.role,
                 };
                 let polarity = polarity_for_step(effective_role, prev_fragment, fragment);
@@ -289,16 +314,19 @@ impl SurfaceRealizer {
             fragments_quoted.push(fragment.id);
         }
 
-        // ADR-0016 + ADR-0023 + ADR-0024: Summary,
-        // ComparativeAnalysis, and IntrospectiveAssessment all
-        // pull the closing line from `ConnectiveRole::Summary`
-        // ("Overall,", "On balance,", …). The synthesis /
-        // judgment / reflective shape they need is the same,
-        // not the conversational reply form
-        // (`ConnectiveRole::Closing`).
+        // ADR-0016 + ADR-0023 + ADR-0024 + ADR-0025: Summary,
+        // ComparativeAnalysis, IntrospectiveAssessment, and
+        // NarrativeArc all pull the closing line from
+        // `ConnectiveRole::Summary` ("Overall,", "On balance,", …).
+        // The synthesis / judgment / reflective / arc-resolution
+        // shape they need is the same, not the conversational
+        // reply form (`ConnectiveRole::Closing`).
         let closing_role = if matches!(
             schema,
-            SchemaId::Summary | SchemaId::ComparativeAnalysis | SchemaId::IntrospectiveAssessment
+            SchemaId::Summary
+                | SchemaId::ComparativeAnalysis
+                | SchemaId::IntrospectiveAssessment
+                | SchemaId::NarrativeArc
         ) {
             ConnectiveRole::Summary
         } else {
@@ -784,6 +812,81 @@ mod tests {
             !out.text
                 .contains("That is what working memory holds on this."),
             "ES output must not leak the EN default closing: {}",
+            out.text,
+        );
+    }
+
+    /// ADR-0025 — `Intent::Narrate` produces
+    /// `SchemaId::NarrativeArc`. Fragments are emitted in
+    /// chronological order (sorted by `created_at` ascending) and
+    /// inter-fragment connectives are forced to Sequence role.
+    /// Closing slot uses Summary role.
+    #[test]
+    fn narrative_arc_sorts_by_created_at_and_uses_sequence_role() {
+        use std::time::{Duration, SystemTime};
+        let realizer = SurfaceRealizer::new();
+        // Build three fragments with DELIBERATELY out-of-order
+        // created_at: pass them to the realizer in reverse
+        // chronological order, expect them to emit in correct
+        // chronological order.
+        let now = SystemTime::now();
+        let mut early = obs("first_event_token_alpha occurred at 09:00 UTC");
+        early.created_at = now;
+        let mut middle = obs("middle_event_token_beta occurred at 12:00 UTC");
+        middle.created_at = now + Duration::from_secs(3600);
+        let mut late = obs("late_event_token_gamma occurred at 15:00 UTC");
+        late.created_at = now + Duration::from_secs(7200);
+
+        // Pass them OUT OF ORDER (latest first, earliest last).
+        let working_set = vec![late, middle, early];
+
+        let out = realizer
+            .realize(&RealizationRequest {
+                intent: Intent::Narrate,
+                query: "walk me through the events",
+                working_set: &working_set,
+                ethics: None,
+                shape: None,
+            })
+            .unwrap();
+        assert_eq!(out.schema_used, SchemaId::NarrativeArc);
+
+        // The output must emit fragments in chronological order:
+        // first_event before middle_event before late_event.
+        let pos_first = out
+            .text
+            .find("first_event_token_alpha")
+            .expect("first must appear");
+        let pos_middle = out
+            .text
+            .find("middle_event_token_beta")
+            .expect("middle must appear");
+        let pos_late = out
+            .text
+            .find("late_event_token_gamma")
+            .expect("late must appear");
+        assert!(
+            pos_first < pos_middle && pos_middle < pos_late,
+            "NarrativeArc must emit fragments by created_at ascending; got positions {pos_first} / {pos_middle} / {pos_late} in: {}",
+            out.text,
+        );
+
+        // Inter-fragment connectives must be Sequence-role.
+        let lower = out.text.to_lowercase();
+        let sequence_markers = [
+            "first,",
+            "then,",
+            "next,",
+            "afterward,",
+            "subsequently,",
+            "later,",
+            "finally,",
+            "to begin,",
+            "and so,",
+        ];
+        assert!(
+            sequence_markers.iter().any(|m| lower.contains(m)),
+            "NarrativeArc must use Sequence-role inter-fragment phrases; got: {}",
             out.text,
         );
     }

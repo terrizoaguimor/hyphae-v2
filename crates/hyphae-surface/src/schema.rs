@@ -25,9 +25,13 @@
 //!   reflection. Inter-fragment slots use `ConnectiveRole::Concession`
 //!   ("Granted,", "Admittedly,"); closing slot uses Summary role —
 //!   see ADR-0024.
+//! - [`SchemaId::NarrativeArc`] — chronological arc. Fragments are
+//!   sorted by `created_at` ascending; inter-fragment slots use
+//!   `ConnectiveRole::Sequence` ("First,", "Then,", "Finally,");
+//!   closing slot uses Summary role — see ADR-0025.
 //!
-//! Still postponed (RFC §9): `NarrativeArc`. Requires temporal-
-//! ordering shape projection beyond v0.2 scope.
+//! All v1-postponed schemas are now re-entered. Further schemas
+//! require their own ADRs with empirical motivation.
 
 use serde::{Deserialize, Serialize};
 
@@ -65,6 +69,17 @@ pub enum SchemaId {
     /// substrate's "what it does + does not know" assessment of
     /// the working set.
     IntrospectiveAssessment,
+    /// **ADR-0025.** Narrative arc shape. Fragments are emitted in
+    /// chronological order (sorted ascending by
+    /// `CognitiveFragment::created_at`) and inter-fragment
+    /// connectives are FORCED to `ConnectiveRole::Sequence`
+    /// ("First,", "Then,", "Finally,", "Primero,", "Luego,").
+    /// Closing slot uses `ConnectiveRole::Summary` (the arc's
+    /// resolution). v0.2 caveat: `created_at` is the substrate
+    /// ingestion timestamp, not the underlying event time — for
+    /// most cases the two correlate, but backfilled fragments
+    /// surface in ingest-order, not event-order.
+    NarrativeArc,
 }
 
 impl SchemaId {
@@ -77,6 +92,7 @@ impl SchemaId {
             Self::Summary => "summary",
             Self::ComparativeAnalysis => "comparative_analysis",
             Self::IntrospectiveAssessment => "introspective_assessment",
+            Self::NarrativeArc => "narrative_arc",
         }
     }
 }
@@ -108,6 +124,10 @@ pub enum Intent {
     /// certainty. Fragments are hedged via Concession-role
     /// connectives.
     Reflect,
+    /// **ADR-0025.** The caller wants a narrative arc — fragments
+    /// emitted chronologically (by `created_at`) with Sequence-
+    /// role connectives between them and a Summary closing.
+    Narrate,
 }
 
 impl Intent {
@@ -123,6 +143,7 @@ impl Intent {
             Self::Summarize => SchemaId::Summary,
             Self::Compare => SchemaId::ComparativeAnalysis,
             Self::Reflect => SchemaId::IntrospectiveAssessment,
+            Self::Narrate => SchemaId::NarrativeArc,
         }
     }
 }
@@ -163,6 +184,11 @@ mod tests {
     }
 
     #[test]
+    fn intent_narrate_maps_to_narrative_arc() {
+        assert_eq!(Intent::Narrate.default_schema(), SchemaId::NarrativeArc);
+    }
+
+    #[test]
     fn schema_id_tags_are_distinct_lowercase() {
         assert_eq!(SchemaId::DialogueReply.tag(), "dialogue_reply");
         assert_eq!(SchemaId::GroundedAssertion.tag(), "grounded_assertion");
@@ -172,5 +198,6 @@ mod tests {
             SchemaId::IntrospectiveAssessment.tag(),
             "introspective_assessment"
         );
+        assert_eq!(SchemaId::NarrativeArc.tag(), "narrative_arc");
     }
 }
