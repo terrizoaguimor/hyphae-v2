@@ -461,6 +461,7 @@ mod tests {
                 valence: 0.0,
                 confabulation_risk: 0.0,
                 from_cascade: true,
+                domain_tags: Vec::new(),
             }],
             expectations: Expectations {
                 schema: SchemaId::DialogueReply,
@@ -491,6 +492,7 @@ mod tests {
                 valence: 0.0,
                 confabulation_risk: 0.0,
                 from_cascade: true,
+                domain_tags: Vec::new(),
             }],
             expectations: Expectations {
                 schema: SchemaId::DialogueReply,

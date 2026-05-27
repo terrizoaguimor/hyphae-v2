@@ -59,6 +59,16 @@ pub struct EvalSeed {
     /// what the `ShallowCascade` limitation trigger keys on.
     #[serde(default)]
     pub from_cascade: bool,
+    /// **ADR-0009.** Domain tags propagated to the fragment's
+    /// `domain_tags`. The realizer's `register_for_fragment`
+    /// heuristic reads these to derive a `Register` for picker
+    /// context (e.g. `["engineering"]` → `Technical`,
+    /// `["legal", "contract"]` → `Formal`, `["informal",
+    /// "conversation"]` → `Conversational`). Empty leaves the
+    /// fragment untagged and the realizer defaults to
+    /// `Register::Neutral`.
+    #[serde(default)]
+    pub domain_tags: Vec<String>,
 }
 
 impl EvalSeed {
@@ -78,6 +88,7 @@ impl EvalSeed {
             // is.
             f.provenance.parent_ids = vec![FragmentId::new()];
         }
+        f.domain_tags = self.domain_tags;
         f
     }
 }
@@ -151,7 +162,7 @@ impl Corpus {
     }
 }
 
-/// The v0.1 native-EN baseline corpus. Fifteen queries covering:
+/// The v0.1 native-EN baseline corpus. Twenty-five queries covering:
 ///
 /// - 4 dialogue-reply queries with cascade-derived seeds (healthy
 ///   path; no limitations should fire).
@@ -165,10 +176,16 @@ impl Corpus {
 ///   composition, causation-shape composition, opposed-valence
 ///   sequence. These drive `lexical_diversity`, `role_coverage`,
 ///   and `boundary_smoothness` above the trivial floors.
+/// - **10 ADR-0009 bucket-coverage queries**: 3 Conversational,
+///   3 Formal, 2 Neutral, 2 Mixed-register. These vary the
+///   `domain_tags` axis so the realizer's
+///   `register_for_fragment` heuristic exercises more than the
+///   `Neutral` slice of the lexicon.
 ///
 /// The corpus is intentionally small for v0.1 — the harness's value
-/// in v0.1 is the **honest scorer**, not the corpus size. Expansion
-/// to the v1-style 255-query corpus is a separate ADR.
+/// in v0.1 is the **honest scorer + bucket coverage**, not the
+/// corpus size. Expansion to the v1-style 255-query corpus is a
+/// separate ADR.
 #[must_use]
 #[allow(clippy::too_many_lines, clippy::vec_init_then_push)]
 pub fn seed_corpus_en() -> Corpus {
@@ -185,6 +202,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.3,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "the monitoring dashboards stayed green for the hour after the cutover"
@@ -192,6 +211,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.3,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
         ],
         expectations: Expectations {
@@ -217,12 +238,16 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.5,
                 confabulation_risk: 0.05,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "no rollbacks were issued in the following six hours".to_string(),
                 valence: 0.4,
                 confabulation_risk: 0.05,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
         ],
         expectations: Expectations {
@@ -247,18 +272,24 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.4,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "unit coverage for the payment module stayed above 85 percent".to_string(),
                 valence: 0.3,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "the team agreed to add chaos tests in the next quarter".to_string(),
                 valence: 0.2,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
         ],
         expectations: Expectations {
@@ -283,12 +314,16 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.0,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "secondary cover is handled by the platform team".to_string(),
                 valence: 0.0,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
         ],
         expectations: Expectations {
@@ -310,6 +345,8 @@ pub fn seed_corpus_en() -> Corpus {
             valence: 0.4,
             confabulation_risk: 0.1,
             from_cascade: true,
+
+            domain_tags: vec!["engineering".to_string()],
         }],
         expectations: Expectations {
             schema: SchemaId::GroundedAssertion,
@@ -330,6 +367,7 @@ pub fn seed_corpus_en() -> Corpus {
             valence: 0.0,
             confabulation_risk: 0.05,
             from_cascade: true,
+            domain_tags: vec!["legal".to_string(), "contract".to_string()],
         }],
         expectations: Expectations {
             schema: SchemaId::GroundedAssertion,
@@ -380,6 +418,8 @@ pub fn seed_corpus_en() -> Corpus {
             valence: -0.2,
             confabulation_risk: 0.8,
             from_cascade: true,
+
+            domain_tags: vec!["engineering".to_string()],
         }],
         expectations: Expectations {
             schema: SchemaId::DialogueReply,
@@ -399,6 +439,8 @@ pub fn seed_corpus_en() -> Corpus {
             valence: 0.1,
             confabulation_risk: 0.7,
             from_cascade: true,
+
+            domain_tags: vec!["engineering".to_string()],
         }],
         expectations: Expectations {
             schema: SchemaId::GroundedAssertion,
@@ -419,6 +461,8 @@ pub fn seed_corpus_en() -> Corpus {
             valence: 0.1,
             confabulation_risk: 0.1,
             from_cascade: false,
+
+            domain_tags: vec!["engineering".to_string()],
         }],
         expectations: Expectations {
             schema: SchemaId::DialogueReply,
@@ -443,6 +487,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.7,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "the rollback at 02:14 UTC was painful and lost three hours of writes"
@@ -450,6 +496,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: -0.7,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
         ],
         expectations: Expectations {
@@ -478,12 +526,16 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.5,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "the data warehouse migration finished six days ahead of plan".to_string(),
                 valence: 0.6,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "the customer support team flagged three onboarding regressions in the \
@@ -492,6 +544,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: -0.4,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
         ],
         expectations: Expectations {
@@ -520,6 +574,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.0,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "the cache layer rejected all entries written in the previous format"
@@ -527,6 +583,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: -0.3,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "the hit rate dropped from 94 percent to 41 percent over the next hour"
@@ -534,6 +592,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: -0.5,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
         ],
         expectations: Expectations {
@@ -563,6 +623,8 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: 0.7,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
             },
             EvalSeed {
                 body: "the free tier reported intermittent connection resets for six hours"
@@ -570,6 +632,318 @@ pub fn seed_corpus_en() -> Corpus {
                 valence: -0.7,
                 confabulation_risk: 0.1,
                 from_cascade: true,
+
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // ── ADR-0009 conversational-register queries (3) ──────────
+    // Informal / chat-style bodies. Tags push the realizer's
+    // `register_for_fragment` heuristic to `Conversational`, which
+    // unlocks the `(_, Conversational, _, _)` slice of the lexicon
+    // that ADR-0005 populated but no v0.1 query reaches.
+    q.push(EvalQuery {
+        id: "conv-001".to_string(),
+        query: "how is the team feeling this week".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the team mood has been pretty upbeat since the holiday week".to_string(),
+                valence: 0.6,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["informal".to_string(), "conversation".to_string()],
+            },
+            EvalSeed {
+                body: "people are still buzzing about the offsite next month".to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["informal".to_string(), "conversation".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "conv-002".to_string(),
+        query: "anything memorable from the all-hands".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the demo broke mid-presentation and the whole room laughed".to_string(),
+                valence: 0.3,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["informal".to_string(), "chat".to_string()],
+            },
+            EvalSeed {
+                body: "the recovery was quick and the audience stayed engaged".to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["informal".to_string(), "conversation".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "conv-003".to_string(),
+        query: "how is the new onboarding landing with people".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the new onboarding feels noticeably smoother than the previous version"
+                    .to_string(),
+                valence: 0.6,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["informal".to_string(), "conversation".to_string()],
+            },
+            EvalSeed {
+                body: "people seem to find their bearings within the first day now".to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["casual".to_string(), "conversation".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // ── ADR-0009 formal-register queries (3) ──────────────────
+    // Policy / compliance / legal bodies. Tags push register to
+    // `Formal`, unlocking the `(_, Formal, _, _)` lexicon slice.
+    q.push(EvalQuery {
+        id: "formal-001".to_string(),
+        query: "what does the data retention policy say".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the data retention policy requires deletion within ninety days of \
+                       account closure"
+                    .to_string(),
+                valence: 0.0,
+                confabulation_risk: 0.05,
+                from_cascade: true,
+                domain_tags: vec!["formal".to_string(), "policy".to_string()],
+            },
+            EvalSeed {
+                body: "any deviation must be reviewed by the privacy office before approval"
+                    .to_string(),
+                valence: 0.0,
+                confabulation_risk: 0.05,
+                from_cascade: true,
+                domain_tags: vec!["formal".to_string(), "compliance".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "formal-002".to_string(),
+        query: "summarise the quarterly compliance audit".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the quarterly audit confirmed compliance with the relevant regulatory \
+                       standards"
+                    .to_string(),
+                valence: 0.4,
+                confabulation_risk: 0.05,
+                from_cascade: true,
+                domain_tags: vec!["formal".to_string(), "compliance".to_string()],
+            },
+            EvalSeed {
+                body: "the auditor noted no material findings during the engagement".to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.05,
+                from_cascade: true,
+                domain_tags: vec!["formal".to_string(), "compliance".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "formal-003".to_string(),
+        query: "does indemnification survive termination of the agreement".to_string(),
+        intent: Intent::Assert,
+        seeds: vec![EvalSeed {
+            body: "the indemnification clause survives termination of the agreement".to_string(),
+            valence: 0.0,
+            confabulation_risk: 0.05,
+            from_cascade: true,
+            domain_tags: vec!["legal".to_string(), "contract".to_string()],
+        }],
+        expectations: Expectations {
+            schema: SchemaId::GroundedAssertion,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // ── ADR-0009 neutral-register queries (2) ─────────────────
+    // Untagged bodies — the realizer defaults to `Register::Neutral`.
+    // Verifies the v0.1 default path stays healthy when no register
+    // marker is present.
+    q.push(EvalQuery {
+        id: "neutral-001".to_string(),
+        query: "what was agreed about the upcoming planning cycle".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the team agreed to revisit the priority list at the end of the quarter"
+                    .to_string(),
+                valence: 0.2,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec![],
+            },
+            EvalSeed {
+                body: "the working hours will stay flexible through the next two sprints"
+                    .to_string(),
+                valence: 0.1,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec![],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "neutral-002".to_string(),
+        query: "how does the cross-functional working group operate".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the cross-functional working group meets on alternating fridays".to_string(),
+                valence: 0.0,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec![],
+            },
+            EvalSeed {
+                body: "the rotation schedule is shared in the team handbook".to_string(),
+                valence: 0.0,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec![],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // ── ADR-0009 mixed-register queries (2) ───────────────────
+    // Both engineering and formal markers present. Tie-break in
+    // `working_set_context_refs` picks the most common non-neutral
+    // register; verifies the aggregator behaves under ambiguity.
+    q.push(EvalQuery {
+        id: "mixed-001".to_string(),
+        query: "did the open source audit raise any licensing concerns".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the open source audit completed without any licensing concerns".to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string(), "legal".to_string()],
+            },
+            EvalSeed {
+                body: "the dependency manifest was attached to the compliance record".to_string(),
+                valence: 0.3,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["legal".to_string(), "compliance".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "mixed-002".to_string(),
+        query: "how did the SOC 2 review handle the new infrastructure changes".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the SOC 2 controls were reviewed against the new infrastructure changes"
+                    .to_string(),
+                valence: 0.2,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec![
+                    "formal".to_string(),
+                    "compliance".to_string(),
+                    "engineering".to_string(),
+                ],
+            },
+            EvalSeed {
+                body: "the operations team accepted the residual risk in writing".to_string(),
+                valence: 0.1,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["formal".to_string(), "engineering".to_string()],
             },
         ],
         expectations: Expectations {
@@ -589,9 +963,54 @@ mod tests {
     use super::*;
 
     #[test]
-    fn baseline_corpus_has_at_least_fifteen_queries() {
+    fn baseline_corpus_has_at_least_twenty_five_queries() {
         let corpus = seed_corpus_en();
-        assert!(corpus.len() >= 15);
+        assert!(corpus.len() >= 25);
+    }
+
+    #[test]
+    fn corpus_exercises_multiple_register_buckets() {
+        // ADR-0009 bucket-coverage invariant: across all seeds,
+        // at least one query carries Technical markers, one
+        // carries Conversational markers, and one carries Formal
+        // markers. Without this, the corpus would silently
+        // regress to single-bucket coverage like the v0.1 state.
+        let corpus = seed_corpus_en();
+        let mut has_tech = false;
+        let mut has_conv = false;
+        let mut has_formal = false;
+        for q in corpus.queries() {
+            for s in &q.seeds {
+                for t in &s.domain_tags {
+                    let t = t.to_lowercase();
+                    if matches!(
+                        t.as_str(),
+                        "engineering"
+                            | "code"
+                            | "systems"
+                            | "infrastructure"
+                            | "deploy"
+                            | "migration"
+                            | "monitoring"
+                            | "technical"
+                    ) {
+                        has_tech = true;
+                    }
+                    if matches!(t.as_str(), "informal" | "conversation" | "chat" | "casual") {
+                        has_conv = true;
+                    }
+                    if matches!(
+                        t.as_str(),
+                        "legal" | "contract" | "policy" | "formal" | "compliance"
+                    ) {
+                        has_formal = true;
+                    }
+                }
+            }
+        }
+        assert!(has_tech, "corpus must contain Technical-tagged seeds");
+        assert!(has_conv, "corpus must contain Conversational-tagged seeds");
+        assert!(has_formal, "corpus must contain Formal-tagged seeds");
     }
 
     #[test]
@@ -646,6 +1065,8 @@ mod tests {
             valence: 5.0,
             confabulation_risk: -1.0,
             from_cascade: false,
+
+            domain_tags: vec!["engineering".to_string()],
         };
         let frag = seed.into_fragment();
         assert!((frag.valence - 1.0).abs() < f32::EPSILON);
@@ -659,6 +1080,8 @@ mod tests {
             valence: 0.0,
             confabulation_risk: 0.0,
             from_cascade: true,
+
+            domain_tags: vec!["engineering".to_string()],
         };
         let frag = seed.into_fragment();
         assert!(!frag.provenance.parent_ids.is_empty());
@@ -671,6 +1094,8 @@ mod tests {
             valence: 0.0,
             confabulation_risk: 0.0,
             from_cascade: false,
+
+            domain_tags: vec!["engineering".to_string()],
         };
         let frag = seed.into_fragment();
         assert!(frag.provenance.parent_ids.is_empty());
