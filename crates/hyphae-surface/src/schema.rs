@@ -21,10 +21,13 @@
 //!   Inter-fragment slots use `ConnectiveRole::Contrast` regardless
 //!   of cascade-shape projection; closing slot shares the Summary
 //!   role with [`SchemaId::Summary`] — see ADR-0023.
+//! - [`SchemaId::IntrospectiveAssessment`] — substrate-hedged
+//!   reflection. Inter-fragment slots use `ConnectiveRole::Concession`
+//!   ("Granted,", "Admittedly,"); closing slot uses Summary role —
+//!   see ADR-0024.
 //!
-//! Still postponed (RFC §9): `IntrospectiveAssessment`,
-//! `NarrativeArc`. Each re-enters with an explicit ADR
-//! demonstrating empirical need.
+//! Still postponed (RFC §9): `NarrativeArc`. Requires temporal-
+//! ordering shape projection beyond v0.2 scope.
 
 use serde::{Deserialize, Serialize};
 
@@ -53,6 +56,15 @@ pub enum SchemaId {
     /// the schema falls through to DialogueReply-like behaviour
     /// (no contrast to apply).
     ComparativeAnalysis,
+    /// **ADR-0024.** Introspective assessment shape. Inter-fragment
+    /// connectives are FORCED to `ConnectiveRole::Concession`
+    /// ("Granted,", "Admittedly,", "Hay que reconocer,") — the
+    /// substrate hedges its own certainty as it surfaces stored
+    /// fragments. Closing slot uses `ConnectiveRole::Summary` (a
+    /// reflective synthesis). Best when the caller wants the
+    /// substrate's "what it does + does not know" assessment of
+    /// the working set.
+    IntrospectiveAssessment,
 }
 
 impl SchemaId {
@@ -64,6 +76,7 @@ impl SchemaId {
             Self::GroundedAssertion => "grounded_assertion",
             Self::Summary => "summary",
             Self::ComparativeAnalysis => "comparative_analysis",
+            Self::IntrospectiveAssessment => "introspective_assessment",
         }
     }
 }
@@ -90,6 +103,11 @@ pub enum Intent {
     /// fragments interpreted as paired/contrasting positions with
     /// a comparative-judgment closing.
     Compare,
+    /// **ADR-0024.** The caller wants the substrate's
+    /// introspective assessment — what does it know, with what
+    /// certainty. Fragments are hedged via Concession-role
+    /// connectives.
+    Reflect,
 }
 
 impl Intent {
@@ -104,6 +122,7 @@ impl Intent {
             Self::Assert => SchemaId::GroundedAssertion,
             Self::Summarize => SchemaId::Summary,
             Self::Compare => SchemaId::ComparativeAnalysis,
+            Self::Reflect => SchemaId::IntrospectiveAssessment,
         }
     }
 }
@@ -136,10 +155,22 @@ mod tests {
     }
 
     #[test]
+    fn intent_reflect_maps_to_introspective_assessment() {
+        assert_eq!(
+            Intent::Reflect.default_schema(),
+            SchemaId::IntrospectiveAssessment
+        );
+    }
+
+    #[test]
     fn schema_id_tags_are_distinct_lowercase() {
         assert_eq!(SchemaId::DialogueReply.tag(), "dialogue_reply");
         assert_eq!(SchemaId::GroundedAssertion.tag(), "grounded_assertion");
         assert_eq!(SchemaId::Summary.tag(), "summary");
         assert_eq!(SchemaId::ComparativeAnalysis.tag(), "comparative_analysis");
+        assert_eq!(
+            SchemaId::IntrospectiveAssessment.tag(),
+            "introspective_assessment"
+        );
     }
 }

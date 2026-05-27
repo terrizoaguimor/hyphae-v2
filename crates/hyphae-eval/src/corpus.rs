@@ -162,7 +162,7 @@ impl Corpus {
     }
 }
 
-/// The native-EN baseline corpus, thirty queries (v0.2)
+/// The native-EN baseline corpus, thirty-two queries (v0.2)
 /// covering:
 ///
 /// - 4 dialogue-reply queries with cascade-derived seeds (healthy
@@ -192,6 +192,11 @@ impl Corpus {
 ///   `Intent::Compare → SchemaId::ComparativeAnalysis` and
 ///   exercise the forced-Contrast inter-fragment role +
 ///   Summary closing.
+/// - **2 ADR-0024 `IntrospectiveAssessment` queries**: launch
+///   outcome reflection, migration-timeline confidence
+///   assessment. Drive `Intent::Reflect →
+///   SchemaId::IntrospectiveAssessment` and exercise the
+///   forced-Concession inter-fragment role + Summary closing.
 ///
 /// The corpus is intentionally small for v0.1 — the harness's value
 /// in v0.1 is the **honest scorer + bucket coverage**, not the
@@ -1111,6 +1116,66 @@ pub fn seed_corpus_en() -> Corpus {
         },
     });
 
+    // ── ADR-0024 IntrospectiveAssessment queries (2) ──────────
+    q.push(EvalQuery {
+        id: "reflect-001".to_string(),
+        query: "what do you actually know about the launch outcome".to_string(),
+        intent: Intent::Reflect,
+        seeds: vec![
+            EvalSeed {
+                body: "the staging environment validated the pricing flow end to end".to_string(),
+                valence: 0.4,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the production rollout had three onboarding regressions in the beta cohort"
+                    .to_string(),
+                valence: -0.3,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::IntrospectiveAssessment,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "reflect-002".to_string(),
+        query: "how confident are you about the migration timeline".to_string(),
+        intent: Intent::Reflect,
+        seeds: vec![
+            EvalSeed {
+                body: "the latest project plan targets completion by friday".to_string(),
+                valence: 0.2,
+                confabulation_risk: 0.2,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the data team flagged two open blockers in monday's standup".to_string(),
+                valence: -0.4,
+                confabulation_risk: 0.2,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::IntrospectiveAssessment,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
     q.push(EvalQuery {
         id: "summary-003".to_string(),
         query: "what's the overall state from the single touchpoint we have".to_string(),
@@ -1312,9 +1377,24 @@ mod tests {
     use super::*;
 
     #[test]
-    fn baseline_corpus_has_at_least_thirty_queries() {
+    fn baseline_corpus_has_at_least_thirty_two_queries() {
         let corpus = seed_corpus_en();
-        assert!(corpus.len() >= 30);
+        assert!(corpus.len() >= 32);
+    }
+
+    #[test]
+    fn corpus_includes_reflect_queries() {
+        use hyphae_surface::Intent;
+        let corpus = seed_corpus_en();
+        let reflect_count = corpus
+            .queries()
+            .iter()
+            .filter(|q| matches!(q.intent, Intent::Reflect))
+            .count();
+        assert!(
+            reflect_count >= 2,
+            "ADR-0024 — corpus must contain ≥2 Reflect queries, got {reflect_count}",
+        );
     }
 
     #[test]

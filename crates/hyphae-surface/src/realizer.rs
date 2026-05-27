@@ -227,10 +227,14 @@ impl SurfaceRealizer {
                 // even when the cascade topology would suggest
                 // continuation or causation.
                 let prev_fragment = &shape.steps[idx - 1].fragment;
-                let effective_role = if matches!(schema, SchemaId::ComparativeAnalysis) {
-                    ConnectiveRole::Contrast
-                } else {
-                    step.role
+                let effective_role = match schema {
+                    // ADR-0023: force Contrast for comparative shape.
+                    SchemaId::ComparativeAnalysis => ConnectiveRole::Contrast,
+                    // ADR-0024: force Concession for introspective
+                    // hedge — the substrate admits uncertainty as it
+                    // surfaces each fragment.
+                    SchemaId::IntrospectiveAssessment => ConnectiveRole::Concession,
+                    _ => step.role,
                 };
                 let polarity = polarity_for_step(effective_role, prev_fragment, fragment);
                 let ctx = PickContext {
@@ -285,13 +289,17 @@ impl SurfaceRealizer {
             fragments_quoted.push(fragment.id);
         }
 
-        // ADR-0016 + ADR-0023: Summary and ComparativeAnalysis
-        // both pull the closing line from `ConnectiveRole::Summary`
-        // ("Overall,", "On balance,", …). The synthesis shape
-        // they both need is the comparative-judgment / summary
-        // form, not the conversational reply form
+        // ADR-0016 + ADR-0023 + ADR-0024: Summary,
+        // ComparativeAnalysis, and IntrospectiveAssessment all
+        // pull the closing line from `ConnectiveRole::Summary`
+        // ("Overall,", "On balance,", …). The synthesis /
+        // judgment / reflective shape they need is the same,
+        // not the conversational reply form
         // (`ConnectiveRole::Closing`).
-        let closing_role = if matches!(schema, SchemaId::Summary | SchemaId::ComparativeAnalysis) {
+        let closing_role = if matches!(
+            schema,
+            SchemaId::Summary | SchemaId::ComparativeAnalysis | SchemaId::IntrospectiveAssessment
+        ) {
             ConnectiveRole::Summary
         } else {
             ConnectiveRole::Closing
@@ -776,6 +784,56 @@ mod tests {
             !out.text
                 .contains("That is what working memory holds on this."),
             "ES output must not leak the EN default closing: {}",
+            out.text,
+        );
+    }
+
+    /// ADR-0024 — `Intent::Reflect` produces
+    /// `SchemaId::IntrospectiveAssessment`. Inter-fragment
+    /// connectives are forced to Concession role (the substrate
+    /// hedges its own certainty). Closing slot uses Summary role.
+    #[test]
+    fn introspective_assessment_forces_concession_inter_fragment() {
+        let realizer = SurfaceRealizer::new();
+        let mut frag_a = obs("the staging environment validated the pricing flow end to end");
+        frag_a.valence = 0.4;
+        let mut frag_b = obs("the production rollout had three onboarding regressions");
+        frag_b.valence = -0.3;
+        let working_set = vec![frag_a, frag_b];
+
+        let out = realizer
+            .realize(&RealizationRequest {
+                intent: Intent::Reflect,
+                query: "what do you actually know about this rollout?",
+                working_set: &working_set,
+                ethics: None,
+                shape: None,
+            })
+            .unwrap();
+        assert_eq!(out.schema_used, SchemaId::IntrospectiveAssessment);
+
+        // Inter-fragment must use a Concession-role phrase.
+        let lower = out.text.to_lowercase();
+        let concession_markers = [
+            "granted,",
+            "admittedly,",
+            "to be fair,",
+            "that said,",
+            "of course,",
+            "true,",
+            "fair enough,",
+            "though it's true that",
+        ];
+        assert!(
+            concession_markers.iter().any(|m| lower.contains(m)),
+            "IntrospectiveAssessment must use a Concession-role inter-fragment phrase; got: {}",
+            out.text,
+        );
+        // Closing must be Summary-role.
+        assert!(
+            !out.text
+                .contains("That is what working memory holds on this."),
+            "IntrospectiveAssessment must NOT use DialogueReply closing: {}",
             out.text,
         );
     }

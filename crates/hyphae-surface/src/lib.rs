@@ -9,13 +9,12 @@
 //!
 //! Per `docs/rfc/v1-living.md` §5:
 //!
-//! - **Four schemas as of v0.2**: [`SchemaId::DialogueReply`],
+//! - **Five schemas as of v0.2**: [`SchemaId::DialogueReply`],
 //!   [`SchemaId::GroundedAssertion`], [`SchemaId::Summary`]
-//!   (ADR-0016), and [`SchemaId::ComparativeAnalysis`]
-//!   (ADR-0023). The remaining v1 schemas
-//!   (`IntrospectiveAssessment`, `NarrativeArc`) stay postponed
-//!   per ADR-0001 §"Surface scope" until their own re-entry
-//!   ADRs land.
+//!   (ADR-0016), [`SchemaId::ComparativeAnalysis`] (ADR-0023),
+//!   and [`SchemaId::IntrospectiveAssessment`] (ADR-0024). The
+//!   final postponed schema (`NarrativeArc`) requires
+//!   temporal-ordering shape projection beyond v0.2 scope.
 //! - **Composition by fragment quotation + connective tissue.**
 //!   The realizer NEVER paraphrases a fragment body. Quotes appear
 //!   verbatim; the realizer only emits the structural prose around
