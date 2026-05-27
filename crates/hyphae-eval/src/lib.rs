@@ -40,10 +40,12 @@
 pub mod corpus;
 pub mod report;
 pub mod scorers;
+pub mod sensitivity;
 
 pub use corpus::{Corpus, EvalQuery, EvalSeed, Expectations, seed_corpus_en};
 pub use report::{DimensionMeans, EvalReport};
 pub use scorers::{QueryScore, score_query};
+pub use sensitivity::{SensitivityReport, SensitivityResult, run_sensitivity_audit};
 
 use hyphae_surface::{RealizationRequest, SurfaceRealizer};
 
@@ -77,6 +79,9 @@ impl EvalHarness {
 
     /// Run the harness over every query in the corpus and return
     /// the aggregate report.
+    ///
+    /// Per ADR-0010, the harness also executes a deterministic
+    /// scorer-sensitivity audit and attaches it to the report.
     #[must_use]
     pub fn run(&self) -> EvalReport {
         let scores: Vec<QueryScore> = self
@@ -85,7 +90,8 @@ impl EvalHarness {
             .iter()
             .map(|q| self.score_one(q))
             .collect();
-        EvalReport::from_scores(scores)
+        let audit = run_sensitivity_audit(self.realizer.lexicon());
+        EvalReport::from_scores_with_audit(scores, Some(audit))
     }
 
     /// Run a single query and return its score. Useful for

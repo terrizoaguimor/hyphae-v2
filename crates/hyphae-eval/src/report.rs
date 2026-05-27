@@ -15,6 +15,7 @@
 //! they share a struct.
 
 use crate::scorers::QueryScore;
+use crate::sensitivity::SensitivityReport;
 use serde::{Deserialize, Serialize};
 
 /// Aggregate over a corpus run.
@@ -31,6 +32,13 @@ pub struct EvalReport {
     /// count — `30 / 250` is more informative than `0.12`.
     #[serde(default)]
     pub distinct_phrases_corpus_wide: usize,
+    /// **ADR-0010.** Scorer-sensitivity audit attached to this
+    /// run. `None` for reports built from synthetic scores
+    /// without a harness (e.g. unit tests). When present, the
+    /// v1-pattern canary uses the audit to downgrade or escalate
+    /// the caveat severity.
+    #[serde(default)]
+    pub sensitivity_audit: Option<SensitivityReport>,
     /// Per-query scores. Surfaced so the integrator can drill into
     /// failures without re-running.
     pub query_scores: Vec<QueryScore>,
@@ -78,16 +86,39 @@ impl EvalReport {
     /// means and per-run caveats.
     #[must_use]
     pub fn from_scores(query_scores: Vec<QueryScore>) -> Self {
+        Self::from_scores_with_audit(query_scores, None)
+    }
+
+    /// Build a report from per-query scores **with** an optional
+    /// ADR-0010 sensitivity audit. The harness uses this path
+    /// to surface the audit alongside the dimension means.
+    ///
+    /// When `sensitivity_audit` is `None` the v1-pattern canary
+    /// behaves as in ADR-0008 (suspect every dimension at 0.99).
+    /// When present and clean, the canary downgrades to
+    /// informational; when present and showing a regression, the
+    /// canary escalates to critical.
+    #[must_use]
+    pub fn from_scores_with_audit(
+        query_scores: Vec<QueryScore>,
+        sensitivity_audit: Option<SensitivityReport>,
+    ) -> Self {
         let queries = query_scores.len();
         let passing_queries = query_scores.iter().filter(|s| s.passes()).count();
         let means = DimensionMeans::from_scores(&query_scores);
         let distinct_phrases_corpus_wide = corpus_wide_distinct_phrases(&query_scores);
-        let caveats = build_caveats(&query_scores, &means, distinct_phrases_corpus_wide);
+        let caveats = build_caveats(
+            &query_scores,
+            &means,
+            distinct_phrases_corpus_wide,
+            sensitivity_audit.as_ref(),
+        );
         Self {
             queries,
             passing_queries,
             means,
             distinct_phrases_corpus_wide,
+            sensitivity_audit,
             query_scores,
             caveats,
         }
@@ -115,6 +146,7 @@ impl EvalReport {
     /// Render a human-readable summary. Surfaces caveats verbatim
     /// at the top — they are not appendix material.
     #[must_use]
+    #[allow(clippy::too_many_lines)]
     pub fn render(&self) -> String {
         use std::fmt::Write;
         let mut out = String::new();
@@ -191,6 +223,31 @@ impl EvalReport {
             self.distinct_phrases_corpus_wide
         )
         .ok();
+        if let Some(audit) = &self.sensitivity_audit {
+            writeln!(out).ok();
+            writeln!(out, "── Scorer sensitivity audit (ADR-0010) ──").ok();
+            for r in &audit.results {
+                let mark = if r.detected { "✓" } else { "✗" };
+                writeln!(
+                    out,
+                    "  {mark} {:<24} — {}",
+                    r.dimension,
+                    if r.detected {
+                        format!("{} detected", r.mutation)
+                    } else {
+                        format!("MUTATION NOT DETECTED ({})", r.mutation)
+                    }
+                )
+                .ok();
+            }
+            writeln!(
+                out,
+                "  status: {}/{} dimensions sensitive",
+                audit.dimensions_sensitive(),
+                audit.dimensions_total(),
+            )
+            .ok();
+        }
         if !self.caveats.is_empty() {
             writeln!(out).ok();
             writeln!(out, "── Honest caveats (per ADR-0001) ──").ok();
@@ -257,10 +314,12 @@ fn corpus_wide_distinct_phrases(scores: &[QueryScore]) -> usize {
 /// Build the caveat list. Caveats fire when a dimension reads
 /// suspiciously high or shows a pattern that v1's wave-1 baseline
 /// exhibited.
+#[allow(clippy::too_many_lines)]
 fn build_caveats(
     scores: &[QueryScore],
     means: &DimensionMeans,
     distinct_phrases_corpus_wide: usize,
+    sensitivity_audit: Option<&SensitivityReport>,
 ) -> Vec<String> {
     let mut caveats = Vec::new();
 
@@ -273,11 +332,32 @@ fn build_caveats(
         return caveats;
     }
 
+    // ADR-0010: if the audit shows ANY dimension is not sensitive,
+    // that is the load-bearing caveat regardless of canary state.
+    // Surface it FIRST so the integrator sees the scorer regression
+    // before reading the dimension means.
+    if let Some(audit) = sensitivity_audit {
+        let failing = audit.failing_dimensions();
+        if !failing.is_empty() {
+            caveats.push(format!(
+                "scorer-sensitivity audit FAILED for: {} — these dimension(s) did not detect \
+                 their controlled mutations; the corresponding mean scores are unreliable. \
+                 Investigate before publishing",
+                failing.join(", "),
+            ));
+        }
+    }
+
     // v1's wave-1 close shipped 0.993 because the scorer could not
     // detect the violations the corpus would have exposed. v2's
     // canary: when every CORRECTNESS dimension reads above 0.99
     // simultaneously, surface the caveat so the integrator does
     // not silently inherit the v1 pattern.
+    //
+    // ADR-0010 upgrade: if an audit is attached AND all dimensions
+    // are sensitive, downgrade the caveat to informational; the
+    // run is healthy by construction. If no audit is attached, the
+    // original suspect-everything caveat fires unchanged.
     let very_high = |m: f32| m > 0.99;
     let correctness_canary = very_high(means.verbatim_compliance)
         && very_high(means.schema_match_rate)
@@ -286,13 +366,28 @@ fn build_caveats(
         && very_high(means.connective_hygiene_rate)
         && very_high(means.acknowledgment_only_rate);
     if correctness_canary {
-        caveats.push(
-            "every dimension reads above 0.99 — v1's wave-1 baseline (0.993) exhibited the same \
-             shape because the scorer could not see realiser-class violations; verify the corpus \
-             actually exercises the realizer's failure modes (paraphrase, missed acknowledgment, \
-             doubled connectives) before publishing this as evidence of competence"
-                .to_string(),
-        );
+        match sensitivity_audit {
+            Some(a) if a.all_dimensions_sensitive() => {
+                caveats.push(format!(
+                    "informational: every correctness dimension reads above 0.99; ADR-0010 \
+                     sensitivity audit confirms all {}/{} scored dimensions detect their failure \
+                     modes; this run reflects a healthy realizer plus a well-designed corpus, \
+                     not unscored violations",
+                    a.dimensions_sensitive(),
+                    a.dimensions_total(),
+                ));
+            }
+            _ => {
+                caveats.push(
+                    "every dimension reads above 0.99 — v1's wave-1 baseline (0.993) exhibited \
+                     the same shape because the scorer could not see realiser-class violations; \
+                     verify the corpus actually exercises the realizer's failure modes \
+                     (paraphrase, missed acknowledgment, doubled connectives) before publishing \
+                     this as evidence of competence"
+                        .to_string(),
+                );
+            }
+        }
     }
 
     // ADR-0008: extended canary — fluency dimensions also at 0.99
