@@ -132,6 +132,7 @@ impl Subsystem for Reward {
             domain_tags: fragment.domain_tags.clone(),
             language: fragment.language.clone(),
             boundary_metadata: None,
+            event_time: fragment.event_time,
         };
         // The original input is also part of the emission so the
         // downstream subsystem (composer, typically) sees both the

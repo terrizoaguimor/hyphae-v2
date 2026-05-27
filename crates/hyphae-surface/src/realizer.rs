@@ -181,18 +181,17 @@ impl SurfaceRealizer {
             &fallback_shape
         };
 
-        // ADR-0025: NarrativeArc re-orders the shape's steps by
-        // `fragment.created_at` ascending. Subsequent walk emits
-        // fragments in chronological order regardless of the
-        // cascade-shape's topology-derived order. The caller's
-        // working-set order is overridden when this schema fires;
-        // `created_at` is the substrate ingestion timestamp, which
-        // for most callers correlates with event order (caveat in
-        // ADR-0025 §"v0.2 caveat — created_at vs event-time").
+        // ADR-0025 + ADR-0026: NarrativeArc re-orders the shape's
+        // steps by `fragment.narrative_time()` ascending — which
+        // resolves to `event_time` when set, falling back to
+        // `created_at`. For most callers ingest-time = event-time
+        // and the two paths converge; for backfilled / replayed
+        // fragments the `event_time` field (ADR-0026) restores
+        // event-order emission.
         let temporal_shape;
         let shape: &CompositionShape = if matches!(schema, SchemaId::NarrativeArc) {
             let mut sorted_steps = shape.steps.clone();
-            sorted_steps.sort_by_key(|s| s.fragment.created_at);
+            sorted_steps.sort_by_key(|s| s.fragment.narrative_time());
             temporal_shape = CompositionShape {
                 steps: sorted_steps,
             };
@@ -887,6 +886,54 @@ mod tests {
         assert!(
             sequence_markers.iter().any(|m| lower.contains(m)),
             "NarrativeArc must use Sequence-role inter-fragment phrases; got: {}",
+            out.text,
+        );
+    }
+
+    /// ADR-0026 — when `event_time` is set, `NarrativeArc` sorts by
+    /// it instead of `created_at`. Backfill scenario: three
+    /// fragments are CREATED in the same instant (so `created_at`
+    /// ties / is non-meaningful) but carry distinct `event_time`
+    /// values. The narrative emits in `event_time` order.
+    #[test]
+    fn narrative_arc_prefers_event_time_when_set() {
+        use std::time::{Duration, SystemTime};
+        let realizer = SurfaceRealizer::new();
+        let common_ingest = SystemTime::now();
+        // All three fragments share created_at (backfill).
+        let mut event_a = obs("event_alpha_token happened in q1");
+        event_a.created_at = common_ingest;
+        event_a.event_time = Some(common_ingest - Duration::from_secs(86400 * 90));
+        let mut event_b = obs("event_beta_token happened in q2");
+        event_b.created_at = common_ingest;
+        event_b.event_time = Some(common_ingest - Duration::from_secs(86400 * 60));
+        let mut event_c = obs("event_gamma_token happened in q3");
+        event_c.created_at = common_ingest;
+        event_c.event_time = Some(common_ingest - Duration::from_secs(86400 * 30));
+
+        // Pass deliberately out of event-time order.
+        let working_set = vec![event_c, event_a, event_b];
+        let out = realizer
+            .realize(&RealizationRequest {
+                intent: Intent::Narrate,
+                query: "what happened this year",
+                working_set: &working_set,
+                ethics: None,
+                shape: None,
+            })
+            .unwrap();
+        let pos_a = out
+            .text
+            .find("event_alpha_token")
+            .expect("alpha must appear");
+        let pos_b = out.text.find("event_beta_token").expect("beta must appear");
+        let pos_c = out
+            .text
+            .find("event_gamma_token")
+            .expect("gamma must appear");
+        assert!(
+            pos_a < pos_b && pos_b < pos_c,
+            "NarrativeArc must emit by event_time when set; got {pos_a} / {pos_b} / {pos_c} in: {}",
             out.text,
         );
     }

@@ -88,6 +88,15 @@ pub struct CognitiveFragment {
     /// avoids agreement errors visible to readers.
     #[serde(default)]
     pub boundary_metadata: Option<BoundaryMetadata>,
+    /// **ADR-0026.** When the fragment's content reports an event
+    /// that happened at a specific time DISTINCT from when the
+    /// substrate ingested it. The `NarrativeArc` schema (ADR-0025)
+    /// sorts by `event_time.unwrap_or(created_at)` so backfilled
+    /// or replayed fragments surface in event-order. `None` for
+    /// fragments where ingest-time is also event-time (the common
+    /// case).
+    #[serde(default)]
+    pub event_time: Option<SystemTime>,
 }
 
 /// Surface-level metadata about a fragment's body that the realizer
@@ -365,7 +374,25 @@ impl CognitiveFragment {
             domain_tags: Vec::new(),
             language: LanguageTag::default(),
             boundary_metadata: None,
+            event_time: None,
         }
+    }
+
+    /// **ADR-0026.** Set the event time — when the content describes
+    /// an event that happened at a time distinct from ingestion.
+    /// `NarrativeArc` realisations sort by `event_time` when
+    /// present, falling back to `created_at`.
+    #[must_use]
+    pub const fn with_event_time(mut self, event_time: SystemTime) -> Self {
+        self.event_time = Some(event_time);
+        self
+    }
+
+    /// **ADR-0026.** Resolve the effective time for narrative
+    /// ordering: `event_time` when set, otherwise `created_at`.
+    #[must_use]
+    pub fn narrative_time(&self) -> SystemTime {
+        self.event_time.unwrap_or(self.created_at)
     }
 
     /// Set the causal depth level. Builder-style; returns `self` for

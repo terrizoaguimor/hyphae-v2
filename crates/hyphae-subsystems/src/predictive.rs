@@ -194,6 +194,7 @@ impl Subsystem for Predictive {
                 domain_tags: Vec::new(),
                 language: fragment.language.clone(),
                 boundary_metadata: None,
+                event_time: fragment.event_time,
             };
             Ok(vec![fragment, error_fragment])
         }
