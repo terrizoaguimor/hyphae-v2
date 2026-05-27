@@ -162,7 +162,8 @@ impl Corpus {
     }
 }
 
-/// The v0.1 native-EN baseline corpus. Twenty-five queries covering:
+/// The native-EN baseline corpus, twenty-eight queries (v0.2)
+/// covering:
 ///
 /// - 4 dialogue-reply queries with cascade-derived seeds (healthy
 ///   path; no limitations should fire).
@@ -181,6 +182,11 @@ impl Corpus {
 ///   `domain_tags` axis so the realizer's
 ///   `register_for_fragment` heuristic exercises more than the
 ///   `Neutral` slice of the lexicon.
+/// - **3 ADR-0016 Summary-schema queries**: multi-service
+///   deployment synthesis, week-over-week metric summary,
+///   shallow-cascade single-source summary. Drive
+///   `Intent::Summarize → SchemaId::Summary` and exercise the
+///   Summary-role closing slot.
 ///
 /// The corpus is intentionally small for v0.1 — the harness's value
 /// in v0.1 is the **honest scorer + bucket coverage**, not the
@@ -955,6 +961,114 @@ pub fn seed_corpus_en() -> Corpus {
         },
     });
 
+    // ── ADR-0016 Summary schema queries (3) ────────────────────
+    // Exercise the new SchemaId::Summary slot. Lexicon's Summary
+    // role provides the closing line ("Overall,", "On balance,",
+    // "Taking it together,", …). v0.2 corpus expansion.
+    q.push(EvalQuery {
+        id: "summary-001".to_string(),
+        query: "summarise the deployment situation across services".to_string(),
+        intent: Intent::Summarize,
+        seeds: vec![
+            EvalSeed {
+                body: "the payment service deploy completed without errors at 09:14 UTC"
+                    .to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the notification service deploy needed a hot patch at 09:36 UTC".to_string(),
+                valence: -0.2,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the search service stayed on the previous version pending the q3 cutover"
+                    .to_string(),
+                valence: 0.0,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::Summary,
+            must_fire: vec![],
+            must_not_fire: vec![
+                LimitationTrigger::EmptyWorkingSet,
+                LimitationTrigger::ShallowCascade,
+            ],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "summary-002".to_string(),
+        query: "give me an overall read on this week's metrics".to_string(),
+        intent: Intent::Summarize,
+        seeds: vec![
+            EvalSeed {
+                body: "weekly active users grew six percent over the trailing seven days"
+                    .to_string(),
+                valence: 0.6,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body:
+                    "the p95 request latency rose from 180 to 210 milliseconds on the same window"
+                        .to_string(),
+                valence: -0.4,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+            EvalSeed {
+                body: "the support ticket queue dropped from 84 to 61 open items".to_string(),
+                valence: 0.4,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+                domain_tags: vec!["engineering".to_string()],
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::Summary,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    q.push(EvalQuery {
+        id: "summary-003".to_string(),
+        query: "what's the overall state from the single touchpoint we have".to_string(),
+        intent: Intent::Summarize,
+        seeds: vec![EvalSeed {
+            // Single-fragment, direct-only seed → ShallowCascade
+            // fires AND the realizer still emits a Summary closing
+            // per ADR-0016's "no silent downgrade" rule.
+            body: "the standup notes mention the migration is on track for next tuesday"
+                .to_string(),
+            valence: 0.3,
+            confabulation_risk: 0.2,
+            from_cascade: false,
+            domain_tags: vec!["engineering".to_string()],
+        }],
+        expectations: Expectations {
+            schema: SchemaId::Summary,
+            must_fire: vec![LimitationTrigger::ShallowCascade],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
     Corpus::from_queries(q)
 }
 
@@ -963,9 +1077,24 @@ mod tests {
     use super::*;
 
     #[test]
-    fn baseline_corpus_has_at_least_twenty_five_queries() {
+    fn baseline_corpus_has_at_least_twenty_eight_queries() {
         let corpus = seed_corpus_en();
-        assert!(corpus.len() >= 25);
+        assert!(corpus.len() >= 28);
+    }
+
+    #[test]
+    fn corpus_includes_summary_schema_queries() {
+        use hyphae_surface::Intent;
+        let corpus = seed_corpus_en();
+        let summary_count = corpus
+            .queries()
+            .iter()
+            .filter(|q| matches!(q.intent, Intent::Summarize))
+            .count();
+        assert!(
+            summary_count >= 3,
+            "ADR-0016 — corpus must contain ≥3 Summary queries, got {summary_count}",
+        );
     }
 
     #[test]

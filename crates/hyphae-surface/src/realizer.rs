@@ -137,6 +137,7 @@ impl SurfaceRealizer {
     /// Returns an error only when the caller's intent has no schema
     /// mapping. v0.1 covers every intent — the variant is reserved
     /// for future-shape inputs.
+    #[allow(clippy::too_many_lines)]
     pub fn realize(
         &self,
         request: &RealizationRequest<'_>,
@@ -265,9 +266,16 @@ impl SurfaceRealizer {
             fragments_quoted.push(fragment.id);
         }
 
-        let closing = self
-            .lexicon
-            .pick_in_context(ConnectiveRole::Closing, &opening_ctx, 0);
+        // ADR-0016: Summary schema pulls the closing line from
+        // `ConnectiveRole::Summary` ("Overall,", "On balance,", …)
+        // instead of `ConnectiveRole::Closing`. Every other schema
+        // keeps the existing closing slot.
+        let closing_role = if matches!(schema, SchemaId::Summary) {
+            ConnectiveRole::Summary
+        } else {
+            ConnectiveRole::Closing
+        };
+        let closing = self.lexicon.pick_in_context(closing_role, &opening_ctx, 0);
         text.push(' ');
         text.push_str(closing);
 
@@ -695,6 +703,54 @@ mod tests {
             out.text
                 .contains("VERBATIM_BODY_TOKEN_42 should appear unchanged"),
             "fragment body must be quoted verbatim: {}",
+            out.text,
+        );
+    }
+
+    /// ADR-0016 — `Intent::Summarize` produces `SchemaId::Summary`
+    /// and the closing line is drawn from `ConnectiveRole::Summary`.
+    #[test]
+    fn summary_schema_uses_summary_role_for_closing() {
+        let realizer = SurfaceRealizer::new();
+        let frags: Vec<_> = (0..3)
+            .map(|i| obs(&format!("synthesis fragment {i}")))
+            .collect();
+        let out = realizer
+            .realize(&RealizationRequest {
+                intent: Intent::Summarize,
+                query: "summarise the recent activity",
+                working_set: &frags,
+                ethics: None,
+                shape: None,
+            })
+            .unwrap();
+        assert_eq!(out.schema_used, SchemaId::Summary);
+        // The summary lexicon (see connective_data.rs:1490) starts
+        // every entry with one of these tokens — at least one must
+        // appear in the output text.
+        let summary_markers = [
+            "In summary,",
+            "Overall,",
+            "On balance,",
+            "Taking it together,",
+            "Putting it together,",
+            "Bringing",
+            "Across the working set,",
+            "The shape of it is that,",
+            "The picture overall is,",
+            "Summing up,",
+            "All things considered,",
+        ];
+        assert!(
+            summary_markers.iter().any(|m| out.text.contains(m)),
+            "Summary schema must use a Summary-role closing; got: {}",
+            out.text,
+        );
+        // And `DialogueReply`'s default closing must NOT appear.
+        assert!(
+            !out.text
+                .contains("That is what working memory holds on this."),
+            "Summary closing must not be the DialogueReply default: {}",
             out.text,
         );
     }
