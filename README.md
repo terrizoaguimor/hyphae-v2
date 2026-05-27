@@ -67,10 +67,43 @@ other AI product that does so.
 
 ## Status
 
-**Pre-alpha, foundational scaffolding.** The workspace ships with
-empty member list and the canonical RFC and ADRs only. Crates are
-cherry-picked from v1 incrementally per the living RFC at
-[`docs/rfc/v1-living.md`](docs/rfc/v1-living.md).
+**v0.1 — substrate spec implemented end-to-end.** Eleven ADRs
+accepted, 288 tests passing, smoke binary runs the full cognition
+path in a single command. The architectural bet remains untested
+in real workloads; the implementation honestly meets every
+commitment in the living RFC at
+[`docs/rfc/v1-living.md`](docs/rfc/v1-living.md). Pre-release,
+no remote push, no public tag yet.
+
+## What works in v0.1
+
+`cargo run -p hyphae-smoke` exercises the full v0.1 surface in one
+invocation:
+
+| Capability | Evidence |
+|---|---|
+| Six functional subsystems | `input-gate`, `episodic`, `valence`, `composer`, `predictive`, `reward` — instantiated, state-machine-aware |
+| Native operations | `ingest` (Remember), `recall_signal`, `compose_signal`, `propose_learning_update`, `journal_verify_chain` |
+| Hash-chained journal + state store | SHA-256 chain, one per substrate, shared with the ethics audit (ADR-0003); `fjall` + `redb` persistence |
+| Five-point ethics coverage | `Remember` / `Recall` / `Compose` / `LearningUpdate` active; `GroundedRetrieval` deferred per RFC §9 |
+| Cascade activation in recall | ADR-0011 — `recall_signal → episodic.process → episodic.cascade` |
+| Learning loop wakeup | ADR-0013 — `record_emission → stage_pending → propose_learning_update → apply_audited` |
+| Surface realizer | 250-phrase EN lexicon, cascade-shape composition (ADR-0006), boundary smoothing (ADR-0007), two schemas |
+| Eval harness | 25-query corpus, 9 dimensions, scorer sensitivity audit, honest caveats (ADR-0008/0009/0010) |
+
+The sensitivity audit verifies each scoring dimension detects its
+failure mode by construction. The eval harness publishes honest
+numbers without target thresholds — per ADR-0001's anti-greenwashing
+discipline.
+
+## How to run
+
+```bash
+cargo build --workspace
+cargo test --workspace            # 288 tests across 10 crates
+cargo clippy --workspace --all-targets -- -D warnings
+cargo run -p hyphae-smoke         # end-to-end demonstration
+```
 
 ## Repository layout
 
@@ -80,18 +113,38 @@ hyphae-v2/
 ├── README.md               # this file
 ├── LICENSE                 # Apache-2.0 (code) / CC-BY-4.0 (spec)
 ├── CLAUDE.md               # operating instructions for assistant-driven development
+├── crates/
+│   ├── hyphae-core/        # primitives: fragments, ids, journal types, cascade activation
+│   ├── hyphae-ethics/      # RADAR engine, audit, five coverage points
+│   ├── hyphae-storage/     # fjall journal + redb state store
+│   ├── hyphae-substrate/   # state machine, pathway routing, integration boundary
+│   ├── hyphae-subsystems/  # six functional subsystems
+│   ├── hyphae-surface/     # realizer, lexicon, cascade-shape, smoothing
+│   ├── hyphae-learning/    # parameter store, feedback, orchestrator
+│   ├── hyphae-embed/       # hashing token embedder
+│   ├── hyphae-eval/        # harness, corpus, scorers, sensitivity audit
+│   └── hyphae-smoke/       # end-to-end runner
 └── docs/
     ├── rfc/
     │   └── v1-living.md    # the canonical specification, append-only
     └── adr/
         ├── 0001-fresh-from-v1.md
         ├── 0002-learning-loop-firstclass.md
-        └── 0003-ethics-radar-firstclass.md
+        ├── 0003-ethics-radar-firstclass.md
+        ├── 0004-embedding-provider.md
+        ├── 0005-lexicon-scale.md
+        ├── 0006-cascade-shape-driven-composition.md
+        ├── 0007-boundary-smoothing.md
+        ├── 0008-empirical-calibration-ladder.md
+        ├── 0009-corpus-expansion-bucket-coverage.md
+        ├── 0010-scorer-sensitivity-audit.md
+        ├── 0011-cascade-wakeup-in-recall.md
+        └── 0013-learning-loop-orchestration.md
 ```
 
-Crates land under `crates/` as the cherry-pick proceeds. The first
-crate is `hyphae-core` (substrate primitives); see the living RFC for
-the order.
+ADR-0012 was reserved during the 5-point ethics audit but never
+filed — the audit found coverage complete and the slot is left
+intentionally vacant rather than reused.
 
 ## Why a v2 (and not a refactor of v1)
 
