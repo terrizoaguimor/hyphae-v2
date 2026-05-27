@@ -151,7 +151,7 @@ impl Corpus {
     }
 }
 
-/// The v0.1 native-EN baseline corpus. Twelve queries covering:
+/// The v0.1 native-EN baseline corpus. Fifteen queries covering:
 ///
 /// - 4 dialogue-reply queries with cascade-derived seeds (healthy
 ///   path; no limitations should fire).
@@ -161,6 +161,10 @@ impl Corpus {
 /// - 2 high-confab-risk queries (composition + limitation).
 /// - 1 shallow-cascade query (direct-only seeds).
 /// - 1 valence-opposed query (contrast connective selection).
+/// - **3 ADR-0008 fluency-exercise queries**: multi-role
+///   composition, causation-shape composition, opposed-valence
+///   sequence. These drive `lexical_diversity`, `role_coverage`,
+///   and `boundary_smoothness` above the trivial floors.
 ///
 /// The corpus is intentionally small for v0.1 — the harness's value
 /// in v0.1 is the **honest scorer**, not the corpus size. Expansion
@@ -457,6 +461,126 @@ pub fn seed_corpus_en() -> Corpus {
         },
     });
 
+    // ── ADR-0008 fluency exercise: multi-role composition ──────
+    // Four fragments with mixed valence and cascade depth — the
+    // realizer is expected to invoke opening + ≥2 distinct
+    // inter-fragment roles + closing, exercising
+    // `lexical_diversity` and `role_coverage` above the trivial
+    // 1.0-by-default floor.
+    q.push(EvalQuery {
+        id: "fluency-multirole-001".to_string(),
+        query: "what's the overall state of the q3 launch program".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the staging environment validated the new pricing engine end to end"
+                    .to_string(),
+                valence: 0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+            },
+            EvalSeed {
+                body: "the data warehouse migration finished six days ahead of plan".to_string(),
+                valence: 0.6,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+            },
+            EvalSeed {
+                body: "the customer support team flagged three onboarding regressions in the \
+                       beta cohort"
+                    .to_string(),
+                valence: -0.4,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![
+                LimitationTrigger::EmptyWorkingSet,
+                LimitationTrigger::ShallowCascade,
+            ],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // ── ADR-0008 fluency exercise: causation-shape composition ─
+    // Three fragments with parent-id chain — exercises the
+    // ADR-0006 Causation-role projection and surfaces a different
+    // connective bucket than the dialogue queries.
+    q.push(EvalQuery {
+        id: "fluency-causation-001".to_string(),
+        query: "why did the cache hit rate drop after the deploy".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the deploy rolled out a new serialization format at 09:14 UTC".to_string(),
+                valence: 0.0,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+            },
+            EvalSeed {
+                body: "the cache layer rejected all entries written in the previous format"
+                    .to_string(),
+                valence: -0.3,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+            },
+            EvalSeed {
+                body: "the hit rate dropped from 94 percent to 41 percent over the next hour"
+                    .to_string(),
+                valence: -0.5,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![
+                LimitationTrigger::EmptyWorkingSet,
+                LimitationTrigger::ShallowCascade,
+            ],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
+    // ── ADR-0008 fluency exercise: opposed-valence sequence ────
+    // Two fragments with strongly opposed valence and identical
+    // cascade depth — exercises Contrast-role selection and the
+    // boundary smoothing pathway when adjacent bodies share a
+    // determiner-led NP shape.
+    q.push(EvalQuery {
+        id: "fluency-opposed-001".to_string(),
+        query: "how did the release perform across the two customer tiers".to_string(),
+        intent: Intent::Dialogue,
+        seeds: vec![
+            EvalSeed {
+                body: "the enterprise tier reported a measurable latency improvement".to_string(),
+                valence: 0.7,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+            },
+            EvalSeed {
+                body: "the free tier reported intermittent connection resets for six hours"
+                    .to_string(),
+                valence: -0.7,
+                confabulation_risk: 0.1,
+                from_cascade: true,
+            },
+        ],
+        expectations: Expectations {
+            schema: SchemaId::DialogueReply,
+            must_fire: vec![],
+            must_not_fire: vec![LimitationTrigger::EmptyWorkingSet],
+            acknowledgment_only: false,
+            verbatim_quotation: true,
+        },
+    });
+
     Corpus::from_queries(q)
 }
 
@@ -465,9 +589,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn baseline_corpus_has_at_least_ten_queries() {
+    fn baseline_corpus_has_at_least_fifteen_queries() {
         let corpus = seed_corpus_en();
-        assert!(corpus.len() >= 10);
+        assert!(corpus.len() >= 15);
     }
 
     #[test]

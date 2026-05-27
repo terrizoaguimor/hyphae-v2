@@ -26,6 +26,11 @@ pub struct EvalReport {
     pub passing_queries: usize,
     /// Per-dimension mean scores, in `[0.0, 1.0]`.
     pub means: DimensionMeans,
+    /// **ADR-0008.** Total distinct lexicon phrases observed
+    /// across the entire corpus run. Reported as an absolute
+    /// count — `30 / 250` is more informative than `0.12`.
+    #[serde(default)]
+    pub distinct_phrases_corpus_wide: usize,
     /// Per-query scores. Surfaced so the integrator can drill into
     /// failures without re-running.
     pub query_scores: Vec<QueryScore>,
@@ -52,6 +57,20 @@ pub struct DimensionMeans {
     /// Fraction of queries with the correct
     /// `is_acknowledgment_only` flag.
     pub acknowledgment_only_rate: f32,
+    /// **ADR-0008.** Mean lexical diversity across queries.
+    #[serde(default = "default_one")]
+    pub lexical_diversity: f32,
+    /// **ADR-0008.** Mean role coverage across queries.
+    #[serde(default = "default_one")]
+    pub role_coverage: f32,
+    /// **ADR-0008.** Mean boundary smoothness across queries.
+    #[serde(default = "default_one")]
+    pub boundary_smoothness: f32,
+}
+
+#[must_use]
+const fn default_one() -> f32 {
+    1.0
 }
 
 impl EvalReport {
@@ -62,11 +81,13 @@ impl EvalReport {
         let queries = query_scores.len();
         let passing_queries = query_scores.iter().filter(|s| s.passes()).count();
         let means = DimensionMeans::from_scores(&query_scores);
-        let caveats = build_caveats(&query_scores, &means);
+        let distinct_phrases_corpus_wide = corpus_wide_distinct_phrases(&query_scores);
+        let caveats = build_caveats(&query_scores, &means, distinct_phrases_corpus_wide);
         Self {
             queries,
             passing_queries,
             means,
+            distinct_phrases_corpus_wide,
             query_scores,
             caveats,
         }
@@ -144,6 +165,32 @@ impl EvalReport {
             self.means.acknowledgment_only_rate
         )
         .ok();
+        writeln!(out).ok();
+        writeln!(out, "── ADR-0008 fluency dimensions ──").ok();
+        writeln!(
+            out,
+            "lexical_diversity       = {:.3}",
+            self.means.lexical_diversity
+        )
+        .ok();
+        writeln!(
+            out,
+            "role_coverage           = {:.3}",
+            self.means.role_coverage
+        )
+        .ok();
+        writeln!(
+            out,
+            "boundary_smoothness     = {:.3}",
+            self.means.boundary_smoothness
+        )
+        .ok();
+        writeln!(
+            out,
+            "distinct_phrases_used   = {}",
+            self.distinct_phrases_corpus_wide
+        )
+        .ok();
         if !self.caveats.is_empty() {
             writeln!(out).ok();
             writeln!(out, "── Honest caveats (per ADR-0001) ──").ok();
@@ -165,6 +212,9 @@ impl DimensionMeans {
                 limitation_precision: 1.0,
                 connective_hygiene_rate: 1.0,
                 acknowledgment_only_rate: 1.0,
+                lexical_diversity: 1.0,
+                role_coverage: 1.0,
+                boundary_smoothness: 1.0,
             };
         }
         #[allow(clippy::cast_precision_loss)]
@@ -175,6 +225,9 @@ impl DimensionMeans {
         let ack_only = scores.iter().filter(|s| s.acknowledgment_only_pass).count();
         let recall_sum: f32 = scores.iter().map(|s| s.limitation_recall).sum();
         let precision_sum: f32 = scores.iter().map(|s| s.limitation_precision).sum();
+        let diversity_sum: f32 = scores.iter().map(|s| s.lexical_diversity).sum();
+        let role_sum: f32 = scores.iter().map(|s| s.role_coverage).sum();
+        let smoothness_sum: f32 = scores.iter().map(|s| s.boundary_smoothness).sum();
         #[allow(clippy::cast_precision_loss)]
         Self {
             verbatim_compliance: verbatim as f32 / n,
@@ -183,14 +236,32 @@ impl DimensionMeans {
             limitation_precision: precision_sum / n,
             connective_hygiene_rate: connective as f32 / n,
             acknowledgment_only_rate: ack_only as f32 / n,
+            lexical_diversity: diversity_sum / n,
+            role_coverage: role_sum / n,
+            boundary_smoothness: smoothness_sum / n,
         }
     }
+}
+
+/// Count of distinct lexicon phrases across the entire corpus run.
+fn corpus_wide_distinct_phrases(scores: &[QueryScore]) -> usize {
+    let mut seen: std::collections::BTreeSet<&str> = std::collections::BTreeSet::new();
+    for s in scores {
+        for p in &s.phrases_detected {
+            seen.insert(p.as_str());
+        }
+    }
+    seen.len()
 }
 
 /// Build the caveat list. Caveats fire when a dimension reads
 /// suspiciously high or shows a pattern that v1's wave-1 baseline
 /// exhibited.
-fn build_caveats(scores: &[QueryScore], means: &DimensionMeans) -> Vec<String> {
+fn build_caveats(
+    scores: &[QueryScore],
+    means: &DimensionMeans,
+    distinct_phrases_corpus_wide: usize,
+) -> Vec<String> {
     let mut caveats = Vec::new();
 
     if scores.is_empty() {
@@ -204,17 +275,17 @@ fn build_caveats(scores: &[QueryScore], means: &DimensionMeans) -> Vec<String> {
 
     // v1's wave-1 close shipped 0.993 because the scorer could not
     // detect the violations the corpus would have exposed. v2's
-    // canary: when every metric reads above 0.99 simultaneously,
-    // surface the caveat so the integrator does not silently inherit
-    // the v1 pattern.
+    // canary: when every CORRECTNESS dimension reads above 0.99
+    // simultaneously, surface the caveat so the integrator does
+    // not silently inherit the v1 pattern.
     let very_high = |m: f32| m > 0.99;
-    if very_high(means.verbatim_compliance)
+    let correctness_canary = very_high(means.verbatim_compliance)
         && very_high(means.schema_match_rate)
         && very_high(means.limitation_recall)
         && very_high(means.limitation_precision)
         && very_high(means.connective_hygiene_rate)
-        && very_high(means.acknowledgment_only_rate)
-    {
+        && very_high(means.acknowledgment_only_rate);
+    if correctness_canary {
         caveats.push(
             "every dimension reads above 0.99 — v1's wave-1 baseline (0.993) exhibited the same \
              shape because the scorer could not see realiser-class violations; verify the corpus \
@@ -222,6 +293,60 @@ fn build_caveats(scores: &[QueryScore], means: &DimensionMeans) -> Vec<String> {
              doubled connectives) before publishing this as evidence of competence"
                 .to_string(),
         );
+    }
+
+    // ADR-0008: extended canary — fluency dimensions also at 0.99
+    // alongside the correctness canary. The corpus is not exposing
+    // failure modes on EITHER axis.
+    let fluency_canary = very_high(means.lexical_diversity)
+        && very_high(means.role_coverage)
+        && very_high(means.boundary_smoothness);
+    if correctness_canary && fluency_canary {
+        caveats.push(
+            "every CORRECTNESS dimension AND every ADR-0008 fluency dimension reads above 0.99 — \
+             the corpus is not exercising the realizer's failure modes on either axis. Verify the \
+             corpus has queries that genuinely vary register, polarity, and cascade depth before \
+             publishing the run as evidence of competence"
+                .to_string(),
+        );
+    }
+
+    // ADR-0008: low diversity caveat — picker is cycling.
+    if means.lexical_diversity < 0.5 {
+        caveats.push(format!(
+            "lexical_diversity {:.3} below 0.5 — the picker is cycling through a narrow slice of \
+             the lexicon; verify register/polarity/formality context is varying per query",
+            means.lexical_diversity,
+        ));
+    }
+
+    // ADR-0008: low role coverage caveat — single-role realizer.
+    if means.role_coverage < 0.5 {
+        caveats.push(format!(
+            "role_coverage {:.3} below 0.5 — the realizer is choosing a small set of roles \
+             repeatedly; verify the cascade-shape projection (ADR-0006) actually activates the \
+             ten-role taxonomy",
+            means.role_coverage,
+        ));
+    }
+
+    // ADR-0008: smoothness regression — ADR-0007 sentinel.
+    if means.boundary_smoothness < 1.0 {
+        caveats.push(format!(
+            "boundary_smoothness {:.3} below 1.0 — ADR-0007 smoothing rules are firing on the \
+             output; investigate which queries produced anaphor-before-determiner or \
+             token-overlap boundaries",
+            means.boundary_smoothness,
+        ));
+    }
+
+    // ADR-0008: corpus-wide phrase exposure caveat.
+    if distinct_phrases_corpus_wide < 15 {
+        caveats.push(format!(
+            "distinct_phrases_corpus_wide = {distinct_phrases_corpus_wide} — the corpus exercises \
+             too narrow a slice of the ~250-phrase lexicon to be informative; expand the corpus \
+             before treating fluency dimensions as load-bearing signal"
+        ));
     }
 
     // Limitation precision matters more than recall in RADAR — a
@@ -285,6 +410,11 @@ mod tests {
             acknowledgment_only_pass: true,
             missing_triggers: Vec::new(),
             spurious_triggers: Vec::new(),
+            lexical_diversity: 1.0,
+            role_coverage: 1.0,
+            boundary_smoothness: 1.0,
+            phrases_detected: Vec::new(),
+            roles_detected: Vec::new(),
         }
     }
 
@@ -299,6 +429,11 @@ mod tests {
             acknowledgment_only_pass: true,
             missing_triggers: vec![LimitationTrigger::EmptyWorkingSet],
             spurious_triggers: vec![LimitationTrigger::HighConfabRisk],
+            lexical_diversity: 0.5,
+            role_coverage: 0.5,
+            boundary_smoothness: 1.0,
+            phrases_detected: Vec::new(),
+            roles_detected: Vec::new(),
         }
     }
 
@@ -361,6 +496,71 @@ mod tests {
             report.caveats.iter().any(|c| c.contains("Do NOT publish")),
             "low recall must emit the do-not-publish caveat",
         );
+    }
+
+    #[test]
+    fn extended_canary_fires_when_correctness_and_fluency_both_perfect() {
+        // Both correctness AND fluency at 1.0 → ADR-0008 extended
+        // canary should add the "both axes not exercised" caveat
+        // ON TOP OF the existing 0.99 caveat.
+        let scores = vec![perfect_score("a"), perfect_score("b"), perfect_score("c")];
+        let report = EvalReport::from_scores(scores);
+        assert!(
+            report
+                .caveats
+                .iter()
+                .any(|c| c.contains("fluency dimension")),
+            "extended ADR-0008 canary must fire when correctness AND fluency both at 0.99+",
+        );
+    }
+
+    #[test]
+    fn low_lexical_diversity_emits_caveat() {
+        let mut s = perfect_score("a");
+        s.lexical_diversity = 0.3;
+        let report = EvalReport::from_scores(vec![s]);
+        assert!(
+            report
+                .caveats
+                .iter()
+                .any(|c| c.contains("lexical_diversity")),
+            "lexical_diversity < 0.5 must emit a cycling-picker caveat",
+        );
+    }
+
+    #[test]
+    fn low_role_coverage_emits_caveat() {
+        let mut s = perfect_score("a");
+        s.role_coverage = 0.3;
+        let report = EvalReport::from_scores(vec![s]);
+        assert!(
+            report.caveats.iter().any(|c| c.contains("role_coverage")),
+            "role_coverage < 0.5 must emit a single-role caveat",
+        );
+    }
+
+    #[test]
+    fn smoothness_regression_emits_caveat() {
+        let mut s = perfect_score("a");
+        s.boundary_smoothness = 0.8;
+        let report = EvalReport::from_scores(vec![s]);
+        assert!(
+            report
+                .caveats
+                .iter()
+                .any(|c| c.contains("boundary_smoothness")),
+            "boundary_smoothness < 1.0 must emit an ADR-0007 sentinel caveat",
+        );
+    }
+
+    #[test]
+    fn corpus_wide_distinct_phrases_aggregates() {
+        let mut a = perfect_score("a");
+        a.phrases_detected = vec!["however,".to_string(), "furthermore,".to_string()];
+        let mut b = perfect_score("b");
+        b.phrases_detected = vec!["furthermore,".to_string(), "likewise,".to_string()];
+        let report = EvalReport::from_scores(vec![a, b]);
+        assert_eq!(report.distinct_phrases_corpus_wide, 3);
     }
 
     #[test]

@@ -122,7 +122,7 @@ impl EvalHarness {
             })
             .expect("v0.1 realizer maps every intent");
 
-        score_query(query, &output)
+        score_query(query, &output, self.realizer.lexicon())
     }
 }
 
