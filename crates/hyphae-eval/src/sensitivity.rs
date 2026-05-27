@@ -27,8 +27,72 @@
 
 use crate::corpus::{EvalQuery, EvalSeed, Expectations};
 use crate::scorers::score_query;
-use hyphae_surface::{Intent, Lexicon, LimitationTrigger, RealizationOutput, SchemaId};
+use hyphae_surface::{
+    ConnectiveRole, Intent, Lexicon, LimitationTrigger, RealizationOutput, SchemaId,
+};
 use serde::{Deserialize, Serialize};
+
+// ── ADR-0020 helpers: lexicon-derived audit baseline construction ──
+
+/// Pick `n` connective phrases whose roles are pairwise distinct.
+/// Returns fewer than `n` if the lexicon does not have enough
+/// role variety. Deterministic — uses `Lexicon::entries()` order.
+fn pick_n_phrases_distinct_roles(lex: &Lexicon, n: usize) -> Vec<(ConnectiveRole, String)> {
+    let mut out: Vec<(ConnectiveRole, String)> = Vec::new();
+    for entry in lex.entries() {
+        if out.iter().any(|(r, _)| *r == entry.role) {
+            continue;
+        }
+        out.push((entry.role, entry.phrase.clone()));
+        if out.len() >= n {
+            break;
+        }
+    }
+    out
+}
+
+/// Find a connective whose phrase ends with one of the lexicon's
+/// boundary-rule anaphor tails. Used by the `boundary_smoothness`
+/// audit to construct a mutation that triggers Rule 1.
+fn find_anaphor_connective(lex: &Lexicon) -> Option<String> {
+    let rules = lex.boundary_rules();
+    for entry in lex.entries() {
+        let lower = entry.phrase.to_lowercase();
+        for tail in rules.anaphor_tails {
+            if lower.ends_with(tail) {
+                // Word-boundary check matching the boundary
+                // module's logic: char before the tail must not
+                // be alphanumeric.
+                let head_len = lower.len() - tail.len();
+                if head_len == 0 || !lower.as_bytes()[head_len - 1].is_ascii_alphanumeric() {
+                    return Some(entry.phrase.clone());
+                }
+            }
+        }
+    }
+    None
+}
+
+/// Return a connective whose phrase does NOT end with any
+/// anaphor tail — suitable as the "clean" baseline boundary in
+/// the `boundary_smoothness` audit.
+fn find_non_anaphor_connective(lex: &Lexicon) -> Option<String> {
+    let rules = lex.boundary_rules();
+    for entry in lex.entries() {
+        let lower = entry.phrase.to_lowercase();
+        let ends_anaphor = rules.anaphor_tails.iter().any(|tail| {
+            if !lower.ends_with(tail) {
+                return false;
+            }
+            let head_len = lower.len() - tail.len();
+            head_len == 0 || !lower.as_bytes()[head_len - 1].is_ascii_alphanumeric()
+        });
+        if !ends_anaphor {
+            return Some(entry.phrase.clone());
+        }
+    }
+    None
+}
 
 /// One sensitivity check.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -334,7 +398,10 @@ pub fn run_sensitivity_audit(lexicon: &Lexicon) -> SensitivityReport {
         ));
     }
 
-    // ── lexical_diversity ─────────────────────────────────────
+    // ── lexical_diversity (ADR-0020: lexicon-derived) ────────
+    // Pick 3 phrases each from a different role. Baseline emits
+    // them as 3 distinct phrases; mutation repeats one phrase.
+    let three_phrases = pick_n_phrases_distinct_roles(lexicon, 3);
     {
         let query = simple_dialogue_query(
             "diversity-check",
@@ -347,19 +414,26 @@ pub fn run_sensitivity_audit(lexicon: &Lexicon) -> SensitivityReport {
                 verbatim_quotation: false,
             },
         );
-        let baseline = sample_output(
-            "Drawing from working memory, \"a\". However, \"b\". \
-             That is the substance available.",
-            SchemaId::DialogueReply,
-            vec![],
-            false,
-        );
-        let mutated = sample_output(
-            "However, \"a\". However, \"b\". However, \"c\".",
-            SchemaId::DialogueReply,
-            vec![],
-            false,
-        );
+        let (baseline_text, mutated_text) = if three_phrases.len() >= 3 {
+            let p0 = &three_phrases[0].1;
+            let p1 = &three_phrases[1].1;
+            let p2 = &three_phrases[2].1;
+            (
+                format!("{p0} \"alpha\". {p1} \"beta\". {p2} \"gamma\"."),
+                format!("{p0} \"alpha\". {p0} \"beta\". {p0} \"gamma\"."),
+            )
+        } else {
+            // Lexicon too small — fall back to the hardcoded EN
+            // baseline from ADR-0010.
+            (
+                "Drawing from working memory, \"a\". However, \"b\". \
+                 That is the substance available."
+                    .to_string(),
+                "However, \"a\". However, \"b\". However, \"c\".".to_string(),
+            )
+        };
+        let baseline = sample_output(&baseline_text, SchemaId::DialogueReply, vec![], false);
+        let mutated = sample_output(&mutated_text, SchemaId::DialogueReply, vec![], false);
         results.push(verdict(
             "lexical_diversity",
             "three distinct phrases replaced with one repeated phrase",
@@ -371,7 +445,9 @@ pub fn run_sensitivity_audit(lexicon: &Lexicon) -> SensitivityReport {
         ));
     }
 
-    // ── role_coverage ─────────────────────────────────────────
+    // ── role_coverage (ADR-0020: lexicon-derived) ────────────
+    // Same 3-distinct-roles phrases drive this verification too.
+    // The mutation collapses to 1 phrase ⇒ 1 role.
     {
         let query = simple_dialogue_query(
             "role-check",
@@ -384,19 +460,24 @@ pub fn run_sensitivity_audit(lexicon: &Lexicon) -> SensitivityReport {
                 verbatim_quotation: false,
             },
         );
-        let baseline = sample_output(
-            "Drawing from working memory, \"a\". However, \"b\". \
-             That is the substance available.",
-            SchemaId::DialogueReply,
-            vec![],
-            false,
-        );
-        let mutated = sample_output(
-            "However, \"a\". However, \"b\". However, \"c\".",
-            SchemaId::DialogueReply,
-            vec![],
-            false,
-        );
+        let (baseline_text, mutated_text) = if three_phrases.len() >= 3 {
+            let p0 = &three_phrases[0].1;
+            let p1 = &three_phrases[1].1;
+            let p2 = &three_phrases[2].1;
+            (
+                format!("{p0} \"alpha\". {p1} \"beta\". {p2} \"gamma\"."),
+                format!("{p0} \"alpha\". {p0} \"beta\". {p0} \"gamma\"."),
+            )
+        } else {
+            (
+                "Drawing from working memory, \"a\". However, \"b\". \
+                 That is the substance available."
+                    .to_string(),
+                "However, \"a\". However, \"b\". However, \"c\".".to_string(),
+            )
+        };
+        let baseline = sample_output(&baseline_text, SchemaId::DialogueReply, vec![], false);
+        let mutated = sample_output(&mutated_text, SchemaId::DialogueReply, vec![], false);
         results.push(verdict(
             "role_coverage",
             "three distinct roles replaced with one repeated role",
@@ -408,7 +489,11 @@ pub fn run_sensitivity_audit(lexicon: &Lexicon) -> SensitivityReport {
         ));
     }
 
-    // ── boundary_smoothness ───────────────────────────────────
+    // ── boundary_smoothness (ADR-0020: lexicon-derived) ──────
+    // Pick a non-anaphor connective for the baseline boundary,
+    // and an anaphor connective for the mutation. Body bodies
+    // start with the lexicon's first definite determiner so
+    // Rule 1's `starts_with_definite_determiner` fires.
     {
         let query = simple_dialogue_query(
             "smoothness-check",
@@ -421,18 +506,28 @@ pub fn run_sensitivity_audit(lexicon: &Lexicon) -> SensitivityReport {
                 verbatim_quotation: false,
             },
         );
-        let baseline = sample_output(
-            "\"the deploy succeeded\" However, \"the migration completed at 14:02\"",
-            SchemaId::DialogueReply,
-            vec![],
-            false,
-        );
-        let mutated = sample_output(
-            "\"the deploy succeeded\" Building on it, \"the migration completed at 14:02\"",
-            SchemaId::DialogueReply,
-            vec![],
-            false,
-        );
+        let rules = lexicon.boundary_rules();
+        let det = rules.definite_determiners.first().copied().unwrap_or("the");
+        let anaphor = find_anaphor_connective(lexicon);
+        let safe = find_non_anaphor_connective(lexicon);
+        let (baseline_text, mutated_text) = match (anaphor.as_deref(), safe.as_deref()) {
+            (Some(anaphor_phrase), Some(safe_phrase)) => {
+                let body_a = format!("{det} sustancia_a aquí");
+                let body_b = format!("{det} sustancia_b allí");
+                (
+                    format!("\"{body_a}\" {safe_phrase} \"{body_b}\""),
+                    format!("\"{body_a}\" {anaphor_phrase} \"{body_b}\""),
+                )
+            }
+            _ => (
+                "\"the deploy succeeded\" However, \"the migration completed at 14:02\""
+                    .to_string(),
+                "\"the deploy succeeded\" Building on it, \"the migration completed at 14:02\""
+                    .to_string(),
+            ),
+        };
+        let baseline = sample_output(&baseline_text, SchemaId::DialogueReply, vec![], false);
+        let mutated = sample_output(&mutated_text, SchemaId::DialogueReply, vec![], false);
         results.push(verdict(
             "boundary_smoothness",
             "anaphor-before-definite-determiner Rule-1 violation introduced",

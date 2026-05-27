@@ -226,32 +226,19 @@ mod tests {
             report.queries - report.passing_queries,
             report.queries,
         );
-        // ADR-0018 §"Sensitivity audit — partial coverage in ES":
-        // 6 of the 9 audit dimensions stay sensitive under an ES
-        // lexicon; the 3 that depend on lexicon-phrase detection
-        // (lexical_diversity, role_coverage, boundary_smoothness)
-        // are NOT measurable because the audit baselines are
-        // EN-text. This is a v0.2 limitation, not a regression.
+        // ADR-0020: per-lexicon audit baselines promote the ES
+        // floor from 6/9 to 9/9. The audit's three lexicon-
+        // dependent verifications (lexical_diversity, role_coverage,
+        // boundary_smoothness) now construct their baselines from
+        // the ES lexicon directly, so the mutations are detectable.
         let audit = report
             .sensitivity_audit
             .as_ref()
             .expect("ES harness must produce a sensitivity audit");
-        let expected_lexicon_bound = ["lexical_diversity", "role_coverage", "boundary_smoothness"];
         let failing: Vec<&str> = audit.failing_dimensions();
-        for dim in &failing {
-            assert!(
-                expected_lexicon_bound.contains(dim),
-                "ES audit failed on UNEXPECTED dimension `{dim}` — ADR-0018 only documents \
-                 the 3 lexicon-bound dimensions as not-measurable; got failing list: {failing:?}",
-            );
-        }
-        // Floor: at least 6 dimensions must be sensitive even
-        // under the ES lexicon.
         assert!(
-            audit.dimensions_sensitive() >= 6,
-            "ES audit floor: ≥6 dimensions sensitive; got {} (failing: {:?})",
-            audit.dimensions_sensitive(),
-            failing,
+            audit.all_dimensions_sensitive(),
+            "ES audit floor: all 9 dimensions must be sensitive after ADR-0020; failing: {failing:?}",
         );
     }
 }
