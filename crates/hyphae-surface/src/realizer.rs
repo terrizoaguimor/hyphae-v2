@@ -707,6 +707,58 @@ mod tests {
         );
     }
 
+    /// ADR-0017 — a realizer instantiated with the Spanish
+    /// lexicon emits Spanish connective tissue around the (verbatim)
+    /// fragment bodies.
+    #[test]
+    fn realizer_with_es_lexicon_emits_spanish_tissue() {
+        let realizer = SurfaceRealizer::with_lexicon(Lexicon::baseline_es());
+        let frag = obs("la migración terminó a las 14:02 UTC");
+        let out = realizer
+            .realize(&RealizationRequest {
+                intent: Intent::Dialogue,
+                query: "¿cuál es el estado de la migración?",
+                working_set: &[frag],
+                ethics: None,
+                shape: None,
+            })
+            .unwrap();
+        // Body quoted verbatim — boundary the no-LLM-in-cognition-
+        // path commitment depends on, regardless of lexicon
+        // language.
+        assert!(
+            out.text.contains("la migración terminó a las 14:02 UTC"),
+            "ES output must preserve fragment body verbatim: {}",
+            out.text,
+        );
+        // Spanish opening must appear (one of the baseline_es
+        // Opening entries' distinctive nouns).
+        let lower = out.text.to_lowercase();
+        let has_spanish_opening = lower.contains("memoria")
+            || lower.contains("registros")
+            || lower.contains("conservado")
+            || lower.contains("almacenado")
+            || lower.contains("datos");
+        assert!(
+            has_spanish_opening,
+            "ES output must contain a Spanish opening marker: {}",
+            out.text,
+        );
+        // English defaults must NOT appear — the realizer is
+        // lexicon-locked to ES.
+        assert!(
+            !out.text.contains("Drawing from working memory,"),
+            "ES output must not leak the EN default opening: {}",
+            out.text,
+        );
+        assert!(
+            !out.text
+                .contains("That is what working memory holds on this."),
+            "ES output must not leak the EN default closing: {}",
+            out.text,
+        );
+    }
+
     /// ADR-0016 — `Intent::Summarize` produces `SchemaId::Summary`
     /// and the closing line is drawn from `ConnectiveRole::Summary`.
     #[test]

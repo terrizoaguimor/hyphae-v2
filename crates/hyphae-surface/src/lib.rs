@@ -36,6 +36,7 @@ pub mod boundary;
 pub mod composition_shape;
 pub mod connective;
 pub mod connective_data;
+pub mod connective_data_es;
 pub mod limitation;
 pub mod realizer;
 pub mod schema;

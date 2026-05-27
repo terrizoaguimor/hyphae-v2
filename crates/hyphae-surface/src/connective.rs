@@ -197,6 +197,23 @@ impl Lexicon {
         }
     }
 
+    /// **ADR-0017.** The v0.2 Spanish baseline — ~60 hand-curated
+    /// entries (architectural proof, not full coverage). See
+    /// [`crate::connective_data_es::baseline_es_data`]. A future
+    /// ADR scales to EN parity (~250+).
+    ///
+    /// The lexicon's 4-level fallback chain handles the sparseness
+    /// gracefully — when a specific
+    /// `(role × register × polarity × formality)` bucket has no
+    /// ES entry, the picker falls through three relaxations to
+    /// "any phrase in the role."
+    #[must_use]
+    pub fn baseline_es() -> Self {
+        Self {
+            entries: crate::connective_data_es::baseline_es_data(),
+        }
+    }
+
     /// Add a connective. Useful for register-specific extensions
     /// without rewriting the baseline.
     pub fn add(&mut self, connective: Connective) {
@@ -467,6 +484,71 @@ mod tests {
         let phrase = lex.pick(ConnectiveRole::Opening, 0);
         assert!(!phrase.is_empty());
         assert!(phrase.contains("Drawing"));
+    }
+
+    /// ADR-0017 — `baseline_es()` constructs a non-empty ES
+    /// lexicon with every role represented.
+    #[test]
+    fn baseline_es_populates_every_role() {
+        let lex = Lexicon::baseline_es();
+        for role in [
+            ConnectiveRole::Opening,
+            ConnectiveRole::Continuation,
+            ConnectiveRole::Contrast,
+            ConnectiveRole::Attribution,
+            ConnectiveRole::Closing,
+            ConnectiveRole::Concession,
+            ConnectiveRole::Causation,
+            ConnectiveRole::Elaboration,
+            ConnectiveRole::Sequence,
+            ConnectiveRole::Summary,
+        ] {
+            assert!(
+                lex.count(role) > 0,
+                "ES role {role:?} must have at least one entry in baseline_es",
+            );
+        }
+    }
+
+    /// ADR-0017 — the ES lexicon emits Spanish surface forms.
+    /// Spot-check a few entries to confirm they contain Spanish
+    /// characters / words and NOT English ones.
+    #[test]
+    fn baseline_es_entries_are_spanish() {
+        let lex = Lexicon::baseline_es();
+        let ctx = PickContext::neutral();
+        // Opening — should contain "memoria" (Spanish for memory).
+        let opening = lex.pick_in_context(ConnectiveRole::Opening, &ctx, 0);
+        assert!(
+            opening.to_lowercase().contains("memoria")
+                || opening.to_lowercase().contains("registros")
+                || opening.to_lowercase().contains("conservado")
+                || opening.to_lowercase().contains("almacenado"),
+            "ES opening should contain a Spanish-indicative noun: got `{opening}`",
+        );
+        // Summary — should contain "resumen" / "síntesis" / "general".
+        let summary = lex.pick_in_context(ConnectiveRole::Summary, &ctx, 0);
+        assert!(
+            summary.to_lowercase().contains("resumen")
+                || summary.to_lowercase().contains("síntesis")
+                || summary.to_lowercase().contains("general")
+                || summary.to_lowercase().contains("conjunto")
+                || summary.to_lowercase().contains("balance"),
+            "ES summary should contain a Spanish synthesis marker: got `{summary}`",
+        );
+    }
+
+    /// ADR-0017 — the ES baseline ships fewer entries than EN
+    /// (v0.2 architectural proof scale). Floor invariant: at
+    /// least 40 entries across all roles.
+    #[test]
+    fn baseline_es_meets_v0_2_size_floor() {
+        let lex = Lexicon::baseline_es();
+        assert!(
+            lex.len() >= 40,
+            "baseline_es should ship at least 40 entries (v0.2 floor); ships {}",
+            lex.len(),
+        );
     }
 
     #[test]
