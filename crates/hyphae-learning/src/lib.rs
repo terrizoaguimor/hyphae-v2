@@ -43,11 +43,13 @@
 #![warn(clippy::pedantic)]
 
 pub mod feedback;
+pub mod orchestrator;
 pub mod parameters;
 pub mod proposals;
 pub mod rollback;
 
 pub use feedback::{FeedbackAggregator, FeedbackSignal};
+pub use orchestrator::LearningOrchestrator;
 pub use parameters::{
     ParameterBounds, ParameterError, ParameterStore, ParameterValue, ProposalBytes, target_key,
 };
