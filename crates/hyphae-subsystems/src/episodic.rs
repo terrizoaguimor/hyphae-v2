@@ -28,7 +28,7 @@ use hyphae_core::{
 };
 use serde::{Deserialize, Serialize};
 use std::any::Any;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 /// Cosine similarity between two equal-length float vectors. Returns
 /// `0.0` for any pair whose lengths differ or whose norms are zero.
@@ -368,15 +368,36 @@ impl Subsystem for Episodic {
                 self.store(fragment.clone());
                 Ok(vec![fragment])
             }
-            // Recall flows: pattern-complete against the input
-            // and emit the matches as cascade seeds. The cascade
-            // is driven externally via `Self::cascade` so the
-            // process boundary stays simple.
+            // Recall flows: pattern-complete against the input,
+            // then seed `Self::cascade` with the direct-hit ids
+            // to activate the conductivity graph (ADR-0011).
+            // Direct hits emit unchanged; cascade-derived
+            // fragments emit with `provenance.parent_ids` set to
+            // the immediate predecessor in the propagation chain
+            // so the realizer's `ShallowCascade` check
+            // discriminates correctly.
             (PayloadKind::BottomUpPredictionError, State::Recall) => {
                 let query = fragment.embedding.as_deref();
-                let hits = self.pattern_complete(query, self.params.working_set_size as usize);
+                let direct = self.pattern_complete(query, self.params.working_set_size as usize);
+
+                let direct_ids: Vec<FragmentId> = direct.iter().map(|(_, f)| f.id).collect();
+                let direct_set: HashSet<FragmentId> = direct_ids.iter().copied().collect();
+                let retrieval = self.cascade(&direct_ids);
+
                 let mut emissions: Vec<CognitiveFragment> =
-                    hits.into_iter().map(|(_, f)| f).collect();
+                    direct.into_iter().map(|(_, f)| f).collect();
+
+                for (id, (activation, frag)) in &retrieval.cascade {
+                    if direct_set.contains(id) {
+                        continue;
+                    }
+                    let mut tagged = frag.clone();
+                    if let Some(parent) = activation.parent_id {
+                        tagged.provenance.parent_ids = vec![parent];
+                    }
+                    emissions.push(tagged);
+                }
+
                 emissions.push(fragment);
                 Ok(emissions)
             }
@@ -639,5 +660,61 @@ mod tests {
             .unwrap();
         assert_eq!(e.len(), 1);
         assert!(e.get(id).is_some());
+    }
+
+    /// ADR-0011 — the recall branch of `process` invokes
+    /// `cascade()` on the direct hits and emits propagation-
+    /// derived fragments alongside the direct ones. The
+    /// cascade-derived emissions carry `parent_ids` set to the
+    /// immediate predecessor in the propagation chain.
+    #[test]
+    fn process_recall_invokes_cascade_and_tags_propagation() {
+        // working_set_size = 1 forces pattern_complete to return
+        // just the anchor; the co-encoded neighbours must arrive
+        // via cascade propagation or not at all.
+        let mut e = Episodic::with_params(CascadeParams {
+            working_set_size: 1,
+            ..CascadeParams::SPREADR_DEFAULTS
+        });
+        let anchor = obs_with_embedding("anchor body", vec![1.0, 0.0, 0.0]);
+        let near = obs_with_embedding("neighbour one", vec![0.0, 1.0, 0.0]);
+        let far = obs_with_embedding("neighbour two", vec![0.0, 0.0, 1.0]);
+        let anchor_id = anchor.id;
+        let near_id = near.id;
+        let far_id = far.id;
+        e.store(anchor);
+        e.store(near);
+        e.store(far);
+
+        // Query aligns with the anchor's embedding so
+        // `pattern_complete` returns only anchor as direct hit.
+        let mut cue = obs("query");
+        cue.embedding = Some(vec![1.0, 0.0, 0.0]);
+
+        let emissions = e
+            .process(cue, PayloadKind::BottomUpPredictionError, State::Recall)
+            .unwrap();
+
+        let emitted_ids: HashSet<FragmentId> = emissions.iter().map(|f| f.id).collect();
+        assert!(
+            emitted_ids.contains(&anchor_id),
+            "anchor must appear as a direct hit",
+        );
+        let propagation_visible = emitted_ids.contains(&near_id) || emitted_ids.contains(&far_id);
+        assert!(
+            propagation_visible,
+            "at least one co-encoded neighbour must reach the working set via cascade",
+        );
+
+        // Cascade-derived emissions carry the parent tag.
+        for em in &emissions {
+            if em.id == near_id || em.id == far_id {
+                assert_eq!(
+                    em.provenance.parent_ids,
+                    vec![anchor_id],
+                    "cascade-derived fragment must carry parent_ids = [seed]",
+                );
+            }
+        }
     }
 }
