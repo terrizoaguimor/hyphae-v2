@@ -19,6 +19,7 @@ members = [
     "crates/hyphae-eval",
     "crates/hyphae-smoke",
     "crates/hyphae-embed",
+    "crates/hyphae-chat",
 ]
 
 # Workspace-wide package metadata. Per-crate `Cargo.toml` files inherit

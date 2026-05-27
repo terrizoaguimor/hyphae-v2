@@ -1,0 +1,21 @@
+[package]
+name = "hyphae-chat"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 interactive chat REPL — conversational substrate demo (ADR-0014). Single binary, no network surface, substrate state persists across turns within a session."
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-substrate = { workspace = true }
+hyphae-subsystems = { workspace = true }
+hyphae-learning = { workspace = true }
+hyphae-surface = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+tempfile = "3"
