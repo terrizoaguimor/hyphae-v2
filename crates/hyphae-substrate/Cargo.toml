@@ -1,0 +1,24 @@
+[package]
+name = "hyphae-substrate"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 substrate runtime — state machine, pathway routing (fan-out with split MAX_ROUTING_DEPTH + MAX_ROUTING_WORK), subsystem registry, journal write integration, and the five mandatory ethics evaluation points wired from commit zero."
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-storage = { workspace = true }
+hyphae-ethics = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+insta = { workspace = true }
+tempfile = "3"

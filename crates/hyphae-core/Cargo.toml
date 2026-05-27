@@ -1,0 +1,22 @@
+[package]
+name = "hyphae-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 core types: CognitiveFragment, Pathway, Subsystem, State, cascade and conversational metacognition primitives."
+
+[dependencies]
+serde = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+insta = { workspace = true }
+# bincode exercises the serde round-trip shape of cascade + thread
+# types in their unit tests, matching the substrate's persistence
+# path.
+bincode = { workspace = true }

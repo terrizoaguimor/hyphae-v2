@@ -1,0 +1,21 @@
+[package]
+name = "hyphae-surface"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 surface realizer — composition by fragment quotation + connective tissue + honest limitation triggers. Two schemas in v0.1 (DialogueReply, GroundedAssertion). English-only per RFC §9."
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-ethics = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+insta = { workspace = true }

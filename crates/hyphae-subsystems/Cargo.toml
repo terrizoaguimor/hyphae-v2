@@ -1,0 +1,26 @@
+[package]
+name = "hyphae-subsystems"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 functional subsystems — six collapsed from v1's seventeen. input-gate, episodic, valence, composer, predictive, reward. Per ADR-0001 §'Subsystems collapsed'."
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-storage = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+# hnsw_rs is declared at the workspace level but NOT consumed in v0.1.
+# The episodic subsystem uses brute-force cosine similarity for k-NN;
+# HNSW is a future optimisation. Adding the dep here would compile a
+# crate the v0.1 path never invokes.
+
+[dev-dependencies]
+proptest = { workspace = true }
+insta = { workspace = true }

@@ -1,0 +1,111 @@
+# SPDX-License-Identifier: Apache-2.0
+# Hyphae v2 — cognitive substrate workspace.
+#
+# Members are added incrementally as crates are cherry-picked from v1
+# or built fresh per the living RFC at `docs/rfc/v1-living.md`. The
+# initial scaffolding ships with an empty member list so the workspace
+# manifest is canonical from commit one.
+
+[workspace]
+resolver = "2"
+members = [
+    "crates/hyphae-core",
+    "crates/hyphae-storage",
+    "crates/hyphae-ethics",
+    "crates/hyphae-substrate",
+    "crates/hyphae-learning",
+    "crates/hyphae-subsystems",
+    "crates/hyphae-surface",
+    "crates/hyphae-eval",
+    "crates/hyphae-smoke",
+]
+
+# Workspace-wide package metadata. Per-crate `Cargo.toml` files inherit
+# these via `[package] version.workspace = true` etc.
+[workspace.package]
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.85"
+authors = ["Mario Gutiérrez <mario@celiums.ai>"]
+license = "Apache-2.0"
+repository = "https://github.com/celiums-ai/hyphae-v2"
+homepage = "https://celiums.ai/hyphae"
+description = "A cognitive substrate for persistent AI without LLM in the cognition path. Learning loop and ethics engine are first-class."
+readme = "README.md"
+
+# ───────────────────────────────────────────────────────────
+#  Workspace dependencies — pinned, curated.
+#
+#  Curation rule (CLAUDE.md): adding a dependency is an architectural
+#  decision. New deps need a justification comment in this file AND an
+#  ADR if they touch the cognition path. The deps below were chosen
+#  during v1 (substrate, storage, surface) and are carried forward
+#  unchanged; v2-specific additions are flagged with their ADR.
+# ───────────────────────────────────────────────────────────
+[workspace.dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# Storage — embedded KV + journal with hash chain
+redb = "2"
+fjall = "2"
+
+# Vector and graph
+# hnsw_rs: approximate-nearest-neighbour for episodic recall. Same crate
+# as v1; CPU-only, no GPU dependency.
+hnsw_rs = "0.3"
+petgraph = "0.6"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+bincode = "1"
+rkyv = { version = "0.7", features = ["validation"] }
+
+# Crypto — journal hash chain (Hard Commitment: SHA-256 chain shared
+# between substrate journal and ethics audit, see ADR-0003).
+sha2 = "0.10"
+
+# Error handling
+thiserror = "1"
+anyhow = "1"
+
+# Tracing and observability
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Testing
+proptest = "1"
+insta = "1"
+
+# Benchmarking
+criterion = { version = "0.5", features = ["html_reports"] }
+
+# ── Deliberately NOT included in v0.1 (decision-by-omission disallowed):
+#
+#  whatlang        — multilingual ES+EN was a v1 wave-2 overhead. v2 is
+#                    EN-only until the architectural bet validates.
+#  gcp_auth        — Vertex AI grounding is deferred per ADR-0001.
+#  reqwest         — no external HTTP from the cognition path in v0.1.
+#  toml            — eval corpus uses serde+rkyv, no separate format.
+#
+# Each of these can return with an ADR documenting WHY and a coverage
+# extension to the ethics path (ADR-0003 §"cognition path coverage").
+
+# Internal crates — added as cherry-pick proceeds.
+hyphae-core      = { path = "crates/hyphae-core" }
+hyphae-storage   = { path = "crates/hyphae-storage" }
+hyphae-ethics    = { path = "crates/hyphae-ethics" }
+hyphae-substrate = { path = "crates/hyphae-substrate" }
+hyphae-learning  = { path = "crates/hyphae-learning" }
+hyphae-subsystems = { path = "crates/hyphae-subsystems" }
+hyphae-surface   = { path = "crates/hyphae-surface" }
+hyphae-eval      = { path = "crates/hyphae-eval" }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+
+[profile.bench]
+inherits = "release"
+debug = true

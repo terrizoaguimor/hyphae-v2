@@ -1,0 +1,128 @@
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Copyright 2026 Celiums Solutions LLC -->
+
+# Hyphae v2
+
+> *A cognitive substrate for persistent AI without LLM in the cognition
+> path. Learning loop and ethics engine are first-class, not bolted on.*
+
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Spec: CC-BY-4.0](https://img.shields.io/badge/Spec-CC--BY--4.0-orange.svg)](https://creativecommons.org/licenses/by/4.0/)
+
+## What this is
+
+Hyphae v2 is a **Cognitive Language Model (CLM)**: an architecture that
+produces language-equivalent output through compositional mechanisms
+operating on structured fragments and explicit grammatical rules, **not**
+through statistical token prediction over learned distributions. It runs
+on commodity CPU + RAM, ships as a single Rust binary, and persists state
+as cryptographically auditable storage.
+
+It is the second articulation of the project. The first attempt
+(`hyphae/` v1) validated the core architectural primitives but
+accumulated scope creep that an underfunded solo-founder track could not
+sustain. v2 is a deliberate restart with four corrections baked in
+*before* the first commit, not as post-hoc patches:
+
+1. **Ethics engine is first-class**, as a dedicated crate, with
+   RADAR semantics (classify + audit + emit signals; never censor). In
+   v1 it was distributed by omission across three subsystems and
+   silently became a JAIL that bypassed the grounded retrieval path.
+   See [`docs/adr/0003-ethics-radar-firstclass.md`](docs/adr/0003-ethics-radar-firstclass.md).
+
+2. **Learning loop is first-class** from RFC v0.1, not deferred. The
+   substrate specifies inmutable rules of cognitive composition; the
+   learning loop refines parameters within those bounds, with audit
+   trail and rollback. See
+   [`docs/adr/0002-learning-loop-firstclass.md`](docs/adr/0002-learning-loop-firstclass.md).
+
+3. **Scope discipline.** Six functional subsystems, not seventeen.
+   Five native operations, not thirty-eight ported from a wrapper.
+   EN-only for v0.1; multilingual when the bet validates. See
+   [`docs/adr/0001-fresh-from-v1.md`](docs/adr/0001-fresh-from-v1.md).
+
+4. **Cognition-path coverage from day one.** Ethics evaluation runs on
+   every operation that can ingest, compose, or retrieve content
+   (remember, recall/cascade, compose, grounded retrieval, learning
+   updates). Not gated only on the write path the way v1 ended up.
+
+## What this is *not*
+
+Not a database. Not a vector store. Not a knowledge graph. Not a
+simulation of neurons. Not a spiking neural network. Not a wrapper
+around an LLM. There is no LLM invocation in the cognition path —
+explicit Hard Commitment, not a marketing claim.
+
+## Status
+
+**Pre-alpha, foundational scaffolding.** The workspace ships with
+empty member list and the canonical RFC and ADRs only. Crates are
+cherry-picked from v1 incrementally per the living RFC at
+[`docs/rfc/v1-living.md`](docs/rfc/v1-living.md).
+
+## Repository layout
+
+```
+hyphae-v2/
+├── Cargo.toml              # workspace, edition 2024, MSRV 1.85
+├── README.md               # this file
+├── LICENSE                 # Apache-2.0 (code) / CC-BY-4.0 (spec)
+├── CLAUDE.md               # operating instructions for assistant-driven development
+└── docs/
+    ├── rfc/
+    │   └── v1-living.md    # the canonical specification, append-only
+    └── adr/
+        ├── 0001-fresh-from-v1.md
+        ├── 0002-learning-loop-firstclass.md
+        └── 0003-ethics-radar-firstclass.md
+```
+
+Crates land under `crates/` as the cherry-pick proceeds. The first
+crate is `hyphae-core` (substrate primitives); see the living RFC for
+the order.
+
+## Why a v2 (and not a refactor of v1)
+
+The v1 codebase is preserved at `hyphae/` for archival reference. It is
+not abandoned — it is the empirical evidence that the substrate
+primitives are correct and the scope discipline is hard. v2 is a fresh
+repository because three of the four corrections above require
+*architectural* changes that would have cascaded across v1's 145+
+commits, 17 subsystem crates, 38 ported tools, and the RFC superseding
+chain (v0.1.2 → v0.2 → v0.3 with patches). The cost of unwinding that
+exceeded the cost of rebuilding from primitives. See ADR-0001.
+
+## Motivation (unchanged from v1)
+
+> *"Hago esto porque creo firmemente que puedo poner mi grano de arena
+> para que este mundo no se vaya a la mierda."* — Mario Gutiérrez,
+> May 2026.
+
+The current trajectory of large-language-model development requires
+increasingly massive data centers, GPU clusters, and energy
+consumption. Microsoft has reactivated Three Mile Island. AWS is
+building small modular reactors. Several actors are seriously planning
+orbital data centers. Hyphae is an architectural bet that a category
+of useful AI capability — coherent conversational interaction with
+persistent memory, contextual reasoning, honest limitation
+acknowledgment, and curiosity-driven learning — can be decoupled from
+that infrastructure dependency.
+
+If the bet validates, an alternative exists. If it does not, the
+attempt is documented, the failure is empirical signal, and the next
+attempt learns from this one.
+
+## License
+
+- **Code**: [Apache 2.0](LICENSE)
+- **Specification and documentation**: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+
+## Governance
+
+BDFL (Benevolent Dictator For Life): Mario Gutiérrez. Celiums AI is
+the commercial entity behind Hyphae open source. Pathway to broader
+governance is documented in the living RFC §"Governance".
+
+---
+
+*Hyphae is a project of [Celiums AI](https://celiums.ai).*

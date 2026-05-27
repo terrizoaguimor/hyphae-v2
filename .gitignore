@@ -1,0 +1,43 @@
+# Cargo
+/target/
+
+# IDE / editor scratch
+.vscode/
+.idea/
+*.iml
+.cargo/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Backup / temp / swap
+*.bak
+*.swp
+*.swo
+*~
+
+# Runtime artefacts
+*.log
+*.profraw
+*.profdata
+
+# Generated coverage
+/coverage/
+/lcov.info
+
+# Local environment files (defence in depth — no secrets in the repo,
+# but anyone iterating with a personal config does not leak it)
+.env
+.env.*
+!.env.example
+
+# Insta snapshot pending review
+*.snap.new

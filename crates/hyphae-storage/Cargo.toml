@@ -1,0 +1,25 @@
+[package]
+name = "hyphae-storage"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 persistence layer: redb for transactional KV, fjall for append-only journal with SHA-256 hash chain. One chain per substrate, shared between substrate journal and ethics audit per ADR-0003 §8."
+
+[dependencies]
+hyphae-core = { workspace = true }
+redb = { workspace = true }
+fjall = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+sha2 = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+insta = { workspace = true }
+tempfile = "3"

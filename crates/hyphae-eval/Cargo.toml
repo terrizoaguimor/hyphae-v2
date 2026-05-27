@@ -1,0 +1,22 @@
+[package]
+name = "hyphae-eval"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 evaluation harness — honest in EN. No friendly-query-on-foreign-seeds artefacts. Scorer detects realiser-class violations without optimistic bias. Corrects v1's bucket-1 0.993 baseline that Atlas flagged as 'currently unreliable'."
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-ethics = { workspace = true }
+hyphae-surface = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+insta = { workspace = true }

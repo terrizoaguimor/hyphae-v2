@@ -1,0 +1,25 @@
+[package]
+name = "hyphae-learning"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 learning loop — substrate-bound refinable parameters with audit-trail rollback. Substrate is immutable; the parameter store is a separate typed surface. Feedback signals: reward prediction error (predictive + reward subsystems) and ethics signals (hyphae-ethics). Per ADR-0002."
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-storage = { workspace = true }
+hyphae-ethics = { workspace = true }
+hyphae-substrate = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+insta = { workspace = true }
+tempfile = "3"
+tokio = { workspace = true }

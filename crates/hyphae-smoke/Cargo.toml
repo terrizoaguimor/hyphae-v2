@@ -1,0 +1,28 @@
+[package]
+name = "hyphae-smoke"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "End-to-end smoke runner for Hyphae v2 — starts the substrate, registers the six functional subsystems, ingests observations, composes a response, runs the eval harness, and prints the honest report."
+
+[[bin]]
+name = "hyphae-smoke"
+path = "src/main.rs"
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-storage = { workspace = true }
+hyphae-ethics = { workspace = true }
+hyphae-substrate = { workspace = true }
+hyphae-learning = { workspace = true }
+hyphae-subsystems = { workspace = true }
+hyphae-surface = { workspace = true }
+hyphae-eval = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+anyhow = { workspace = true }
+tempfile = "3"

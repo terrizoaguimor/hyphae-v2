@@ -1,0 +1,23 @@
+[package]
+name = "hyphae-ethics"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 Ethics Engine — RADAR philosophy, not JAIL. Layers A (deterministic lexicon + taxonomy + structural + disambiguation) and B (probabilistic CVaR + CBRN hard rule) plus audit on the substrate's shared SHA-256 hash chain. Layer C and Layer K are deferred per ADR-0003."
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-storage = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+sha2 = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+insta = { workspace = true }
+tempfile = "3"
