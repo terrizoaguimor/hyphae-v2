@@ -1,0 +1,17 @@
+[package]
+name = "hyphae-embed"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 embedding provider — EmbeddingProvider trait plus a HashingTokenEmbedder default for v0.1 (no external deps). Transformer-based upgrade path documented in ADR-0004."
+
+[dependencies]
+hyphae-core = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }

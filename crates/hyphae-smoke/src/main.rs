@@ -112,7 +112,10 @@ async fn main() -> Result<()> {
     println!();
     println!("  query   : \"{}\"", request.query);
     println!("  schema  : {:?}", realization.schema_used);
-    println!("  quoted  : {} fragment(s)", realization.fragments_quoted.len());
+    println!(
+        "  quoted  : {} fragment(s)",
+        realization.fragments_quoted.len()
+    );
     println!("  flags   : {}", format_triggers(&realization.limitations));
     println!();
     println!("  composition:");
@@ -188,7 +191,9 @@ fn register_pathways(substrate: &mut Substrate) {
         SubsystemId::InputGate,
         SubsystemId::Valence,
     ));
-    println!("hyphae-smoke: registered 2 pathways (encoding fan-out: input-gate → {{episodic, valence}})\n");
+    println!(
+        "hyphae-smoke: registered 2 pathways (encoding fan-out: input-gate → {{episodic, valence}})\n"
+    );
 }
 
 fn direct_pathway(

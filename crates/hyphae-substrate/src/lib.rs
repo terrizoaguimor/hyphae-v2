@@ -43,6 +43,7 @@ use hyphae_core::{
     ActorContext, CognitiveFragment, ConsolidationGateSignal, ExternalInputPayload,
     FragmentContent, FragmentId, LanguageTag, Pathway, PayloadKind, State, Subsystem, SubsystemId,
 };
+use hyphae_embed::{EmbeddingProvider, HashingTokenEmbedder};
 use hyphae_ethics::{
     CoveragePoint, EthicsEngine, EthicsError, EthicsReport, EvaluationInput, ParameterDeltaHint,
 };
@@ -294,6 +295,12 @@ pub struct Substrate {
     journal: Arc<std::sync::Mutex<Journal>>,
     state_store: Arc<StateStore>,
     ethics: Arc<EthicsEngine>,
+    /// Embedding provider — per ADR-0004, every input fragment and
+    /// recall cue receives an embedding before reaching the
+    /// `episodic` subsystem. Defaults to
+    /// [`HashingTokenEmbedder`]; override via
+    /// [`Substrate::with_embedder`].
+    embedder: Arc<dyn EmbeddingProvider>,
 }
 
 impl std::fmt::Debug for Substrate {
@@ -337,7 +344,28 @@ impl Substrate {
             journal: journal_arc,
             state_store: Arc::new(state_store),
             ethics: Arc::new(ethics),
+            embedder: Arc::new(HashingTokenEmbedder::new()),
         })
+    }
+
+    /// Replace the substrate's embedding provider. Useful for
+    /// integrators that want to inject a transformer-based provider
+    /// (the v0.2 upgrade path per ADR-0004) or a [`NullEmbedder`]
+    /// for tests that need deterministic non-ranking behaviour.
+    ///
+    /// [`NullEmbedder`]: hyphae_embed::NullEmbedder
+    #[must_use]
+    pub fn with_embedder(mut self, embedder: Arc<dyn EmbeddingProvider>) -> Self {
+        self.embedder = embedder;
+        self
+    }
+
+    /// Read-only access to the active embedding provider. Useful
+    /// for tests and integration code that needs to embed external
+    /// queries with the same provider the substrate uses.
+    #[must_use]
+    pub fn embedder(&self) -> &Arc<dyn EmbeddingProvider> {
+        &self.embedder
     }
 
     /// Register a subsystem with the substrate.
@@ -529,6 +557,10 @@ impl Substrate {
         );
         fragment.saliency = payload.saliency;
 
+        // ADR-0004: embed the input BEFORE routing so storage in
+        // `episodic` is semantically searchable.
+        fragment.embedding = Some(self.embedder.embed(&payload.content));
+
         // Mirror the v1 audit: write an external_input entry on the
         // shared chain (distinct from the ethics audit entry).
         {
@@ -588,12 +620,16 @@ impl Substrate {
             actor: actor.clone(),
         })?;
 
-        let cue_fragment = CognitiveFragment::new(
+        let mut cue_fragment = CognitiveFragment::new(
             FragmentContent::Observation {
                 body: cue.to_string(),
             },
             "External",
         );
+        // ADR-0004: embed the cue BEFORE the episodic subsystem
+        // sees it so `pattern_complete` ranks by cosine similarity
+        // rather than falling back to insertion-order recency.
+        cue_fragment.embedding = Some(self.embedder.embed(cue));
 
         let current_state = *self.state.read().await;
         let episodic = self.subsystems.get(&SubsystemId::Episodic).ok_or(
@@ -1185,6 +1221,100 @@ mod tests {
         substrate.restore_subsystems().await.unwrap();
         // No assertion needed beyond not-erroring; the stub's
         // restore is a no-op and the round-trip is the contract.
+    }
+
+    /// ADR-0004: ingested fragments arrive with an embedding
+    /// populated by the substrate's embedder. The fragment that
+    /// reaches the `InputGate`'s `process` method (and onward
+    /// through the encoding chain) must carry a non-empty embedding
+    /// vector.
+    #[tokio::test]
+    async fn ingest_populates_fragment_embedding() {
+        use hyphae_embed::HashingTokenEmbedder;
+
+        /// A subsystem that captures the first fragment it sees so
+        /// the test can inspect the embedding the substrate
+        /// populated.
+        struct EmbeddingObserver {
+            observed: std::sync::Arc<std::sync::Mutex<Option<CognitiveFragment>>>,
+        }
+
+        impl Subsystem for EmbeddingObserver {
+            fn id(&self) -> SubsystemId {
+                SubsystemId::InputGate
+            }
+
+            fn process(
+                &mut self,
+                fragment: CognitiveFragment,
+                _: PayloadKind,
+                _: State,
+            ) -> CoreResult<Vec<CognitiveFragment>> {
+                let mut guard = self
+                    .observed
+                    .lock()
+                    .unwrap_or_else(std::sync::PoisonError::into_inner);
+                if guard.is_none() {
+                    *guard = Some(fragment.clone());
+                }
+                Ok(vec![fragment])
+            }
+
+            fn checkpoint(&self) -> CoreResult<Vec<u8>> {
+                Ok(Vec::new())
+            }
+            fn restore(&mut self, _: &[u8]) -> CoreResult<()> {
+                Ok(())
+            }
+            fn as_any(&self) -> &dyn Any {
+                self
+            }
+            fn as_any_mut(&mut self) -> &mut dyn Any {
+                self
+            }
+        }
+
+        let dir = tempdir().unwrap();
+        let observed = std::sync::Arc::new(std::sync::Mutex::new(None));
+        let mut substrate = Substrate::new(dir.path()).unwrap();
+        substrate
+            .register(Box::new(EmbeddingObserver {
+                observed: observed.clone(),
+            }))
+            .unwrap();
+
+        substrate
+            .ingest(
+                ExternalInputPayload::new("the migration completed at fourteen oh two UTC"),
+                driver(),
+            )
+            .await
+            .unwrap();
+
+        let captured = observed
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
+        let frag = captured.as_ref().expect("subsystem must have observed");
+        let emb = frag
+            .embedding
+            .as_ref()
+            .expect("ingest must populate embedding per ADR-0004");
+        assert_eq!(emb.len(), hyphae_core::EMBEDDING_DIM);
+        // Non-trivial input → non-zero embedding (the hashing
+        // embedder returns the zero vector only for empty /
+        // stopword-only inputs).
+        assert!(
+            emb.iter().any(|x| x.abs() > 0.0),
+            "non-trivial input must yield a non-zero embedding",
+        );
+        // Direct check that the embedder identity matches: the
+        // substrate's `embedder()` accessor returns the same
+        // provider that populated the fragment.
+        let direct = substrate
+            .embedder()
+            .embed("the migration completed at fourteen oh two UTC");
+        assert_eq!(*emb, direct);
+        let _ = HashingTokenEmbedder::new();
     }
 
     #[tokio::test]

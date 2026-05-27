@@ -12,6 +12,7 @@ description = "Hyphae v2 substrate runtime — state machine, pathway routing (f
 hyphae-core = { workspace = true }
 hyphae-storage = { workspace = true }
 hyphae-ethics = { workspace = true }
+hyphae-embed = { workspace = true }
 serde = { workspace = true }
 bincode = { workspace = true }
 thiserror = { workspace = true }

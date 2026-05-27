@@ -18,6 +18,7 @@ members = [
     "crates/hyphae-surface",
     "crates/hyphae-eval",
     "crates/hyphae-smoke",
+    "crates/hyphae-embed",
 ]
 
 # Workspace-wide package metadata. Per-crate `Cargo.toml` files inherit
@@ -100,6 +101,7 @@ hyphae-learning  = { path = "crates/hyphae-learning" }
 hyphae-subsystems = { path = "crates/hyphae-subsystems" }
 hyphae-surface   = { path = "crates/hyphae-surface" }
 hyphae-eval      = { path = "crates/hyphae-eval" }
+hyphae-embed     = { path = "crates/hyphae-embed" }
 
 [profile.release]
 lto = "thin"
