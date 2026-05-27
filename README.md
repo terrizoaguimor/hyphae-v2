@@ -53,6 +53,18 @@ simulation of neurons. Not a spiking neural network. Not a wrapper
 around an LLM. There is no LLM invocation in the cognition path —
 explicit Hard Commitment, not a marketing claim.
 
+## About the name
+
+*Hyphae* are the filaments that compose mycelium — the underground
+network through which fungi exchange nutrients and signals. The
+project's parent (Celiums AI) takes its name from the same root.
+
+When pressed for a backronym:
+**H.Y.P.H.A.E. — Honest Yet Probably Helpful Auditable Engine.**
+The hedge is intentional. A cognitive substrate that markets itself
+as *indispensable* should be regarded with the same suspicion as any
+other AI product that does so.
+
 ## Status
 
 **Pre-alpha, foundational scaffolding.** The workspace ships with
