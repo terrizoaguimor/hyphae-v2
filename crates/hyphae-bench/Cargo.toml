@@ -1,0 +1,24 @@
+[package]
+name = "hyphae-bench"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Hyphae v2 performance baseline — criterion bench harness measuring ingest / recall / compose latency over a populated substrate (ADR-0015). Honest measurements, no threshold gates."
+
+[dependencies]
+hyphae-core = { workspace = true }
+hyphae-substrate = { workspace = true }
+hyphae-subsystems = { workspace = true }
+hyphae-surface = { workspace = true }
+tokio = { workspace = true }
+tempfile = "3"
+
+[dev-dependencies]
+criterion = { workspace = true, features = ["async_tokio"] }
+
+[[bench]]
+name = "substrate_ops"
+harness = false
