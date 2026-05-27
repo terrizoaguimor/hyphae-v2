@@ -32,11 +32,14 @@
 #![warn(clippy::pedantic)]
 
 pub mod connective;
+pub mod connective_data;
 pub mod limitation;
 pub mod realizer;
 pub mod schema;
 
-pub use connective::{ConnectiveRole, Lexicon};
+pub use connective::{
+    Connective, ConnectiveRole, Formality, Lexicon, PickContext, Polarity, Register,
+};
 pub use limitation::{
     HIGH_CONFAB_RISK_THRESHOLD, LimitationContext, LimitationTrigger,
     evaluate as evaluate_limitations,

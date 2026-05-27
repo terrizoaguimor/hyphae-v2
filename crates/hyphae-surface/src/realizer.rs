@@ -21,7 +21,7 @@
 //! language; the realizer is the boundary the
 //! no-LLM-in-cognition-path commitment depends on.
 
-use crate::connective::{ConnectiveRole, Lexicon};
+use crate::connective::{ConnectiveRole, Formality, Lexicon, PickContext, Polarity, Register};
 use crate::limitation::{LimitationContext, LimitationTrigger, evaluate as evaluate_limitations};
 use crate::schema::{Intent, SchemaId};
 use hyphae_core::{CognitiveFragment, FragmentContent, FragmentId};
@@ -156,21 +156,42 @@ impl SurfaceRealizer {
         let mut text = String::new();
         let mut fragments_quoted = Vec::new();
 
-        let opening = self.lexicon.pick(ConnectiveRole::Opening, 0);
+        // Derive a PickContext from the overall working set —
+        // dominant register + dominant polarity across the set.
+        // Per-pair refinements happen below.
+        let opening_ctx = working_set_context(request.working_set);
+        let opening = self
+            .lexicon
+            .pick_in_context(ConnectiveRole::Opening, &opening_ctx, 0);
         text.push_str(opening);
         text.push(' ');
 
         for (idx, fragment) in request.working_set.iter().enumerate() {
             if idx > 0 {
-                let role = pick_inter_fragment_role(&request.working_set[idx - 1], fragment);
-                let connective = self.lexicon.pick(role, idx);
+                let (role, polarity) =
+                    pick_inter_fragment_role_and_polarity(&request.working_set[idx - 1], fragment);
+                let ctx = PickContext {
+                    register: register_for_fragment(fragment),
+                    polarity,
+                    formality: Formality::Mid,
+                };
+                let connective = self.lexicon.pick_in_context(role, &ctx, idx);
                 text.push(' ');
                 text.push_str(connective);
                 text.push(' ');
             }
 
             if matches!(schema, SchemaId::GroundedAssertion) {
-                let attribution = self.lexicon.pick(ConnectiveRole::Attribution, idx);
+                let attribution_ctx = PickContext {
+                    register: register_for_fragment(fragment),
+                    polarity: Polarity::Neutral,
+                    formality: Formality::Mid,
+                };
+                let attribution = self.lexicon.pick_in_context(
+                    ConnectiveRole::Attribution,
+                    &attribution_ctx,
+                    idx,
+                );
                 text.push_str(attribution);
                 text.push(' ');
             }
@@ -182,7 +203,9 @@ impl SurfaceRealizer {
             fragments_quoted.push(fragment.id);
         }
 
-        let closing = self.lexicon.pick(ConnectiveRole::Closing, 0);
+        let closing = self
+            .lexicon
+            .pick_in_context(ConnectiveRole::Closing, &opening_ctx, 0);
         text.push(' ');
         text.push_str(closing);
 
@@ -201,17 +224,85 @@ impl SurfaceRealizer {
     }
 }
 
-/// Pick the connective role between two adjacent fragments. v0.1
-/// uses a simple valence-sign rule: opposing valences trigger
-/// `Contrast`; same-sign or zero pick `Continuation`.
-fn pick_inter_fragment_role(prev: &CognitiveFragment, next: &CognitiveFragment) -> ConnectiveRole {
-    if prev.valence > 0.2 && next.valence < -0.2 {
-        return ConnectiveRole::Contrast;
+/// Pick the connective role + polarity between two adjacent
+/// fragments per ADR-0005. The valence delta determines polarity
+/// strength; the role follows from the polarity.
+fn pick_inter_fragment_role_and_polarity(
+    prev: &CognitiveFragment,
+    next: &CognitiveFragment,
+) -> (ConnectiveRole, Polarity) {
+    let delta = next.valence - prev.valence;
+    let abs = delta.abs();
+
+    // Strong opposing valence → ContrastHard via Contrast role.
+    if abs > 0.6 && delta.signum() != prev.valence.signum() {
+        return (ConnectiveRole::Contrast, Polarity::ContrastHard);
     }
-    if prev.valence < -0.2 && next.valence > 0.2 {
-        return ConnectiveRole::Contrast;
+    // Mild opposing valence → ContrastSoft via Contrast role.
+    if abs > 0.3 && delta.signum() != prev.valence.signum() {
+        return (ConnectiveRole::Contrast, Polarity::ContrastSoft);
     }
-    ConnectiveRole::Continuation
+    // Default: continuation. The Causation / Elaboration / Sequence
+    // distinctions land with ADR-0006 (cascade-shape-driven
+    // composition); v0.1.1 stays with Continuation as the dominant
+    // inter-fragment role.
+    (ConnectiveRole::Continuation, Polarity::Continuation)
+}
+
+/// Derive a register hint for one fragment from its `domain_tags`.
+/// v0.1 heuristic: presence of engineering- / code-flavoured tags
+/// picks `Technical`; presence of `informal` / `conversation` picks
+/// `Conversational`; default `Neutral`.
+fn register_for_fragment(fragment: &CognitiveFragment) -> Register {
+    let tech_markers = [
+        "engineering",
+        "code",
+        "systems",
+        "infrastructure",
+        "deploy",
+        "migration",
+        "monitoring",
+        "technical",
+    ];
+    let conv_markers = ["informal", "conversation", "chat", "casual"];
+    let formal_markers = ["legal", "contract", "policy", "formal", "compliance"];
+
+    for tag in &fragment.domain_tags {
+        let t = tag.to_lowercase();
+        if tech_markers.iter().any(|m| t.contains(m)) {
+            return Register::Technical;
+        }
+        if conv_markers.iter().any(|m| t.contains(m)) {
+            return Register::Conversational;
+        }
+        if formal_markers.iter().any(|m| t.contains(m)) {
+            return Register::Formal;
+        }
+    }
+    Register::Neutral
+}
+
+/// Aggregate the working-set's per-fragment register hints into a
+/// single dominant register for openings / closings. v0.1 rule:
+/// the most common non-neutral register wins; ties fall to
+/// `Neutral`.
+fn working_set_context(working_set: &[CognitiveFragment]) -> PickContext {
+    use std::collections::HashMap;
+    let mut counts: HashMap<Register, usize> = HashMap::new();
+    for f in working_set {
+        let r = register_for_fragment(f);
+        *counts.entry(r).or_insert(0) += 1;
+    }
+    let dominant = counts
+        .iter()
+        .filter(|(r, _)| **r != Register::Neutral)
+        .max_by_key(|(_, c)| **c)
+        .map_or(Register::Neutral, |(r, _)| *r);
+    PickContext {
+        register: dominant,
+        polarity: Polarity::Neutral,
+        formality: Formality::Mid,
+    }
 }
 
 /// Render limitation acknowledgments as prose. One line per
