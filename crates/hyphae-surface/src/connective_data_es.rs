@@ -1,11 +1,13 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 Celiums Solutions LLC
 //
-// Hand-curated Spanish connective dataset for v0.2 — 128 entries
-// across 10 roles. ADR-0017 shipped 60 (architectural proof);
-// ADR-0021 added 68 model-drafted Formal/Neutral/Technical
-// entries. ADR-0022 (reserved, Mario-led) will close
-// Conversational + push toward EN parity.
+// Hand-curated Spanish connective dataset for v0.2 — ~145
+// entries across 10 roles. ADR-0017 shipped 60 (architectural
+// proof); ADR-0021 added 68 model-drafted Formal/Neutral/
+// Technical entries; ADR-0022 added 17 cross-regional
+// Conversational entries (LATAM + Spain attested). Mario's
+// review pending for ADR-0021/0022 entries; regional
+// variants reserved for a future ADR.
 #![allow(clippy::too_many_lines)]
 
 //! Hand-curated Spanish connective dataset for v0.2 — per
@@ -46,9 +48,10 @@
 
 use crate::connective::{Connective, ConnectiveRole, Formality, Polarity, Register};
 
-/// The v0.2 Spanish baseline data. 128 entries (60 from
-/// ADR-0017 + 68 from ADR-0021's model-drafted
-/// Formal/Neutral/Technical expansion).
+/// The v0.2 Spanish baseline data. ~145 entries (60 from
+/// ADR-0017 + 68 from ADR-0021's Formal/Neutral/Technical
+/// expansion + 17 from ADR-0022's cross-regional
+/// Conversational expansion).
 #[must_use]
 #[allow(clippy::too_many_lines)]
 pub fn baseline_es_data() -> Vec<Connective> {
@@ -223,6 +226,32 @@ fn push_openings(out: &mut Vec<Connective>) {
         p,
         Formality::Mid,
     );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "Bueno, lo que tengo es,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
+    add(
+        out,
+        "Resulta que en la memoria,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
+    add(
+        out,
+        "Lo que pasa es que,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -359,6 +388,24 @@ fn push_continuations(out: &mut Vec<Connective>) {
         Register::Technical,
         p,
         Formality::Mid,
+    );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "Y además,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
+    add(
+        out,
+        "Otra cosa,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
     );
 }
 
@@ -504,6 +551,24 @@ fn push_contrasts(out: &mut Vec<Connective>) {
         Polarity::ContrastSoft,
         Formality::Mid,
     );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "Pero igual,",
+        r,
+        Register::Conversational,
+        Polarity::ContrastHard,
+        Formality::Low,
+    );
+    add(
+        out,
+        "Aún así,",
+        r,
+        Register::Conversational,
+        Polarity::ContrastSoft,
+        Formality::Low,
+    );
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -587,6 +652,16 @@ fn push_attributions(out: &mut Vec<Connective>) {
         Register::Technical,
         p,
         Formality::Mid,
+    );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "Resulta que decía:",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
     );
 }
 
@@ -680,6 +755,24 @@ fn push_closings(out: &mut Vec<Connective>) {
         p,
         Formality::Mid,
     );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "Y eso es básicamente lo que hay.",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
+    add(
+        out,
+        "Hasta ahí lo que sé.",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -763,6 +856,16 @@ fn push_concessions(out: &mut Vec<Connective>) {
         Register::Technical,
         p,
         Formality::Mid,
+    );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "La verdad,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
     );
 }
 
@@ -867,6 +970,16 @@ fn push_causations(out: &mut Vec<Connective>) {
         p,
         Formality::Mid,
     );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "O sea que,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -959,6 +1072,24 @@ fn push_elaborations(out: &mut Vec<Connective>) {
         p,
         Formality::Mid,
     );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "O sea,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
+    add(
+        out,
+        "Quiero decir,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -1021,6 +1152,16 @@ fn push_sequences(out: &mut Vec<Connective>) {
         Register::Technical,
         p,
         Formality::Mid,
+    );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "Y al final,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
     );
 }
 
@@ -1110,5 +1251,23 @@ fn push_summaries(out: &mut Vec<Connective>) {
         Register::Technical,
         p,
         Formality::Mid,
+    );
+
+    // ── ADR-0022 cross-regional Conversational ──
+    add(
+        out,
+        "Bueno, en resumen,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
+    );
+    add(
+        out,
+        "Al final del día,",
+        r,
+        Register::Conversational,
+        p,
+        Formality::Low,
     );
 }
