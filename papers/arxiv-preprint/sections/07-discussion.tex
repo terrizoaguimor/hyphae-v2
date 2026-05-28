@@ -6,25 +6,34 @@
 \label{sec:threats}
 
 \paragraph{Metric.} \unsupf{} measures NLI-grounded entailment
-between response sentences and retrieved context. The metric
-penalises hedging (Claude-4.6-Sonnet, Section~\ref{sec:per-model})
-and rewards short responses (\hyphae{}'s template on TriviaQA,
-Section~\ref{sec:results-triviaqa}). It does not measure
-factual correctness against an external gold truth, prose
-fluency, or response utility for the asker's actual goal. The
-own-corpus result holds at indistinguishable \unsupf{} between
-\hyphae{} and GPT-4.1 with strong RAG. The TriviaQA result
-holds at a 40-percentage-point gap that derives in part from the
+between response sentences and retrieved context; gold-answer
+match measures correctness against a benchmark's reference
+answer. They are complementary, not redundant. \unsupf{}
+penalises hedging (Claude-4.6-Sonnet) and rewards short responses
+(\hyphae{}'s template on TriviaQA). It does not measure factual
+correctness against an external gold truth; that is the role of
+the gold-answer column. The own-corpus result holds at
+indistinguishable \unsupf{} between \hyphae{} and GPT-4.1 with
+strong RAG. The TriviaQA result holds the gold-answer gap of
+$\sim 4{-}16$ percentage points between \hyphae{} and oracle-mode
+LLMs, and the \unsupf{} gap that derives in part from the
 metric's filter mechanically catching \hyphae{}'s scaffolding
-template. We report \unsupr{} (the raw version without the filter)
-alongside \unsupf{} for honesty. Readers should weigh both.
+template. We report both axes alongside \unsupr{} (the raw
+unfiltered NLI rate) for honesty. Readers should weigh all three.
 
 \paragraph{Corpus.} The own corpus is concentrated on
-deployment and engineering scenarios. TriviaQA is single-hop
-factual retrieval over Wikipedia. Multi-hop benchmarks (HotpotQA,
-MuSiQue), domain-specific benchmarks (TruthfulQA, MS MARCO), and
-long-context benchmarks (NarrativeQA) would each surface
-different patterns and are reasonable next directions.
+deployment and engineering scenarios and was authored by the
+same team that designed \hyphae{}'s schemas and intents;
+empirical ties on that corpus should be read with that partial
+circularity in mind. TriviaQA addresses the standard-benchmark
+objection but is single-hop factual retrieval over Wikipedia
+and was sampled with a filter that selects seed bodies
+containing the gold answer. \hyphae{}'s gold-answer rate on
+this corpus is therefore $1.000$ by construction. Multi-hop
+benchmarks (HotpotQA, MuSiQue), domain-specific benchmarks
+(TruthfulQA, MS MARCO), and long-context benchmarks
+(NarrativeQA) would each surface different patterns and are
+reasonable next directions.
 
 \paragraph{Statistical power.} $N=34$ supports the patterns we
 emphasise (Pareto frontier shape, latency advantage,

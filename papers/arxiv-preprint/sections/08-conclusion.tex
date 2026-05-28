@@ -10,11 +10,16 @@ journal. Every quoted body is byte-identical to a named source
 fragment; the verification is mechanical and does not require
 re-running the system.
 
-On the TriviaQA-150 standard benchmark, \hyphae{} reaches
-$1.000$ gold-answer match rate, statistically comparable to
-the best frontier LLM-based configurations
-(Claude-4.6-Sonnet at $0.960$, Llama-3.3-70B and GPT-4.1 at
-$0.900$--$0.907$). On the NLI-grounded unsupported-claim
+On the TriviaQA-150 standard benchmark, \hyphae{} reaches a
+$1.000$ gold-answer match rate by construction (the corpus
+filter selects seed bodies that contain the answer; verbatim
+quotation propagates the answer to the output). In oracle mode,
+where the LLM baselines receive the same gold-bearing seed body,
+they reach $0.840$--$0.960$ gold-answer match. The architectural
+finding is therefore narrower than ``Hyphae is more correct'':
+verbatim quotation removes a paraphrase-away failure mode that
+costs oracle-LLMs four to sixteen percentage points of
+correctness on this corpus. On the NLI-grounded unsupported-claim
 metric, the headline $0.000$ vs $0.400$--$0.665$ delta
 reflects partly a real architectural property and partly a
 corpus-construction interaction with the chosen metric's

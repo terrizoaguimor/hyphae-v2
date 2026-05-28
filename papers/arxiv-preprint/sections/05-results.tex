@@ -84,19 +84,26 @@ $0.700$. The verbatim-quotation commitment removes this failure
 mode by construction.
 
 \paragraph{Why \hyphae{}'s \unsupf{} is $0.000$.}
-\hyphae{}'s response on a single-seed query consists of one
-verbatim quote (trivially entailed against the retrieved context
-because the quote \emph{is} a substring of the context) plus two
-scaffolding sentences (``Drawing from working memory,'' and ``That
-is what working memory holds on this.''). Both scaffolding
-sentences begin with a recognised connective prefix and are
-excluded from the unsupported-claim denominator by the
+\hyphae{}'s response on a single-seed query is illustrated in
+Listing~\ref{lst:hyphae-triviaqa}: one verbatim quote (trivially
+entailed against the retrieved context because the quote \emph{is}
+a substring of the context) plus two scaffolding sentences. Both
+scaffolding sentences begin with a recognised connective prefix
+and are excluded from the unsupported-claim denominator by the
 \texttt{is\_connective\_sentence} filter. The NLI denominator is
 zero; the rate is zero by quotient. We report \unsupr{} (the
 unfiltered version) alongside \unsupf{} for honesty: \hyphae{}'s
 \unsupr{} on TriviaQA is $0.013$ rather than $0.000$, reflecting
 the small fraction of queries where the splitter and the connective
 filter disagree at the boundary between scaffolding and quote.
+
+\begin{lstlisting}[caption={\hyphae{} response on TriviaQA query
+\texttt{triviaqa-qb\_4397}.}, label={lst:hyphae-triviaqa}]
+Drawing from working memory, "Pearson did not make the move into
+politics until a few years later, after King had announced his
+retirement as the Prime Minister of Canada." That is what working
+memory holds on this.
+\end{lstlisting}
 
 \paragraph{Why LLM \unsupf{} is high even at high gold-answer.}
 LLM responses to TriviaQA queries typically include meta-claims
@@ -113,45 +120,18 @@ disagree because they measure different things; both numbers are
 correct.
 
 \paragraph{The honest comparison.}
-On the TriviaQA corpus as constructed, \hyphae{} and the best
-LLM-based systems are \textbf{nearly indistinguishable on
-correctness} ($1.000$ vs $0.960$). They differ substantially on
-the NLI grounding metric, but Section~\ref{sec:discussion} and the
-sample outputs in Appendix~\ref{app:samples} document that this
-gap reflects how the LLMs phrase \emph{correct answers}, not
-\emph{whether they answer correctly}. The architectural claim
-that survives this disaggregation is on the cost dimension, which
-the next sections quantify.
-
-\hyphae{}'s perfect \unsupf{} score derives from a mechanical
-property of the metric's interaction with the response. On
-single-seed queries, \hyphae{} produces:
-
-\begin{lstlisting}[caption={\hyphae{} response on TriviaQA query
-\texttt{triviaqa-qb\_4397}.}, label={lst:hyphae-triviaqa}]
-Drawing from working memory, "Pearson did not make the move into
-politics until a few years later, after King had announced his
-retirement as the Prime Minister of Canada." That is what working
-memory holds on this.
-\end{lstlisting}
-
-The response contains one verbatim quote (entailed by the context
-because it \emph{is} the context) and two scaffolding sentences
-(``Drawing from working memory,'' and ``That is what working
-memory holds on this.''), both of which the
-\texttt{is\_connective\_sentence} filter recognises and excludes
-from the denominator. The NLI denominator is zero; the rate is
-zero by quotient.
-
-LLM-based systems produce richer prose but more meta-claims about
-the source: ``According to the context...'', ``As stated in the
-sentence...'', ``This information directly answers the question
-about...''. Each meta-claim is scored \texttt{neutral} against the
-context (it describes the relationship between text and question,
-not a fact about the world) and counts as unsupported. The
-amplification at the bottom of the table (\unsupf{} in the 0.7--0.8
-range for the smallest open model and the router) reflects this
-behaviour at scale.
+The architectural finding that survives disaggregation is the one
+the gold-answer column makes precise: in oracle mode, where every
+system receives the same gold-bearing seed body, verbatim
+quotation removes a paraphrase-away failure mode that costs the
+LLM oracle baselines four (Claude) to sixteen (DeepSeek-V4-Pro)
+percentage points of correctness. That mechanism is real and
+architectural. The NLI grounding gap is, on this corpus,
+predominantly a metric artefact --- documented honestly via the
+side-by-side filtered/unfiltered rates and the sample outputs in
+Appendix~\ref{app:samples}. The cost dimension, which the next
+sections quantify, is where the architectural commitment
+generalises unambiguously.
 
 \subsection{Own Corpus}
 \label{sec:results-own}
@@ -217,30 +197,36 @@ amplificatory meta-claims that hurt it on TriviaQA.
 \subsection{The Latency-Quality Pareto Frontier}
 \label{sec:pareto}
 
-Figure~\ref{fig:pareto} plots all 19 systems on the (\unsupf{},
-latency) plane on a logarithmic latency axis. The non-dominated
-frontier --- systems no other system improves on both axes --- is:
+Figure~\ref{fig:pareto} plots the 19 systems on three panels.
+The top row uses \unsupf{} on the vertical axis --- the v1
+preprint's headline grounding metric. The bottom-left panel
+uses gold-answer match instead, the correctness axis introduced
+in Section~\ref{sec:results-triviaqa}. We include both because
+\unsupf{} on TriviaQA is degenerate for \hyphae{} (rate $0.000$
+by quotient when the denominator collapses; the panel is
+illustrative, not load-bearing) and gold-answer is the axis
+that carries the architectural correctness claim.
 
-\begin{itemize}
-    \item \textbf{TriviaQA frontier (N=150):} a single point,
-    \hyphae{}.
-    \item \textbf{Own corpus frontier (N=34):} two points,
-    \hyphae{} and GPT-4.1 with strong retrieval, differing by
-    $\sim 5 \times 10^4$ in latency at indistinguishable
-    \unsupf{}.
-\end{itemize}
+On the \unsupf{} axis the non-dominated frontier on TriviaQA
+contains a single point (\hyphae{}); on the own corpus it
+contains two (\hyphae{} and GPT-4.1 with strong retrieval). On
+the gold-answer axis the TriviaQA frontier expands: \hyphae{}
+at the latency-advantaged endpoint plus a handful of oracle-mode
+LLMs (Claude-4.6-Sonnet at $0.960$, Llama-3.3-70B and GPT-4.1
+at $0.900$--$0.907$) at the right-end. No system dominates
+\hyphae{} on either axis on either corpus.
 
 \begin{figure}[ht]
 \centering
-% Placeholder; figure produced by scripts/make_pareto_plot.py
-\includegraphics[width=0.82\textwidth]{figures/pareto-frontier.pdf}
-\caption{\textbf{Latency-quality Pareto frontier.} Each point is
-one system configuration. Latency on the horizontal axis is
-$p50$ in milliseconds, log scale. Vertical axis is \unsupf{},
-lower better. The non-dominated frontier on TriviaQA contains
-only \hyphae{}; on the own corpus it contains \hyphae{} and
-GPT-4.1 with strong retrieval. Other systems are dominated on
-at least one of the two axes by one of these two points.}
+\includegraphics[width=0.95\textwidth]{figures/pareto-frontier.pdf}
+\caption{\textbf{Latency-quality Pareto frontier on two metrics.}
+Each point is one system configuration; latency on the horizontal
+axis is $p50$ in milliseconds, log scale. Top row uses \unsupf{}
+(lower better); bottom-left uses gold-answer match (higher
+better). Red points are non-dominated on each panel. The
+gold-answer panel addresses the v1 critique that \unsupf{} is
+metric-degenerate on TriviaQA for \hyphae{}; the gold-answer
+panel surfaces the correctness comparison directly.}
 \label{fig:pareto}
 \end{figure}
 

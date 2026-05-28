@@ -110,26 +110,33 @@ named source material; and the realizer's bounded output runs in
 microseconds on a single CPU core. We compare \hyphae{} against
 18 LLM-based configurations (vanilla retrieval-augmented generation,
 HyDE plus cross-encoder reranking, and oracle context) spanning
-five frontier models from Anthropic, OpenAI, DeepSeek, and Meta,
+five generator models spanning Anthropic, OpenAI, DeepSeek, and Meta,
 across two corpora: the project's own 34-query composition corpus,
 and 150 random samples from TriviaQA. We report two
 complementary metrics: NLI-grounded
 unsupported-claim rate (does the response stay inside the retrieved
 context?) and gold-answer match (does the response contain the
-benchmark's reference answer?). On TriviaQA, \hyphae{} reaches both
-$1.000$ gold-answer match and a degenerate-zero unsupported-claim
-rate explained mechanically by the metric's filter interacting with
-the substrate's compositional template; the best LLM-based
-configuration reaches $0.960$ gold-answer match but $0.400$--$0.665$
-NLI unsupported-claim. The honest reading is that frontier LLMs are
-\emph{nearly as correct} on this corpus and \emph{less efficiently
-grounded} by the chosen metric. Where the architectural claim is
+benchmark's reference answer?). On TriviaQA, \hyphae{} reaches $1.000$ gold-answer match (by
+construction of the corpus filter; see Section~\ref{sec:results-triviaqa});
+in oracle mode, where the same gold-bearing seed body is supplied
+to every system, frontier LLMs reach $0.840$--$0.960$ gold-answer.
+The architectural finding is that verbatim quotation removes a
+paraphrase-away failure mode that costs oracle-LLMs four to
+sixteen percentage points of correctness. \hyphae{}'s NLI-grounded
+unsupported-claim rate is a metric-degenerate $0.000$ on this
+corpus; the twelve LLM-based configurations that reach gold-answer
+$\geq 0.84$ score $0.400$--$0.737$ on the same metric. We trace
+the gap mechanically to the metric's filter interacting with the
+substrate's compositional template, and report both filtered and
+unfiltered rates throughout. Where the architectural claim is
 unambiguous is the cost dimension: \hyphae{}'s realizer runs in
-$0.002$ ms versus the hosted LLM's $2{,}424$ ms (six orders of
-magnitude); against a local Llama-8B-Instruct quantised baseline on
-identical CPU hardware the ratio is approximately $10^5$ rather
-than $10^6$ but the production economics still differ by
-$\sim 4{-}5$ orders of magnitude. We do not claim the substrate
+$0.002$ ms mean per query versus $2{,}424$ ms for GPT-4.1 with
+strong retrieval via the hosted GenAI Platform API (six orders of
+magnitude); against a local Llama-8B-Instruct quantised baseline
+on identical CPU hardware (mean $1{,}858$ ms in oracle mode) the
+ratio is approximately $10^6$ collapses to $\sim 10^5$ when the
+network round-trip is removed, but the production economics still
+differ by four-to-six orders of magnitude. We do not claim the substrate
 universally replaces LLM-based generation. We claim that for tasks
 in which the unit of grounding is a discrete retrieved fragment
 quoted verbatim and the deployment requires audit-bound
