@@ -3,11 +3,29 @@
 
 # Hyphae v2
 
-> *A cognitive substrate for persistent AI without LLM in the cognition
-> path. Learning loop and ethics engine are first-class, not bolted on.*
+> *A cognitive substrate that answers grounded queries by verbatim
+> quotation of hash-chained memory fragments — with no LLM in the
+> cognition path, and a cryptographic audit relation between every
+> output and its sources.*
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Spec: CC-BY-4.0](https://img.shields.io/badge/Spec-CC--BY--4.0-orange.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Paper](https://img.shields.io/badge/paper-preprint-success.svg)](papers/arxiv-preprint/main.pdf)
+
+**TL;DR.** Hyphae's distinguishing property is *verifiable
+provenance*: every emitted span is byte-identical to a fragment in a
+SHA-256 hash-chained journal, so any answer can be independently
+audited back to named, unaltered sources — a guarantee no
+retrieval-augmented LLM provides by construction. Our
+[preprint](papers/arxiv-preprint/main.pdf) measures this against 18
+LLM configurations (six models × three retrieval modes) plus a
+trivial *echo* control, on TriviaQA and a project corpus. The honest
+headline: on standard correctness/grounding metrics a verbatim
+`print` of the retrieved sentence matches Hyphae — those metrics
+measure quotation, not architecture — but on a tamper-detection
+experiment Hyphae detects and localises 100% of post-ingest store
+tampering while echo and LLM-RAG detect 0%. The contribution is the
+audit property, at microsecond, CPU-only cost.
 
 ## What this is
 
@@ -52,6 +70,44 @@ Not a database. Not a vector store. Not a knowledge graph. Not a
 simulation of neurons. Not a spiking neural network. Not a wrapper
 around an LLM. There is no LLM invocation in the cognition path —
 explicit Hard Commitment, not a marketing claim.
+
+## Empirical results & paper
+
+The preprint — [`papers/arxiv-preprint/main.pdf`](papers/arxiv-preprint/main.pdf),
+source under [`papers/arxiv-preprint/`](papers/arxiv-preprint/) — is
+a verifiable-provenance systems paper. Its results are fully
+reproducible from this repo; the comparator lives in
+[`bench/baseline-llm-rag/`](bench/baseline-llm-rag/) and every result
+envelope is committed under `bench/baseline-llm-rag/results/`.
+
+Three findings, in order of how the paper weighs them:
+
+1. **Provenance is the contribution, and it is measured.** A
+   tamper-detection experiment against the real hash-chained journal
+   ([`crates/hyphae-storage/examples/tamper_detection.rs`](crates/hyphae-storage/examples/tamper_detection.rs))
+   shows Hyphae detects and localises 100% of post-ingest store
+   tampering to the exact sequence; echo and LLM-RAG have no journal
+   and detect 0%. See [`docs/perf/`](docs/perf/) and §5 of the paper.
+
+2. **The echo control bounds what the correctness benchmark can
+   say.** A one-line verbatim `print` of the retrieved sentence ties
+   or beats Hyphae on gold-answer match, NLI unsupported-claim rate,
+   and n-gram overlap, on both corpora. Measured correctness is a
+   property of verbatim quotation — shared by any echo — not of
+   Hyphae's composition machinery. We therefore make no
+   "more-correct-than-LLMs" claim.
+
+3. **Latency is a corollary of not generating.** Hyphae's realizer
+   runs in 2–24 µs mean per query (CPU-only, ~50 MB); the LLM
+   baselines run in 1.8–6.1 s, five-to-six orders of magnitude
+   slower — a consequence shared with the echo baseline, not an
+   independent result.
+
+Comparison writeups: [`docs/perf/triviaqa-comparison.md`](docs/perf/triviaqa-comparison.md),
+[`multi-llm-comparison.md`](docs/perf/multi-llm-comparison.md),
+[`ablation-study.md`](docs/perf/ablation-study.md),
+[`hardware-matrix.md`](docs/perf/hardware-matrix.md),
+[`baseline-comparison.md`](docs/perf/baseline-comparison.md).
 
 ## About the name
 
@@ -100,13 +156,17 @@ refuses to lie about its sources.
 
 ## Status
 
-**v0.1 — substrate spec implemented end-to-end.** Eleven ADRs
-accepted, 288 tests passing, smoke binary runs the full cognition
-path in a single command. The architectural bet remains untested
-in real workloads; the implementation honestly meets every
-commitment in the living RFC at
-[`docs/rfc/v1-living.md`](docs/rfc/v1-living.md). Pre-release,
-no remote push, no public tag yet.
+**v0.1 — substrate implemented end-to-end, empirically evaluated,
+tag `v0.1.0`.** 31 ADRs accepted, 331 tests passing, smoke binary
+runs the full cognition path in one command. The substrate meets
+every commitment in the living RFC at
+[`docs/rfc/v1-living.md`](docs/rfc/v1-living.md); the empirical
+comparison against LLM-RAG and the echo control, plus the
+tamper-detection experiment, are landed (see *Empirical results*
+above). The architectural bet remains untested in production
+workloads. Open follow-ups: a community-scale provenance benchmark,
+a reader-preference study of the template-rigid prose, and a
+multi-hop benchmark column.
 
 ## What works in v0.1
 
@@ -122,7 +182,8 @@ invocation:
 | Cascade activation in recall | ADR-0011 — `recall_signal → episodic.process → episodic.cascade` |
 | Learning loop wakeup | ADR-0013 — `record_emission → stage_pending → propose_learning_update → apply_audited` |
 | Surface realizer | 250-phrase EN lexicon, cascade-shape composition (ADR-0006), boundary smoothing (ADR-0007), two schemas |
-| Eval harness | 25-query corpus, 9 dimensions, scorer sensitivity audit, honest caveats (ADR-0008/0009/0010) |
+| Eval harness | 34-query EN corpus (+5 ES), 9 dimensions, scorer sensitivity audit, honest caveats (ADR-0008/0009/0010) |
+| LLM+RAG comparator | `bench/baseline-llm-rag/` — 6 models × 3 modes + echo control, NLI + gold-answer + tamper-detection scoring (ADR-0027–0031) |
 
 The sensitivity audit verifies each scoring dimension detects its
 failure mode by construction. The eval harness publishes honest
@@ -148,9 +209,15 @@ comparison.
 
 ```bash
 cargo build --workspace
-cargo test --workspace            # 288 tests across 10 crates
+cargo test --workspace            # 331 tests
 cargo clippy --workspace --all-targets -- -D warnings
 cargo run -p hyphae-smoke         # end-to-end demonstration
+
+# Provenance tamper-detection experiment (real hash chain):
+cargo run -p hyphae-storage --example tamper_detection
+
+# Reproduce the LLM+RAG comparison (needs Python + a DO Inference key):
+#   see bench/baseline-llm-rag/README.md
 ```
 
 ## Repository layout
@@ -159,38 +226,38 @@ cargo run -p hyphae-smoke         # end-to-end demonstration
 hyphae-v2/
 ├── Cargo.toml              # workspace, edition 2024, MSRV 1.85
 ├── README.md               # this file
-├── LICENSE                 # Apache-2.0 (code) / CC-BY-4.0 (spec)
-├── crates/
+├── LICENSE / LICENSE-CC-BY-4.0   # Apache-2.0 (code) / CC BY 4.0 (docs)
+├── crates/                 # the pure-Rust substrate (12 crates)
 │   ├── hyphae-core/        # primitives: fragments, ids, journal types, cascade activation
 │   ├── hyphae-ethics/      # RADAR engine, audit, five coverage points
-│   ├── hyphae-storage/     # fjall journal + redb state store
+│   ├── hyphae-storage/     # fjall hash-chained journal + redb state store
+│   │   └── examples/tamper_detection.rs   # provenance experiment (§5 of paper)
 │   ├── hyphae-substrate/   # state machine, pathway routing, integration boundary
 │   ├── hyphae-subsystems/  # six functional subsystems
 │   ├── hyphae-surface/     # realizer, lexicon, cascade-shape, smoothing
 │   ├── hyphae-learning/    # parameter store, feedback, orchestrator
-│   ├── hyphae-embed/       # hashing token embedder
-│   ├── hyphae-eval/        # harness, corpus, scorers, sensitivity audit
+│   ├── hyphae-embed/       # hashing token embedder (no learned params)
+│   ├── hyphae-eval/        # harness, corpus, scorers, sensitivity audit, exporters
+│   ├── hyphae-bench/       # criterion latency benches
+│   ├── hyphae-chat/        # interactive REPL
 │   └── hyphae-smoke/       # end-to-end runner
+├── bench/
+│   └── baseline-llm-rag/   # LLM+RAG comparator (Python): vanilla/HyDE+rerank/oracle
+│       ├── src/baseline_llm_rag/   # pipeline, DO-Inference + local backends, echo, scorers
+│       └── results/        # committed result envelopes (52 JSON, both corpora)
+├── papers/
+│   └── arxiv-preprint/     # the preprint (LaTeX source + compiled PDF + Pareto figure)
 └── docs/
-    ├── rfc/
-    │   └── v1-living.md    # the canonical specification, append-only
-    └── adr/
-        ├── 0001-fresh-from-v1.md
-        ├── 0002-learning-loop-firstclass.md
-        ├── 0003-ethics-radar-firstclass.md
-        ├── 0004-embedding-provider.md
-        ├── 0005-lexicon-scale.md
-        ├── 0006-cascade-shape-driven-composition.md
-        ├── 0007-boundary-smoothing.md
-        ├── 0008-empirical-calibration-ladder.md
-        ├── 0009-corpus-expansion-bucket-coverage.md
-        ├── 0010-scorer-sensitivity-audit.md
-        ├── 0011-cascade-wakeup-in-recall.md
-        └── 0013-learning-loop-orchestration.md
+    ├── rfc/v1-living.md    # the canonical specification, append-only
+    ├── adr/                # 31 architectural decision records (0001–0031)
+    └── perf/               # empirical writeups (baseline, multi-LLM, ablation,
+                            #   hardware-matrix, TriviaQA, v0.2 latency baseline)
 ```
 
-ADR-0012 was reserved during the 5-point ethics audit but never
-filed — the audit found coverage complete and the slot is left
+ADRs 0027–0031 cover the empirical program (LLM+RAG comparator,
+strong-RAG, multi-LLM matrix, hardware matrix, standard-benchmark
+corpus). ADR-0012 was reserved during the 5-point ethics audit but
+never filed — the audit found coverage complete and the slot is left
 intentionally vacant rather than reused.
 
 ## Why a v2 (and not a refactor of v1)

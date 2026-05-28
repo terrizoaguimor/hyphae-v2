@@ -11,12 +11,15 @@ results/scratch-*.json
 # with the writeup). Future versioned runs follow the
 # `v{N}-{hardware}-{mode}.json` naming convention.
 
-# Exported corpus + Hyphae outputs (regenerated from the Rust
-# harness; deterministic given the corpus source)
+# Exported corpus + Hyphae outputs + echo intermediates (all
+# regenerated; deterministic given the corpus source). The SCORED
+# envelopes under results/ are checked in; these raw intermediates
+# are not.
 corpus-en.json
 corpus-es.json
 hyphae-results.json
 hyphae-results-*.json
+echo-results-*.json
 
 # Python build artifacts
 __pycache__/
