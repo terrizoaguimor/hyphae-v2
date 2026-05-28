@@ -180,6 +180,28 @@ droplet (Intel Xeon Platinum 8168, 16 dedicated vCPU, 31 GB
 RAM, Ubuntu 24.04 LTS, NYC1 region) and re-ran the local Llama-8B
 matrix and the \hyphae{} ablations there.
 
+\paragraph{Latency reporting convention.} Two conventions are
+used and must be read together. \textbf{Tables~\ref{tab:triviaqa}
+and~\ref{tab:own} report $p50$} (median per-query latency);
+\textbf{Tables~\ref{tab:lat-honest} and~\ref{tab:hardware} report
+means}. The two differ because each corpus's per-query latency
+distribution is right-skewed (a few long LLM generations pull the
+mean above the median), so the same configuration legitimately
+shows, e.g., Llama-8B oracle at $1{,}598$ ms ($p50$, TriviaQA,
+Table~\ref{tab:triviaqa}), $1{,}858$ ms (mean, TriviaQA,
+Table~\ref{tab:lat-honest}), and $2{,}299$ ms (mean, own corpus,
+Table~\ref{tab:hardware}). These are not contradictory; they are
+median-vs-mean and TriviaQA-vs-own-corpus. We use means in the
+latency-focused tables because the headline ratio is a
+mean-over-corpus quantity. \hyphae{}'s per-query latency sits at
+the microsecond timer-resolution floor; its $p50$ rounds below
+$0.1$ ms and is not individually meaningful, so we report
+\hyphae{} latency only as a corpus mean ($0.002$ ms on TriviaQA's
+single-seed queries, $0.024$ ms on the own corpus's
+multi-fragment queries, $0.007$ ms on the Xeon droplet) and treat
+all \hyphae{} latency figures as order-of-magnitude (tens of
+microseconds or below), not precise measurements.
+
 The reported \hyphae{} latencies should be interpreted as a
 lower bound on what is achievable: optimisation work has not
 been prioritised. The reported LLM latencies should be

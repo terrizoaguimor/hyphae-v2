@@ -73,10 +73,11 @@ Intel Xeon Platinum 8168 server).
     realizer runs in $0.002$ ms mean per query on single-seed
     TriviaQA queries and $0.024$ ms on the multi-fragment own
     corpus; the LLM baselines run in $1{,}858$--$6{,}083$ ms
-    regardless of corpus, whether hosted locally or via API. The
-    ratio is therefore $\sim 10^6$ for single-seed retrieval and
-    $\sim 10^5$ for multi-fragment composition; the network
-    round-trip accounts for only $\sim 30\%$
+    (roughly corpus-independent across configurations), whether
+    hosted locally or via API. The ratio is therefore
+    $\sim 10^6$ for single-seed retrieval and $\sim 10^5$ for
+    multi-fragment composition; the network round-trip accounts
+    for only $\sim 30\%$
     (Section~\ref{sec:results-latency-honest}). Memory footprint
     differs by approximately five orders of magnitude (50 MB vs
     multiple GB).
@@ -100,10 +101,13 @@ Intel Xeon Platinum 8168 server).
 
     \item \textbf{Hardware matrix.} We re-run the matrix on a
     server-class CPU-only Linux instance. Quality metrics are
-    hardware-invariant within $\pm 0.03$. The Hyphae:Llama-8B
-    latency ratio holds at $\sim 6.5\times10^5$ when GPU
-    acceleration is removed, confirming the architectural
-    advantage generalises beyond the laptop's Metal backend.
+    hardware-invariant within $\pm 0.03$. The
+    \hyphae{}:Llama-8B latency ratio \emph{widens} from
+    $\sim 1.9\times10^5$ on the laptop to $\sim 9.3\times10^5$ on
+    the GPU-less droplet (\hyphae{} speeds up on the dedicated
+    Xeon while the LLM slows without Metal), confirming the
+    architectural advantage generalises beyond the laptop's
+    Metal backend.
 \end{enumerate}
 
 \subsection{Roadmap}

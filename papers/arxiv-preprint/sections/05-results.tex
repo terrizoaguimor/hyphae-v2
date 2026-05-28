@@ -325,13 +325,15 @@ on the own corpus. The headline observation:
     dedicated Xeon outperforms the M-series on single-threaded
     Rust composition.
     \item \textbf{LLM is slower on the server CPU.} Without
-    Metal acceleration the local Llama-8B inference path
-    bottlenecks: in oracle mode, $2{,}299$ ms mean (laptop) →
-    $4{,}580$ ms mean (droplet); in rag mode, $4{,}658$ ms →
-    $6{,}326$ ms. The \hyphae{}:Llama latency ratio is
-    $\sim 10^5$ on both hardware configurations and widens
-    modestly on the droplet because \hyphae{} also speeds up
-    there ($0.024 \to 0.007$ ms).
+    Metal acceleration the local Llama-8B rag path bottlenecks:
+    $4{,}658$ ms mean (laptop) → $6{,}326$ ms mean (droplet);
+    the oracle mode shows the same direction
+    ($2{,}299 \to 4{,}580$ ms). Because \hyphae{} simultaneously
+    \emph{speeds up} on the dedicated Xeon ($0.024 \to 0.007$ ms
+    mean), the \hyphae{}:Llama-rag latency ratio widens from
+    $\sim 1.9\times10^5$ on the laptop to $\sim 9.3\times10^5$ on
+    the droplet --- i.e. removing GPU acceleration moves the
+    advantage from the low-$10^5$ range toward $10^6$.
 \end{itemize}
 
 \begin{table}[ht]
