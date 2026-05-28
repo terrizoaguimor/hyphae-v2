@@ -1,0 +1,182 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{The Hyphae Architecture}
+\label{sec:arch}
+
+\hyphae{} is structured as three concentric layers:
+\textbf{substrate} (memory state, fragment storage,
+hash-chained journal), \textbf{cognition path} (the operations
+that retrieve, compose, and emit), and \textbf{realizer}
+(the prose-emission stage). The architectural commitments
+load-bearing for the empirical results are concentrated at the
+realizer boundary; we describe each layer briefly with that
+focus.
+
+\subsection{Substrate}
+
+The substrate stores \emph{cognitive fragments}: small
+self-contained units of content with provenance metadata
+(source subsystem, parent fragments if cascade-derived,
+confabulation risk score, valence, domain tags). Fragments
+are written to disk via an embedded key-value store
+\citep{redb, fjall} and chained into a SHA-256 hash sequence
+that links each fragment to its predecessor by content hash.
+The journal is verifiable: any modification to a previously-
+written fragment breaks the chain at and after the modification
+point.
+
+Retrieval is via approximate-nearest-neighbour search
+\citep{malkov2018hnsw} over fragment embeddings produced by a
+deterministic hashing token embedder. The embedder is not an
+LLM, contains no learned parameters, and uses the
+\texttt{HashingTokenEmbedder} primitive from the substrate.
+This makes the retrieval stage deterministic and reproducible
+across runs.
+
+\subsection{Cognition Path}
+
+A \textbf{cognition path} is a procedure that reads from the
+substrate, performs a structured operation, and either writes
+new fragments back or emits a response through the realizer.
+The v0.1 substrate implements five paths: \texttt{ingest}
+(write a new fragment), \texttt{recall} (retrieve fragments
+similar to a cue), \texttt{compose} (synthesize a response from
+retrieved fragments), \texttt{learning\_update} (adjust
+substrate-internal parameters under audit), and
+\texttt{grounded\_retrieval} (deferred per the v0.1 RFC).
+
+The \texttt{compose} path is the one this paper measures. It
+takes a \emph{working set} of cognitive fragments (typically
+retrieved by a \texttt{recall} call) and produces a
+\texttt{RealizationOutput}: composed prose, a list of
+fragment IDs quoted in emission order, and a structured set of
+limitation triggers (such as \texttt{HighConfabRisk} or
+\texttt{ShallowCascade}) that fired during composition.
+
+\subsection{Realizer}
+\label{sec:realizer}
+
+The realizer is the surface-prose-emission stage. It is the
+component where the LLM would conventionally sit. In \hyphae{}
+it is a finite procedure:
+
+\begin{enumerate}
+    \item \textbf{Schema selection.} The caller's intent (one
+    of: dialogue, assert, summarize, compare, reflect, narrate)
+    maps deterministically to a schema (DialogueReply,
+    GroundedAssertion, Summary, ComparativeAnalysis,
+    IntrospectiveAssessment, NarrativeArc).
+    \item \textbf{Shape derivation.} If the caller supplies an
+    explicit composition shape, the realizer walks its steps.
+    Otherwise the realizer derives a shape from the working set
+    by detecting opposed valence (Contrast role) and adjacency
+    relations (Continuation role). The shape determines the
+    sequence of connective roles between adjacent quotations.
+    \item \textbf{Connective selection.} For each inter-fragment
+    boundary, the realizer queries the lexicon for a connective
+    matching the (role, register, polarity, formality) tuple.
+    Boundary smoothing rules (Section~\ref{sec:smoothing})
+    filter out connectives whose head would clash with the
+    adjacent quote's tail.
+    \item \textbf{Quote emission.} Each fragment's body is
+    emitted verbatim inside double quotes. No paraphrase, no
+    summarisation, no reordering of intra-body text.
+    \item \textbf{Limitation acknowledgement.} Triggers that
+    fired during composition (empty working set, high
+    confabulation risk, shallow cascade depth, ethically
+    sensitive content) are surfaced via the lexicon's
+    limitation-acknowledgement phrases.
+\end{enumerate}
+
+The realizer's output is bounded: every emitted token comes
+either from the curated lexicon (approximately 250 phrases
+covering 10 connective roles, 4 conversational registers, 4
+polarity classes, and 3 formality tiers) or from a fragment
+body quoted verbatim. No statistical model decides the
+emission.
+
+\subsection{Hard Commitment 12 --- Verbatim Quotation}
+\label{sec:hc12}
+
+The architectural decision underlying the empirical results
+is \emph{Hard Architectural Commitment 12} from the project's
+foundational ADR (\texttt{docs/adr/0001-fresh-from-v1.md}):
+
+\begin{quote}
+\emph{Composition uses fragment quotation plus connective tissue,
+not novel language synthesis. Fragments are opaque content
+sources whose body text is preserved verbatim. The surface
+realizer generates only the structural prose connecting them.
+This boundary is load-bearing for the no-LLM-in-cognition-path
+claim.}
+\end{quote}
+
+This commitment trades expressive flexibility for two
+properties that anchor the empirical comparison in
+Section~\ref{sec:results}:
+
+\textbf{Verifiability.} Every quoted body in a \hyphae{} response
+is byte-identical to a fragment stored in the substrate, which
+is itself verifiable against the hash-chained journal. The
+audit relation is total: a third party can independently confirm
+that the output was constructed from named substrate fragments
+without re-running the system.
+
+\textbf{Unsupported-claim immunity by construction.} The NLI
+metric we employ (Section~\ref{sec:metrics}) cannot mark a
+verbatim quote as unsupported with respect to its source: the
+quote and the context are identical text. The connective tissue
+between quotes is non-factual scaffolding the metric's filter
+recognises and excludes from the denominator. The result is that
+on factual-retrieval tasks, the architectural commitment maps
+directly onto the metric's scoring shape.
+
+\subsection{Lexicon and Boundary Smoothing}
+\label{sec:smoothing}
+
+The lexicon is a curated mapping from
+\emph{(role, register, polarity, formality)} tuples to surface
+phrases. The baseline EN lexicon contains approximately 250
+entries organised across 10 connective roles
+(Opening, Continuation, Contrast, Attribution, Closing,
+Concession, Causation, Elaboration, Sequence, Summary), 4
+register classes (Neutral, Formal, Conversational, Technical),
+4 polarity classes (Continuation, ContrastSoft, ContrastHard,
+Concession, Neutral), and 3 formality tiers (Low, Mid, High).
+
+The picker has a four-level fallback chain: an exact
+$(role, register, polarity, formality)$ tuple match is preferred;
+on miss, formality relaxes, then register, then polarity, until
+finally any phrase for the requested role is returned.
+
+\textbf{Boundary smoothing} avoids surface-level disfluencies at
+the boundary between a connective and an adjacent fragment quote.
+For example, the connective \emph{``Per the recorded fragments,''}
+followed by a quote that begins with \emph{``Per the''} would
+produce a stuttered repetition. The smoothing pass extracts
+boundary signals from the adjacent quote (leading determiner,
+anaphor surface form) and filters the candidate connective set
+to avoid such collisions.
+
+Section~\ref{sec:ablations} reports ablations of cascade-shape
+composition, ethics gate, lexicon scale, and boundary smoothing.
+Of these, only lexicon scale produces a measurable effect on the
+comparator metrics --- a finding that constrains claims about
+the contribution of the other three components at our corpus
+size.
+
+\subsection{What the Realizer Does Not Do}
+
+The realizer does not paraphrase, summarise, reorder
+intra-body text, infer over multiple fragments, or generate
+prose outside the lexicon's curated set. These restrictions
+are not implementation gaps; they are architectural decisions.
+The choice trades prose-fluency dimensions in which an LLM
+excels for the dimensions catalogued above.
+
+For applications requiring paraphrastic flexibility or
+synthesis over multiple sources, \hyphae{}'s realizer is not
+the right tool. The right comparator question is therefore
+not ``does \hyphae{} replace an LLM,'' but rather ``for the
+subset of tasks where verbatim grounding suffices, is the
+substrate competitive?''. Sections~\ref{sec:results}
+and~\ref{sec:discussion} take up that question.

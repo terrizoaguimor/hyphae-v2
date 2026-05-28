@@ -1,0 +1,190 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Experimental Setup}
+\label{sec:setup}
+
+\subsection{Two Corpora}
+\label{sec:corpora}
+
+We evaluate every system on two corpora.
+
+\textbf{Own corpus (N=34).} Curated for the project, organised by
+intent and schema (4 dialogue queries with cascade-derived seeds,
+2 grounded-assertion queries, 2 empty-working-set queries, 2
+high-confabulation-risk queries, 1 shallow-cascade query, 1
+valence-opposed query, plus three fluency-exercise queries from
+ADR-0008, ten bucket-coverage queries from ADR-0009 across
+Conversational/Formal/Neutral/Mixed registers, and nine
+schema-coverage queries from ADRs-0016, 0023, 0024, 0025 across
+Summary, ComparativeAnalysis, IntrospectiveAssessment, and
+NarrativeArc). The corpus is concentrated on engineering and
+deployment scenarios reflecting the project's primary intended
+deployment context. Source:
+\texttt{crates/hyphae-eval/src/corpus.rs}.
+
+\textbf{TriviaQA subset (N=150).} Random sample (seed 42) from
+the TriviaQA \texttt{rc} validation split
+\citep{joshi2017triviaqa}. For each sampled query, we extract a
+seed body from the supplied Wikipedia context by (1) filtering to
+sentences containing the answer or any alias as a word-bounded
+match, (2) restricting to sentences of 30--250 characters, and
+(3) reranking the survivors by cosine similarity to the query
+using the \texttt{sentence-transformers/all-MiniLM-L6-v2}
+embedder. The highest-scoring sentence becomes the seed body. The
+filter rejection rate on this seed is approximately 17\%
+(21 samples without wiki\_context, 10 without a qualifying
+sentence) yielding 150 surviving queries. Source:
+\texttt{bench/baseline-llm-rag/src/baseline\_llm\_rag/corpus\_external.py}.
+
+The two corpora are complementary. The own corpus tests
+multi-fragment composition (working sets of 2--3 seeds with
+varied registers); TriviaQA tests single-fragment retrieval. The
+own corpus is dense with engineering scenarios; TriviaQA spans
+biography, geography, history, science, pop culture, and sports.
+
+\subsection{Generator Models}
+\label{sec:generators}
+
+We compare \hyphae{} against six LLM-based configurations
+spanning the model-class landscape:
+
+\begin{itemize}
+    \item \textbf{Llama-3.1-8B-Instruct Q4\_K\_M} (4.6 GB GGUF):
+    small open model, run locally via
+    \texttt{llama-cpp-python} on the laptop's Metal backend or a
+    DigitalOcean CPU droplet. Establishes the small-open
+    baseline.
+    \item \textbf{Llama-3.3-70B-Instruct} (FP8 hosted): larger
+    open model, accessed via DigitalOcean Inference
+    \citep{do_inference}. Tests whether scale helps.
+    \item \textbf{Claude-4.6-Sonnet} (frontier closed,
+    Anthropic): tests a frontier model from a different lab
+    family.
+    \item \textbf{GPT-4.1} (frontier closed, OpenAI): tests a
+    frontier model from the family most-frequently cited as the
+    LLM baseline.
+    \item \textbf{DeepSeek-V4-Pro} (frontier open reasoning):
+    tests a frontier open model with reasoning training.
+    \item \textbf{router:celiums-conversation} (our in-house
+    Atlas router): tests a production LLM-routing system
+    configured for conversational dispatch.
+\end{itemize}
+
+All six are accessed through a uniform OpenAI-compatible API
+endpoint provided by DigitalOcean's GenAI Platform, with the
+exception of the local Llama-8B which uses \texttt{llama.cpp}.
+This uniformity removes API-shape variance from the comparison
+while preserving the providers' native decoding pipelines.
+
+\subsection{Retrieval Modes}
+
+Each LLM is evaluated under three retrieval modes:
+
+\begin{itemize}
+    \item \textbf{Oracle.} The corpus's seed bodies are passed
+    directly as context. No retrieval; the LLM receives the gold
+    supporting passage. Isolates composition quality from
+    retrieval quality.
+    \item \textbf{Vanilla RAG.} FAISS \citep{johnson2019faiss}
+    \texttt{IndexFlatIP} (exact cosine after L2 normalisation)
+    over chunks of all seed bodies. Top-$k=5$ retrieved, passed
+    as context. Chunking uses \texttt{tiktoken cl100k\_base}
+    BPE with 256-token chunks and 32-token overlap.
+    \item \textbf{Strong RAG.} HyDE plus cross-encoder reranking.
+    The LLM first generates a hypothetical answer; that answer is
+    embedded and retrieved (over-retrieve $k=20$); the candidates
+    are reranked by the \texttt{BAAI/bge-reranker-base}
+    cross-encoder \citep{bge_reranker} and the top-5 passed as
+    context.
+\end{itemize}
+
+The retrieval pipeline (embedder, chunker, FAISS index, reranker)
+is shared across all six LLMs. Only the generation stage varies.
+
+\subsection{Metrics}
+\label{sec:metrics}
+
+We score every system on the same set of metrics, comprising
+those directly comparable across architectures (the
+\emph{comparable subset}) and two extra metrics added to capture
+properties specific to the verbatim-quotation commitment.
+
+\paragraph{Comparable subset.}
+
+\begin{itemize}
+    \item \verbpass{} (boolean): every seed body marked
+    \texttt{verbatim\_quotation} appears verbatim in the
+    response.
+    \item \texttt{connective\_hygiene\_pass} (boolean): the
+    response is free of doubled-connective stutters from a
+    pinned list.
+    \item \texttt{ngram\_overlap\_$n$} ($n \in \{4, 5, 8\}$): the
+    fraction of $n$-grams in the response that appear in the
+    concatenated retrieved chunks after lowercasing and
+    whitespace normalisation.
+    \item \unsupf{} (NLI-based): each response is split into
+    sentences. Sentences beginning with a known connective
+    phrase from a pinned list are excluded as scaffolding. The
+    remaining factual sentences are scored by
+    \texttt{roberta-large-mnli} as entailment / neutral /
+    contradiction against the concatenated retrieved context.
+    The filtered rate is (neutral + contradiction)~/~(total
+    factual).
+    \item \unsupr{}: the same as \unsupf{} without the connective-
+    sentence filter. Higher than \unsupf{} for any system whose
+    output contains scaffolding phrases.
+    \item \texttt{latency\_p50}, \texttt{latency\_p95},
+    \texttt{latency\_mean}: per-query wall-clock latency
+    aggregated over the corpus.
+\end{itemize}
+
+\paragraph{Verbatim-quotation extras.}
+
+\begin{itemize}
+    \item \texttt{quoted\_content\_supported\_rate}: the fraction
+    of double-quoted spans in the response that appear verbatim
+    in the retrieved context. Hyphae produces quoted spans for
+    every fragment; LLM-based systems rarely use double quotes
+    formally.
+\end{itemize}
+
+\paragraph{Hyphae-only diagnostics.}
+
+\hyphae{} produces a structured \texttt{RealizationOutput}
+carrying limitation triggers, schema identifier, and
+fragments-quoted list. The internal scoring harness measures
+nine additional dimensions over this output (schema match,
+limitation recall/precision, lexical diversity, role coverage,
+boundary smoothness). These are inapplicable to LLM-based
+systems and are reported separately, not in the head-to-head
+table.
+
+\paragraph{Statistical inference.}
+
+For every aggregate metric we report a bootstrap percentile
+confidence interval (1000 resamples, 95\% level, seed=42). At
+$N=34$ (own corpus) the CIs are wide; at $N=150$ (TriviaQA) they
+narrow substantially. The headline results we emphasise survive
+this narrowing.
+
+\subsection{Hardware}
+\label{sec:hardware}
+
+The primary experimental hardware is an Apple Silicon laptop
+(M-series, 10 cores, MPS backend for the local Llama-8B and the
+NLI scorer). Network calls to DigitalOcean Inference run on
+the laptop's network.
+
+For the hardware-matrix portion (Section~\ref{sec:results-hw})
+we provisioned a DigitalOcean \texttt{c-16} CPU-optimised
+droplet (Intel Xeon Platinum 8168, 16 dedicated vCPU, 31 GB
+RAM, Ubuntu 24.04 LTS, NYC1 region) and re-ran the local Llama-8B
+matrix and the \hyphae{} ablations there.
+
+The reported \hyphae{} latencies should be interpreted as a
+lower bound on what is achievable: optimisation work has not
+been prioritised. The reported LLM latencies should be
+interpreted as the best plausible API-routed latency under no
+batching --- production systems with batching and rate-limited
+parallelism may achieve different throughput, but the per-query
+latency on the user-perceived path is bounded below by the
+LLM's serial inference time.

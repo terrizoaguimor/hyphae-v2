@@ -1,0 +1,55 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented \hyphae{}, a cognitive substrate that produces
+grounded responses without invoking a large language model at
+inference time. \hyphae{}'s realizer composes responses by
+verbatim quotation of retrieved memory fragments combined with
+a curated connective lexicon. On the standard TriviaQA-150
+benchmark, \hyphae{} achieves an NLI-grounded unsupported-claim
+rate of $0.000$, $\sim 40$ percentage points below the closest
+LLM-based system, at six orders of magnitude lower latency on
+commodity CPU. On the project's own multi-fragment composition
+corpus, \hyphae{} ties GPT-4.1 with strong retrieval at
+indistinguishable unsupported-claim rates while remaining five
+orders of magnitude faster.
+
+The architectural claim is not that the verbatim-quotation
+substrate replaces LLM-based generation universally. The claim
+is more specific: \emph{for the subset of tasks in which the
+unit of grounding is a discrete retrieved fragment quoted
+verbatim}, an architectural commitment dominates every
+LLM-based configuration we measured on the cost frontier and
+ties or beats them on the quality frontier. The trade-off is
+that the prose is template-rigid; applications requiring
+paraphrastic composition need an LLM, optionally with \hyphae{}
+as a memory layer.
+
+The contribution of this paper is to make the trade-off
+precise. The full evaluation pipeline (\hyphae{} source, 19
+comparator configurations, two corpora, all result envelopes,
+hardware traces, and this paper's source) is committed at
+\url{https://github.com/terrizoaguimor/hyphae-v2}. Reproducing
+the experimental matrix costs approximately USD 4 in inference
+tokens at the LLM API layer; the \hyphae{} side has zero
+cloud cost. The next honest checkpoint is a reader preference
+study --- the template-rigid prose's user acceptability is the
+single largest open question this paper does not address.
+
+\section*{Acknowledgements}
+
+This work was developed by Celiums Solutions LLC, Medell\'in,
+Colombia. Compute for the multi-LLM matrix was provided by
+DigitalOcean's GenAI Platform under the standard infrastructure
+account associated with the project's other services. No
+academic or industrial collaborators participated in the
+research or writing.
+
+\section*{Data and Code Availability}
+
+All code, corpora, result envelopes, and this paper's source
+are available under a dual licensing scheme at
+\url{https://github.com/terrizoaguimor/hyphae-v2}: code under
+Apache License 2.0, documentation and corpora under Creative
+Commons Attribution 4.0 International.

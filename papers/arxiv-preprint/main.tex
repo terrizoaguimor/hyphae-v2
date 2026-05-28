@@ -1,0 +1,135 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% Copyright 2026 Celiums Solutions LLC
+%
+% Hyphae v0.1 arXiv preprint — main entry point.
+% Reproduces in a single pdflatex pass (no bibtex required if using biber +
+% biblatex; this template uses natbib for portability).
+%
+% Build: pdflatex main && bibtex main && pdflatex main && pdflatex main
+
+\documentclass[11pt,letterpaper]{article}
+
+% Page geometry — close to NeurIPS but not the exact .sty (template-neutral).
+\usepackage[
+    letterpaper,
+    margin=1in,
+    headheight=14pt
+]{geometry}
+
+% Fonts + microtype for tighter typography
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% Math
+\usepackage{amsmath, amssymb, amsthm}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+% Figures
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+
+% Citations — natbib for portability (works with arXiv default)
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+
+% Links
+\usepackage[colorlinks=true,
+    linkcolor=blue!50!black,
+    citecolor=blue!50!black,
+    urlcolor=blue!50!black]{hyperref}
+
+% Code listings (sparingly)
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    columns=fullflexible,
+    frame=single,
+    framesep=4pt,
+    keepspaces=true,
+}
+
+% Heading style
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% Custom commands
+\newcommand{\unsupf}{\texttt{unsup\_f}}
+\newcommand{\unsupr}{\texttt{unsup\_r}}
+\newcommand{\verbpass}{\texttt{verbatim\_pass}}
+\newcommand{\hyphae}{\textsc{Hyphae}}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\usepackage{xcolor}
+
+% Title block
+\title{
+    Architectural Verbatim Quotation: \\
+    Matching Frontier LLMs at $\sim 10^6$ Lower Latency
+}
+
+\author{
+    Mario Guti\'errez \\
+    Celiums Solutions LLC \\
+    Medell\'in, Colombia \\
+    \texttt{mario@celiums.ai}
+}
+
+\date{2026-05-28}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We introduce \hyphae, a cognitive substrate that composes responses
+by verbatim quotation of retrieved memory fragments combined with a
+curated connective lexicon, with no large language model (LLM) in
+the cognition path. We compare \hyphae{} against 18 LLM-based
+configurations (vanilla retrieval-augmented generation, HyDE plus
+cross-encoder reranking, and oracle context) spanning five frontier
+models from Anthropic, OpenAI, DeepSeek, and Meta. On a 150-query
+TriviaQA standard-benchmark column, \hyphae{} achieves an
+NLI-grounded unsupported-claim rate of $0.000$, while the closest
+LLM-based system (DeepSeek-V4-Pro oracle) reaches $0.400$ --- a 40
+percentage-point gap. \hyphae{}'s mean latency is $0.002$ ms versus
+the LLM's $2{,}424$ ms, a $1.18\times10^6$ speedup. On the project's
+own 34-query corpus the gap is narrower: GPT-4.1 with strong
+retrieval ties \hyphae{} within bootstrap confidence intervals
+($0.211$ vs $0.219$), but the latency advantage holds at
+$\sim 5\times10^4$. We attribute this corpus-sensitivity to the
+interaction between the metric's filter and \hyphae{}'s
+compositional template. Ablations show that the lexicon-scale
+component is the single observable driver of the metric deltas;
+boundary smoothing, cascade-shape composition, and the ethics gate
+each produce null deltas at this corpus size. We argue that the
+production economics --- six orders of magnitude latency advantage
+on commodity CPU --- generalise the architectural claim even where
+NLI-quality measurements remain corpus-sensitive. Code, corpora,
+result envelopes, and hardware traces are committed at
+\url{https://github.com/terrizoaguimor/hyphae-v2}.
+\end{abstract}
+
+\input{sections/01-introduction}
+\input{sections/02-related-work}
+\input{sections/03-architecture}
+\input{sections/04-experimental-setup}
+\input{sections/05-results}
+\input{sections/06-ablations}
+\input{sections/07-discussion}
+\input{sections/08-conclusion}
+
+\bibliography{references}
+
+\appendix
+\input{sections/09-appendix}
+
+\end{document}

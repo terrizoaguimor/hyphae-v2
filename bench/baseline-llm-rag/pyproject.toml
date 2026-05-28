@@ -33,6 +33,7 @@ dependencies = [
     # Progress + logging
     "rich>=13.0,<14.0",
     "datasets>=4.8.5",
+    "matplotlib>=3.10.9",
 ]
 
 [project.scripts]

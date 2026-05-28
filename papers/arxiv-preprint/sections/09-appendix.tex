@@ -1,0 +1,154 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Full Per-System Tables}
+\label{app:full-tables}
+
+Tables~\ref{tab:full-triviaqa-app} and~\ref{tab:full-own-app}
+report all 19 system configurations on each corpus, expanding
+the truncated versions in the main text. Bootstrap 95\%
+confidence intervals from 1000 resamples are reported alongside
+the mean.
+
+% Per-system tables would expand here. Generated from the JSON
+% envelopes in bench/baseline-llm-rag/results/ by
+% scripts/make_appendix_tables.py.
+
+\section{Reproduction Instructions}
+\label{app:reproduce}
+
+\subsection{Environment Setup}
+
+\begin{lstlisting}[caption={Setup commands.},
+                    label={lst:setup}]
+git clone https://github.com/terrizoaguimor/hyphae-v2
+cd hyphae-v2
+
+# Rust toolchain (1.85+)
+rustup default stable
+
+# Python env for the comparator
+cd bench/baseline-llm-rag
+uv sync
+./scripts/download-model.sh  # Llama-8B Q4_K_M (~5GB)
+cd ../..
+\end{lstlisting}
+
+\subsection{Corpus Generation}
+
+\begin{lstlisting}[caption={Export the own corpus and build the
+TriviaQA-150 column.},
+                    label={lst:corpus-gen}]
+# Own corpus -> JSON
+cargo run --quiet -p hyphae-eval --example export_corpus \
+    > bench/baseline-llm-rag/corpus-en.json
+
+# TriviaQA-150 subset (deterministic given seed=42)
+cd bench/baseline-llm-rag
+uv run python -m baseline_llm_rag.corpus_external \
+    --seed 42 --n 150 --output corpus-triviaqa-150.json
+\end{lstlisting}
+
+\subsection{Run the Matrix}
+
+\begin{lstlisting}[caption={Run \textsc{Hyphae}, local Llama-8B,
+and the DO Inference 5-model matrix on both corpora.},
+                    label={lst:run-matrix}]
+export DO_INFERENCE_KEY='<your-token>'
+
+# Own corpus
+cargo run --quiet --release -p hyphae-eval \
+    --example export_results > hyphae-results.json
+uv run python -m baseline_llm_rag.score_hyphae \
+    --hyphae-output hyphae-results.json \
+    --output results/v0.1-laptop-hyphae-none.json
+for mode in oracle rag strong-rag; do
+    uv run baseline-llm-rag --mode $mode \
+        --corpus corpus-en.json \
+        --output "results/v0.1-laptop-${mode}.json"
+done
+for model in llama3.3-70b-instruct anthropic-claude-4.6-sonnet \
+             openai-gpt-4.1 deepseek-v4-pro \
+             router:celiums-conversation; do
+    tag=$(echo "$model" | tr ':' '-')
+    for mode in oracle rag strong-rag; do
+        uv run baseline-llm-rag --mode $mode \
+            --corpus corpus-en.json \
+            --output "results/v0.1-doinf-${tag}-${mode}.json" \
+            --llm-backend do-inference --model "$model"
+    done
+done
+
+# TriviaQA: same shape, --corpus corpus-triviaqa-150.json
+bash scripts/run-triviaqa.sh
+\end{lstlisting}
+
+\subsection{Ablations}
+
+\begin{lstlisting}[caption={Run the four ablation conditions.},
+                    label={lst:ablations}]
+for ablation in none no-shape no-ethics minimal-lexicon \
+                no-smoothing; do
+    cargo run --quiet --release -p hyphae-eval \
+        --example export_results_ablation \
+        -- --ablation "$ablation" \
+        > "bench/baseline-llm-rag/hyphae-results-${ablation}.json"
+    cd bench/baseline-llm-rag
+    uv run python -m baseline_llm_rag.score_hyphae \
+        --hyphae-output "hyphae-results-${ablation}.json" \
+        --output "results/v0.1-laptop-hyphae-${ablation}.json"
+    cd ../..
+done
+\end{lstlisting}
+
+\section{Selected Sample Outputs}
+\label{app:samples}
+
+We include sample outputs from selected systems on selected
+queries to give the reader concrete texture for the numbers in
+Section~\ref{sec:results}. The full per-query output is in the
+JSON result envelopes in
+\texttt{bench/baseline-llm-rag/results/}.
+
+\paragraph{Own corpus, \texttt{dialogue-001}}
+(\emph{``what is the status of the migration?''})
+
+\textbf{Hyphae:} \emph{``Per the recorded fragments, `the
+migration completed at 14:02 UTC' Per the next fragment, `the
+monitoring dashboards stayed green for the hour after the
+cutover' That is the substrate's current view.''}
+
+\textbf{GPT-4.1 strong-rag:} \emph{``The status of the migration
+is that it completed at 14:02 UTC, with monitoring dashboards
+staying green for the hour after the cutover.''}
+
+\paragraph{TriviaQA, \texttt{triviaqa-qb\_4397}}
+(\emph{``In April 1963, Lester Bowles Pearson became Prime
+Minister of which country?''})
+
+\textbf{Hyphae:} \emph{``Drawing from working memory, `Pearson
+did not make the move into politics until a few years later,
+after King had announced his retirement as the Prime Minister
+of Canada.' That is what working memory holds on this.''}
+
+\textbf{Llama-3.3-70B rag:} \emph{``According to the provided
+context, Lester Bowles Pearson became Prime Minister of Canada
+in April 1963. This information is supported by the sentence
+which mentions that Pearson did not enter politics until after
+King had announced his retirement as the Prime Minister of
+Canada, indicating that Pearson eventually took this role
+himself.''}
+
+The Llama-3.3-70B response contains three sentences. The
+factual content (Pearson, Canada) is correct. The first
+sentence ("According to the provided context, Lester Bowles
+Pearson became Prime Minister of Canada in April 1963") is
+scored \texttt{neutral} by the NLI: the context does not
+explicitly state ``April 1963'', although the answer is correct
+in the world. The second sentence describes how the answer
+relates to the context; \texttt{neutral}. The third sentence
+infers an action (``Pearson eventually took this role himself'')
+not in the context; \texttt{neutral}. All three count as
+unsupported claims by the filtered metric.
+
+This is a sample of the mechanism by which the unsupported-claim
+rate accumulates on LLM responses to TriviaQA queries even when
+the underlying factual answer is correct.

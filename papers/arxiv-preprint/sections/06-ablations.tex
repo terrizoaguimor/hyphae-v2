@@ -1,0 +1,140 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Ablations}
+\label{sec:ablations}
+
+To disaggregate \hyphae{}'s contribution by component, we
+ablate four parts of the realizer in turn and re-score on the
+own corpus. Each ablation disables a single component while
+leaving the other three (and the substrate's verbatim-quotation
+contract) intact.
+
+\paragraph{Conditions.}
+
+\begin{itemize}
+    \item \textbf{A0 (full)}: control. All components active.
+    \item \textbf{A1 (no-shape)}: cascade-shape composition
+    (\citetalias{adr0006}) disabled. The realizer is forced to a
+    flat linear Continuation shape; opposed-valence Contrast
+    detection and Causation/Sequence shapes are bypassed.
+    \item \textbf{A2 (no-ethics)}: the ethics report at the
+    Compose coverage point (\citetalias{adr0003}) is set to
+    \texttt{None}. The \texttt{EthicallySensitive} limitation
+    trigger cannot fire. The other limitation triggers
+    (\texttt{EmptyWorkingSet}, \texttt{HighConfabRisk},
+    \texttt{ShallowCascade}) still fire because they evaluate the
+    working set directly.
+    \item \textbf{A3 (minimal-lexicon)}: the baseline 250-entry
+    EN lexicon (\citetalias{adr0005}) is replaced with a
+    10-entry minimal lexicon (one entry per ConnectiveRole at
+    Neutral register / Neutral polarity / Mid formality). The
+    picker's four-level fallback chain resolves register and
+    polarity preferences against the single minimal entry.
+    \item \textbf{A4 (no-smoothing)}: boundary smoothing
+    (\citetalias{adr0007}) disabled. The realizer falls through
+    to the plain context picker without the
+    Rule~1/Rule~3 boundary filter.
+\end{itemize}
+
+\paragraph{Headline finding.}
+
+Table~\ref{tab:ablations} shows the results. The architectural
+quotation contract (\verbpass{}, connective hygiene, quoted-content
+support) holds at $1.000$ across every ablation. The metric the
+head-to-head emphasises (\unsupf{}) moves measurably under
+\textbf{A3 only}; A1, A2, and A4 produce null deltas.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{Ablation results on the own corpus.} Quality
+contracts are robust to each single-component ablation. Only
+A3 (minimal lexicon) measurably moves \unsupf{} and
+$\text{overlap}_4$. \textbf{Bold} = delta of $\geq 5$ percentage
+points versus the A0 baseline.}
+\label{tab:ablations}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Metric} & A0 full & A1 no-shape & A2 no-ethics & A3 min-lex & A4 no-smooth \\
+\midrule
+\verbpass                          & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+connective hygiene                 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+quoted-content supp.               & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+overlap$_4$                        & 0.466 & 0.460 & 0.466 & \textbf{0.521} & 0.457 \\
+overlap$_8$                        & 0.240 & 0.236 & 0.240 & 0.272 & 0.234 \\
+\unsupf (filt.)                    & 0.219 & 0.188 & 0.219 & 0.297 & 0.188 \\
+\unsupr (raw)                      & 0.625 & 0.656 & 0.625 & \textbf{0.461} & 0.641 \\
+latency mean (ms)                  & 0.024 & 0.056 & 0.048 & 0.030 & 0.021 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Mechanism Analysis}
+
+\paragraph{A1, A2, A4: null deltas with visible structural change.}
+
+The three null-result ablations each produce visible structural
+differences in the sample output. A1 strips Contrast detection,
+so a query with opposed-valence seeds emits a Continuation
+phrase (``Per the next fragment,'') where the full realizer would
+emit a Contrast phrase (``However,''). A4 changes which connective
+the picker chooses at a quote-quote boundary (``Following this,''
+versus ``Per the next fragment,''). A2 strips the
+\texttt{EthicallySensitive} signal, but the v0.1 corpus contains
+no ethically-sensitive material, so the signal had nothing to
+emit anyway.
+
+The metric set does not separate these structural changes from
+the baseline. This is informative in itself: at the corpus size
+and metric set chosen, three of \hyphae{}'s components produce
+qualitative effects that do not register quantitatively. A
+production deployment that values prose variety or
+limitation-acknowledgement coverage would still want them
+enabled; the metric does not measure those properties.
+
+\paragraph{A3: lexicon scale moves both directions of the metric.}
+
+The minimal lexicon raises overlap$_4$ from $0.466$ to $0.521$
+(+12\%) because its phrases (``Note that,'' ``Per the record:'')
+are shorter and contribute fewer non-context tokens to the
+overlap denominator. The same shortening cuts the \unsupr{} rate
+from $0.625$ to $0.461$ (-26\%): there are fewer scaffolding
+sentences for the NLI to mark \texttt{neutral}.
+
+The \unsupf{} rate moves the other direction: $0.219 \to 0.297$.
+The shorter minimal-lexicon phrases sometimes slip through the
+\texttt{is\_connective\_sentence} filter (e.g., ``Also,'' and
+``Specifically,'' are not in the filter's keyword list); the
+filter under-counts and lets through scaffolding that the NLI
+then marks \texttt{neutral} as if it were a claim. The
+$\unsupf{}$ rise in A3 reflects this filter gap, not a
+fidelity defect.
+
+\paragraph{Causal attribution.}
+
+A3's directionally-correct deltas explain a phenomenon visible
+in the head-to-head: \hyphae{}'s overlap$_8$ on the own corpus
+($0.240$) is \emph{lower} than the LLM baselines' overlap$_8$
+($0.329$). The mechanism is now identified: the baseline EN
+lexicon's longer phrases break 8-token windows around each
+verbatim quote. The minimal lexicon raises overlap$_8$ from
+$0.240$ to $0.272$ --- partial closure of the gap, attributable
+to lexicon scale rather than to fidelity. A shorter lexicon
+tuned for n-gram-friendly phrases could close the gap further;
+that is a separate ADR.
+
+\subsection{Limits of the Ablation}
+
+We ran four single-component ablations, not a $2^4 = 16$ factorial.
+At $N=34$ the statistical separation of single-component effects
+is already strained; full factorial would compound the
+multiple-comparisons problem. We do not claim that pairwise
+interactions are negligible --- only that the single-component
+sweep is what the corpus size supports.
+
+We did not ablate the verbatim-quotation contract itself
+(Hard Commitment 12). Ablating that commitment converts the
+system into a paraphrase pipeline --- in effect, an LLM. The
+LLM-baseline columns of the head-to-head are exactly that
+ablation, run on six different generators. The result is in
+Section~\ref{sec:results}; we do not double-count it as an
+ablation here.

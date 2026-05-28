@@ -1,0 +1,153 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Threats to Validity}
+\label{sec:threats}
+
+\paragraph{Metric.} \unsupf{} measures NLI-grounded entailment
+between response sentences and retrieved context. The metric
+penalises hedging (Claude-4.6-Sonnet, Section~\ref{sec:per-model})
+and rewards short responses (\hyphae{}'s template on TriviaQA,
+Section~\ref{sec:results-triviaqa}). It does not measure
+factual correctness against an external gold truth, prose
+fluency, or response utility for the asker's actual goal. The
+own-corpus result holds at indistinguishable \unsupf{} between
+\hyphae{} and GPT-4.1 with strong RAG. The TriviaQA result
+holds at a 40-percentage-point gap that derives in part from the
+metric's filter mechanically catching \hyphae{}'s scaffolding
+template. We report \unsupr{} (the raw version without the filter)
+alongside \unsupf{} for honesty. Readers should weigh both.
+
+\paragraph{Corpus.} The own corpus is concentrated on
+deployment and engineering scenarios. TriviaQA is single-hop
+factual retrieval over Wikipedia. Multi-hop benchmarks (HotpotQA,
+MuSiQue), domain-specific benchmarks (TruthfulQA, MS MARCO), and
+long-context benchmarks (NarrativeQA) would each surface
+different patterns and are reasonable next directions.
+
+\paragraph{Statistical power.} $N=34$ supports the patterns we
+emphasise (Pareto frontier shape, latency advantage,
+\hyphae{}-vs-GPT-4.1 tie on \unsupf{}) but admits multiple
+rank-order swaps in the middle of the ranking. $N=150$
+substantially tightens the TriviaQA picture: the rank-1 position
+of \hyphae{} is robust to bootstrap resampling, but middle-of-the-
+table positions remain noisy.
+
+\paragraph{Reader preference.} \hyphae{}'s prose is template-rigid.
+The realizer's output reads as deliberate rather than
+conversational; this is by design and motivated in
+Section~\ref{sec:arch}. Whether deliberate prose is preferred by
+end users on factual-retrieval queries is a separate study (human
+eval) that this paper does not provide. The honest claim is that
+\hyphae{}'s prose meets the verbatim-grounding bar by construction
+and that an end-user study is the natural next checkpoint.
+
+\paragraph{API non-determinism.} Closed-API generators
+(Claude-4.6-Sonnet, GPT-4.1) do not guarantee bit-identical
+reruns under \texttt{temperature=0, seed=42}. Per-call
+variation is small at greedy decoding but non-zero; our reported
+results are a snapshot. The result JSON envelopes are committed;
+reviewers can re-run and inspect any drift. Open-weight models
+on the same OpenAI-compatible endpoint are substantially more
+deterministic across reruns.
+
+\paragraph{Hardware sensitivity.} The hardware matrix
+(Section~\ref{sec:results-hw}) tests two configurations and
+finds quality metrics invariant within $\pm 0.03$. A wider matrix
+(GPU server class, different x86 microarchitectures, ARM server)
+is queued; the v0.1 paper does not generalise across all
+hardware. The latency advantage we report on the laptop and the
+CPU droplet, however, holds at both points; the LLM never reaches
+sub-millisecond latency in our measurements.
+
+\subsection{When This Matters}
+\label{sec:when-matters}
+
+The architectural claim --- six orders of magnitude lower latency
+at competitive grounding --- pays off most clearly in three
+regimes.
+
+\textbf{High-throughput grounded retrieval.} A service whose
+fundamental operation is ``cite the relevant memory fragment for
+this query'' bottlenecks on LLM serial inference today. \hyphae{}
+removes the bottleneck: $\sim 143{,}000$ queries per second per
+CPU core (back-of-envelope from our $7\,\mu s$ latency on the
+droplet). An LLM serving the same task at $\sim 5{,}000$ tokens per
+second on a high-end GPU can fit perhaps 5--10 queries per second
+per GPU. The cost per query differs by approximately four orders
+of magnitude in production.
+
+\textbf{Audit-bound deployments.} The hash-chained substrate and
+verbatim quotation are direct architectural answers to ``can you
+prove what this system told the user came from named source
+material?''. Industries with audit requirements (finance, legal,
+compliance, healthcare) currently rely on LLM-output logging plus
+post-hoc verification. \hyphae{} folds verification into the
+output by construction.
+
+\textbf{Memory-constrained edge deployments.} The substrate's
+$\sim 50$ MB resident footprint runs on commodity hardware
+without GPU. Production patterns that today require model
+serving infrastructure (Llama-8B in $\sim 5$ GB, Llama-70B in
+$\sim 40$+ GB) cannot fit; \hyphae{} fits.
+
+\subsection{When This Does Not Matter}
+\label{sec:when-doesnt}
+
+We do not claim the architectural commitment is universally
+correct. Three regimes call for an LLM.
+
+\textbf{Open-ended generation.} If the user wants the system to
+write prose --- a draft letter, a summary in their voice, a
+creative composition --- the verbatim-quotation commitment
+forbids the operation. The right tool is an LLM, optionally
+augmented by \hyphae{} as a memory layer.
+
+\textbf{Multi-hop reasoning.} \hyphae{} composes verbatim quotes;
+it does not infer across multiple fragments. A query that
+requires synthesising ``X was born in 1822'' and ``the Y revolution
+began in 1830'' to answer ``how old was X at the time of Y?''
+needs a reasoning step the realizer does not perform. An LLM,
+or \hyphae{}-plus-LLM where the LLM operates on \hyphae{}'s
+retrieved fragments, is the right tool.
+
+\textbf{Paraphrastic flexibility.} \hyphae{}'s prose reads as
+template prose. If conversational naturalness is a hard
+requirement, the architecture's trade-off is in the wrong
+direction.
+
+The honest framing is positional: \hyphae{} occupies a specific
+point in the latency-quality-cost-audit space. The paper
+documents that point.
+
+\subsection{Future Work}
+
+\paragraph{Multi-hop benchmark column.} HotpotQA or MuSiQue
+subset. Tests the inference regime explicitly. Anticipated to
+show \hyphae{} struggle (single-fragment composition cannot
+synthesise across hops); the question is whether it struggles
+gracefully (deferring to limitation acknowledgement) or
+catastrophically.
+
+\paragraph{Gold-answer match column.} TriviaQA's
+\texttt{answer.value} field allows scoring whether the response
+contains the correct entity. Complements \unsupf{} (which scores
+grounding in context) with a correctness metric.
+
+\paragraph{Reader preference study.} Human evaluation on a
+subset of the TriviaQA corpus. The template-rigid prose's
+acceptability to real users is unmeasured.
+
+\paragraph{Hardware matrix expansion.} GPU server class
+(closes the LLM's biggest performance handicap), AMD EPYC
+microarchitecture comparison, ARM64 server class
+(Apple Silicon scale-out).
+
+\paragraph{Stronger retrieval pipelines.} RAG-Fusion, GraphRAG
+on the LLM side. The current strong-RAG comparator (HyDE +
+reranker) is canonical; stronger pipelines exist and could
+narrow the gap. The own-corpus tie at GPT-4.1 + strong-RAG
+suggests there is finite room to close before reviewers see
+LLMs match \hyphae{} on \unsupf{}; whether that room is
+realisable on TriviaQA is open.

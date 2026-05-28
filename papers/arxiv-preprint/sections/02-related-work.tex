@@ -1,0 +1,98 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Retrieval-Augmented Generation}
+
+The dominant pattern for grounding LLM responses in external
+knowledge couples a retrieval stage (chunking, embedding, top-$k$
+nearest-neighbour search) with a generation stage (LLM
+conditioned on the retrieved passages) \citep{lewis2020rag,
+karpukhin2020dpr}. Substantial subsequent work improves the
+retrieval side: HyDE generates a hypothetical answer with the LLM
+and embeds that, recovering performance when the raw query is
+short \citep{gao2022hyde}; cross-encoder reranking re-scores
+candidates with $(query, passage)$ pairs scored directly
+\citep{nogueira2019passage, reimers2019sentencebert};
+RAG-Fusion generates multiple query rewrites and fuses retrieval
+results with reciprocal rank fusion \citep{rackauckas2024ragfusion};
+GraphRAG constructs an offline graph of the corpus and traverses
+it at retrieval time \citep{edge2024graphrag}. Self-RAG trains
+the LLM to adaptively invoke retrieval \citep{asai2024selfrag}.
+
+These techniques operate on the retrieval pipeline; the generation
+stage remains an LLM. We compare \hyphae{} against the vanilla
+pipeline, HyDE plus cross-encoder reranking (the canonical
+``serious RAG'' stack), and oracle retrieval (the LLM receives the
+ground-truth supporting passage directly). The latter isolates
+composition quality from retrieval quality.
+
+\subsection{Structured Memory and Cognitive Architectures}
+
+Long-context architectures and explicit memory systems offer
+different approaches to persistent context. MemGPT manages
+context windows via a tiered storage system with LLM-mediated
+paging \citep{packer2024memgpt}; Atlas (the production system
+behind our \texttt{router:celiums-conversation} comparator) routes
+queries across a curated model ensemble. Earlier work on cognitive
+architectures (Soar \citep{laird2012cognitive}, ACT-R
+\citep{anderson2014actr}) modelled memory and inference as
+discrete operations on structured representations rather than as
+prediction over token distributions.
+
+\hyphae{} shares the structured-memory orientation but differs in
+its composition stage: the realizer is not an LLM, not a learned
+model, and not a statistical predictor. It is a finite procedure
+walking a curated lexicon and emitting verbatim quotations of
+retrieved fragments. The architecture is finite and inspectable;
+no training run can change its outputs.
+
+\subsection{Verifiable AI and NLI-Based Grounding}
+
+Recent work on factual grounding evaluates LLM outputs against
+their source contexts using natural language inference (NLI)
+models \citep{honovich2022true, gekhman2023trueteacher}. The
+\unsupf{} metric we employ is in this family: each sentence in
+a response is scored for entailment against the retrieved
+context, and sentences classified \texttt{neutral} or
+\texttt{contradiction} count as unsupported. Recent surveys
+\citep{huang2023hallucinationsurvey,
+ji2023hallucinationsurvey} catalogue the failure modes such
+metrics catch and miss.
+
+We employ the \texttt{roberta-large-mnli} cross-encoder
+\citep{liu2019roberta} for entailment scoring. Section~\ref{sec:setup}
+documents the metric's known limitations
+(asymmetric treatment of hedging, sensitivity to scaffolding
+prose) and how \hyphae{}'s compositional template interacts
+with them.
+
+\subsection{Sub-millisecond Production Inference}
+
+The latency-quality trade-off in conversational AI is widely
+acknowledged \citep{leviathan2023speculative,
+chen2023fastinference, kumar2024sublinearmemory}. Most
+recent work targets sub-second response under high token
+generation budgets. \hyphae{} sits in a different operating
+point: sub-millisecond composition under the structural
+constraint that the response is bounded by curated lexicon
+phrases and verbatim quotations. This shifts the operating
+point of the system at the cost of generative flexibility
+that some applications require and others do not.
+
+\subsection{Where This Paper Fits}
+
+We do not claim that \hyphae{} subsumes LLM-based generation.
+We claim that \emph{for the subset of tasks in which the
+unit of grounding is a discrete retrieved fragment quoted
+verbatim}, an architectural commitment outperforms any LLM
+configuration we measured by six orders of magnitude in latency
+on commodity hardware, ties or beats them on NLI-grounded
+unsupported-claim rate, and removes the cost line item entirely
+from the production economics. The trade-off, made explicit, is
+that the prose is template-rigid; users wanting LLM-style
+paraphrastic composition need an LLM.
+
+The contribution is to make this trade-off precise and to provide
+the comparator data that lets reviewers and practitioners decide
+where on the trade-off their use case lies.
