@@ -43,6 +43,7 @@ from .metrics_extra import (
     bootstrap_ci,
     has_doubled_connectives,
     ngram_overlap,
+    quoted_content_supported_rate,
     unsupported_claim_rate,
     verbatim_pass,
 )
@@ -149,6 +150,13 @@ def _score_one(
         rate_filtered = rate_raw = None
         unsup_f = total_f = unsup_r = total_r = 0
 
+    # Quoted-content support rate — architecturally diagnostic.
+    # `None` when the response has no quoted spans (typical LLM
+    # output); the aggregator skips Nones.
+    q_rate, q_supported, q_total = quoted_content_supported_rate(
+        rag_out.response, list(rag_out.retrieved_chunks)
+    )
+
     return {
         "query_id": query.id,
         "response": rag_out.response,
@@ -164,6 +172,8 @@ def _score_one(
             "unsupported_claim_rate_raw": rate_raw,
             "unsupported_claims_filtered": {"unsupported": unsup_f, "total_factual": total_f},
             "unsupported_claims_raw": {"unsupported": unsup_r, "total_factual": total_r},
+            "quoted_content_supported_rate": q_rate,
+            "quoted_content_counts": {"supported": q_supported, "total_quoted": q_total},
             "latency_ms": rag_out.latency_ms,
         },
     }
@@ -197,6 +207,7 @@ def _aggregate(per_query: list[dict[str, Any]]) -> dict[str, Any]:
     overlap_8 = [m["ngram_overlap_8"] for m in metrics]
     unsup_f = [m["unsupported_claim_rate_filtered"] for m in metrics]
     unsup_r = [m["unsupported_claim_rate_raw"] for m in metrics]
+    quoted = [m["quoted_content_supported_rate"] for m in metrics]
 
     latencies = [m["latency_ms"] for m in metrics]
     latencies_sorted = sorted(latencies)
@@ -217,6 +228,7 @@ def _aggregate(per_query: list[dict[str, Any]]) -> dict[str, Any]:
     agg.update(_mean_with_ci(overlap_8, "ngram_overlap_8"))
     agg.update(_mean_with_ci(unsup_f, "unsupported_claim_rate_filtered"))
     agg.update(_mean_with_ci(unsup_r, "unsupported_claim_rate_raw"))
+    agg.update(_mean_with_ci(quoted, "quoted_content_supported_rate"))
     return agg
 
 

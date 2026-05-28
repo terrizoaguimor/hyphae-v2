@@ -45,5 +45,6 @@ build-backend = "hatchling.build"
 packages = ["src/baseline_llm_rag"]
 
 [tool.uv]
-# Lock hashes are required for reproducibility
-require-hashes = true
+# Reproducibility: the `uv.lock` file (generated on first `uv sync`)
+# pins exact versions of every transitive dependency. Reviewers
+# replicate by running `uv sync --frozen` against that lockfile.

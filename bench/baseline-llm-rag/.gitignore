@@ -2,14 +2,20 @@
 models/
 *.gguf
 
-# Generated comparator outputs (re-runnable; not part of the repo
-# until they land in docs/perf/baseline-comparison.md)
-results/*.json
-!results/README.md
+# Smoke and ad-hoc scratch — runnable; not paper artifacts
+results/smoke-*.json
+results/scratch-*.json
 
-# Exported corpus (regenerated from the Rust harness)
+# The published v0.1 comparator artifacts ARE checked in (per
+# ADR-0027 — reproducibility requires the JSON envelopes to ship
+# with the writeup). Future versioned runs follow the
+# `v{N}-{hardware}-{mode}.json` naming convention.
+
+# Exported corpus + Hyphae outputs (regenerated from the Rust
+# harness; deterministic given the corpus source)
 corpus-en.json
 corpus-es.json
+hyphae-results.json
 
 # Python build artifacts
 __pycache__/

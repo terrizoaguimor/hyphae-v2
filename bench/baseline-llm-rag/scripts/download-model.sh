@@ -13,10 +13,11 @@ MODELS_DIR="${BENCH_DIR}/models"
 
 HF_REPO="bartowski/Meta-Llama-3.1-8B-Instruct-GGUF"
 MODEL_FILE="Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf"
-EXPECTED_SHA256="b1bd6e324d8a2a18b8a3eaa56df1f5d7e3b6bcf1c10b0eb6e3a4f0b8b2d2c5e2"
-# NOTE: SHA256 above is a placeholder. Real value is updated on first
-# successful download; see "verify" step below. Pinning happens in two
-# stages: (1) repo+filename here, (2) hash recorded after first verify.
+EXPECTED_SHA256="7b064f5842bf9532c91456deda288a1b672397a54fa729aa665952863033557c"
+# SHA256 pinned 2026-05-28 after first verified download against
+# bartowski/Meta-Llama-3.1-8B-Instruct-GGUF on HuggingFace. Any
+# mismatch on re-run signals either a tampered local cache or a
+# silent upstream re-upload — both warrant investigation, not retry.
 
 MODEL_PATH="${MODELS_DIR}/${MODEL_FILE}"
 

@@ -139,30 +139,91 @@ class NliClassifier(Protocol):
 
 _SENTENCE_BOUNDARY_RE = re.compile(r"(?<=[.!?])\s+")
 
+# Hyphae's compositional output joins verbatim quotes with inter-fragment
+# connective phrases that do NOT terminate with a period — e.g.
+#     Per the recorded fragments, "X" Per the next fragment, "Y" That is the substrate's current view.
+# A naive period-split treats that entire string as ONE sentence, and the
+# NLI then judges a multi-quote composition that no single entailment
+# model is calibrated for. We split on the same inter-fragment phrases
+# Hyphae's lexicon emits so each verbatim quote becomes its own
+# "sentence" for the NLI denominator. This is documented behaviour, not
+# a hidden adjustment.
+_INTER_FRAGMENT_SPLIT_RE = re.compile(
+    r"\s+(?="
+    r"Per the recorded fragments?,|"
+    r"Per the next fragment,|"
+    r"Per the recorded material:|"
+    r"The source states:|"
+    r"Drawing from working memory,|"
+    r"Following this,|"
+    r"Additionally,|"
+    r"Furthermore,|"
+    r"Extending that,|"
+    r"Building on it,|"
+    r"Likewise,|"
+    r"By contrast,|"
+    r"However,|"
+    r"On the other hand,|"
+    r"That is the substrate's current view|"
+    r"Overall,|"
+    r"On balance,|"
+    r"Taking it together,|"
+    r"Therefore,"
+    r")"
+)
+
 
 def _split_sentences(text: str) -> list[str]:
-    """Naive sentence split on `.`/`!`/`?` followed by whitespace.
+    """Split a response into sentence-like units for NLI scoring.
 
-    Good enough for the corpus's short, well-formed outputs. A more
-    robust splitter (spaCy, NLTK) is an unnecessary dependency for
-    this comparator; if the corpus grows to multi-paragraph
-    technical text the runner switches to one of those.
+    Two passes:
+      1. Standard period/!/? split.
+      2. Hyphae-aware inter-fragment split — a verbatim-quotation
+         composition does not place a period between adjacent quotes,
+         only a connective phrase. Without this pass the entire
+         response collapses to one "sentence" and the NLI loses its
+         denominator entirely.
+
+    The Hyphae-aware pass is purely additive — it never merges two
+    sentences a standard splitter would have separated. Applying it
+    to an LLM response that does not use Hyphae's connective vocabulary
+    is a no-op.
     """
     text = text.strip()
     if not text:
         return []
-    parts = _SENTENCE_BOUNDARY_RE.split(text)
-    return [p.strip() for p in parts if p.strip()]
+    coarse = _SENTENCE_BOUNDARY_RE.split(text)
+    fine: list[str] = []
+    for part in coarse:
+        part = part.strip()
+        if not part:
+            continue
+        fine.extend(p.strip() for p in _INTER_FRAGMENT_SPLIT_RE.split(part) if p.strip())
+    return fine
 
 
 # Heuristic: a sentence "is connective" if it starts with one of
 # Hyphae's known connective phrases. Documented in ADR-0027 as a
 # choice that benefits Hyphae; the writeup reports unsupported-claim
 # rate BOTH with and without this filter.
+#
+# The list extends `DOUBLED_CHECK_PHRASES` with the lexicon phrases
+# Hyphae actually emits in its compositions (Per the recorded
+# fragments, / Per the next fragment, / That is the substrate's
+# current view, / Following this, / Additionally, / Furthermore,).
+# Without these the filter under-counts and the LLM appears
+# artificially better on Hyphae's compositional output.
 _CONNECTIVE_PREFIXES: tuple[str, ...] = (
     "drawing from working memory,",
     "the source states:",
     "per the recorded material:",
+    "per the recorded fragments,",
+    "per the recorded fragment,",
+    "per the next fragment,",
+    "that is the substrate's current view",
+    "following this,",
+    "additionally,",
+    "furthermore,",
     "therefore,",
     "however,",
     "by contrast,",
@@ -222,6 +283,47 @@ def unsupported_claim_rate(
         if label != "entailment":
             unsupported += 1
     return unsupported / len(factual), unsupported, len(factual)
+
+
+# ── Quoted-content support rate ──────────────────────────────
+
+
+_QUOTED_RE = re.compile(r'"([^"]+)"')
+
+
+def extract_quoted_strings(text: str) -> list[str]:
+    """Return all double-quoted substrings of `text`.
+
+    Hyphae's compositions surface seed bodies inside `"..."` (the
+    realizer's verbatim-quotation contract). This extractor enables
+    a metric the LLM baseline almost never triggers — the rate at
+    which a system's quoted content matches the retrieved context.
+    """
+    return _QUOTED_RE.findall(text)
+
+
+def quoted_content_supported_rate(
+    response: str, retrieved_chunks: Sequence[str]
+) -> tuple[float | None, int, int]:
+    """Of the quoted spans in `response`, what fraction appears
+    verbatim in at least one retrieved chunk?
+
+    Returns `(rate_or_None, supported, total_quoted)`. `None` rate
+    when the response has no quoted spans — applicable to most LLM
+    outputs (the baseline almost never uses formal quotation),
+    making this metric architecturally diagnostic rather than
+    universal.
+
+    Hyphae's expected rate is 1.0 by construction. The LLM's rate is
+    typically `None` (no quotes) or near zero (when it does, the
+    quotes are paraphrased).
+    """
+    quoted = extract_quoted_strings(response)
+    if not quoted:
+        return None, 0, 0
+    chunks_concat = "\n".join(retrieved_chunks)
+    supported = sum(1 for q in quoted if q in chunks_concat)
+    return supported / len(quoted), supported, len(quoted)
 
 
 # ── Bootstrap CI helper ───────────────────────────────────────
