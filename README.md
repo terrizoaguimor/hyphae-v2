@@ -204,11 +204,7 @@ commits, 17 subsystem crates, 38 ported tools, and the RFC superseding
 chain (v0.1.2 → v0.2 → v0.3 with patches). The cost of unwinding that
 exceeded the cost of rebuilding from primitives. See ADR-0001.
 
-## Motivation (unchanged from v1)
-
-> *"Hago esto porque creo firmemente que puedo poner mi grano de arena
-> para que este mundo no se vaya a la mierda."* — Mario Gutiérrez,
-> May 2026.
+## Motivation
 
 The current trajectory of large-language-model development requires
 increasingly massive data centers, GPU clusters, and energy
@@ -220,9 +216,12 @@ persistent memory, contextual reasoning, honest limitation
 acknowledgment, and curiosity-driven learning — can be decoupled from
 that infrastructure dependency.
 
-If the bet validates, an alternative exists. If it does not, the
-attempt is documented, the failure is empirical signal, and the next
-attempt learns from this one.
+The project is built in the conviction that meaningful alternatives to
+the dominant trajectory are still possible, and that small, focused,
+open work can contribute to discovering them. If the architectural bet
+validates, an alternative exists. If it does not, the attempt is
+documented, the failure is empirical signal, and the next attempt
+learns from this one.
 
 ## License
 
