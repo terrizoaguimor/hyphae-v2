@@ -612,6 +612,7 @@ dependencies = [
  "insta",
  "proptest",
  "serde",
+ "serde_json",
  "thiserror",
  "tracing",
 ]

@@ -20,3 +20,7 @@ tracing = { workspace = true }
 [dev-dependencies]
 proptest = { workspace = true }
 insta = { workspace = true }
+# JSON output for the `export_corpus` example. Per ADR-0027 the
+# LLM+RAG comparator consumes the corpus as JSON to keep a single
+# source of truth — examples only, not on the cognition path.
+serde_json = { workspace = true }

@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Celiums Solutions LLC
+
+[project]
+name = "baseline-llm-rag"
+version = "0.1.0"
+description = "Vanilla LLM+RAG comparator for Hyphae v2. See ADR-0027."
+readme = "README.md"
+requires-python = "==3.11.*"
+license = "Apache-2.0"
+authors = [
+    { name = "Mario Gutiérrez", email = "mario@celiums.ai" },
+]
+
+# Dependency selection rationale lives in ADR-0027. Versions are
+# pinned narrow; the uv lockfile (uv.lock) carries the exact hashes.
+dependencies = [
+    # Embeddings (MiniLM-L6-v2)
+    "sentence-transformers>=3.0,<4.0",
+    # Vector index (exact inner-product, no ANN)
+    "faiss-cpu>=1.8,<2.0",
+    # Generator LLM runtime (vendors a pinned llama.cpp)
+    "llama-cpp-python>=0.3,<0.4",
+    # NLI for unsupported-claim metric
+    "transformers>=4.45,<5.0",
+    "torch>=2.4,<3.0",
+    # Tokenisation for chunking (cl100k_base BPE)
+    "tiktoken>=0.8,<0.9",
+    # HF model download
+    "huggingface-hub>=0.25,<1.0",
+    # CLI
+    "click>=8.1,<9.0",
+    # Progress + logging
+    "rich>=13.0,<14.0",
+]
+
+[project.scripts]
+baseline-llm-rag = "baseline_llm_rag.eval_runner:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/baseline_llm_rag"]
+
+[tool.uv]
+# Lock hashes are required for reproducibility
+require-hashes = true

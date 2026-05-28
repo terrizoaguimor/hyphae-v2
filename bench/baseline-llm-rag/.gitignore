@@ -1,0 +1,32 @@
+# Models (large — re-downloaded via scripts/download-model.sh)
+models/
+*.gguf
+
+# Generated comparator outputs (re-runnable; not part of the repo
+# until they land in docs/perf/baseline-comparison.md)
+results/*.json
+!results/README.md
+
+# Exported corpus (regenerated from the Rust harness)
+corpus-en.json
+corpus-es.json
+
+# Python build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+dist/
+build/
+
+# uv cache
+.uv-cache/
+
+# HF cache layered under repo
+.cache/
+
+# Test scratch
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

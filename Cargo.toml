@@ -63,6 +63,9 @@ petgraph = "0.6"
 serde = { version = "1", features = ["derive"] }
 bincode = "1"
 rkyv = { version = "0.7", features = ["validation"] }
+# JSON serialization — used by the eval-corpus exporter (ADR-0027)
+# that feeds the LLM+RAG comparator. Not on the cognition path.
+serde_json = "1"
 
 # Crypto — journal hash chain (Hard Commitment: SHA-256 chain shared
 # between substrate journal and ethics audit, see ADR-0003).
