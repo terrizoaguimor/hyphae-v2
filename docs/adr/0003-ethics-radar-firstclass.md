@@ -15,7 +15,7 @@ triangulated-by: [claude-opus-4-7 (v2 chartering session review)]
 ## Context
 
 The v1 honest documentation of the ethics engine
-(`../hyphae/docs/decisions/0002-ethics-engine-current-state.md`) recorded
+(the v1 ethics-engine-current-state decision document) recorded
 four decisions that had been taken **implicitly**, not by deliberate
 design:
 
@@ -28,12 +28,12 @@ design:
   2. The ethics engine implemented **JAIL** semantics: block on
      threshold breach. 18 call sites in `hyphae-substrate/src/lib.rs`
      refused the calling operation when `conflict_signal > 0.6`. This
-     **directly contradicts** the verbatim declaration of celiums-
-     memory v2's ethics engine
-     (`packages/core/src/ethics-dispatcher.ts`): *"The ethics engine
-     is a RADAR, not a JAIL. It classifies and logs for audit. It does
-     NOT censor user expression."* Two organisations under the same
-     entity (Celiums) ran two motors with contradictory philosophies.
+     **directly contradicts** the verbatim declaration of the
+     upstream sibling project's ethics engine (in its
+     ethics-dispatcher module): *"The ethics engine is a RADAR,
+     not a JAIL. It classifies and logs for audit. It does NOT
+     censor user expression."* Two sibling components were running
+     two motors with contradictory philosophies.
 
   3. The ethics gate scope covered `memory_*_secure` and
      `journal_*_secure` only. It did NOT cover `PollinatePolicy::
@@ -45,10 +45,10 @@ design:
      grounding and composition shipped after the gate landed, and the
      gate was not extended.
 
-  4. The v1 implementation covered approximately 10–15% of celiums-
-     memory v2's ethics engine capabilities (LOC ratio and capability
-     inventory). v1 shipped a binary lexicon of 30 EN tokens with a
-     single threshold; celiums-memory v2 ships 10 languages, 12
+  4. The v1 implementation covered approximately 10–15% of the
+     upstream sibling project's ethics engine capabilities (LOC
+     ratio and capability inventory). v1 shipped a binary lexicon of 30 EN tokens with a
+     single threshold; the upstream sibling project ships 10 languages, 12
      taxonomy categories, structural hate detector, context
      disambiguation, CVaR risk quantification with asymmetric
      reversibility weighting, philosophical multi-framework
@@ -109,7 +109,7 @@ crates/hyphae-ethics/
 │   ├── disambiguation.rs # living target / technical / meta context
 │   ├── structural.rs     # structural hate pattern detector
 │   ├── audit.rs          # journal entry types (shared chain)
-│   ├── profile.rs        # profile-loader (per celiums-memory v2 ADR-021)
+│   ├── profile.rs        # profile-loader (per the upstream sibling project ADR-021)
 │   └── thresholds.rs     # configurable per-profile thresholds
 └── tests/
     └── coverage_integration.rs  # validates 5-point coverage
@@ -189,7 +189,7 @@ the discipline, not the censorship.
 
   - 12-category taxonomy: hate, violence, PII, self-harm, deception,
     cyber, misinformation, privacy, autonomy, system override, plus
-    two additional categories from celiums-memory v2's SafetyBench /
+    two additional categories from the upstream sibling project's SafetyBench /
     Jigsaw / DSA / OWASP mapping.
   - Structural hate pattern detector (for indirect / coded language).
   - Context disambiguation: living target / technical / meta. v1
@@ -204,14 +204,14 @@ the discipline, not the censorship.
   - Conditional Value-at-Risk over flagged risks, 5%-tail.
   - Asymmetric weighting for irreversibility (higher weight on
     irreversible harm).
-  - Profile-loader system per celiums-memory v2 ADR-021. The
+  - Profile-loader system per the upstream sibling project ADR-021. The
     `BASELINE_PROFILE` ships in-tree, fully functional standalone.
   - **Categorical hard rule for CBRN with operational intent.**
     Deterministic rule, bypasses the probabilistic path. Calibrated
     to require both a CBRN term and operational intent (the
     historical/educational mention bypass). This is the lesson v1's
-    celiums-memory v2 ethics learned from the under-block incident
-    documented in the celiums-memory MANIFESTO §8.
+    the upstream sibling project ethics learned from the under-block incident
+    documented in the the upstream sibling project MANIFESTO §8.
   - Native Rust implementation. Approximately 300 LOC. **No new
     dependency** — implementable from `std` math.
 
@@ -225,7 +225,7 @@ the discipline, not the censorship.
 
 ### 5. Layer C deferral (multi-framework philosophical evaluation)
 
-celiums-memory v2 implements Layer C via an LLM dispatcher with frame
+the upstream sibling project implements Layer C via an LLM dispatcher with frame
 isolation across five ethical frameworks (utilitarian, deontological,
 virtue, care, justice). The LLM call is in the ethics path.
 
@@ -240,7 +240,7 @@ re-entry.
 Three re-entry options are surveyed:
 
   - **Option α — Skip Layer C indefinitely.** Accept ~30-40% capability
-    coverage of celiums-memory v2. Preserves commitment #1 without
+    coverage of the upstream sibling project. Preserves commitment #1 without
     asterisk.
   - **Option β — Reformulate Layer C compositional.** The five
     frameworks as schemas applied compositionally over the candidate
@@ -260,12 +260,12 @@ omission.
 
 ### 6. Layer K deferral (precedent advisory)
 
-celiums-memory v2's Layer K consults an `ethics_knowledge` corpus
+the upstream sibling project's Layer K consults an `ethics_knowledge` corpus
 (~31 MB JSONL with precomputed embeddings) distributed as a release
 asset (not in the git tree). The corpus enables a precedent-flag-only
 mechanism that catches systematic over-blocking by Layer A or B.
 
-Layer K is `deferred` for v0.1 with the same posture celiums-memory v2
+Layer K is `deferred` for v0.1 with the same posture the upstream sibling project
 ships: the corpus is a separate distribution; the engine runs without
 it and the layer abstains cleanly when the corpus is absent.
 
@@ -275,7 +275,7 @@ mechanism is `flag-only`, never silently overrides.
 
 ### 7. Capability coverage estimate (v0.1)
 
-Approximately **30–40%** of celiums-memory v2's ethics engine in
+Approximately **30–40%** of the upstream sibling project's ethics engine in
 v0.1, honestly declared:
 
   - ✅ Layer A multilingual API (EN populated)
@@ -339,13 +339,13 @@ a future-refinement comment.
   - The hash chain in `hyphae-storage` is shared from commit zero.
     Entries carry an `EntryKind` discriminant for grep-ability, but
     they all link via `prev_hash`.
-  - The contradiction with celiums-memory v2 (JAIL vs RADAR) is
+  - The contradiction with the upstream sibling project (JAIL vs RADAR) is
     resolved in favour of RADAR. The two Celiums ethics motors now
     agree on philosophy.
   - The 18 v1 call sites of `"denied by ACC ethics gate"` are not
     ported. The semantics is fundamentally different — the report
     flows, the operation completes.
-  - v0.1's ethics capability is ~30-40% of celiums-memory v2's,
+  - v0.1's ethics capability is ~30-40% of the upstream sibling project's,
     honestly declared, with explicit re-entry paths per deferred
     capability.
   - **The four implicit decisions documented in v1's ADR-0002 are
@@ -360,18 +360,18 @@ a future-refinement comment.
   - **ADR-0001** (fresh-from-v1) — companion decision.
   - **ADR-0002** (learning-loop-firstclass) — consumes the Ethics
     signals channel produced by this crate.
-  - **`../hyphae/docs/decisions/0002-ethics-engine-current-state.md`**
+  - **the v1 ethics-engine-current-state decision document**
     — the v1 honest documentation of the four implicit decisions this
     ADR closes. The retroactive articulation discipline that v1 ADR
     instituted is the model this ADR continues — but with the
     decisions made deliberately rather than by omission.
-  - **The celiums-memory upstream project** (separate repo) —
+  - **The the upstream sibling project upstream project** (separate repo) —
     verbatim source of the "RADAR not JAIL" declaration this ADR
     aligns Hyphae with, in its ethics-dispatcher module.
-  - **celiums-memory's manifesto §8** — documentation of the
+  - **the upstream sibling project's manifesto §8** — documentation of the
     under-block incident that produced the categorical CBRN hard
     rule. v2 ships the same rule.
-  - **`../hyphae/docs/plasticity/charter_draft.md` §P-3** — the v1
+  - **the v1 plasticity charter draft §P-3** — the v1
     Plasticity Charter draft articulation of dual-input learning
     (RPE + Ethics). v2 implements both channels per ADR-0002 §
     "Feedback signals".

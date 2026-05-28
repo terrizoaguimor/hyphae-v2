@@ -203,10 +203,10 @@ mod tests {
     #[test]
     fn amplifies_when_signature_matches() {
         let mut gate = InputGate::new();
-        gate.register_signature("CELIUMS");
+        gate.register_signature("EXAMPLE");
         let emissions = gate
             .process(
-                obs("the celiums project status update"),
+                obs("the example project status update"),
                 PayloadKind::Encoding,
                 State::Encoding,
             )

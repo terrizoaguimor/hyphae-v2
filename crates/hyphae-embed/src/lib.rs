@@ -17,7 +17,7 @@
 //! Embedding is **not** generation — it projects text into a
 //! fixed-width vector, never produces text. It belongs in the
 //! substrate's *infrastructure path*, not the *cognition path*.
-//! Per CLAUDE.md Hard Commitment #1, the cognition path excludes
+//! Per ADR-0001 §"Hard Commitment 1", the cognition path excludes
 //! LLM **generation**; the encoder used here is categorically a
 //! representation function, not a generator.
 //!

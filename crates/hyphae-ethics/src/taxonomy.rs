@@ -6,7 +6,7 @@
 //! The categories map the surfaces of harm that an ethics evaluator
 //! distinguishes per `docs/adr/0003-ethics-radar-firstclass.md`
 //! §"Layers in v0.1". The mapping is anchored in the published
-//! research substrate behind celiums-memory v2's Layer A
+//! research substrate behind the upstream sibling project's Layer A
 //! (`SafetyBench`, Jigsaw, EU DSA, OWASP Top 10 for LLM applications)
 //! so v2's classifications can be compared across the two motors
 //! when they evaluate the same input.

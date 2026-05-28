@@ -39,7 +39,7 @@ readme = "README.md"
 # ───────────────────────────────────────────────────────────
 #  Workspace dependencies — pinned, curated.
 #
-#  Curation rule (CLAUDE.md): adding a dependency is an architectural
+#  Curation rule (CONTRIBUTING.md): adding a dependency is an architectural
 #  decision. New deps need a justification comment in this file AND an
 #  ADR if they touch the cognition path. The deps below were chosen
 #  during v1 (substrate, storage, surface) and are carried forward

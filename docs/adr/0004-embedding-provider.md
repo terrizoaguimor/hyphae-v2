@@ -35,7 +35,7 @@ includes a category of **non-generative** semantic computation —
 embedding text into a fixed-width vector. Embedding is a one-way
 projection (text → vector), not a language model (does not produce
 text). It belongs in the substrate's *infrastructure path*, not the
-*cognition path*. The cognition path commitment in CLAUDE.md
+*cognition path*. The cognition path commitment in ADR-0001
 prohibits LLM **generation**; it does not prohibit semantic
 representation.
 
@@ -67,7 +67,7 @@ equivalent CPU-only ONNX model) is the v0.2 upgrade. It lands behind
 a separate ADR with explicit evaluation of the dependency cost
 (`fastembed` or `rust-bert` pull ONNX runtime, ~30 MB compiled),
 the model distribution shape (release asset, like
-celiums-memory v2's `ethics_knowledge` corpus per its v0.1 release
+the upstream sibling project's `ethics_knowledge` corpus per its v0.1 release
 posture), and a re-benchmark of recall quality against the v0.1
 hashing baseline. v0.1 ships the trait so the upgrade is
 **additive, not breaking**.
@@ -157,7 +157,7 @@ The v0.2 transformer ADR is the upgrade path for all four.
 
 v0.2's transformer model file will **not** ship in the git tree.
 It distributes as a release asset (the same posture
-celiums-memory v2 uses for `ethics_knowledge.jsonl`). The crate
+the upstream sibling project uses for `ethics_knowledge.jsonl`). The crate
 provides a loader that resolves the model from:
 
 1. An explicit `HYPHAE_EMBED_MODEL_PATH` env var.

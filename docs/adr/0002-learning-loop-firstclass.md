@@ -30,8 +30,8 @@ its own use.
 
 This gap was articulated by the BDFL on 2026-05-23 after viewing the
 DeepMind documentary "The Thinking Game" (Greg Kohs, 2024). The
-BDFL's framing was explicit (verbatim, registered in celiums-memory
-journal entry `e8392ddd-b24a-495b-be52-7915f8d23efa`):
+BDFL's framing was explicit (verbatim, registered in the BDFL's
+working journal):
 
 > *"La arquitectura está bien, lo que está 'mal' entre comillas
 > porque es parte de desarrollar esto, es el modelo de aprendizaje."*
@@ -72,7 +72,7 @@ hooks already wired.
     not the priors over which schema is selected).
   - The hash chain protocol.
   - The `PayloadKind` taxonomy.
-  - The Hard Architectural Commitments in CLAUDE.md.
+  - The Hard Architectural Commitments in ADR-0001.
 
 **Refinable (learning loop refines strategies within the rules):**
 
@@ -94,7 +94,7 @@ hooks already wired.
 
 ### Feedback signals — two channels
 
-The Plasticity Charter draft (v1, `docs/plasticity/charter_draft.md`)
+The Plasticity Charter draft (v1 Plasticity Charter draft)
 proposed two feedback channels: reward prediction error and ethics
 signals. v2 ships both from commit zero.
 
@@ -226,12 +226,12 @@ empirical evidence that the v0.1 mechanism is insufficient.
     v2 repository.
   - **ADR-0003** (ethics-radar-firstclass) — defines the Ethics signals
     channel of the learning loop's feedback.
-  - **`../hyphae/docs/plasticity/charter_draft.md`** — v1 Plasticity
+  - **the v1 plasticity charter draft** — v1 Plasticity
     Charter draft. The dual-input learning paradigm (P-3) cited there
     is the basis for v2's two-channel design.
-  - **celiums-memory journal entry `e8392ddd-b24a-495b-be52-
-    7915f8d23efa`** — the BDFL's articulation of the learning-loop
-    observation after the AlphaGo documentary, 2026-05-23 evening.
-  - **`../hyphae/HYPHAE_PROJECT_OVERVIEW.md` §"Three Observations
+  - **The BDFL's working journal**, 2026-05-23 evening entry —
+    the BDFL's articulation of the learning-loop observation
+    after the AlphaGo documentary.
+  - **the v1 project overview §"Three Observations
     Pending"** — the v1 articulation of the observation as a
     post-Phase-C item. This ADR overrides the deferral for v2.

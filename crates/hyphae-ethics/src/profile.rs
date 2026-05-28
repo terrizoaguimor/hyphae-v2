@@ -84,7 +84,7 @@ impl Default for LayerBParams {
 #[derive(Debug, Clone)]
 pub struct Profile {
     /// Stable identifier for the profile (e.g. `"baseline"`,
-    /// `"deployment:celiums-prod"`).
+    /// `"deployment:prod"`).
     pub id: String,
     /// Version string. Bumped on any change to thresholds, Layer B
     /// params, or the active lexicon.

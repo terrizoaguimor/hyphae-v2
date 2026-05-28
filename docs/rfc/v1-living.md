@@ -241,7 +241,7 @@ across subsystems (the v1 distribution by omission is corrected here).
 **6.2 Philosophy.** **RADAR, not JAIL.** The ethics engine
 classifies, audits, and emits signals. It does NOT block operations.
 Callers receive composition + structured ethics report. This aligns
-with celiums-memory v2's verbatim declaration: *"the ethics engine is
+with the upstream sibling project's verbatim declaration: *"the ethics engine is
 a RADAR, not a JAIL."*
 
 **6.3 Coverage of the cognition path.** Five evaluation points are
@@ -268,7 +268,7 @@ DecomposePolicy / compose / curiosity coverage gap).
     disambiguation (living target / technical / meta).
   - **Layer B** (probabilistic CVaR). Native Rust implementation,
     approximately 300 LOC, no new dependency. Profile-loader system per
-    celiums-memory v2 ADR-021. Asymmetric reversibility weighting.
+    the upstream sibling project ADR-021. Asymmetric reversibility weighting.
     Categorical hard rule for CBRN with operational intent
     (deterministic rule, bypasses the probabilistic path).
   - **Audit**. Append-only journal entries with SHA-256 hash chain.
@@ -276,14 +276,14 @@ DecomposePolicy / compose / curiosity coverage gap).
     ethics audit (not two chains).
 
 **6.5 Layer C deferral.** Multi-framework philosophical evaluation
-requires LLM dispatcher in celiums-memory v2. Hyphae v2 commitment #1
+requires LLM dispatcher in the upstream sibling project. Hyphae v2 commitment #1
 prohibits LLM in the cognition path. Layer C is `deferred` with
 explicit ADR (ADR-0003 §"Layer C deferral"). Re-entry options surveyed
 there.
 
 **6.6 Layer K (precedent advisory).** `deferred`. Requires
 `ethics_knowledge` corpus separate from the source tree (same posture
-as celiums-memory v2 ships).
+as the upstream sibling project ships).
 
 **6.7 Signals.** Ethics evaluation emits a structured `EthicsReport`
 carrying: classification (per Layer A taxonomy), CVaR score (per
@@ -315,7 +315,7 @@ Observation 1 after Phase C close; v2 ships it).
   - The schemas (structural shape, not slot priors).
   - The hash chain protocol.
   - The PayloadKind taxonomy.
-  - The Hard Architectural Commitments in CLAUDE.md.
+  - The Hard Architectural Commitments in ADR-0001.
 
 **7.3 Refinable parameters.**
 

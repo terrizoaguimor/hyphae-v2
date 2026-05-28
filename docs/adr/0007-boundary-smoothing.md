@@ -54,7 +54,7 @@ accordingly. Crucially:
 
 - **The fragment bodies stay verbatim.** Smoothing only changes
   which connective the picker emits. The quote remains an exact
-  citation of the stored fragment per CLAUDE.md Hard Commitment #12
+  citation of the stored fragment per ADR-0001 §"Hard Commitment 12"
   ("composition uses fragment quotation, not novel language
   synthesis").
 - **The smoothing logic uses no model.** It is heuristic pattern
@@ -205,7 +205,7 @@ template-rigid territory.
   operates on.
 - **ADR-0006** — produces the step sequence the smoothing applies
   to.
-- **CLAUDE.md Hard Commitment #12** — fragment bodies stay
+- **ADR-0001 §"Hard Commitment 12"** — fragment bodies stay
   verbatim. This ADR honours the commitment by only filtering
   which connective phrase is emitted; bodies are unchanged.
 - **`hyphae_surface::Lexicon::pick_in_context`** — the function

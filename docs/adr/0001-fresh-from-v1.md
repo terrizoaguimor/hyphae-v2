@@ -14,7 +14,7 @@ triangulated-by: [claude-opus-4-7 (v2 chartering session review)]
 
 ## Context
 
-Hyphae v1 (preserved at `../hyphae/`) shipped 145+ commits across M0
+Hyphae v1 (preserved at the v1 archive) shipped 145+ commits across M0
 through Phase C wave 1. The substrate primitives validated:
 `CognitiveFragment` with provenance, typed pathways, five-state machine,
 cascade activation, conversational metacognition, hash-chained journal,
@@ -28,8 +28,8 @@ sources of overhead that, together, made continuation in v1
 unsustainable:
 
   1. **Triangulation discipline pre-commit.** Every foundation
-     milestone required review by `deepseek-v4-pro` (Atlas primary) and
-     `gemini-3.5-flash` (Atlas secondary) before merging, plus charter
+     milestone required review by `a primary LLM triangulator` (Atlas primary) and
+     `a secondary LLM triangulator` (Atlas secondary) before merging, plus charter
      writing in the same PR, plus audit responses. Admirable; not
      proportionate to one founder's actual capacity.
 
@@ -40,7 +40,7 @@ unsustainable:
      before the architectural bet had been validated in any single
      language.
 
-  3. **Port of 38 tools (Phase A + B + D) from celiums-memory.**
+  3. **Port of 38 tools (Phase A + B + D) from the upstream sibling project.**
      Particularly Phase D's 19 research_* and write_* tools were
      lifecycle operations shaped for an MCP wrapper over LLMs; they did
      not compose with the substrate. The port produced a 895-line Phase
@@ -66,7 +66,7 @@ omission`, not by deliberate design:
     coordination at the substrate level — never explicitly rejected
     as "a dedicated subsystem" because nobody proposed it.
   - JAIL semantics (block on threshold breach) — directly contradicts
-    celiums-memory v2's verbatim *"RADAR not JAIL"* declaration.
+    the upstream sibling project's verbatim *"RADAR not JAIL"* declaration.
   - Ethics gate coverage on `memory_*_secure` + `journal_*_secure` only,
     not on `PollinatePolicy::retrieve`, `DecomposePolicy::retrieve`,
     `compose()`, or curiosity firing — gaps that emerged because
@@ -83,7 +83,7 @@ Continuing on them in v2 would not be.
 Hyphae v2 is a **fresh repository** with **controlled cherry-pick**
 from v1, not a refactor of the v1 tree.
 
-The v1 codebase is preserved at `../hyphae/` for archival reference
+The v1 codebase is preserved at the v1 archive for archival reference
 and as the empirical record of which primitives validated. It is not
 deleted, not deprecated by erasure. It is the substrate of v2's
 articulation — the experiment that produced the lessons v2 incorporates.
@@ -97,12 +97,13 @@ Three approaches were surveyed during the chartering session:
     → `v0.3` with patches), and the 17-subsystem charters remain in the
     tree. Cherry-picking *out* is harder than cherry-picking *in*.
 
-  - **Approach B (fresh with cherry-pick).** New repository at
-    `../hyphae-v2/`. Single living RFC. ADRs from commit zero.
-    Re-introduce v1 elements only when each justifies its place against
-    v0.1's commitments. Costs: temporary loss of v1's CI configuration
-    and dev tooling (must be re-established); two repositories under
-    `Documents/` until v2 supersedes v1 by acceptance.
+  - **Approach B (fresh with cherry-pick).** New repository
+    (this one). Single living RFC. ADRs from commit zero.
+    Re-introduce v1 elements only when each justifies its place
+    against v0.1's commitments. Costs: temporary loss of v1's CI
+    configuration and dev tooling (must be re-established); two
+    repositories live side-by-side until v2 supersedes v1 by
+    acceptance.
 
   - **Approach C (hybrid via git submodule).** v2 new, but
     `hyphae-core` and `hyphae-storage` are submodules from `hyphae/`,
@@ -113,7 +114,7 @@ Three approaches were surveyed during the chartering session:
 
 **Approach B is adopted.** The chartering session BDFL decision is
 recorded in the session transcript and journal entry registered in
-celiums-memory.
+the upstream sibling project.
 
 ## What is cherry-picked from v1 (substrate-validated, carried)
 
@@ -170,7 +171,7 @@ Listed in the order the cherry-pick proceeds.
   - **Multilingual lexicon beyond EN.** Re-entry: empirical validation
     of the architectural bet on EN-only, demonstrated through honest
     eval metrics (no friendly-query-on-foreign-seed artefacts).
-    Re-entry order: ES, then PT, then the rest of celiums-memory v2's
+    Re-entry order: ES, then PT, then the rest of the upstream sibling project's
     10 languages.
 
   - **Vertex AI grounding + citation engine + cross-lingual
@@ -180,14 +181,14 @@ Listed in the order the cherry-pick proceeds.
 
   - **The RFC superseding chain (v0.1.2 → v0.2 → v0.3 with patches).**
     Replaced by a single append-only living RFC. The v1 RFCs are
-    preserved at `../hyphae/docs/rfc/` for historical reference.
+    preserved at the v1 RFC archive for historical reference.
 
   - **The 17-subsystem topology.** Collapsed to 6 per §"Subsystems
     collapsed".
 
   - **Triangulation pre-commit for every foundation milestone.**
     Replaced by triangulation only when the BDFL requests it
-    (CLAUDE.md §"Triangulation"). Architectural changes still
+    (per the project working conventions). Architectural changes still
     triangulate before the ADR is filed.
 
 ## Subsystems collapsed (17 → 6)
@@ -269,7 +270,7 @@ Postponed schemas with re-entry:
     is cherry-picked" above. Each crate's first commit references this
     ADR and the relevant living-RFC section.
   - The four sources of overhead documented in §Context are
-    structurally addressed by the v2 commitments (CLAUDE.md), not
+    structurally addressed by the v2 commitments (ADR-0001), not
     by aspiration.
   - The v0.1 corrections cited above (FragmentId fix, PayloadKind
     parameter, fan-out routing, MAX_ROUTING split, ethics on shared
@@ -282,14 +283,14 @@ Postponed schemas with re-entry:
 
   - **ADR-0002** (learning-loop-firstclass) — companion decision.
   - **ADR-0003** (ethics-radar-firstclass) — companion decision.
-  - **`../hyphae/docs/decisions/0002-ethics-engine-current-state.md`**
+  - **the v1 ethics-engine-current-state decision document**
     — the v1 honest documentation of the four ethics decisions taken
     implicitly. The retroactive articulation the team produced there
     is the model for the discipline this ADR continues.
-  - **`../hyphae/docs/issues/v4.md`** — the v1 implementation
+  - **the v1 issue documentation** — the v1 implementation
     triangulation review log. Source for the "built-but-not-wired"
     catalogue cited in §Context.
-  - **`../hyphae/docs/eval/bucket-1-close-report.md`** — Atlas's
+  - **the v1 wave-1 close report** — Atlas's
     verbatim caveat on the grammaticality baseline.
-  - **`../hyphae/HYPHAE_PHASE_C_WAVE_2_DIRECTION.md`** — v1's last
+  - **the v1 phase-C wave-2 direction note** — v1's last
     operational direction before the track stalled.
