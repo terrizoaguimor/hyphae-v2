@@ -17,11 +17,8 @@ Read these first, in order:
    canonical specification.
 3. **[`docs/adr/0001-fresh-from-v1.md`](docs/adr/0001-fresh-from-v1.md)** —
    the hard architectural commitments and why each one exists.
-4. **[`CLAUDE.md`](CLAUDE.md)** — operating discipline for
-   assistant-driven development. Even if you contribute by hand,
-   the discipline applies.
 
-If after reading those four documents you still want to
+If after reading those three documents you still want to
 contribute: welcome.
 
 ## Hard architectural commitments — do not litigate informally

@@ -160,7 +160,6 @@ hyphae-v2/
 ├── Cargo.toml              # workspace, edition 2024, MSRV 1.85
 ├── README.md               # this file
 ├── LICENSE                 # Apache-2.0 (code) / CC-BY-4.0 (spec)
-├── CLAUDE.md               # operating instructions for assistant-driven development
 ├── crates/
 │   ├── hyphae-core/        # primitives: fragments, ids, journal types, cascade activation
 │   ├── hyphae-ethics/      # RADAR engine, audit, five coverage points

@@ -365,13 +365,12 @@ a future-refinement comment.
     ADR closes. The retroactive articulation discipline that v1 ADR
     instituted is the model this ADR continues — but with the
     decisions made deliberately rather than by omission.
-  - **`/Volumes/My Book/Documents/celiums-memory/packages/core/src/
-    ethics-dispatcher.ts`** — verbatim source of the "RADAR not JAIL"
-    declaration this ADR aligns Hyphae with.
-  - **`/Volumes/My Book/Documents/celiums-memory/MANIFESTO.md` §8**
-    — celiums-memory v2's documentation of the under-block incident
-    that produced the categorical CBRN hard rule. v2 ships the same
-    rule.
+  - **The celiums-memory upstream project** (separate repo) —
+    verbatim source of the "RADAR not JAIL" declaration this ADR
+    aligns Hyphae with, in its ethics-dispatcher module.
+  - **celiums-memory's manifesto §8** — documentation of the
+    under-block incident that produced the categorical CBRN hard
+    rule. v2 ships the same rule.
   - **`../hyphae/docs/plasticity/charter_draft.md` §P-3** — the v1
     Plasticity Charter draft articulation of dual-input learning
     (RPE + Ethics). v2 implements both channels per ADR-0002 §

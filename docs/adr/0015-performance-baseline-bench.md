@@ -113,8 +113,8 @@ Criterion produces:
 - HTML reports under `target/criterion/` (gitignored).
 
 The integrator (Mario) reads numbers, judges health, decides
-whether to optimise. The v0.2 baseline is committed to memory
-via `memory.celiums.ai` so future sessions can compare against
+whether to optimise. The v0.2 baseline is committed to the
+project's offline notes so future sessions can compare against
 the recorded snapshot.
 
 ## Sources
