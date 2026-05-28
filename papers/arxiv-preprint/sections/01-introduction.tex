@@ -31,10 +31,10 @@ memory, and produces composition outputs in microseconds.
 We compare \hyphae{} against 18 LLM-based system configurations
 spanning vanilla retrieval-augmented generation, HyDE plus
 cross-encoder reranking, and oracle context (the LLM receives
-the gold supporting passage directly). The five generator models
-include open-source SOTA (Llama-3.3-70B-Instruct,
-DeepSeek-V4-Pro), frontier closed-source models from Anthropic
-(Claude-4.6-Sonnet) and OpenAI (GPT-4.1), and a production
+the gold supporting passage directly). The six generator models
+($6\times3$ modes $= 18$ configurations) are local
+Llama-3.1-8B-Instruct, Llama-3.3-70B-Instruct, DeepSeek-V4-Pro,
+Claude-4.6-Sonnet (Anthropic), GPT-4.1 (OpenAI), and a production
 LLM-routing system (Atlas, our own previously-shipped product).
 All LLMs are accessed through a uniform OpenAI-compatible
 endpoint at zero infrastructure provisioning cost; \hyphae{}
@@ -126,7 +126,7 @@ systems, and NLI-based grounding metrics. Section~\ref{sec:arch}
 describes the architecture, with emphasis on the verbatim-quotation
 commitment that underlies the empirical results.
 Section~\ref{sec:setup} documents the experimental protocol --- the
-two corpora, the five generator models, the three retrieval modes,
+two corpora, the six generator models, the three retrieval modes,
 the metric set, and the hardware. Section~\ref{sec:results}
 presents the headline rankings on both corpora.
 Section~\ref{sec:ablations} disaggregates \hyphae{}'s contribution

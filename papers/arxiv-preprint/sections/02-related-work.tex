@@ -82,17 +82,24 @@ that some applications require and others do not.
 
 \subsection{Where This Paper Fits}
 
-We do not claim that \hyphae{} subsumes LLM-based generation.
-We claim that \emph{for the subset of tasks in which the
-unit of grounding is a discrete retrieved fragment quoted
-verbatim}, an architectural commitment outperforms any LLM
-configuration we measured by six orders of magnitude in latency
-on commodity hardware, ties or beats them on NLI-grounded
-unsupported-claim rate, and removes the cost line item entirely
-from the production economics. The trade-off, made explicit, is
-that the prose is template-rigid; users wanting LLM-style
-paraphrastic composition need an LLM.
+We do not claim that \hyphae{} subsumes or replaces LLM-based
+generation, and we do not claim it is more correct: our echo
+control (Section~\ref{sec:results-triviaqa}) shows that on
+standard correctness and grounding metrics a verbatim
+\texttt{print} of the retrieved sentence matches it, so those
+metrics measure verbatim quotation rather than the architecture.
+We claim instead that \emph{for the subset of tasks in which the
+unit of grounding is a discrete retrieved fragment and the
+deployment requires provable provenance}, \hyphae{} provides a
+property no LLM-RAG pipeline and no echo baseline provides by
+construction: every emitted span is byte-identical to a fragment
+in a tamper-evident hash-chained journal, so the output can be
+cryptographically audited back to named, unaltered sources. We
+demonstrate this directly with a tamper-detection experiment
+(Section~\ref{sec:results-provenance}). The trade-off, made
+explicit, is that the prose is template-rigid; users wanting
+LLM-style paraphrastic composition need an LLM.
 
-The contribution is to make this trade-off precise and to provide
-the comparator data that lets reviewers and practitioners decide
-where on the trade-off their use case lies.
+The contribution is therefore positioned as a verifiable
+\emph{provenance layer} for grounded retrieval, not a
+correctness-competitive replacement for LLM-RAG.

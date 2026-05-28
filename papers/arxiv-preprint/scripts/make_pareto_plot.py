@@ -177,16 +177,18 @@ def main():
     axes[1, 1].text(
         0.05, 0.5,
         "Bottom-left panel uses gold-answer match\n"
-        "as the correctness axis (higher = better),\n"
-        "addressing the v1 critique that unsup_f is\n"
-        "metric-degenerate on TriviaQA (Hyphae 0.000\n"
-        "by quotient).\n\n"
-        "On both axes Hyphae sits at the latency-\n"
-        "advantaged endpoint of the non-dominated\n"
-        "frontier. On the gold-answer axis the\n"
-        "frontier contains Hyphae plus the best\n"
-        "oracle-mode LLMs (Claude 0.960,\n"
-        "Llama-3.3-70B / GPT-4.1 0.900-0.907).",
+        "as the correctness axis (higher = better);\n"
+        "unsup_f is metric-degenerate on TriviaQA\n"
+        "(Hyphae 0.000 by quotient).\n\n"
+        "The decisive feature of every panel: the\n"
+        "echo baseline is co-located with Hyphae at\n"
+        "the favourable corner (and dominates it on\n"
+        "the own-corpus unsup_f panel). The metric-\n"
+        "space frontier does NOT separate the\n"
+        "architecture from a verbatim print(). The\n"
+        "distinguishing property -- tamper-evident\n"
+        "provenance (Table 3) -- is not an axis any\n"
+        "of these panels can plot.",
         fontsize=10, va="center",
     )
     plt.tight_layout()

@@ -145,24 +145,30 @@ synthesise across hops); the question is whether it struggles
 gracefully (deferring to limitation acknowledgement) or
 catastrophically.
 
-\paragraph{Gold-answer match column.} TriviaQA's
-\texttt{answer.value} field allows scoring whether the response
-contains the correct entity. Complements \unsupf{} (which scores
-grounding in context) with a correctness metric.
+\paragraph{Scaling the provenance benchmark.} The tamper-detection
+experiment (Section~\ref{sec:results-provenance}) demonstrates the
+property in the small, on a single hash chain. A community-scale
+provenance benchmark --- diverse tampering models (insertion,
+deletion, reordering, partial-byte edits), adversaries with
+varying store access, and a standard detection-and-localisation
+scoring protocol --- would let verifiable-generation systems be
+compared on the axis that distinguishes them, the way correctness
+benchmarks compare LLM-RAG systems today. Building it is the
+natural next contribution.
 
 \paragraph{Reader preference study.} Human evaluation on a
 subset of the TriviaQA corpus. The template-rigid prose's
-acceptability to real users is unmeasured.
+acceptability to real users is unmeasured, and is the main
+usability question the verifiability framing does not resolve.
 
-\paragraph{Hardware matrix expansion.} GPU server class
-(closes the LLM's biggest performance handicap), AMD EPYC
-microarchitecture comparison, ARM64 server class
-(Apple Silicon scale-out).
+\paragraph{Multi-hop benchmark column.} HotpotQA or MuSiQue
+subset. \hyphae{}'s single-fragment composition cannot synthesise
+across hops; the open question is whether it degrades gracefully
+(deferring to limitation acknowledgement) or silently.
 
-\paragraph{Stronger retrieval pipelines.} RAG-Fusion, GraphRAG
-on the LLM side. The current strong-RAG comparator (HyDE +
-reranker) is canonical; stronger pipelines exist and could
-narrow the gap. The own-corpus tie at GPT-4.1 + strong-RAG
-suggests there is finite room to close before reviewers see
-LLMs match \hyphae{} on \unsupf{}; whether that room is
-realisable on TriviaQA is open.
+\paragraph{Hardware and retrieval extensions.} A GPU server-class
+matrix would close the LLM's biggest performance handicap;
+stronger retrieval pipelines (RAG-Fusion, GraphRAG) on the LLM
+side could shift the correctness comparison. Neither changes the
+provenance result, which is a property of the storage layer, not
+the retrieval quality.

@@ -81,8 +81,8 @@
 
 % Title block
 \title{
-    Verifiable Provenance for Grounded Generation: \\
-    An Architectural Alternative to LLM-RAG
+    Hash-Chained Verbatim Quotation: \\
+    A Verifiable Provenance Layer for Grounded Retrieval
 }
 
 \author{
@@ -110,8 +110,9 @@ to have been assembled from named, unaltered source fragments --- a
 guarantee no retrieval-augmented LLM provides by construction,
 because generation paraphrases its sources. We evaluate against 18
 LLM-based configurations (vanilla RAG, HyDE plus cross-encoder
-reranking, oracle context) spanning five generator models from
-Anthropic, OpenAI, DeepSeek, Meta, and an in-house router, plus a
+reranking, oracle context) over six generator models (from
+Anthropic, OpenAI, DeepSeek, two from Meta, and an in-house
+router; $6\times3 = 18$ configurations), plus a
 trivial \textbf{echo baseline} that emits the retrieved sentence
 verbatim with no model and no lexicon. The echo baseline is the
 critical control, and its result reframes the contribution: on

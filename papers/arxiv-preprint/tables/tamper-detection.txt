@@ -1,0 +1,17 @@
+# Provenance tamper-detection experiment
+# Real hyphae_storage::Journal hash chain, N = 10 fragments.
+
+k tampered     detected     first break    localised?        
+------------------------------------------------------------
+1              YES          1              YES (exact seq)   
+3              YES          1              YES (exact seq)   
+5              YES          1              YES (exact seq)   
+10             YES          1              YES (exact seq)   
+
+# Detection matrix (store tampering, post-ingest):
+#   Hyphae (hash chain):  100% detected, exact sequence localised.
+#   Echo baseline:          0% -- no journal; emits tampered text verbatim, unflagged.
+#   LLM-RAG:                0% -- no journal; paraphrases tampered source,
+#                                and output is not byte-bindable to any source
+#                                (verbatim_pass 0.09-0.24), so post-hoc string
+#                                audit also fails.

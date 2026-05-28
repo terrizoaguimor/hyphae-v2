@@ -165,6 +165,81 @@ not. What does --- the hash-chained provenance relation
 (Section~\ref{sec:hc12}) --- is not measured by either axis, and
 is the subject of Section~\ref{sec:discussion}.
 
+\subsection{Provenance: the Property the Benchmark Cannot See}
+\label{sec:results-provenance}
+
+The echo control shows the correctness benchmark cannot
+distinguish \hyphae{} from a \texttt{print}. This subsection
+measures the property that does. The claim is that \hyphae{}'s
+SHA-256 hash-chained journal makes post-ingest tampering of the
+fragment store \emph{detectable and exactly localised}, and that
+neither echo nor LLM-RAG has any equivalent. We test it
+adversarially against the real \texttt{hyphae\_storage} journal
+(not a mock).
+
+\paragraph{Protocol.} We ingest $N$ fragment bodies into a real
+journal, building the hash chain via the production
+\texttt{append} path, and confirm \texttt{verify()} passes on the
+clean chain. We then simulate an attacker with store access: we
+reopen the underlying \texttt{fjall} partition directly and
+overwrite the payload of $k$ entries with a tampered fact
+(``completed at 14:02 UTC'' $\rightarrow$ ``23:59 UTC'';
+``Prime Minister of Canada'' $\rightarrow$ ``of France''),
+preserving each record's sequence number and stored
+\texttt{prev\_hash} so the entries remain structurally valid ---
+exactly what a store-level attacker who does not reimplement the
+chain logic would produce. We reopen the journal and run
+\texttt{verify()}, recording detection and the sequence at which
+the chain first breaks.
+
+\paragraph{Result.} Across $k \in \{1,3,5,10\}$ tampered
+fragments, the hash chain detects the tampering in \textbf{100\%}
+of trials and localises it to the exact sequence: modifying entry
+$j$ changes its recomputed content hash, so entry $j{+}1$'s stored
+\texttt{prev\_hash} no longer matches and \texttt{verify()}
+returns an integrity violation at that sequence (tampering the
+final entry is caught by the persisted chain-head check). The
+detection is independent of $N$ and of which entries are altered.
+Table~\ref{tab:tamper} states the matrix against the baselines.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{Post-ingest store-tampering detection.}
+\hyphae{}'s hash chain detects and localises any modification;
+the baselines have no integrity layer. The LLM-RAG row is doubly
+exposed: it not only fails to detect the tampering but, because
+its output paraphrases the source (\verbpass{} $0.09$--$0.24$,
+Tables~\ref{tab:triviaqa}--\ref{tab:own}), the output cannot even
+be string-matched back to a source for post-hoc audit. Echo's
+output is byte-identical to the (tampered) source but it keeps no
+journal, so it cannot tell a tampered fragment from an authentic
+one.}
+\label{tab:tamper}
+\small
+\begin{tabular}{l c c c}
+\toprule
+\textbf{System} & detects tampering & localises & output auditable to source \\
+\midrule
+\hyphae{} (hash chain)  & \textbf{100\%} & exact seq & yes (byte-identical + journalled) \\
+Echo baseline           & 0\%            & ---       & only with external hashes (none kept) \\
+LLM-RAG                 & 0\%            & ---       & no (paraphrased; not byte-bindable) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Reading.} This is the paper's positive result, and it
+is the inverse of the echo finding. On the standard correctness
+benchmark, echo is indistinguishable from \hyphae{}; on
+provenance, echo collapses to the LLM-RAG row --- it emits the
+tampered text with no signal. The property is small to state and
+small to demonstrate, but it is categorical: a system either
+binds its output to a tamper-evident store or it does not, and of
+the systems evaluated here only \hyphae{} does. Scaling this
+demonstration into a community provenance benchmark
+(Section~\ref{sec:discussion}) is the contribution's natural next
+step; the experiment here establishes that the property is real
+and measurable, not merely asserted.
+
 \subsection{Own Corpus}
 \label{sec:results-own}
 
