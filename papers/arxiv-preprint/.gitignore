@@ -1,0 +1,16 @@
+# LaTeX intermediates (regenerated on every compile)
+*.aux
+*.bbl
+*.blg
+*.out
+*.log
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Editor backups
+*.swp
+*~

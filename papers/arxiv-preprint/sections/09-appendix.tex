@@ -2,15 +2,15 @@
 \section{Full Per-System Tables}
 \label{app:full-tables}
 
-Tables~\ref{tab:full-triviaqa-app} and~\ref{tab:full-own-app}
-report all 19 system configurations on each corpus, expanding
-the truncated versions in the main text. Bootstrap 95\%
-confidence intervals from 1000 resamples are reported alongside
-the mean.
-
-% Per-system tables would expand here. Generated from the JSON
-% envelopes in bench/baseline-llm-rag/results/ by
-% scripts/make_appendix_tables.py.
+The complete 19-system tables for both corpora are available
+as machine-readable JSON envelopes in
+\texttt{bench/baseline-llm-rag/results/} in the repository.
+Each envelope carries the per-query trace, metric breakdown,
+bootstrap 95\% percentile confidence intervals (1000 resamples,
+seed 42), hardware metadata, and model identifier. The
+Section~\ref{sec:results} tables are sorted versions of those
+envelopes' aggregates and a future revision of this paper will
+expand them inline.
 
 \section{Reproduction Instructions}
 \label{app:reproduce}
