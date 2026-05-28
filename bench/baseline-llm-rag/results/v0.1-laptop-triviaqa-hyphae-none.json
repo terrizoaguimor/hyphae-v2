@@ -1,0 +1,4723 @@
+{
+  "metadata": {
+    "comparator_version": "0.1.0",
+    "adr": "0027",
+    "system": "hyphae",
+    "mode": "native",
+    "nli": "roberta-large-mnli",
+    "hardware": {
+      "os": "Darwin 25.4.0",
+      "machine": "arm64",
+      "processor": "arm",
+      "python_version": "3.11.15",
+      "cpu_count": 10,
+      "torch_device_available": {
+        "cuda": false,
+        "mps": true
+      }
+    },
+    "wall_clock_s": 9.49,
+    "hyphae_output_path": "hyphae-results-triviaqa.json",
+    "queries_run": 150
+  },
+  "per_query": [
+    {
+      "query_id": "triviaqa-qb_4397",
+      "response": "Drawing from working memory, \"Pearson did not make the move into politics until a few years later, after King had announced his retirement as the Prime Minister of Canada.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Pearson did not make the move into politics until a few years later, after King had announced his retirement as the Prime Minister of Canada."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6470588235294118,
+        "ngram_overlap_5": 0.6363636363636364,
+        "ngram_overlap_8": 0.6,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.028458
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_8177",
+      "response": "Drawing from working memory, \"(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6842105263157895,
+        "ngram_overlap_5": 0.6756756756756757,
+        "ngram_overlap_8": 0.6470588235294118,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.003083
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_3959",
+      "response": "Drawing from working memory, \"In addition, if the volume is expanded by heat but reduced again by pressure, the viscosity remains the same.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In addition, if the volume is expanded by heat but reduced again by pressure, the viscosity remains the same."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5714285714285714,
+        "ngram_overlap_5": 0.5555555555555556,
+        "ngram_overlap_8": 0.5,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.002208
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_1138",
+      "response": "Drawing from working memory, \"In 2007 an archeological dig uncovered the remains of Ville-Marie under a maritime warehouse in Montreal.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In 2007 an archeological dig uncovered the remains of Ville-Marie under a maritime warehouse in Montreal."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5384615384615384,
+        "ngram_overlap_5": 0.52,
+        "ngram_overlap_8": 0.45454545454545453,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001875
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_12369",
+      "response": "Drawing from working memory, \"In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7142857142857143,
+        "ngram_overlap_5": 0.7073170731707317,
+        "ngram_overlap_8": 0.6842105263157895,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.002167
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_4199",
+      "response": "Drawing from working memory, \"Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.625,
+        "ngram_overlap_5": 0.6129032258064516,
+        "ngram_overlap_8": 0.5714285714285714,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.002
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_2020",
+      "response": "Drawing from working memory, \"Europe is the world's second-smallest continent by surface area, covering about  or 2% of the Earth's surface and about 6.8% of its land area.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Europe is the world's second-smallest continent by surface area, covering about  or 2% of the Earth's surface and about 6.8% of its land area."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6756756756756757,
+        "ngram_overlap_5": 0.6666666666666666,
+        "ngram_overlap_8": 0.6363636363636364,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001917
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_11151",
+      "response": "Drawing from working memory, \"Asher met the illustrator Gerald Scarfe in 1971.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Asher met the illustrator Gerald Scarfe in 1971."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.29411764705882354,
+        "ngram_overlap_5": 0.25,
+        "ngram_overlap_8": 0.07692307692307693,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.005083
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_2576",
+      "response": "Drawing from working memory, \"Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6129032258064516,
+        "ngram_overlap_5": 0.6,
+        "ngram_overlap_8": 0.5555555555555556,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001958
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_752",
+      "response": "Drawing from working memory, \"The Type IV for the jet-powered aircraft went to de Havilland and became, in 1949, the world's first jet airliner, the Comet.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Type IV for the jet-powered aircraft went to de Havilland and became, in 1949, the world's first jet airliner, the Comet."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6363636363636364,
+        "ngram_overlap_5": 0.625,
+        "ngram_overlap_8": 0.5862068965517241,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001791
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_3998",
+      "response": "Drawing from working memory, \"The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6,
+        "ngram_overlap_5": 0.5862068965517241,
+        "ngram_overlap_8": 0.5384615384615384,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001834
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_1303",
+      "response": "Drawing from working memory, \"* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6470588235294118,
+        "ngram_overlap_5": 0.6363636363636364,
+        "ngram_overlap_8": 0.6,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001833
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_8396",
+      "response": "Drawing from working memory, \"When the Club was founded in 1831 Rule 1 of the Garrick Club Rules and Regulations called for the \"formation of a theatrical Library, with works on costume\".\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "When the Club was founded in 1831 Rule 1 of the Garrick Club Rules and Regulations called for the \"formation of a theatrical Library, with works on costume\"."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6756756756756757,
+        "ngram_overlap_5": 0.6666666666666666,
+        "ngram_overlap_8": 0.6363636363636364,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.001708
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_981",
+      "response": "Drawing from working memory, \"Albert Finney  (born 9 May 1936) is an English actor.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Albert Finney  (born 9 May 1936) is an English actor."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3684210526315789,
+        "ngram_overlap_5": 0.3333333333333333,
+        "ngram_overlap_8": 0.2,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001917
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_18918",
+      "response": "Drawing from working memory, \"The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.52,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.42857142857142855,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001834
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_14484",
+      "response": "Drawing from working memory, \"Outside of Italy, focaccia is used extensively as a sandwich bread.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Outside of Italy, focaccia is used extensively as a sandwich bread."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4,
+        "ngram_overlap_5": 0.3684210526315789,
+        "ngram_overlap_8": 0.25,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001792
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_409",
+      "response": "Drawing from working memory, \"Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6923076923076923,
+        "ngram_overlap_5": 0.6842105263157895,
+        "ngram_overlap_8": 0.6571428571428571,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.005
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_2590",
+      "response": "Drawing from working memory, \"\"Like a Virgin\" is a song by American singer Madonna.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "\"Like a Virgin\" is a song by American singer Madonna."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3684210526315789,
+        "ngram_overlap_5": 0.3333333333333333,
+        "ngram_overlap_8": 0.2,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001917
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_6822",
+      "response": "Drawing from working memory, \"The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001875
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_2023",
+      "response": "Drawing from working memory, \"It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7,
+        "ngram_overlap_5": 0.6923076923076923,
+        "ngram_overlap_8": 0.6666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.00175
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_848",
+      "response": "Drawing from working memory, \"Star Trek aired on NBC from September 8, 1966 to June 3, 1969  and from September 6 on Canada's CTV network.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Star Trek aired on NBC from September 8, 1966 to June 3, 1969  and from September 6 on Canada's CTV network."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6129032258064516,
+        "ngram_overlap_5": 0.6,
+        "ngram_overlap_8": 0.5555555555555556,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001834
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_1803",
+      "response": "Drawing from working memory, \"Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001708
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_9945",
+      "response": "Drawing from working memory, \"* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5,
+        "ngram_overlap_5": 0.4782608695652174,
+        "ngram_overlap_8": 0.4,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.005
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_2564",
+      "response": "Drawing from working memory, \"On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5714285714285714,
+        "ngram_overlap_5": 0.5555555555555556,
+        "ngram_overlap_8": 0.5,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.00175
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_4545",
+      "response": "Drawing from working memory, \"Shane Keith Warne (born 13 September 1969) is an Australian former international cricketer, widely regarded as one of the best bowlers in the history of the game.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Shane Keith Warne (born 13 September 1969) is an Australian former international cricketer, widely regarded as one of the best bowlers in the history of the game."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6666666666666666,
+        "ngram_overlap_5": 0.6571428571428571,
+        "ngram_overlap_8": 0.625,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.003958
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_10250",
+      "response": "Drawing from working memory, \"Since the zodiac animal cycle of 12 is divisible by two, every zodiac sign can occur only as either Yin or Yang: the Dragon is always yang, the Snake is always yin, etc.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Since the zodiac animal cycle of 12 is divisible by two, every zodiac sign can occur only as either Yin or Yang: the Dragon is always yang, the Snake is always yin, etc."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7142857142857143,
+        "ngram_overlap_5": 0.7073170731707317,
+        "ngram_overlap_8": 0.6842105263157895,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001833
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_276",
+      "response": "Drawing from working memory, \"Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7446808510638298,
+        "ngram_overlap_5": 0.7391304347826086,
+        "ngram_overlap_8": 0.7209302325581395,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.001875
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_12322",
+      "response": "Drawing from working memory, \"Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6923076923076923,
+        "ngram_overlap_5": 0.6842105263157895,
+        "ngram_overlap_8": 0.6571428571428571,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001667
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_3204",
+      "response": "Drawing from working memory, \"While modern critics have noted Crane's \"anticipation of the modern spectacle of war\",  others, such as Crane scholar Stanley Wertheim, believe the work to be \"unquestionably the most realistic novel about the American Civil War\".\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "While modern critics have noted Crane's \"anticipation of the modern spectacle of war\",  others, such as Crane scholar Stanley Wertheim, believe the work to be \"unquestionably the most realistic novel about the American Civil War\"."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.00175
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_2235",
+      "response": "Drawing from working memory, \"The second single released from the album, \"Not Fair\", reached the number 9 position.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The second single released from the album, \"Not Fair\", reached the number 9 position."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4782608695652174,
+        "ngram_overlap_5": 0.45454545454545453,
+        "ngram_overlap_8": 0.3684210526315789,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.00375
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_8948",
+      "response": "Drawing from working memory, \"In comparison to the celebrations in Japan, the festival is celebrated on a much smaller scale in Penang, Selangor and Sabah, and is less associated with Buddhism and more with Japanese culture.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In comparison to the celebrations in Japan, the festival is celebrated on a much smaller scale in Penang, Selangor and Sabah, and is less associated with Buddhism and more with Japanese culture."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7073170731707317,
+        "ngram_overlap_5": 0.7,
+        "ngram_overlap_8": 0.6756756756756757,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001834
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_3384",
+      "response": "Drawing from working memory, \"Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6923076923076923,
+        "ngram_overlap_5": 0.6842105263157895,
+        "ngram_overlap_8": 0.6571428571428571,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_3913",
+      "response": "Drawing from working memory, \"Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6470588235294118,
+        "ngram_overlap_5": 0.6363636363636364,
+        "ngram_overlap_8": 0.6,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_2015",
+      "response": "Drawing from working memory, \"The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6129032258064516,
+        "ngram_overlap_5": 0.6,
+        "ngram_overlap_8": 0.5555555555555556,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.004666
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_1576",
+      "response": "Drawing from working memory, \"Associated Polyandry, or polyandry that begins as monogamy, with the second husband entering the relationship later, is also practiced  and it sometimes initiated by the wife.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Associated Polyandry, or polyandry that begins as monogamy, with the second husband entering the relationship later, is also practiced  and it sometimes initiated by the wife."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6571428571428571,
+        "ngram_overlap_5": 0.6470588235294118,
+        "ngram_overlap_8": 0.6129032258064516,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_1921",
+      "response": "Drawing from working memory, \"Books \n\nThe character of Charlie Chan was created by Earl Derr Biggers.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Books \n\nThe character of Charlie Chan was created by Earl Derr Biggers."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.42857142857142855,
+        "ngram_overlap_5": 0.4,
+        "ngram_overlap_8": 0.29411764705882354,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001709
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_24591",
+      "response": "Drawing from working memory, \"In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7142857142857143,
+        "ngram_overlap_5": 0.7073170731707317,
+        "ngram_overlap_8": 0.6842105263157895,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_13540",
+      "response": "Drawing from working memory, \"Before work was completed, however, the Soviet Union launched a second satellite, Sputnik 2, on 3 November 1957.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Before work was completed, however, the Soviet Union launched a second satellite, Sputnik 2, on 3 November 1957."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5555555555555556,
+        "ngram_overlap_5": 0.5384615384615384,
+        "ngram_overlap_8": 0.4782608695652174,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001709
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_1283",
+      "response": "Drawing from working memory, \"The locomotive nameplates read: 'Harry Patch The last survivor of the trenches' and included a coloured line of all eight ribbons from the medals awarded to Patch.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The locomotive nameplates read: 'Harry Patch The last survivor of the trenches' and included a coloured line of all eight ribbons from the medals awarded to Patch."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6666666666666666,
+        "ngram_overlap_5": 0.6571428571428571,
+        "ngram_overlap_8": 0.625,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_3013",
+      "response": "Drawing from working memory, \"Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6571428571428571,
+        "ngram_overlap_5": 0.6470588235294118,
+        "ngram_overlap_8": 0.6129032258064516,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_3005",
+      "response": "Drawing from working memory, \"7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6129032258064516,
+        "ngram_overlap_5": 0.6,
+        "ngram_overlap_8": 0.5555555555555556,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.003875
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_3279",
+      "response": "Drawing from working memory, \"The highway code was first published in 1931 as a booklet and has been regularly updated to reflect current practices.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The highway code was first published in 1931 as a booklet and has been regularly updated to reflect current practices."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001667
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_1463",
+      "response": "Drawing from working memory, \"The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7272727272727273,
+        "ngram_overlap_5": 0.7209302325581395,
+        "ngram_overlap_8": 0.7,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001666
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_218",
+      "response": "Drawing from working memory, \"Geology \n\nThe bulk of the Marquesas Islands are of volcanic origin, created by the Marquesas hotspot that underlies the Pacific Plate.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Geology \n\nThe bulk of the Marquesas Islands are of volcanic origin, created by the Marquesas hotspot that underlies the Pacific Plate."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6,
+        "ngram_overlap_5": 0.5862068965517241,
+        "ngram_overlap_8": 0.5384615384615384,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.0015
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_6215",
+      "response": "Drawing from working memory, \"In the United States, sock puppeteer Shari Lewis was well known for her television show Lamb Chop's Play-Along featuring the sock puppets Lamb Chop, Charlie Horse, and Hush Puppy.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In the United States, sock puppeteer Shari Lewis was well known for her television show Lamb Chop's Play-Along featuring the sock puppets Lamb Chop, Charlie Horse, and Hush Puppy."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7,
+        "ngram_overlap_5": 0.6923076923076923,
+        "ngram_overlap_8": 0.6666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.006958
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_2421",
+      "response": "Drawing from working memory, \"Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7551020408163265,
+        "ngram_overlap_5": 0.75,
+        "ngram_overlap_8": 0.7333333333333333,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_4681",
+      "response": "Drawing from working memory, \"The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.625,
+        "ngram_overlap_5": 0.6129032258064516,
+        "ngram_overlap_8": 0.5714285714285714,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001709
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_22446",
+      "response": "Drawing from working memory, \"Tottenham Hotspur became the first club in the 20th century to win the League and F.A.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Tottenham Hotspur became the first club in the 20th century to win the League and F.A."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5384615384615384,
+        "ngram_overlap_5": 0.52,
+        "ngram_overlap_8": 0.45454545454545453,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_14611",
+      "response": "Drawing from working memory, \"Pyracantha is a genus of large, thorny evergreen shrubs in the family Rosaceae, with common names firethorn or pyracantha.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Pyracantha is a genus of large, thorny evergreen shrubs in the family Rosaceae, with common names firethorn or pyracantha."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5714285714285714,
+        "ngram_overlap_5": 0.5555555555555556,
+        "ngram_overlap_8": 0.5,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_19972",
+      "response": "Drawing from working memory, \"More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.001667
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_3191",
+      "response": "Drawing from working memory, \"One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5555555555555556,
+        "ngram_overlap_5": 0.5384615384615384,
+        "ngram_overlap_8": 0.4782608695652174,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_9128",
+      "response": "Drawing from working memory, \"\"Take a Bow\" is a song recorded by Barbadian singer Rihanna for Good Girl Gone Bad: Reloaded (2008), the re-release of her third studio album Good Girl Gone Bad (2007).\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "\"Take a Bow\" is a song recorded by Barbadian singer Rihanna for Good Girl Gone Bad: Reloaded (2008), the re-release of her third studio album Good Girl Gone Bad (2007)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6923076923076923,
+        "ngram_overlap_5": 0.6923076923076923,
+        "ngram_overlap_8": 0.6666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_24460",
+      "response": "Drawing from working memory, \"Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5714285714285714,
+        "ngram_overlap_5": 0.5555555555555556,
+        "ngram_overlap_8": 0.5,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_1567",
+      "response": "Drawing from working memory, \"Each set of twelve frets represents an octave.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Each set of twelve frets represents an octave."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.29411764705882354,
+        "ngram_overlap_5": 0.25,
+        "ngram_overlap_8": 0.07692307692307693,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001708
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_2564",
+      "response": "Drawing from working memory, \"The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6571428571428571,
+        "ngram_overlap_5": 0.6470588235294118,
+        "ngram_overlap_8": 0.6129032258064516,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_9819",
+      "response": "Drawing from working memory, \"Pottinger sent this old draft treaty on shore, with the letter s struck out of islands and the words Hong Kong placed after it.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Pottinger sent this old draft treaty on shore, with the letter s struck out of islands and the words Hong Kong placed after it."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6363636363636364,
+        "ngram_overlap_5": 0.625,
+        "ngram_overlap_8": 0.5862068965517241,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_607",
+      "response": "Drawing from working memory, \"The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6129032258064516,
+        "ngram_overlap_5": 0.6,
+        "ngram_overlap_8": 0.5555555555555556,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_12907",
+      "response": "Drawing from working memory, \"A full Braille cell includes six raised dots arranged in two lateral rows each having three dots.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "A full Braille cell includes six raised dots arranged in two lateral rows each having three dots."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5384615384615384,
+        "ngram_overlap_5": 0.52,
+        "ngram_overlap_8": 0.45454545454545453,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_23716",
+      "response": "Drawing from working memory, \"Due to German and Italian naval and air force activity in the Mediterranean, the Thistlegorm sailed as part of a convoy via Cape Town, South Africa, where she refuelled, before heading north up the East coast of Africa and into the Red Sea.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Due to German and Italian naval and air force activity in the Mediterranean, the Thistlegorm sailed as part of a convoy via Cape Town, South Africa, where she refuelled, before heading north up the East coast of Africa and into the Red Sea."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7692307692307693,
+        "ngram_overlap_5": 0.7647058823529411,
+        "ngram_overlap_8": 0.75,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_1157",
+      "response": "Drawing from working memory, \"On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6756756756756757,
+        "ngram_overlap_5": 0.6666666666666666,
+        "ngram_overlap_8": 0.6363636363636364,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_5520",
+      "response": "Drawing from working memory, \"Tallahassee is the state capital.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Tallahassee is the state capital."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.14285714285714285,
+        "ngram_overlap_5": 0.07692307692307693,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_7025",
+      "response": "Drawing from working memory, \"The Hall\u00e9 is an English symphony orchestra based in Manchester, England.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4,
+        "ngram_overlap_5": 0.3684210526315789,
+        "ngram_overlap_8": 0.25,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_2940",
+      "response": "Drawing from working memory, \"Some definitions of southern Europe, also known as Mediterranean Europe, include the countries of the Iberian peninsula (Spain and Portugal), the Italian peninsula, Southern France, Greece and Malta.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Some definitions of southern Europe, also known as Mediterranean Europe, include the countries of the Iberian peninsula (Spain and Portugal), the Italian peninsula, Southern France, Greece and Malta."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6756756756756757,
+        "ngram_overlap_5": 0.6666666666666666,
+        "ngram_overlap_8": 0.6363636363636364,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_25534",
+      "response": "Drawing from working memory, \"The Naked and the Dead is a 1948 novel by Norman Mailer.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Naked and the Dead is a 1948 novel by Norman Mailer."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.42857142857142855,
+        "ngram_overlap_5": 0.4,
+        "ngram_overlap_8": 0.29411764705882354,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_11543",
+      "response": "Drawing from working memory, \"Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6129032258064516,
+        "ngram_overlap_5": 0.6,
+        "ngram_overlap_8": 0.5555555555555556,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_1682",
+      "response": "Drawing from working memory, \"The Singing Detective is a BBC television serial drama, written by Dennis Potter, which stars Michael Gambon and was directed by Jon Amiel.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Singing Detective is a BBC television serial drama, written by Dennis Potter, which stars Michael Gambon and was directed by Jon Amiel."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.625,
+        "ngram_overlap_5": 0.6129032258064516,
+        "ngram_overlap_8": 0.5714285714285714,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.003833
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_12025",
+      "response": "Drawing from working memory, \"This was the third time Boyle has had that honour, after Slumdog Millionaire in 2008 and 127 Hours two years later.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "This was the third time Boyle has had that honour, after Slumdog Millionaire in 2008 and 127 Hours two years later."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6,
+        "ngram_overlap_5": 0.5862068965517241,
+        "ngram_overlap_8": 0.5384615384615384,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_21320",
+      "response": "Drawing from working memory, \"Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.45454545454545453,
+        "ngram_overlap_5": 0.42857142857142855,
+        "ngram_overlap_8": 0.3333333333333333,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001667
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_4766",
+      "response": "Drawing from working memory, \"Chesterton is well known for his fictional priest-detective Father Brown,  and for his reasoned apologetics.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Chesterton is well known for his fictional priest-detective Father Brown,  and for his reasoned apologetics."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.52,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.42857142857142855,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_17590",
+      "response": "Drawing from working memory, \"Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6756756756756757,
+        "ngram_overlap_5": 0.6666666666666666,
+        "ngram_overlap_8": 0.6363636363636364,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_5765",
+      "response": "Drawing from working memory, \"One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7692307692307693,
+        "ngram_overlap_5": 0.7647058823529411,
+        "ngram_overlap_8": 0.75,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001708
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_2014",
+      "response": "Drawing from working memory, \"Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6571428571428571,
+        "ngram_overlap_5": 0.6470588235294118,
+        "ngram_overlap_8": 0.6129032258064516,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001667
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4953",
+      "response": "Drawing from working memory, \"The Monocled Mutineer\n\nMcGann's first major dramatic role was the infamous British deserter and criminal Percy Toplis in the 1986 BBC serial The Monocled Mutineer.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Monocled Mutineer\n\nMcGann's first major dramatic role was the infamous British deserter and criminal Percy Toplis in the 1986 BBC serial The Monocled Mutineer."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6571428571428571,
+        "ngram_overlap_5": 0.6470588235294118,
+        "ngram_overlap_8": 0.6129032258064516,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_5544",
+      "response": "Drawing from working memory, \"Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.52,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.42857142857142855,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_3451",
+      "response": "Drawing from working memory, \"Recording credits\n\nSee Huey Lewis and the News discography for albums and singles by the band.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Recording credits\n\nSee Huey Lewis and the News discography for albums and singles by the band."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.52,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.42857142857142855,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_22796",
+      "response": "Drawing from working memory, \"Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5384615384615384,
+        "ngram_overlap_5": 0.52,
+        "ngram_overlap_8": 0.45454545454545453,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_22891",
+      "response": "Drawing from working memory, \"A dramatic increase in the incidence of pertussis followed.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "A dramatic increase in the incidence of pertussis followed."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3333333333333333,
+        "ngram_overlap_5": 0.29411764705882354,
+        "ngram_overlap_8": 0.14285714285714285,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_1792",
+      "response": "Drawing from working memory, \"The move of the race to the early evening made it possible for drivers to do Double Duty - run the Indianapolis 500, then immediately fly from Indianapolis to Charlotte, and participate in the Coca-Cola 600.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The move of the race to the early evening made it possible for drivers to do Double Duty - run the Indianapolis 500, then immediately fly from Indianapolis to Charlotte, and participate in the Coca-Cola 600."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.0035
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_106",
+      "response": "Drawing from working memory, \"Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6923076923076923,
+        "ngram_overlap_5": 0.6842105263157895,
+        "ngram_overlap_8": 0.6571428571428571,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_4129",
+      "response": "Drawing from working memory, \"\"You're So Vain\" is a song written and performed by Carly Simon and released in November 1972.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "\"You're So Vain\" is a song written and performed by Carly Simon and released in November 1972."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5555555555555556,
+        "ngram_overlap_5": 0.5384615384615384,
+        "ngram_overlap_8": 0.4782608695652174,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_4322",
+      "response": "Drawing from working memory, \"The name \"aardvark\" comes from earlier Afrikaans (erdvark) and means \"earth pig\" or \"ground pig\" (aarde: earth/ground, vark: pig), because of its burrowing habits  (similar origin to the name groundhog).\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The name \"aardvark\" comes from earlier Afrikaans (erdvark) and means \"earth pig\" or \"ground pig\" (aarde: earth/ground, vark: pig), because of its burrowing habits  (similar origin to the name groundhog)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7,
+        "ngram_overlap_5": 0.6923076923076923,
+        "ngram_overlap_8": 0.6666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 4,
+          "total_quoted": 4
+        },
+        "latency_ms": 0.004542
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4058",
+      "response": "Drawing from working memory, \"In the early 17th century, Shakespeare wrote the so-called \"problem plays\" Measure for Measure, Troilus and Cressida, and All's Well That Ends Well and a number of his best known tragedies.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In the early 17th century, Shakespeare wrote the so-called \"problem plays\" Measure for Measure, Troilus and Cressida, and All's Well That Ends Well and a number of his best known tragedies."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7142857142857143,
+        "ngram_overlap_5": 0.7073170731707317,
+        "ngram_overlap_8": 0.6842105263157895,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4228",
+      "response": "Drawing from working memory, \"Spanish\n\nSpanish-style bullfighting is called corrida de toros (literally \"running of bulls\") or la fiesta (\"the festival\").\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Spanish\n\nSpanish-style bullfighting is called corrida de toros (literally \"running of bulls\") or la fiesta (\"the festival\")."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5555555555555556,
+        "ngram_overlap_5": 0.5384615384615384,
+        "ngram_overlap_8": 0.4782608695652174,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_309",
+      "response": "Drawing from working memory, \"The musical was inspired by the painting \"A Sunday Afternoon on the Island of La Grande Jatte\" by Georges Seurat.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The musical was inspired by the painting \"A Sunday Afternoon on the Island of La Grande Jatte\" by Georges Seurat."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_5913",
+      "response": "Drawing from working memory, \"Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856).\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6470588235294118,
+        "ngram_overlap_5": 0.6363636363636364,
+        "ngram_overlap_8": 0.6,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_809",
+      "response": "Drawing from working memory, \"History of the concept\n\nThe law was named after Sir Thomas Gresham, a sixteenth-century financial agent of the English Crown in the city of Antwerp, to explain to Queen Elizabeth I what was happening to the English shilling.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "History of the concept\n\nThe law was named after Sir Thomas Gresham, a sixteenth-century financial agent of the English Crown in the city of Antwerp, to explain to Queen Elizabeth I what was happening to the English shilling."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.75,
+        "ngram_overlap_5": 0.7446808510638298,
+        "ngram_overlap_8": 0.7272727272727273,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001666
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_9147",
+      "response": "Drawing from working memory, \"Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7692307692307693,
+        "ngram_overlap_5": 0.7647058823529411,
+        "ngram_overlap_8": 0.75,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001667
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_12482",
+      "response": "Drawing from working memory, \"Mindanao ( ) is the second largest and southernmost major island in the Philippines.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Mindanao ( ) is the second largest and southernmost major island in the Philippines."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.42857142857142855,
+        "ngram_overlap_5": 0.4,
+        "ngram_overlap_8": 0.29411764705882354,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_7764",
+      "response": "Drawing from working memory, \"The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_19820",
+      "response": "Drawing from working memory, \"The Senate, when news of his death reached Rome, posthumously declared Nero a public enemy to appease the coming Galba (as the Senate had initially declared Galba as a public enemy) and proclaimed Galba the new emperor.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Senate, when news of his death reached Rome, posthumously declared Nero a public enemy to appease the coming Galba (as the Senate had initially declared Galba as a public enemy) and proclaimed Galba the new emperor."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7391304347826086,
+        "ngram_overlap_5": 0.7333333333333333,
+        "ngram_overlap_8": 0.7142857142857143,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001875
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_10109",
+      "response": "Drawing from working memory, \"In eight-ball, straight pool, and related games, all sixteen balls are employed.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In eight-ball, straight pool, and related games, all sixteen balls are employed."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.45454545454545453,
+        "ngram_overlap_5": 0.42857142857142855,
+        "ngram_overlap_8": 0.3333333333333333,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_14403",
+      "response": "Drawing from working memory, \"Carpenter and Debra Hill began drafting a story titled The Babysitter Murders, but the title was changed at Yablans' request, suggesting the setting be changed to Halloween night and naming it Halloween instead.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Carpenter and Debra Hill began drafting a story titled The Babysitter Murders, but the title was changed at Yablans' request, suggesting the setting be changed to Halloween night and naming it Halloween instead."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7142857142857143,
+        "ngram_overlap_5": 0.7073170731707317,
+        "ngram_overlap_8": 0.6842105263157895,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_3828",
+      "response": "Drawing from working memory, \"* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4782608695652174,
+        "ngram_overlap_5": 0.45454545454545453,
+        "ngram_overlap_8": 0.3684210526315789,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 5,
+          "total_quoted": 5
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_8774",
+      "response": "Drawing from working memory, \"The most frequently used paper size is A4 measuring 210 x.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The most frequently used paper size is A4 measuring 210 x."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4,
+        "ngram_overlap_5": 0.3684210526315789,
+        "ngram_overlap_8": 0.25,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4632",
+      "response": "Drawing from working memory, \"Mackintosh took his inspiration from his Scottish upbringing and blended them with the flourish of Art Nouveau and the simplicity of Japanese forms.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Mackintosh took his inspiration from his Scottish upbringing and blended them with the flourish of Art Nouveau and the simplicity of Japanese forms."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.625,
+        "ngram_overlap_5": 0.6129032258064516,
+        "ngram_overlap_8": 0.5714285714285714,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_2030",
+      "response": "Drawing from working memory, \"Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_15421",
+      "response": "Drawing from working memory, \"The Dominican Republic () is a sovereign state occupying the eastern five-eighths of the island of Hispaniola, in the Greater Antilles archipelago in the Caribbean region.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Dominican Republic () is a sovereign state occupying the eastern five-eighths of the island of Hispaniola, in the Greater Antilles archipelago in the Caribbean region."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6571428571428571,
+        "ngram_overlap_5": 0.6470588235294118,
+        "ngram_overlap_8": 0.6129032258064516,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_4590",
+      "response": "Drawing from working memory, \"Persimmon wood was also heavily used in making the highest-quality heads of the golf clubs known as \"woods\" until the golf industry moved primarily to metal woods in the last years of the 20th century.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Persimmon wood was also heavily used in making the highest-quality heads of the golf clubs known as \"woods\" until the golf industry moved primarily to metal woods in the last years of the 20th century."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.0015
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_2349",
+      "response": "Drawing from working memory, \"On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.625,
+        "ngram_overlap_5": 0.6129032258064516,
+        "ngram_overlap_8": 0.5714285714285714,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_3117",
+      "response": "Drawing from working memory, \"In August, Keswick features the Derwentwater Regatta.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In August, Keswick features the Derwentwater Regatta."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.25,
+        "ngram_overlap_5": 0.2,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_2390",
+      "response": "Drawing from working memory, \"The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7446808510638298,
+        "ngram_overlap_5": 0.7391304347826086,
+        "ngram_overlap_8": 0.7209302325581395,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_2769",
+      "response": "Drawing from working memory, \"The Richardson Gang was an English crime gang based in south London, England, in the 1960s.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Richardson Gang was an English crime gang based in south London, England, in the 1960s."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.52,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.42857142857142855,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_6020",
+      "response": "Drawing from working memory, \"The first space burial occurred in 1992 when the NASA space shuttle Columbia (mission STS-52) carried a portion of Gene Roddenberry's cremated remains into space and returned them to Earth.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The first space burial occurred in 1992 when the NASA space shuttle Columbia (mission STS-52) carried a portion of Gene Roddenberry's cremated remains into space and returned them to Earth."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7073170731707317,
+        "ngram_overlap_5": 0.7,
+        "ngram_overlap_8": 0.6756756756756757,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_220",
+      "response": "Drawing from working memory, \"The first version was hosted by Michael Miles (after its demise, Miles hosted a similar show for Southern Television called Wheel of Fortune, not to be confused with the later Wheel of Fortune of the same title).\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The first version was hosted by Michael Miles (after its demise, Miles hosted a similar show for Southern Television called Wheel of Fortune, not to be confused with the later Wheel of Fortune of the same title)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7391304347826086,
+        "ngram_overlap_5": 0.7333333333333333,
+        "ngram_overlap_8": 0.7142857142857143,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_1380",
+      "response": "Drawing from working memory, \"Most Italian and Spanish decks consist of 40 cards with each suit numbering 1 (or Ace) to 7 with three face cards of King, Knight, and Knave/Jack.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Most Italian and Spanish decks consist of 40 cards with each suit numbering 1 (or Ace) to 7 with three face cards of King, Knight, and Knave/Jack."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6756756756756757,
+        "ngram_overlap_5": 0.6666666666666666,
+        "ngram_overlap_8": 0.6363636363636364,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_10822",
+      "response": "Drawing from working memory, \"The Castle of Otranto is a 1764 novel by Horace Walpole.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Castle of Otranto is a 1764 novel by Horace Walpole."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4,
+        "ngram_overlap_5": 0.3684210526315789,
+        "ngram_overlap_8": 0.25,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_7327",
+      "response": "Drawing from working memory, \"The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6842105263157895,
+        "ngram_overlap_5": 0.6756756756756757,
+        "ngram_overlap_8": 0.6470588235294118,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_7865",
+      "response": "Drawing from working memory, \"Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.52,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.42857142857142855,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_532",
+      "response": "Drawing from working memory, \"The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7857142857142857,
+        "ngram_overlap_5": 0.7818181818181819,
+        "ngram_overlap_8": 0.7692307692307693,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_3932",
+      "response": "Drawing from working memory, \"President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5555555555555556,
+        "ngram_overlap_5": 0.5384615384615384,
+        "ngram_overlap_8": 0.4782608695652174,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_2687",
+      "response": "Drawing from working memory, \"Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_5313",
+      "response": "Drawing from working memory, \"Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7142857142857143,
+        "ngram_overlap_5": 0.7073170731707317,
+        "ngram_overlap_8": 0.6842105263157895,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4141",
+      "response": "Drawing from working memory, \"Perseus was the son of the mortal Dana\u00eb and the god Zeus.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Perseus was the son of the mortal Dana\u00eb and the god Zeus."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.42857142857142855,
+        "ngram_overlap_5": 0.4,
+        "ngram_overlap_8": 0.29411764705882354,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_15421",
+      "response": "Drawing from working memory, \"The Dominican Republic () is a sovereign state occupying the eastern five-eighths of the island of Hispaniola, in the Greater Antilles archipelago in the Caribbean region.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Dominican Republic () is a sovereign state occupying the eastern five-eighths of the island of Hispaniola, in the Greater Antilles archipelago in the Caribbean region."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6571428571428571,
+        "ngram_overlap_5": 0.6470588235294118,
+        "ngram_overlap_8": 0.6129032258064516,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_26014",
+      "response": "Drawing from working memory, \"The Gulf of Carpentaria () is a large, shallow sea enclosed on three sides by northern Australia and bounded on the north by the Arafura Sea (the body of water that lies between Australia and New Guinea).\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Gulf of Carpentaria () is a large, shallow sea enclosed on three sides by northern Australia and bounded on the north by the Arafura Sea (the body of water that lies between Australia and New Guinea)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_1122",
+      "response": "Drawing from working memory, \"Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5714285714285714,
+        "ngram_overlap_5": 0.5555555555555556,
+        "ngram_overlap_8": 0.5,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_7821",
+      "response": "Drawing from working memory, \"In the Sumerian King List, it relies on the flood motif to divide its history into preflood (antediluvian) and postflood periods.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In the Sumerian King List, it relies on the flood motif to divide its history into preflood (antediluvian) and postflood periods."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6,
+        "ngram_overlap_5": 0.5862068965517241,
+        "ngram_overlap_8": 0.5384615384615384,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.0015
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_3081",
+      "response": "Drawing from working memory, \"Donald Trump purchased the hotel and golf courses from Leisurecorp in April 2014,   and the resort was renamed Trump Turnberry in June 2014.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Donald Trump purchased the hotel and golf courses from Leisurecorp in April 2014,   and the resort was renamed Trump Turnberry in June 2014."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.625,
+        "ngram_overlap_5": 0.6129032258064516,
+        "ngram_overlap_8": 0.5714285714285714,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_2312",
+      "response": "Drawing from working memory, \"The United States' Apollo 11 was the first manned mission to land on the Moon, on 20 July 1969.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The United States' Apollo 11 was the first manned mission to land on the Moon, on 20 July 1969."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5714285714285714,
+        "ngram_overlap_5": 0.5555555555555556,
+        "ngram_overlap_8": 0.5,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_1699",
+      "response": "Drawing from working memory, \"Long after the end of Egypt's own pyramid-building period, a burst of pyramid-building occurred in what is present-day Sudan, after much of Egypt came under the rule of the Kings of Napata.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Long after the end of Egypt's own pyramid-building period, a burst of pyramid-building occurred in what is present-day Sudan, after much of Egypt came under the rule of the Kings of Napata."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_8205",
+      "response": "Drawing from working memory, \"Portrait \n\nHistory \n\nBecause of the gate's position at the front of the Imperial City, and historical events that have taken place on Tiananmen Square, the gate has great political significance.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Portrait \n\nHistory \n\nBecause of the gate's position at the front of the Imperial City, and historical events that have taken place on Tiananmen Square, the gate has great political significance."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7,
+        "ngram_overlap_5": 0.6923076923076923,
+        "ngram_overlap_8": 0.6666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001833
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_784",
+      "response": "Drawing from working memory, \"Emma Clarke, one of the voices of the London Underground, has released a Mind The Gap single.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Emma Clarke, one of the voices of the London Underground, has released a Mind The Gap single."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5384615384615384,
+        "ngram_overlap_5": 0.52,
+        "ngram_overlap_8": 0.45454545454545453,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_22454",
+      "response": "Drawing from working memory, \"Alex McAvoy, who played Sunny Jim in The Vital Spark, appears in one episode as a fellow captain of Para Handy in the coastal trade.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Alex McAvoy, who played Sunny Jim in The Vital Spark, appears in one episode as a fellow captain of Para Handy in the coastal trade."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6470588235294118,
+        "ngram_overlap_5": 0.6363636363636364,
+        "ngram_overlap_8": 0.6,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_2564",
+      "response": "Drawing from working memory, \"The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6571428571428571,
+        "ngram_overlap_5": 0.6470588235294118,
+        "ngram_overlap_8": 0.6129032258064516,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_7042",
+      "response": "Drawing from working memory, \"The little dog laughed,\nTo see such sport,\nAnd the dish ran away with the spoon.I.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The little dog laughed,\nTo see such sport,\nAnd the dish ran away with the spoon.I."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5384615384615384,
+        "ngram_overlap_5": 0.52,
+        "ngram_overlap_8": 0.45454545454545453,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_8269",
+      "response": "Drawing from working memory, \"The contemporary name is derived from the name of the largest island, Hawaii Island.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The contemporary name is derived from the name of the largest island, Hawaii Island."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4782608695652174,
+        "ngram_overlap_5": 0.45454545454545453,
+        "ngram_overlap_8": 0.3684210526315789,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_12874",
+      "response": "Drawing from working memory, \"He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6129032258064516,
+        "ngram_overlap_5": 0.6,
+        "ngram_overlap_8": 0.5555555555555556,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_3320",
+      "response": "Drawing from working memory, \"* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_121",
+      "response": "Drawing from working memory, \"University students are generally classified as first, second, third or fourth-year students, and the American system of classifying them as \"freshmen\", \"sophomores\", \"juniors\" and \"seniors\" is seldom used or even understood in Canada.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "University students are generally classified as first, second, third or fourth-year students, and the American system of classifying them as \"freshmen\", \"sophomores\", \"juniors\" and \"seniors\" is seldom used or even understood in Canada."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7209302325581395,
+        "ngram_overlap_5": 0.7142857142857143,
+        "ngram_overlap_8": 0.6923076923076923,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 5,
+          "total_quoted": 5
+        },
+        "latency_ms": 0.001667
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_3103",
+      "response": "Drawing from working memory, \"A hi-hat, also spelled hihat, is a combination cymbal and stand found in a standard drum kit used by percussionists playing popular music.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "A hi-hat, also spelled hihat, is a combination cymbal and stand found in a standard drum kit used by percussionists playing popular music."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6363636363636364,
+        "ngram_overlap_5": 0.625,
+        "ngram_overlap_8": 0.5862068965517241,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_168",
+      "response": "Drawing from working memory, \"Cape Wrath (Gaelic: Am Parbh, known as An Carbh in Lewis) is a cape in the Durness parish of the county of Sutherland in the Highlands of Scotland.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Cape Wrath (Gaelic: Am Parbh, known as An Carbh in Lewis) is a cape in the Durness parish of the county of Sutherland in the Highlands of Scotland."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6756756756756757,
+        "ngram_overlap_5": 0.6666666666666666,
+        "ngram_overlap_8": 0.6363636363636364,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_1783",
+      "response": "Drawing from working memory, \"In late 1694, however, she contracted smallpox.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In late 1694, however, she contracted smallpox."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.25,
+        "ngram_overlap_5": 0.2,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001667
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_3023",
+      "response": "Drawing from working memory, \"Lease to Prince Edward, Earl of Wessex \n\nIn March 1998, the Mansion House at Bagshot Park, including a block of stables and Sunningdale Lodge, was leased by the Crown Estate to Prince Edward for 50 years.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Lease to Prince Edward, Earl of Wessex \n\nIn March 1998, the Mansion House at Bagshot Park, including a block of stables and Sunningdale Lodge, was leased by the Crown Estate to Prince Edward for 50 years."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_3468",
+      "response": "Drawing from working memory, \"Songs of Innocence and of Experience  is an illustrated collection of poems by William Blake.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Songs of Innocence and of Experience  is an illustrated collection of poems by William Blake."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5,
+        "ngram_overlap_5": 0.4782608695652174,
+        "ngram_overlap_8": 0.4,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001625
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_15011",
+      "response": "Drawing from working memory, \"It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast .\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast ."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.625,
+        "ngram_overlap_5": 0.6129032258064516,
+        "ngram_overlap_8": 0.5714285714285714,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_4027",
+      "response": "Drawing from working memory, \"Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.45454545454545453,
+        "ngram_overlap_5": 0.42857142857142855,
+        "ngram_overlap_8": 0.3333333333333333,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_7551",
+      "response": "Drawing from working memory, \"Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6923076923076923,
+        "ngram_overlap_5": 0.6842105263157895,
+        "ngram_overlap_8": 0.6571428571428571,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_23372",
+      "response": "Drawing from working memory, \"The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6923076923076923,
+        "ngram_overlap_5": 0.6842105263157895,
+        "ngram_overlap_8": 0.6571428571428571,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_24995",
+      "response": "Drawing from working memory, \"When the novel The Joy Luck Club was released in 1989, Wayne Wang approached Amy Tan, the novel's author, with the idea of adapting the novel that he admired into a film.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "When the novel The Joy Luck Club was released in 1989, Wayne Wang approached Amy Tan, the novel's author, with the idea of adapting the novel that he admired into a film."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7142857142857143,
+        "ngram_overlap_5": 0.7073170731707317,
+        "ngram_overlap_8": 0.6842105263157895,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_25106",
+      "response": "Drawing from working memory, \"Tsipras has been leader of the left-wing Greek political party Syriza since 4 October 2009.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Tsipras has been leader of the left-wing Greek political party Syriza since 4 October 2009."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.52,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.42857142857142855,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_2935",
+      "response": "Drawing from working memory, \"Live performances \n\nShakira performed \"Waka Waka (This Time for Africa)\" at the 2010 FIFA World Cup opening ceremony on 10 June at the Orlando Stadium in Johannesburg, South Africa.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Live performances \n\nShakira performed \"Waka Waka (This Time for Africa)\" at the 2010 FIFA World Cup opening ceremony on 10 June at the Orlando Stadium in Johannesburg, South Africa."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6842105263157895,
+        "ngram_overlap_5": 0.6756756756756757,
+        "ngram_overlap_8": 0.6470588235294118,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.0015
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_3261",
+      "response": "Drawing from working memory, \"Alessandro Volta built and described the first electrochemical battery, the voltaic pile, in 1800.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Alessandro Volta built and described the first electrochemical battery, the voltaic pile, in 1800."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4782608695652174,
+        "ngram_overlap_5": 0.45454545454545453,
+        "ngram_overlap_8": 0.3684210526315789,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_1463",
+      "response": "Drawing from working memory, \"In December 2007, ESPN listed Ali second in its choice of the greatest heavyweights of all time, behind Joe Louis.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "In December 2007, ESPN listed Ali second in its choice of the greatest heavyweights of all time, behind Joe Louis."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_2900",
+      "response": "Drawing from working memory, \"The third, rearmost molar in each group is called a wisdom tooth.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "The third, rearmost molar in each group is called a wisdom tooth."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.42857142857142855,
+        "ngram_overlap_5": 0.4,
+        "ngram_overlap_8": 0.29411764705882354,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001584
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_1128",
+      "response": "Drawing from working memory, \"Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6,
+        "ngram_overlap_5": 0.5862068965517241,
+        "ngram_overlap_8": 0.5384615384615384,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_6781",
+      "response": "Drawing from working memory, \"(1999) John Flamsteed, the first Astronomer Royal.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "(1999) John Flamsteed, the first Astronomer Royal."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.25,
+        "ngram_overlap_5": 0.2,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_4221",
+      "response": "Drawing from working memory, \"He is the kingly Messiah, referred to repeatedly as \"king\" and \"Son of David.\" A noteworthy feature of this gospel are the five discourses, collections of teachings on particular themes, including the Sermon on the Mount.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "He is the kingly Messiah, referred to repeatedly as \"king\" and \"Son of David.\" A noteworthy feature of this gospel are the five discourses, collections of teachings on particular themes, including the Sermon on the Mount."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7333333333333333,
+        "ngram_overlap_5": 0.7272727272727273,
+        "ngram_overlap_8": 0.7073170731707317,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_9912",
+      "response": "Drawing from working memory, \"Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4782608695652174,
+        "ngram_overlap_5": 0.45454545454545453,
+        "ngram_overlap_8": 0.3684210526315789,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001583
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_3938",
+      "response": "Drawing from working memory, \"Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.7,
+        "ngram_overlap_5": 0.6923076923076923,
+        "ngram_overlap_8": 0.6666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001541
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_10284",
+      "response": "Drawing from working memory, \"Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St.\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5862068965517241,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.52,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001542
+      }
+    }
+  ],
+  "aggregate": {
+    "queries": 150,
+    "verbatim_pass_rate": 1.0,
+    "connective_hygiene_pass_rate": 1.0,
+    "latency_p50_ms": 0.001625,
+    "latency_p95_ms": 0.003875,
+    "latency_mean_ms": 0.00204308,
+    "ngram_overlap_4_mean": 0.5997314233383548,
+    "ngram_overlap_4_ci95": [
+      0.5814654286720984,
+      0.6186119472504564
+    ],
+    "ngram_overlap_4_n": 150,
+    "ngram_overlap_5_mean": 0.5845601456072589,
+    "ngram_overlap_5_ci95": [
+      0.564866954511552,
+      0.6048930243815414
+    ],
+    "ngram_overlap_5_n": 150,
+    "ngram_overlap_8_mean": 0.5312590075031934,
+    "ngram_overlap_8_ci95": [
+      0.505868393797059,
+      0.5571896711299428
+    ],
+    "ngram_overlap_8_n": 150,
+    "unsupported_claim_rate_filtered_mean": 0.0,
+    "unsupported_claim_rate_filtered_ci95": [
+      0.0,
+      0.0
+    ],
+    "unsupported_claim_rate_filtered_n": 150,
+    "unsupported_claim_rate_raw_mean": 0.013333333333333334,
+    "unsupported_claim_rate_raw_ci95": [
+      0.0,
+      0.03333333333333333
+    ],
+    "unsupported_claim_rate_raw_n": 150,
+    "quoted_content_supported_rate_mean": 1.0,
+    "quoted_content_supported_rate_ci95": [
+      1.0,
+      1.0
+    ],
+    "quoted_content_supported_rate_n": 150
+  },
+  "caveats": [
+    "Hyphae's latency is measured for the realizer pass only (composer + lexicon lookup + boundary smoothing). Substrate ingest + recall are measured separately in docs/perf/v0.2-baseline.md.",
+    "verbatim_pass_rate = 1.0 here is the architectural commitment surfaced by the metric, not a result. ngram_overlap and unsupported_claim_rate are the informative measurements."
+  ]
+}

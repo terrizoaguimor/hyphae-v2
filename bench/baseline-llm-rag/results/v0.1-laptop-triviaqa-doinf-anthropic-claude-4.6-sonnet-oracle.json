@@ -1,0 +1,4744 @@
+{
+  "metadata": {
+    "comparator_version": "0.1.0",
+    "adr": "0027",
+    "mode": "oracle",
+    "llm_backend": "do-inference",
+    "model": {
+      "backend": "do-inference",
+      "endpoint": "https://inference.do-ai.run/v1",
+      "model_id": "anthropic-claude-4.6-sonnet"
+    },
+    "embedder": "sentence-transformers/all-MiniLM-L6-v2",
+    "nli": "roberta-large-mnli",
+    "vector_index": "faiss.IndexFlatIP",
+    "chunk_size": 256,
+    "chunk_overlap": 32,
+    "retrieval_k": null,
+    "strong_rag": null,
+    "decoding": {
+      "seed": 42,
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 512
+    },
+    "system_prompt": "You are a helpful assistant. Answer the user's question using only the provided context. If the context does not contain the answer, say so clearly. Do not fabricate information that is not in the context.",
+    "hardware": {
+      "os": "Darwin 25.4.0",
+      "machine": "arm64",
+      "processor": "arm",
+      "python_version": "3.11.15",
+      "cpu_count": 10,
+      "torch_device_available": {
+        "cuda": false,
+        "mps": true
+      }
+    },
+    "wall_clock_s": 403.68,
+    "corpus_path": "corpus-triviaqa-150.json",
+    "corpus_sha256": "c2911c860f61ad26ec5a6b0e09635f1775be9e888be16d0707e0cbf9c33562ec",
+    "queries_run": 150
+  },
+  "per_query": [
+    {
+      "query_id": "triviaqa-qb_4397",
+      "response": "Based on the context provided, Lester Bowles Pearson became Prime Minister of **Canada**.",
+      "retrieved_chunks": [
+        "Pearson did not make the move into politics until a few years later, after King had announced his retirement as the Prime Minister of Canada."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1692
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_8177",
+      "response": "Based on the context provided, **Gerald Ford** is implied (described as \"born Leslie Lynch King Jr.\"), who served as the **38th President of the United States** from 1974 to 1977.\n\n> Note: The context does not explicitly state the name \"Gerald Ford,\" but this is the well-known identity of the person described as born Leslie Lynch King Jr. However, strictly based on the context, the person born Leslie Lynch King Jr. was the **38th President of the United States**.",
+      "retrieved_chunks": [
+        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2,
+        "ngram_overlap_5": 0.16176470588235295,
+        "ngram_overlap_8": 0.09722222222222222,
+        "unsupported_claim_rate_filtered": 0.6666666666666666,
+        "unsupported_claim_rate_raw": 0.75,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 4
+        },
+        "quoted_content_supported_rate": 0.5,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 2
+        },
+        "latency_ms": 3352
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_3959",
+      "response": "The provided context does not contain information about rapidly boiling a liquid to make it thicker and more concentrated. The context only discusses the relationship between volume, heat, pressure, and viscosity. Therefore, I cannot answer your question based on the given context.",
+      "retrieved_chunks": [
+        "In addition, if the volume is expanded by heat but reduced again by pressure, the viscosity remains the same."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2259
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_1138",
+      "response": "Based on the context provided, **Montreal** is the Canadian city originally known as Fort Ville-Marie, as evidenced by the archaeological dig in 2007 that uncovered the remains of Ville-Marie under a maritime warehouse in Montreal.",
+      "retrieved_chunks": [
+        "In 2007 an archeological dig uncovered the remains of Ville-Marie under a maritime warehouse in Montreal."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2647058823529412,
+        "ngram_overlap_5": 0.24242424242424243,
+        "ngram_overlap_8": 0.16666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2133
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_12369",
+      "response": "Based on the provided context, I can only confirm that **1822** is the year Champollion published his first breakthrough in deciphering the Rosetta hieroglyphs. However, the context does not contain any information about the Roman Catholic Church removing Galileo's \"Dialogue\" from their banned books list, nor about Britain repealing the death penalty for over 100 crimes. Therefore, I cannot confirm whether all three events occurred in the same year based solely on the provided context.",
+      "retrieved_chunks": [
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.041666666666666664,
+        "ngram_overlap_5": 0.027777777777777776,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 3159
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_4199",
+      "response": "Based on the provided context, Marge Simpson's maiden name is **Bouvier**.",
+      "retrieved_chunks": [
+        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1636
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_2020",
+      "response": "According to the context, Europe covers about **2%** of the Earth's surface.",
+      "retrieved_chunks": [
+        "Europe is the world's second-smallest continent by surface area, covering about  or 2% of the Earth's surface and about 6.8% of its land area."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3,
+        "ngram_overlap_5": 0.2222222222222222,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1716
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_11151",
+      "response": "Based on the context provided, it states that Asher met illustrator Gerald Scarfe in 1971, but the context does not contain information about whom Jane Asher married in 1981 or details about their children. I cannot answer this question based solely on the provided context.",
+      "retrieved_chunks": [
+        "Asher met the illustrator Gerald Scarfe in 1971."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.047619047619047616,
+        "ngram_overlap_5": 0.024390243902439025,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2440
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_2576",
+      "response": "Based on the provided context, I cannot answer this question. The context mentions that the A92 connects to Arbroath and Montrose, but it does not describe Arbroath as a \"famous fishing town\" or explicitly state that it lies roughly halfway between Montrose and Dundee. I would need additional context to confirm this with certainty.",
+      "retrieved_chunks": [
+        "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0196078431372549,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 2548
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_752",
+      "response": "Based on the provided context, the **de Havilland Comet** was the world's first jet airliner, introduced in **1949**. As it was developed by the British company de Havilland, it would be the first commercial jet airliner associated with the UK.",
+      "retrieved_chunks": [
+        "The Type IV for the jet-powered aircraft went to de Havilland and became, in 1949, the world's first jet airliner, the Comet."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.07894736842105263,
+        "ngram_overlap_5": 0.05405405405405406,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2460
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_3998",
+      "response": "Based on the context provided, **T\u1ebft** referred to the **Vietnamese New Year** holiday (the T\u1ebft holiday). The offensive was named after this holiday because the first major attacks took place during that celebration.",
+      "retrieved_chunks": [
+        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.16666666666666666,
+        "ngram_overlap_5": 0.06896551724137931,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2424
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_1303",
+      "response": "Based on the provided context, I cannot fully answer this question. The context only mentions that Archbishop Cranmer forfeited Knole House to the Crown in 1538, but it does not contain information about an Archbishop of Canterbury being burnt at the stake in 1556.\n\nHowever, it is worth noting that **Thomas Cranmer** is historically known as the Archbishop of Canterbury who was burnt at the stake in 1556, and he is the same Cranmer mentioned in the context \u2014 but this specific fact is **not stated in the provided context**.",
+      "retrieved_chunks": [
+        "* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3432
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_8396",
+      "response": "Based on the provided context, I can only confirm that **the Garrick Club** was founded in 1831, as referenced by \"Rule 1 of the Garrick Club Rules and Regulations.\" However, the context does not mention the specific founders (James Winston, Samuel James Arnold, Samuel Beazley, Sir Andrew Francis Barnard, and Francis Mills) or the stated purpose of tending \"to the regeneration of the Drama.\" I cannot confirm those details from the given context alone.",
+      "retrieved_chunks": [
+        "When the Club was founded in 1831 Rule 1 of the Garrick Club Rules and Regulations called for the \"formation of a theatrical Library, with works on costume\"."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.11267605633802817,
+        "ngram_overlap_5": 0.08571428571428572,
+        "ngram_overlap_8": 0.029850746268656716,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 2
+        },
+        "latency_ms": 3112
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_981",
+      "response": "Based on the provided context, I cannot fully answer this question. The context only mentions that Albert Finney is an English actor born on 9 May 1936, but does not mention anything about his marriage to Anouk Aim\u00e9e. While Albert Finney was indeed married to Anouk Aim\u00e9e in real life, I cannot confirm this from the given context alone.",
+      "retrieved_chunks": [
+        "Albert Finney  (born 9 May 1936) is an English actor."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.017857142857142856,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3117
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_18918",
+      "response": "Based on the provided context, the River Durance flows into the Rh\u00f4ne near **Avignon**.",
+      "retrieved_chunks": [
+        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2727272727272727,
+        "ngram_overlap_5": 0.2,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2033
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_14484",
+      "response": "Based on the context provided, it states that focaccia is used \"**outside of Italy**\" extensively as sandwich bread. This implies that in Italy (and therefore in an Italian restaurant), you would **not** typically expect focaccia to be used as sandwich bread. However, the context does not specifically describe what focaccia is served as *within* Italy, so I cannot give a complete answer about what to expect in an Italian restaurant beyond that distinction.",
+      "retrieved_chunks": [
+        "Outside of Italy, focaccia is used extensively as a sandwich bread."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 3803
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_409",
+      "response": "Based on the context, Professor Cuthbert Calculus is a regular character alongside **Tintin**, **Snowy**, and **Captain Haddock**.",
+      "retrieved_chunks": [
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5,
+        "ngram_overlap_5": 0.46153846153846156,
+        "ngram_overlap_8": 0.3,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1934
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_2590",
+      "response": "Based on the provided context, **Madonna** is the American singer associated with \"Like a Virgin.\" The context confirms she is the artist behind the song, which would align with her having a top album of the same name in 1985, though the context does not explicitly mention the album's chart performance or the year 1985.",
+      "retrieved_chunks": [
+        "\"Like a Virgin\" is a song by American singer Madonna."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 3165
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_6822",
+      "response": "Based on the context provided, the 1994 San Marino Grand Prix was held at the **Autodromo Enzo e Dino Ferrari**, located in Imola, Italy. However, the context does not specifically mention Ayrton Senna or his death during the race. That detail is not included in the provided context.",
+      "retrieved_chunks": [
+        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.24444444444444444,
+        "ngram_overlap_5": 0.20454545454545456,
+        "ngram_overlap_8": 0.0975609756097561,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2422
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_2023",
+      "response": "Based on the context provided, the answer is **Jules Rimet**. He was the FIFA president after whom the World Cup trophy was renamed in 1946, and he is credited with setting up the first tournament.",
+      "retrieved_chunks": [
+        "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.03125,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2100
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_848",
+      "response": "Based on the context, Star Trek aired on NBC from **September 8, 1966 to June 3, 1969**, which means it was on the air for approximately **3 years** before it was cancelled.",
+      "retrieved_chunks": [
+        "Star Trek aired on NBC from September 8, 1966 to June 3, 1969  and from September 6 on Canada's CTV network."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3448275862068966,
+        "ngram_overlap_5": 0.32142857142857145,
+        "ngram_overlap_8": 0.24,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2302
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_1803",
+      "response": "Based on the context provided, it mentions Lovelock's interest in **athletics**, which he maintained until at least the outbreak of the Second World War. This suggests he gained fame in **athletics** in the 1930s, though the context only briefly references this without providing detailed information about his specific achievements.",
+      "retrieved_chunks": [
+        "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.14893617021276595,
+        "ngram_overlap_5": 0.13043478260869565,
+        "ngram_overlap_8": 0.06976744186046512,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2824
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_9945",
+      "response": "Based on the context provided, **Barack Obama** was re-elected as US President, as indicated by the Electoral College formally re-electing **President Obama** on December 17, 2012.",
+      "retrieved_chunks": [
+        "* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.08,
+        "ngram_overlap_5": 0.041666666666666664,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2111
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_2564",
+      "response": "Based on the provided context, **Mao Zedong**, the Communist Party Chairman, proclaimed the establishment of the People's Republic of China on 1 October 1949.",
+      "retrieved_chunks": [
+        "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.36363636363636365,
+        "ngram_overlap_5": 0.2857142857142857,
+        "ngram_overlap_8": 0.16666666666666666,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1972
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_4545",
+      "response": "Based on the provided context, Shane Warne is associated with **cricket**. He is described as an \"Australian former international cricketer\" and is widely regarded as one of the best **bowlers** in the history of the game.",
+      "retrieved_chunks": [
+        "Shane Keith Warne (born 13 September 1969) is an Australian former international cricketer, widely regarded as one of the best bowlers in the history of the game."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3939393939393939,
+        "ngram_overlap_5": 0.34375,
+        "ngram_overlap_8": 0.2413793103448276,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 1939
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_10250",
+      "response": "Based on the context provided, the **Dragon** is mentioned as an example of a zodiac sign, and it is the only mythical creature in the Chinese zodiac. However, I should note that while the context references the Dragon, it does not explicitly state that it is the \"only mythical creature\" in the zodiac \u2014 that detail goes slightly beyond what is directly stated in the provided context. The Dragon is the only mythical creature referenced in the given text.",
+      "retrieved_chunks": [
+        "Since the zodiac animal cycle of 12 is divisible by two, every zodiac sign can occur only as either Yin or Yang: the Dragon is always yang, the Snake is always yin, etc."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 3460
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_276",
+      "response": "Based on the context provided, **Richard Marx** had a number 1 hit with \"Hold On to the Nights,\" reaching the top of the Billboard Hot 100 on July 23, 1988.",
+      "retrieved_chunks": [
+        "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.14814814814814814,
+        "ngram_overlap_5": 0.038461538461538464,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 2916
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_12322",
+      "response": "Based on the context, Elizabeth Gaskell based her fictional village 'Cranford' on **Knutsford**, a small town in Cheshire where she grew up.\n\n(Note: The question spells the author's name as \"Gaskill,\" but the context spells it as \"Gaskell.\")",
+      "retrieved_chunks": [
+        "Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 2
+        },
+        "latency_ms": 2257
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_3204",
+      "response": "Based on the context provided, **The Red Badge of Courage** was set during the **American Civil War**.",
+      "retrieved_chunks": [
+        "While modern critics have noted Crane's \"anticipation of the modern spectacle of war\",  others, such as Crane scholar Stanley Wertheim, believe the work to be \"unquestionably the most realistic novel about the American Civil War\"."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.07142857142857142,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1525
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_2235",
+      "response": "Based on the context provided, I can see that \"Not Fair\" was a single that reached number 9, but the context does not explicitly state that it is a 2009 hit by Lily Allen or describe its subject matter. However, based on the information given, **\"Not Fair\"** appears to be the answer you're looking for, as it is referenced as a notable single. The context alone is limited in fully confirming all the details in your question.",
+      "retrieved_chunks": [
+        "The second single released from the album, \"Not Fair\", reached the number 9 position."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 3572
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_8948",
+      "response": "Based on the provided context, the answer is **Japan**. The context references \"the celebrations in Japan\" as the primary location for the festival, describing it as being celebrated on a much larger scale there compared to Penang, Selangor, and Sabah.",
+      "retrieved_chunks": [
+        "In comparison to the celebrations in Japan, the festival is celebrated on a much smaller scale in Penang, Selangor and Sabah, and is less associated with Buddhism and more with Japanese culture."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.08108108108108109,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 2908
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_3384",
+      "response": "Based on the provided context, the answer is the **valkyries**. According to the context, half of those who die in combat are chosen by Odin to travel to Valhalla upon death, and they are **led by valkyries**. While the context confirms their role in transporting the dead to Valhalla, it specifically highlights their function in guiding the chosen fallen warriors there.",
+      "retrieved_chunks": [
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.13793103448275862,
+        "ngram_overlap_5": 0.08771929824561403,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.6666666666666666,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2879
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_3913",
+      "response": "Based on the provided context, Friedrich Engels famously worked with **Karl Marx**, as evidenced by his contribution to the *Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher*, which was edited by both Marx and Arnold Ruge in Paris in 1844.",
+      "retrieved_chunks": [
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.28125,
+        "ngram_overlap_5": 0.22580645161290322,
+        "ngram_overlap_8": 0.14285714285714285,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2299
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_2015",
+      "response": "Based on the context provided, I cannot fully answer this question. The context only mentions that Victor Emmanuel II was proclaimed King of Italy in 1861, but it does not provide information about the island you're describing or its history with Carthage, Rome, the Saracens, the King of Aragon, the Dukes of Savoy, or its 1947 autonomous government status.\n\nThe answer is likely **Sardinia**, based on general knowledge, but I cannot confirm this from the provided context alone.",
+      "retrieved_chunks": [
+        "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.02631578947368421,
+        "ngram_overlap_5": 0.013333333333333334,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 5705
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_1576",
+      "response": "Based on the context, a polyandric woman would have more than one **husband**. The context describes polyandry as a relationship where a wife can have a second husband entering the relationship later, implying she has multiple husbands.",
+      "retrieved_chunks": [
+        "Associated Polyandry, or polyandry that begins as monogamy, with the second husband entering the relationship later, is also practiced  and it sometimes initiated by the wife."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.08823529411764706,
+        "ngram_overlap_5": 0.06060606060606061,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2441
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_1921",
+      "response": "Based on the provided context, the detective Charlie Chan was created by writer **Earl Derr Biggers**.",
+      "retrieved_chunks": [
+        "Books \n\nThe character of Charlie Chan was created by Earl Derr Biggers."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.15384615384615385,
+        "ngram_overlap_5": 0.08333333333333333,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2063
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_24591",
+      "response": "Based on the provided context, **Marcel Duchamp** created L.H.O.O.Q. in 1919. However, it should be noted that while the question refers to him as a \"Dadaist,\" the context only describes him as \"one of the most influential modern artists,\" without specifically labeling him as a Dadaist.",
+      "retrieved_chunks": [
+        "In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.15217391304347827,
+        "ngram_overlap_5": 0.10869565217391304,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.3333333333333333,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 0.5,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 2
+        },
+        "latency_ms": 2807
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_13540",
+      "response": "Based on the provided context, I cannot directly answer this question. The context only mentions **Sputnik 2**, which was launched on **3 November 1957**, but does not provide information about the launch date of the first Sputnik satellite.",
+      "retrieved_chunks": [
+        "Before work was completed, however, the Soviet Union launched a second satellite, Sputnik 2, on 3 November 1957."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.02857142857142857,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2942
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_1283",
+      "response": "Based on the context provided, the nameplate references **Harry Patch** as \"the last survivor of the trenches.\" While the context doesn't explicitly mention the nickname \"The Last Fighting Tommy\" or confirm his death in 2009, Harry Patch is the individual referenced in the context who is associated with being the last survivor of the trenches.",
+      "retrieved_chunks": [
+        "The locomotive nameplates read: 'Harry Patch The last survivor of the trenches' and included a coloured line of all eight ribbons from the medals awarded to Patch."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.06,
+        "ngram_overlap_5": 0.04,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 2
+        },
+        "latency_ms": 2866
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_3013",
+      "response": "The provided context does not contain information about local miners in Ashington, Northumberland forming a group in 1934. I cannot answer this question based on the given context.",
+      "retrieved_chunks": [
+        "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1901
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_3005",
+      "response": "Based on the provided context, Beethoven's only opera was **Fidelio**.",
+      "retrieved_chunks": [
+        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.125,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 5746
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_3279",
+      "response": "Based on the provided context, the Highway Code was first published in **1931** as a booklet.",
+      "retrieved_chunks": [
+        "The highway code was first published in 1931 as a booklet and has been regularly updated to reflect current practices."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6153846153846154,
+        "ngram_overlap_5": 0.5833333333333334,
+        "ngram_overlap_8": 0.4444444444444444,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1575
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_1463",
+      "response": "Based on the provided context, Catherine Zeta-Jones played the role of **Velma Kelly**, a murderous nightclub singer, in the film *Chicago* (2002). However, the context does not specifically mention her winning the Best Supporting Actress Oscar for that role. It only describes her character in the film.",
+      "retrieved_chunks": [
+        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2313
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_218",
+      "response": "Based on the context provided, the Marquesas Islands lie in the **Pacific Ocean**, as stated that they were created by the Marquesas hotspot that underlies the **Pacific Plate**.",
+      "retrieved_chunks": [
+        "Geology \n\nThe bulk of the Marquesas Islands are of volcanic origin, created by the Marquesas hotspot that underlies the Pacific Plate."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.28,
+        "ngram_overlap_5": 0.25,
+        "ngram_overlap_8": 0.14285714285714285,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1790
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_6215",
+      "response": "Based on the provided context, I cannot definitively answer which of Shari Lewis' sock puppets was considered \"sassy.\" The context only mentions that her show *Lamb Chop's Play-Along* featured three sock puppets: **Lamb Chop**, **Charlie Horse**, and **Hush Puppy**, but does not describe the personality traits of any of them.",
+      "retrieved_chunks": [
+        "In the United States, sock puppeteer Shari Lewis was well known for her television show Lamb Chop's Play-Along featuring the sock puppets Lamb Chop, Charlie Horse, and Hush Puppy."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1836734693877551,
+        "ngram_overlap_5": 0.14583333333333334,
+        "ngram_overlap_8": 0.044444444444444446,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 2771
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_2421",
+      "response": "Based on the context provided, the first name of the Kray twins' mother was **Violet** (Violet Annie Lee).",
+      "retrieved_chunks": [
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1925
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_4681",
+      "response": "Based on the provided context, the **Ambassador Bridge** connects Detroit, Michigan, USA and Windsor, Ontario, Canada. (The Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel also link the two cities, but those are tunnels, not bridges.)",
+      "retrieved_chunks": [
+        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.15151515151515152,
+        "ngram_overlap_5": 0.125,
+        "ngram_overlap_8": 0.034482758620689655,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2168
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_22446",
+      "response": "Based on the provided context, I cannot fully answer this question. The context only mentions that **Tottenham Hotspur** became the first club in the 20th century to win the League and F.A. Cup, which aligns with their 1901 FA Cup win, suggesting **Tottenham Hotspur** is the answer \u2014 as they were not in the Football League at the time. However, the context is too limited to confirm the full details of the question with certainty.",
+      "retrieved_chunks": [
+        "Tottenham Hotspur became the first club in the 20th century to win the League and F.A."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.19444444444444445,
+        "ngram_overlap_5": 0.18309859154929578,
+        "ngram_overlap_8": 0.14705882352941177,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 4,
+          "total_factual": 4
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3406
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_14611",
+      "response": "Based on the provided context, the common names for the garden shrub pyracantha are **firethorn** or **pyracantha**.",
+      "retrieved_chunks": [
+        "Pyracantha is a genus of large, thorny evergreen shrubs in the family Rosaceae, with common names firethorn or pyracantha."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1914
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_19972",
+      "response": "Based on the context provided, **Steve Prescott** is the answer. The context mentions him as an early example of a player who came through the St Helens academy system. Steve Prescott, the St Helens-born former Rugby League player, passed away after a seven-year battle with a rare abdominal cancer (PMP), during which he raised significant funds for charity through the Steve Prescott Foundation.",
+      "retrieved_chunks": [
+        "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.6666666666666666,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3453
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_3191",
+      "response": "Based on the context, **taphophobia** (also referred to as **taphephobia**) is the abnormal fear of **being buried alive** (premature burial), as indicated by the reference to Edgar Allan Poe's story \"The Premature Burial,\" which is about a person suffering from this condition.",
+      "retrieved_chunks": [
+        "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1,
+        "ngram_overlap_5": 0.05128205128205128,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 2681
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_9128",
+      "response": "Based on the context, **Rihanna** is the singer associated with \"Take a Bow,\" which was recorded for *Good Girl Gone Bad: Reloaded* (2008). However, the context does not specifically state that it was a **number one hit**, only that it was released in 2008.",
+      "retrieved_chunks": [
+        "\"Take a Bow\" is a song recorded by Barbadian singer Rihanna for Good Girl Gone Bad: Reloaded (2008), the re-release of her third studio album Good Girl Gone Bad (2007)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0975609756097561,
+        "ngram_overlap_5": 0.075,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 2748
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_24460",
+      "response": "Based on the context provided, **Zachary Taylor** was the US President who died in office in July 1850, being succeeded by his Vice President Millard Fillmore. The context confirms that Taylor was nominated for President at the 1848 Whig National Convention, and that Fillmore served as his Vice President from 1849\u20131850.",
+      "retrieved_chunks": [
+        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.04081632653061224,
+        "ngram_overlap_5": 0.020833333333333332,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2707
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_1567",
+      "response": "Based on the context provided, since **each set of twelve frets represents an octave**, the notes at the **12th fret** would be the same as the open strings, but an octave higher.",
+      "retrieved_chunks": [
+        "Each set of twelve frets represents an octave."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1724137931034483,
+        "ngram_overlap_5": 0.14285714285714285,
+        "ngram_overlap_8": 0.04,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1966
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_2564",
+      "response": "Based on the provided context, Oswald Chesterfield Cobblepot is better known as **The Penguin**.",
+      "retrieved_chunks": [
+        "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.09090909090909091,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1743
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_9819",
+      "response": "Based on the context provided, the text mentions **Hong Kong** being placed in the treaty (with \"islands\" changed to \"island\" and \"Hong Kong\" added). This aligns with the historical fact that **Hong Kong Island** was ceded to Britain by the Treaty of Nanking in 1842, and the context supports this by describing how Pottinger modified the draft treaty to specify \"Hong Kong\" specifically.",
+      "retrieved_chunks": [
+        "Pottinger sent this old draft treaty on shore, with the letter s struck out of islands and the words Hong Kong placed after it."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 4,
+          "total_quoted": 4
+        },
+        "latency_ms": 3375
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_607",
+      "response": "Based on the provided context, the two authors responsible for the Communist Manifesto were **Karl Marx** and **Friedrich Engels**, both described as German philosophers.",
+      "retrieved_chunks": [
+        "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.09523809523809523,
+        "ngram_overlap_5": 0.05,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1882
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_12907",
+      "response": "Based on the context, a full Braille cell includes **six raised dots**, arranged in two lateral rows of three dots each. Therefore, the maximum number of raised dots in a Braille cell is **6**.",
+      "retrieved_chunks": [
+        "A full Braille cell includes six raised dots arranged in two lateral rows each having three dots."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3225806451612903,
+        "ngram_overlap_5": 0.3,
+        "ngram_overlap_8": 0.2222222222222222,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2085
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_23716",
+      "response": "Based on the context provided, the SS Thistlegorm is located in the **Red Sea**, as the text mentions the ship headed \"north up the East coast of Africa and into the Red Sea.\"",
+      "retrieved_chunks": [
+        "Due to German and Italian naval and air force activity in the Mediterranean, the Thistlegorm sailed as part of a convoy via Cape Town, South Africa, where she refuelled, before heading north up the East coast of Africa and into the Red Sea."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3,
+        "ngram_overlap_5": 0.27586206896551724,
+        "ngram_overlap_8": 0.19230769230769232,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 1951
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_1157",
+      "response": "Based on the context, Bolton Wanderers' opponents in the first Wembley FA Cup Final were **West Ham United**. Bolton won the match 2\u20130 on 28 April 1923.",
+      "retrieved_chunks": [
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.08,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2147
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_5520",
+      "response": "Based on the provided context, **Tallahassee** is the state capital of Florida.",
+      "retrieved_chunks": [
+        "Tallahassee is the state capital."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2222222222222222,
+        "ngram_overlap_5": 0.125,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1712
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_7025",
+      "response": "Based on the context provided, the Hall\u00e9 orchestra is based in **Manchester**, England.",
+      "retrieved_chunks": [
+        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1614
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_2940",
+      "response": "Based on the provided context, I cannot give a definitive answer to this question. While the context mentions several southern European/Mediterranean countries (Spain, Portugal, Italy, Southern France, Greece, and Malta), it does not specify which one is the **most southerly** country of the EU.\n\nHowever, **Malta** is generally considered the most southerly EU member state, and it is mentioned in the context as part of southern/Mediterranean Europe, but the context does not explicitly state this ranking.",
+      "retrieved_chunks": [
+        "Some definitions of southern Europe, also known as Mediterranean Europe, include the countries of the Iberian peninsula (Spain and Portugal), the Italian peninsula, Southern France, Greece and Malta."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.02666666666666667,
+        "ngram_overlap_5": 0.013513513513513514,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3262
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_25534",
+      "response": "Based on the provided context, **Norman Mailer** wrote the novel *The Naked and the Dead*, which was published in 1948.",
+      "retrieved_chunks": [
+        "The Naked and the Dead is a 1948 novel by Norman Mailer."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.11764705882352941,
+        "ngram_overlap_5": 0.0625,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1731
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_11543",
+      "response": "Based on the provided context, I can only partially answer this question. The context mentions that both **Blunt** and **Burgess** were members of the Cambridge Apostles, associated with **Trinity and King's Colleges**, but it does not provide specific information about which individual attended which college, nor does it mention **Kim Philby's** college at all.\n\nTherefore, I cannot fully answer the question as asked based solely on the provided context.",
+      "retrieved_chunks": [
+        "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.13432835820895522,
+        "ngram_overlap_5": 0.1044776119402985,
+        "ngram_overlap_8": 0.046875,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3031
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_1682",
+      "response": "Based on the provided context, I can only confirm that **Dennis Potter** wrote *The Singing Detective*. The context does not contain any information about who wrote *Pennies From Heaven*, so I cannot confirm the writer of that series from the given context alone.",
+      "retrieved_chunks": [
+        "The Singing Detective is a BBC television serial drama, written by Dennis Potter, which stars Michael Gambon and was directed by Jon Amiel."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2343
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_12025",
+      "response": "Based on the context provided, the film is **127 Hours**, which was directed by Danny Boyle. The context mentions it was released **two years after** *Slumdog Millionaire* (2008), placing it in **2010**. However, the context only refers to it by title without describing it as a biopic about a climber trapped by a boulder \u2014 though that detail is consistent with the known film.",
+      "retrieved_chunks": [
+        "This was the third time Boyle has had that honour, after Slumdog Millionaire in 2008 and 127 Hours two years later."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 5398
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_21320",
+      "response": "The provided context does not contain information about Nizhny Novgorod being renamed or what it was called between 1932 and 1990. The context only mentions that Maxim Gorky was born there in 1868.",
+      "retrieved_chunks": [
+        "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.03333333333333333,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2195
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_4766",
+      "response": "Based on the provided context, G.K. Chesterton created the fictional priest-detective **Father Brown**.",
+      "retrieved_chunks": [
+        "Chesterton is well known for his fictional priest-detective Father Brown,  and for his reasoned apologetics."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.16666666666666666,
+        "ngram_overlap_5": 0.09090909090909091,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1670
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_17590",
+      "response": "Based on the provided context, Clara Petacci was the mistress of **Benito Mussolini**, the Italian dictator.",
+      "retrieved_chunks": [
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.07692307692307693,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1827
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_5765",
+      "response": "Based on the context, **Percy** is a cat. However, the context notes an interesting detail: the cat actually depicted in the painting was not Percy but rather **Blanche**, another one of their cats. Hockney simply thought \"Percy\" made for a better title than \"Blanche.\"",
+      "retrieved_chunks": [
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.12195121951219512,
+        "ngram_overlap_5": 0.05,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 0.5,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 2
+        },
+        "latency_ms": 4005
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_2014",
+      "response": "Based on the provided context, Alan Greenspan is a former Chairman of the **Federal Reserve of the United States**, a position he held from 1987 to 2006.",
+      "retrieved_chunks": [
+        "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2916666666666667,
+        "ngram_overlap_5": 0.21739130434782608,
+        "ngram_overlap_8": 0.1,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1838
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4953",
+      "response": "Based on the provided context, Paul McGann played the character **Percy Toplis**, described as an infamous British deserter and criminal, in the 1986 BBC serial *The Monocled Mutineer*.",
+      "retrieved_chunks": [
+        "The Monocled Mutineer\n\nMcGann's first major dramatic role was the infamous British deserter and criminal Percy Toplis in the 1986 BBC serial The Monocled Mutineer."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.28,
+        "ngram_overlap_5": 0.20833333333333334,
+        "ngram_overlap_8": 0.047619047619047616,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1978
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_5544",
+      "response": "Based on the provided context, Baghdad lies on the **Tigris River**.",
+      "retrieved_chunks": [
+        "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.125,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1469
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_3451",
+      "response": "The provided context does not contain information about who sang behind Huey Lewis. The context only references the Huey Lewis and the News discography for albums and singles, but provides no details about backing vocalists or other performers.",
+      "retrieved_chunks": [
+        "Recording credits\n\nSee Huey Lewis and the News discography for albums and singles by the band."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2,
+        "ngram_overlap_5": 0.17647058823529413,
+        "ngram_overlap_8": 0.0967741935483871,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2189
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_22796",
+      "response": "Based on the provided context, I cannot answer that question directly. The context mentions that Mercedes is based at Brackley and Force India is based in Silverstone (both in Northamptonshire), but it does not specifically state where the British Formula 1 Grand Prix is held.",
+      "retrieved_chunks": [
+        "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.047619047619047616,
+        "ngram_overlap_5": 0.024390243902439025,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2505
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_22891",
+      "response": "Based on the provided context, the answer to your question cannot be found. The context only mentions \"pertussis\" and a dramatic increase in its incidence, but does not provide its common name.\n\nFor reference (though not from the provided context), pertussis is commonly known as **whooping cough**, but I cannot confirm this from the given text alone.",
+      "retrieved_chunks": [
+        "A dramatic increase in the incidence of pertussis followed."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.018518518518518517,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 2891
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_1792",
+      "response": "Based on the context provided, the term used for this is **\"Double Duty\"** \u2014 which refers to drivers who run the Indianapolis 500 and then immediately fly from Indianapolis to Charlotte to participate in the Coca-Cola 600 on the same day (Memorial Day weekend).",
+      "retrieved_chunks": [
+        "The move of the race to the early evening made it possible for drivers to do Double Duty - run the Indianapolis 500, then immediately fly from Indianapolis to Charlotte, and participate in the Coca-Cola 600."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1951219512195122,
+        "ngram_overlap_5": 0.125,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 2995
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_106",
+      "response": "The provided context does not contain information about any actress being voted Miss Greenwich Village in 1942. The context only mentions Lauren Bacall receiving the Kennedy Center Honors in 1997 and being voted one of the 25 most significant female movie stars by the American Film Institute in 1999.",
+      "retrieved_chunks": [
+        "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2826086956521739,
+        "ngram_overlap_5": 0.2222222222222222,
+        "ngram_overlap_8": 0.07142857142857142,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2066
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_4129",
+      "response": "Based on the provided context, I cannot answer that question. The context only states that \"You're So Vain\" was written and performed by **Carly Simon** and released in November 1972, but it does not contain any information about UK chart positions.",
+      "retrieved_chunks": [
+        "\"You're So Vain\" is a song written and performed by Carly Simon and released in November 1972."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.23076923076923078,
+        "ngram_overlap_5": 0.18421052631578946,
+        "ngram_overlap_8": 0.11428571428571428,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 2195
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_4322",
+      "response": "Based on the provided context, the **aardvark**'s name means \"earth pig\" (or \"ground pig\"). However, it should be noted that the context specifies the name comes from **Afrikaans** (erdvark), not Dutch, though the two languages are closely related.",
+      "retrieved_chunks": [
+        "The name \"aardvark\" comes from earlier Afrikaans (erdvark) and means \"earth pig\" or \"ground pig\" (aarde: earth/ground, vark: pig), because of its burrowing habits  (similar origin to the name groundhog)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.08333333333333333,
+        "ngram_overlap_5": 0.05714285714285714,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 2839
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4058",
+      "response": "Based on the context provided, while **Measure for Measure** is mentioned as one of Shakespeare's \"problem plays,\" the context does not contain specific details about the plot or characters of the play (such as Isabella, her brother, or Angelo).\n\nHowever, from the general description of a problem play involving a novice nun, **Measure for Measure** is the answer \u2014 though I should note this specific plot detail is not confirmed within the provided context.",
+      "retrieved_chunks": [
+        "In the early 17th century, Shakespeare wrote the so-called \"problem plays\" Measure for Measure, Troilus and Cressida, and All's Well That Ends Well and a number of his best known tragedies."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 3272
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4228",
+      "response": "Based on the context provided, the Spanish term for a bullfight is **\"corrida de toros\"** (literally meaning \"running of bulls\"). It is also referred to as **\"la fiesta\"** (\"the festival\").",
+      "retrieved_chunks": [
+        "Spanish\n\nSpanish-style bullfighting is called corrida de toros (literally \"running of bulls\") or la fiesta (\"the festival\")."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.07407407407407407,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 4,
+          "total_quoted": 4
+        },
+        "latency_ms": 1972
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_309",
+      "response": "Based on the provided context, the musical 'Sunday In The Park With George' was inspired by a painting by **Georges Seurat**, specifically his painting \"A Sunday Afternoon on the Island of La Grande Jatte.\"",
+      "retrieved_chunks": [
+        "The musical was inspired by the painting \"A Sunday Afternoon on the Island of La Grande Jatte\" by Georges Seurat."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.25806451612903225,
+        "ngram_overlap_5": 0.23333333333333334,
+        "ngram_overlap_8": 0.14814814814814814,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 1892
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_5913",
+      "response": "Based on the provided context, I cannot answer that question. The context only mentions that Dickens wrote **Bleak House**, **Hard Times**, and **Little Dorrit** while living at Tavistock House, but does not provide any information about the character Mr M Choakumchild or which novel they appear in.",
+      "retrieved_chunks": [
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2487
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_809",
+      "response": "Based on the context provided, this is **Sir Thomas Gresham's Law**. Gresham was a sixteenth-century financial agent of the English Crown in the city of Antwerp, and the law was named after him, partly to explain to Queen Elizabeth I what was happening to the English shilling.",
+      "retrieved_chunks": [
+        "History of the concept\n\nThe law was named after Sir Thomas Gresham, a sixteenth-century financial agent of the English Crown in the city of Antwerp, to explain to Queen Elizabeth I what was happening to the English shilling."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5,
+        "ngram_overlap_5": 0.4444444444444444,
+        "ngram_overlap_8": 0.30952380952380953,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2601
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_9147",
+      "response": "Based on the context provided, Dastardly's squadron is called the **Vulture Squadron**.",
+      "retrieved_chunks": [
+        "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1448
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_12482",
+      "response": "Based on the context, Mindanao is described as the **second largest** major island in the **Philippines**. This implies that Luzon is the largest, making **Luzon and Mindanao the two largest islands in the Philippines**.",
+      "retrieved_chunks": [
+        "Mindanao ( ) is the second largest and southernmost major island in the Philippines."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.06451612903225806,
+        "ngram_overlap_5": 0.03333333333333333,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2363
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_7764",
+      "response": "Based on the context provided, the word **Punic** comes from the Latin word *Punicus* (or *Poenicus*), which meant **\"Carthaginian\"**. The term referred to the Carthaginians' **Phoenician ancestry**.",
+      "retrieved_chunks": [
+        "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3333333333333333,
+        "ngram_overlap_5": 0.2608695652173913,
+        "ngram_overlap_8": 0.1,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 2358
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_19820",
+      "response": "Based on the provided context, the answer is **Nero**. According to the context, the Senate declared Nero a **public enemy**, and while the context doesn't explicitly state that he committed suicide, it does confirm he died and was posthumously declared a public enemy by the Senate in connection with the events of 68 AD surrounding Galba's rise to power.",
+      "retrieved_chunks": [
+        "The Senate, when news of his death reached Rome, posthumously declared Nero a public enemy to appease the coming Galba (as the Senate had initially declared Galba as a public enemy) and proclaimed Galba the new emperor."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.05172413793103448,
+        "ngram_overlap_5": 0.017543859649122806,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2829
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_10109",
+      "response": "The provided context only mentions that sixteen balls are used in eight-ball, straight pool, and related games. It does not contain any information about **bar billiards** or how many balls are used in that game. I cannot answer this question based on the given context.",
+      "retrieved_chunks": [
+        "In eight-ball, straight pool, and related games, all sixteen balls are employed."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.11904761904761904,
+        "ngram_overlap_5": 0.09523809523809523,
+        "ngram_overlap_8": 0.02564102564102564,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2093
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_14403",
+      "response": "Based on the provided context, John Carpenter and Debra Hill began drafting a story titled **\"The Babysitter Murders\"**, which eventually became the film **Halloween**. The title was changed at Yablans' request, who suggested setting the story on Halloween night.",
+      "retrieved_chunks": [
+        "Carpenter and Debra Hill began drafting a story titled The Babysitter Murders, but the title was changed at Yablans' request, suggesting the setting be changed to Halloween night and naming it Halloween instead."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3611111111111111,
+        "ngram_overlap_5": 0.3142857142857143,
+        "ngram_overlap_8": 0.15625,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 2957
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_3828",
+      "response": "Based on the context provided, I can see a reference to **\"NOVA ScienceNOW\"**, which is associated with PBS. However, the context does not fully confirm all the specific details you mentioned (produced by WGBH in Boston, running from 1974 to the present). The program you are likely referring to is **NOVA**, with \"NOVA ScienceNOW\" being a related spin-off series, but I cannot fully confirm those details based solely on the provided context.",
+      "retrieved_chunks": [
+        "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 3901
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_8774",
+      "response": "Based on the provided context, the text is incomplete \u2014 it states \"A4 measuring 210 x\" but is cut off before giving the full dimensions. However, the context does confirm that **A4 paper is 210mm wide**, as the width of 210 is mentioned before the text cuts off.",
+      "retrieved_chunks": [
+        "The most frequently used paper size is A4 measuring 210 x."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.022727272727272728,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 2976
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4632",
+      "response": "Based on the provided context, Charles Rennie Mackintosh was a leading exponent of **Art Nouveau**, which he blended with influences from his Scottish upbringing and the simplicity of Japanese forms.",
+      "retrieved_chunks": [
+        "Mackintosh took his inspiration from his Scottish upbringing and blended them with the flourish of Art Nouveau and the simplicity of Japanese forms."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.18518518518518517,
+        "ngram_overlap_5": 0.11538461538461539,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2149
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_2030",
+      "response": "Based on the provided context, I cannot answer that question specifically. The context only mentions that the 1999 romantic comedy *Notting Hill* starred Julia Roberts and Hugh Grant, but does not provide details about the characters or their occupations in the film.",
+      "retrieved_chunks": [
+        "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1282051282051282,
+        "ngram_overlap_5": 0.07894736842105263,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2446
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_15421",
+      "response": "Based on the context provided, Haiti and the Dominican Republic share the island of **Hispaniola**. The context states that the Dominican Republic occupies the eastern five-eighths of the island of Hispaniola, which implies Haiti occupies the remaining western portion.",
+      "retrieved_chunks": [
+        "The Dominican Republic () is a sovereign state occupying the eastern five-eighths of the island of Hispaniola, in the Greater Antilles archipelago in the Caribbean region."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.16666666666666666,
+        "ngram_overlap_5": 0.1388888888888889,
+        "ngram_overlap_8": 0.06060606060606061,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2267
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_4590",
+      "response": "Based on the provided context, I can only partially answer this question. The context mentions that **persimmon** was used in making golf club heads (\"woods\") until the industry moved to **metal woods**. However, the context does not mention **hickory** or the specific materials **graphite and titanium** as replacements. Therefore, I cannot fully confirm the complete answer based solely on the given context.",
+      "retrieved_chunks": [
+        "Persimmon wood was also heavily used in making the highest-quality heads of the golf clubs known as \"woods\" until the golf industry moved primarily to metal woods in the last years of the 20th century."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.75,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 4
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 3057
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_2349",
+      "response": "Based on the provided context, Jay-Z and Beyonc\u00e9's daughter is named **Blue Ivy Carter**. She was born on January 7, 2012, at Lenox Hill Hospital in New York.",
+      "retrieved_chunks": [
+        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.18518518518518517,
+        "ngram_overlap_5": 0.11538461538461539,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1927
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_3117",
+      "response": "Based on the provided context, I cannot answer that question. The context only mentions that Keswick features the Derwentwater Regatta in August, but does not specify the geographical relationship between the town of Keswick and any body of water.",
+      "retrieved_chunks": [
+        "In August, Keswick features the Derwentwater Regatta."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.05555555555555555,
+        "ngram_overlap_5": 0.02857142857142857,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2077
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_2390",
+      "response": "The provided context does not contain information about the physics term for mass times velocity. The context only discusses a historical English text related to time measurements. \n\nFor what it's worth, the answer to your question is **momentum**, but this cannot be confirmed from the given context.",
+      "retrieved_chunks": [
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2927
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_2769",
+      "response": "Based on the context provided, I can only confirm that **The Richardson Gang** was an English crime gang based in south London in the 1960s. However, the context does not specifically mention that they were led by Charles and Eddie, nor that they were rivals of the Krays. I cannot confirm those details based solely on the information provided.",
+      "retrieved_chunks": [
+        "The Richardson Gang was an English crime gang based in south London, England, in the 1960s."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.16071428571428573,
+        "ngram_overlap_5": 0.14545454545454545,
+        "ngram_overlap_8": 0.09615384615384616,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2651
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_6020",
+      "response": "The context provided does not contain any information about \"Earthview 01: The Founders Flight\" or a mission launched on 21 April 1997. I cannot answer this question based on the available context.",
+      "retrieved_chunks": [
+        "The first space burial occurred in 1992 when the NASA space shuttle Columbia (mission STS-52) carried a portion of Gene Roddenberry's cremated remains into space and returned them to Earth."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 2310
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_220",
+      "response": "Based on the context provided, the compere (host) of 'Take Your Pick' was **Michael Miles**.",
+      "retrieved_chunks": [
+        "The first version was hosted by Michael Miles (after its demise, Miles hosted a similar show for Southern Television called Wheel of Fortune, not to be confused with the later Wheel of Fortune of the same title)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1581
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_1380",
+      "response": "The provided context does not contain information about which Kings in a standard deck of cards have a moustache. The context only mentions that Italian and Spanish decks consist of 40 cards with face cards of King, Knight, and Knave/Jack, but does not describe the appearance of those cards. I cannot answer this question based on the given context.",
+      "retrieved_chunks": [
+        "Most Italian and Spanish decks consist of 40 cards with each suit numbering 1 (or Ace) to 7 with three face cards of King, Knight, and Knave/Jack."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.19298245614035087,
+        "ngram_overlap_5": 0.16071428571428573,
+        "ngram_overlap_8": 0.05660377358490566,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2397
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_10822",
+      "response": "Based on the provided context, **The Castle of Otranto** was written by **Horace Walpole**.",
+      "retrieved_chunks": [
+        "The Castle of Otranto is a 1764 novel by Horace Walpole."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.09090909090909091,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1913
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_7327",
+      "response": "Based on the provided context, **Malcolm Bradbury**, a British author, wrote the 1975 novel *The History Man*.",
+      "retrieved_chunks": [
+        "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1725
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_7865",
+      "response": "Based on the provided context, the author of the Twilight series is **Stephenie Meyer**, an American author.",
+      "retrieved_chunks": [
+        "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1827
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_532",
+      "response": "Based on the provided context, the United States won **37 medals** at the 2010 Winter Olympics, breaking the previous record of 36 medals held by Germany in 2002.",
+      "retrieved_chunks": [
+        "The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.08,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1852
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_3932",
+      "response": "Based on the context provided, I can confirm that **Theodore Roosevelt** was born on October 27, 1858, and did serve as Assistant Secretary of the Navy. However, I should note a slight discrepancy: according to the context, he served in that role from **1897\u20131898**, not starting in 1899 as your question states.\n\nThe context does not mention his time as a North Dakota rancher or his being the 26th president, so I cannot confirm those details from the provided context alone.",
+      "retrieved_chunks": [
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0379746835443038,
+        "ngram_overlap_5": 0.02564102564102564,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3467
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_2687",
+      "response": "Based on the context, **James Watt**, a Scottish engineer, formed a successful partnership with Matthew Boulton.",
+      "retrieved_chunks": [
+        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1758
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_5313",
+      "response": "Based on the provided context, Wolfgang Amadeus Mozart was born in **Salzburg** in 1756, specifically at 9 Getreidegasse.",
+      "retrieved_chunks": [
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.13333333333333333,
+        "ngram_overlap_5": 0.07142857142857142,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1854
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_4141",
+      "response": "Based on the context provided, **Dana\u00eb** was the mother of Perseus. The context confirms she was a mortal and that Zeus was Perseus's father, which aligns with the mythological story of Zeus visiting her disguised as a shower of gold. However, I should note that the specific detail about Zeus being \"disguised as a shower of gold\" is not explicitly mentioned in the provided context \u2014 only that Zeus was his father and Dana\u00eb was his mother.",
+      "retrieved_chunks": [
+        "Perseus was the son of the mortal Dana\u00eb and the god Zeus."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 3226
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_15421",
+      "response": "Based on the context provided, Haiti and the Dominican Republic share the island of **Hispaniola**. The context states that the Dominican Republic occupies the eastern five-eighths of the island of Hispaniola, which implies Haiti occupies the remaining western portion.",
+      "retrieved_chunks": [
+        "The Dominican Republic () is a sovereign state occupying the eastern five-eighths of the island of Hispaniola, in the Greater Antilles archipelago in the Caribbean region."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.16666666666666666,
+        "ngram_overlap_5": 0.1388888888888889,
+        "ngram_overlap_8": 0.06060606060606061,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2413
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_26014",
+      "response": "Based on the provided context, the Gulf of Carpentaria is an inlet on the north coast of **Australia**. The context describes it as \"a large, shallow sea enclosed on three sides by northern Australia.\"",
+      "retrieved_chunks": [
+        "The Gulf of Carpentaria () is a large, shallow sea enclosed on three sides by northern Australia and bounded on the north by the Arafura Sea (the body of water that lies between Australia and New Guinea)."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3225806451612903,
+        "ngram_overlap_5": 0.26666666666666666,
+        "ngram_overlap_8": 0.14814814814814814,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 1912
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_1122",
+      "response": "Based on the provided context, Cagliari is the capital of the island of **Sardinia**, which is an autonomous region of Italy.",
+      "retrieved_chunks": [
+        "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3333333333333333,
+        "ngram_overlap_5": 0.23529411764705882,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1817
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_7821",
+      "response": "Based on the context provided, the word that refers to the period before \"The Great Flood\" is **antediluvian**. The context mentions the Sumerian King List divides its history into **preflood (antediluvian)** and postflood periods.",
+      "retrieved_chunks": [
+        "In the Sumerian King List, it relies on the flood motif to divide its history into preflood (antediluvian) and postflood periods."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1935483870967742,
+        "ngram_overlap_5": 0.13333333333333333,
+        "ngram_overlap_8": 0.037037037037037035,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 2540
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_3081",
+      "response": "Based on the context, **Donald Trump** purchased the hotel and golf courses (Turnberry) in April 2014.",
+      "retrieved_chunks": [
+        "Donald Trump purchased the hotel and golf courses from Leisurecorp in April 2014,   and the resort was renamed Trump Turnberry in June 2014."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.38461538461538464,
+        "ngram_overlap_5": 0.3333333333333333,
+        "ngram_overlap_8": 0.1111111111111111,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1917
+      }
+    },
+    {
+      "query_id": "triviaqa-qg_2312",
+      "response": "Based on the provided context, **Apollo 11** was the first manned mission to land on the Moon, on July 20, 1969. However, the context does not specifically mention the launch date of July 16, 1969, though it does confirm Apollo 11 as the first mission to land humans on the Moon.",
+      "retrieved_chunks": [
+        "The United States' Apollo 11 was the first manned mission to land on the Moon, on 20 July 1969."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.20833333333333334,
+        "ngram_overlap_5": 0.19148936170212766,
+        "ngram_overlap_8": 0.13636363636363635,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2430
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_1699",
+      "response": "Based on the provided context, while it mentions pyramid-building occurring in **present-day Sudan** (built by the Kings of Napata/Nubian pyramids), the context does not explicitly state that Sudan has the **greatest number** of ancient pyramids. I cannot confirm that claim solely based on the information given, even with the hint provided. The context only indicates that a \"burst of pyramid-building\" occurred there after Egypt's own pyramid-building period ended.",
+      "retrieved_chunks": [
+        "Long after the end of Egypt's own pyramid-building period, a burst of pyramid-building occurred in what is present-day Sudan, after much of Egypt came under the rule of the Kings of Napata."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.09859154929577464,
+        "ngram_overlap_5": 0.05714285714285714,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 3466
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_8205",
+      "response": "Based on the provided context, the answer is **Tiananmen Square**. The \"Gate of Heavenly Peace\" refers to **Tiananmen** (\u5929\u5b89\u9580), which literally translates as \"Gate of Heavenly Peace,\" and it is the gate located at the front of the Imperial City facing Tiananmen Square.",
+      "retrieved_chunks": [
+        "Portrait \n\nHistory \n\nBecause of the gate's position at the front of the Imperial City, and historical events that have taken place on Tiananmen Square, the gate has great political significance."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1282051282051282,
+        "ngram_overlap_5": 0.07692307692307693,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 2
+        },
+        "latency_ms": 2650
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_784",
+      "response": "Based on the context provided, Emma Clarke is described as \"one of the voices of the **London** Underground,\" which indicates that travelers were first asked to \"mind the gap\" in **London**.",
+      "retrieved_chunks": [
+        "Emma Clarke, one of the voices of the London Underground, has released a Mind The Gap single."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.17857142857142858,
+        "ngram_overlap_5": 0.14814814814814814,
+        "ngram_overlap_8": 0.041666666666666664,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 2
+        },
+        "latency_ms": 1997
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_22454",
+      "response": "Based on the context provided, I cannot fully answer this question. The context mentions that **Alex McAvoy played Sunny Jim in *The Vital Spark***, but it does not mention Gregor Fisher or identify whose boat was called The Vital Spark. The context does reference **Para Handy** as a captain in the coastal trade, which may be relevant, but the connection to Gregor Fisher is not established in the provided context.",
+      "retrieved_chunks": [
+        "Alex McAvoy, who played Sunny Jim in The Vital Spark, appears in one episode as a fellow captain of Para Handy in the coastal trade."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.07462686567164178,
+        "ngram_overlap_5": 0.045454545454545456,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3046
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_2564",
+      "response": "Based on the provided context, Oswald Chesterfield Cobblepot is better known as **The Penguin**.",
+      "retrieved_chunks": [
+        "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.09090909090909091,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1735
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_7042",
+      "response": "Based on the provided context, **the dish** ran away with the spoon, as stated in the line: *\"And the dish ran away with the spoon.\"*",
+      "retrieved_chunks": [
+        "The little dog laughed,\nTo see such sport,\nAnd the dish ran away with the spoon.I."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2777777777777778,
+        "ngram_overlap_5": 0.2222222222222222,
+        "ngram_overlap_8": 0.05555555555555555,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 1950
+      }
+    },
+    {
+      "query_id": "triviaqa-qw_8269",
+      "response": "Based on the context provided, the current name is **Hawaii** (derived from the name of the largest island, Hawaii Island). The context implies this is the contemporary name for what were previously known as the Sandwich Islands.",
+      "retrieved_chunks": [
+        "The contemporary name is derived from the name of the largest island, Hawaii Island."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.20588235294117646,
+        "ngram_overlap_5": 0.18181818181818182,
+        "ngram_overlap_8": 0.1,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2162
+      }
+    },
+    {
+      "query_id": "triviaqa-odql_12874",
+      "response": "Based on the provided context, the answer is not fully specified \u2014 the context describes the person as being known as the **\"Butcher of Lyon\"** for personally torturing French prisoners while stationed in Lyon, France, but **does not explicitly name the individual**.\n\nThe context only refers to him as \"He\" without providing his name. Therefore, I cannot give you his name based solely on the provided context.",
+      "retrieved_chunks": [
+        "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0967741935483871,
+        "ngram_overlap_5": 0.06451612903225806,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 3452
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_3320",
+      "response": "The context provided does not contain information to answer your question. The context only mentions that in the Margaret Martin musical *Gone with the Wind*, the role of Scarlett O'Hara was originated by **Jill Paice**. It does not include the passage you referenced, which is actually the famous opening line from Margaret Mitchell's novel *Gone with the Wind*.",
+      "retrieved_chunks": [
+        "* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.30357142857142855,
+        "ngram_overlap_5": 0.2857142857142857,
+        "ngram_overlap_8": 0.24528301886792453,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2871
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_121",
+      "response": "Based on the context provided, while it mentions the American classification terms \"freshmen,\" \"sophomores,\" \"juniors,\" and \"seniors,\" it lists them in order alongside the Canadian classification of **first, second, third, and fourth-year** students. From this, it can be inferred that a **sophomore** corresponds to a **second-year** student in a US college.",
+      "retrieved_chunks": [
+        "University students are generally classified as first, second, third or fourth-year students, and the American system of classifying them as \"freshmen\", \"sophomores\", \"juniors\" and \"seniors\" is seldom used or even understood in Canada."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.04,
+        "ngram_overlap_5": 0.02040816326530612,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 4
+        },
+        "latency_ms": 2639
+      }
+    },
+    {
+      "query_id": "triviaqa-bt_3103",
+      "response": "Based on the context provided, a **hi-hat** is a type of **cymbal** (specifically described as \"a combination cymbal and stand\"). Therefore, crash, ride, and hi-hat are all types of **cymbals**.\n\nHowever, I should note that the context only explicitly mentions the hi-hat as a cymbal \u2014 the information about crash and ride cymbals is not directly stated in the provided context, though this is consistent with general knowledge.",
+      "retrieved_chunks": [
+        "A hi-hat, also spelled hihat, is a combination cymbal and stand found in a standard drum kit used by percussionists playing popular music."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.029850746268656716,
+        "ngram_overlap_5": 0.015151515151515152,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 3173
+      }
+    },
+    {
+      "query_id": "triviaqa-bb_168",
+      "response": "Based on the context, Cape Wrath is located in the **Highlands of Scotland**, making it on the coast of **Scotland**.",
+      "retrieved_chunks": [
+        "Cape Wrath (Gaelic: Am Parbh, known as An Carbh in Lewis) is a cape in the Durness parish of the county of Sutherland in the Highlands of Scotland."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.11764705882352941,
+        "ngram_overlap_5": 0.0625,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1805
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_1783",
+      "response": "Based on the context provided, Mary II died from **smallpox**, which she contracted in late 1694.",
+      "retrieved_chunks": [
+        "In late 1694, however, she contracted smallpox."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1599
+      }
+    },
+    {
+      "query_id": "triviaqa-qz_3023",
+      "response": "Based on the context provided, **Prince Edward, Earl of Wessex** was leased Bagshot Park in March 1998. The context does not explicitly mention his wife or describe them as a \"well known couple.\" However, it is generally known that Prince Edward lives there with his wife Sophie, Countess of Wessex, though this specific detail is not stated in the provided context.",
+      "retrieved_chunks": [
+        "Lease to Prince Edward, Earl of Wessex \n\nIn March 1998, the Mansion House at Bagshot Park, including a block of stables and Sunningdale Lodge, was leased by the Crown Estate to Prince Edward for 50 years."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.05172413793103448,
+        "ngram_overlap_5": 0.017543859649122806,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 0.0,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 1
+        },
+        "latency_ms": 3019
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_3468",
+      "response": "Based on the provided context, **William Blake** produced the illustrated collection of poems *Songs of Innocence and of Experience*.",
+      "retrieved_chunks": [
+        "Songs of Innocence and of Experience  is an illustrated collection of poems by William Blake."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.25,
+        "ngram_overlap_5": 0.13333333333333333,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1920
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_15011",
+      "response": "Based on the context, the product advertised on TV with the slogan 'It does exactly what it says on the tin' is **Ronseal**, a woodstain and wood-dye manufacturer. The advertisements were initiated in **1994** and were still being broadcast at the time the context was written.",
+      "retrieved_chunks": [
+        "It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast ."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.06818181818181818,
+        "ngram_overlap_5": 0.023255813953488372,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2582
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_4027",
+      "response": "Based on the context provided, Richard Burton's real surname was **Jenkins** \u2014 he was born **Richard Walter Jenkins, Jr.**",
+      "retrieved_chunks": [
+        "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1875,
+        "ngram_overlap_5": 0.13333333333333333,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2085
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_7551",
+      "response": "Based on the provided context, I can identify that **San Francisco** has a district called **Japantown** (also referred to as \"J-town\" according to the context). However, the context does not provide information about the other districts (Financial, Mission, and Richmond) being in San Francisco. I cannot fully confirm the complete answer based solely on the provided context, though San Francisco is the most likely answer given the reference to J-town.",
+      "retrieved_chunks": [
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 3059
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_23372",
+      "response": "Based on the context provided, Tenzin Gyatso is better known as the **14th Dalai Lama**. He is the current Dalai Lama, born on 6 July 1935, with the birth name Lhamo Thondup.",
+      "retrieved_chunks": [
+        "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.10344827586206896,
+        "ngram_overlap_5": 0.03571428571428571,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2204
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_24995",
+      "response": "Based on the context provided, **Amy Tan** wrote *The Joy Luck Club*. However, I should note that the context states the novel was released in **1989**, not 1993 (1993 was when the film adaptation was released).",
+      "retrieved_chunks": [
+        "When the novel The Joy Luck Club was released in 1989, Wayne Wang approached Amy Tan, the novel's author, with the idea of adapting the novel that he admired into a film."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.06060606060606061,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2105
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_25106",
+      "response": "Based on the provided context, Alexis Tsipras is the leader of **Syriza**, a left-wing Greek political party, a position he has held since 4 October 2009.",
+      "retrieved_chunks": [
+        "Tsipras has been leader of the left-wing Greek political party Syriza since 4 October 2009."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.125,
+        "ngram_overlap_5": 0.043478260869565216,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1896
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_2935",
+      "response": "Based on the context provided, \"Waka Waka (This Time for Africa)\" was performed at the **2010 FIFA World Cup** opening ceremony. While the context doesn't explicitly state it was \"written for\" the event, it was clearly associated with the 2010 FIFA World Cup, as Shakira performed it at the opening ceremony on June 10, 2010, in Johannesburg, South Africa.",
+      "retrieved_chunks": [
+        "Live performances \n\nShakira performed \"Waka Waka (This Time for Africa)\" at the 2010 FIFA World Cup opening ceremony on 10 June at the Orlando Stadium in Johannesburg, South Africa."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.16363636363636364,
+        "ngram_overlap_5": 0.10909090909090909,
+        "ngram_overlap_8": 0.018867924528301886,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.5,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 2
+        },
+        "latency_ms": 2760
+      }
+    },
+    {
+      "query_id": "triviaqa-dpql_3261",
+      "response": "Based on the provided context, **Alessandro Volta** demonstrated the first modern electric battery (the voltaic pile) in 1800. While the context does not explicitly state he was Italian, his name is widely associated with Italian origin, and the context confirms he built and described the first electrochemical battery.",
+      "retrieved_chunks": [
+        "Alessandro Volta built and described the first electrochemical battery, the voltaic pile, in 1800."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.15555555555555556,
+        "ngram_overlap_5": 0.11363636363636363,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.5,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2747
+      }
+    },
+    {
+      "query_id": "triviaqa-qf_1463",
+      "response": "Based on the provided context, I cannot fully answer that question. The context only states that ESPN ranked Ali **second** behind **Joe Louis** in its list of greatest heavyweights of all time, but it does not specifically mention anything about the number of heavyweight title fights won by either boxer. I cannot confirm that Joe Louis won more heavyweight title fights than Ali based solely on this context.",
+      "retrieved_chunks": [
+        "In December 2007, ESPN listed Ali second in its choice of the greatest heavyweights of all time, behind Joe Louis."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.03076923076923077,
+        "ngram_overlap_5": 0.015625,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3265
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_2900",
+      "response": "Based on the provided context, the **wisdom teeth** are the third molars (specifically described as the \"third, rearmost molar in each group\"). However, the context does not explicitly state that they are \"always the last to erupt.\" The context only identifies them as the third, rearmost molars \u2014 no information about eruption order is mentioned.",
+      "retrieved_chunks": [
+        "The third, rearmost molar in each group is called a wisdom tooth."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.08,
+        "ngram_overlap_5": 0.06,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 0.5,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 2
+        },
+        "latency_ms": 3081
+      }
+    },
+    {
+      "query_id": "triviaqa-tc_1128",
+      "response": "Based on the context provided, **Roger Corman** appeared as the F.B.I. Director in *The Silence of the Lambs*. Roger Corman is a well-known film director who made a cameo in the film.",
+      "retrieved_chunks": [
+        "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2078
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_6781",
+      "response": "Based on the provided context, **John Flamsteed** was the first Astronomer Royal.",
+      "retrieved_chunks": [
+        "(1999) John Flamsteed, the first Astronomer Royal."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.1111111111111111,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 1783
+      }
+    },
+    {
+      "query_id": "triviaqa-jp_4221",
+      "response": "The provided context does not contain information about which king is the most-mentioned person in the Bible after Jesus. The context only briefly mentions the \"Son of David\" and the \"Sermon on the Mount\" in relation to the Gospel of Matthew. I cannot answer your question based solely on this context.",
+      "retrieved_chunks": [
+        "He is the kingly Messiah, referred to repeatedly as \"king\" and \"Son of David.\" A noteworthy feature of this gospel are the five discourses, collections of teachings on particular themes, including the Sermon on the Mount."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.04081632653061224,
+        "ngram_overlap_5": 0.020833333333333332,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 2697
+      }
+    },
+    {
+      "query_id": "triviaqa-sfq_9912",
+      "response": "Based on the provided context, I cannot answer this question. The context mentions gnocchi as dumplings made with potatoes, but does not provide information about soft dumplings made from semolina or wheat flour in Italian cookery. The answer you may be looking for (gnocchi) is referenced in the context, but specifically described as being made with potatoes, not semolina or wheat flour.",
+      "retrieved_chunks": [
+        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2838
+      }
+    },
+    {
+      "query_id": "triviaqa-wh_3938",
+      "response": "Based on the provided context, I can only confirm that **Lew Hoad** (Australia) won the men's singles title at Wimbledon in **1956**. The context does not contain any information about the 1957 Wimbledon Championships, so I cannot confirm who won that year from the given context alone.",
+      "retrieved_chunks": [
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.0,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 2562
+      }
+    },
+    {
+      "query_id": "triviaqa-qb_10284",
+      "response": "Based on the provided context, the original Ferris Wheel operated in **Illinois** (specifically in Chicago). However, the context only partially addresses your question and does not explicitly mention the 1893 World's Columbian Exposition. The context confirms Chicago, Illinois as one of the locations, which aligns with the historical fact that it was erected there for that exposition.",
+      "retrieved_chunks": [
+        "Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St."
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": false,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.01818181818181818,
+        "ngram_overlap_5": 0.0,
+        "ngram_overlap_8": 0.0,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 3457
+      }
+    }
+  ],
+  "aggregate": {
+    "queries": 150,
+    "verbatim_pass_rate": 0.0,
+    "connective_hygiene_pass_rate": 1.0,
+    "latency_p50_ms": 2363,
+    "latency_p95_ms": 3466,
+    "latency_mean_ms": 2499.98,
+    "ngram_overlap_4_mean": 0.1230781853721305,
+    "ngram_overlap_4_ci95": [
+      0.10437286265319712,
+      0.14160512272875075
+    ],
+    "ngram_overlap_4_n": 150,
+    "ngram_overlap_5_mean": 0.08575547397168173,
+    "ngram_overlap_5_ci95": [
+      0.06937605917246303,
+      0.10318716600637998
+    ],
+    "ngram_overlap_5_n": 150,
+    "ngram_overlap_8_mean": 0.03469558033564273,
+    "ngram_overlap_8_ci95": [
+      0.02442309371983137,
+      0.046884598778205236
+    ],
+    "ngram_overlap_8_n": 150,
+    "unsupported_claim_rate_filtered_mean": 0.6233333333333333,
+    "unsupported_claim_rate_filtered_ci95": [
+      0.55,
+      0.6911111111111111
+    ],
+    "unsupported_claim_rate_filtered_n": 150,
+    "unsupported_claim_rate_raw_mean": 0.6511111111111112,
+    "unsupported_claim_rate_raw_ci95": [
+      0.5811111111111111,
+      0.7155555555555555
+    ],
+    "unsupported_claim_rate_raw_n": 150,
+    "quoted_content_supported_rate_mean": 0.4895833333333333,
+    "quoted_content_supported_rate_ci95": [
+      0.34375,
+      0.6354166666666666
+    ],
+    "quoted_content_supported_rate_n": 48
+  },
+  "caveats": [
+    "ADR-0027: only verbatim_pass + connective_hygiene from the Hyphae 9-dimension scorer are directly comparable across systems. Schema fidelity, limitation recall/precision, lexical diversity, role coverage, boundary smoothness are Hyphae-specific by design \u2014 see ADR-0027 \u00a7'Comparable subset' before reading the writeup.",
+    "Unsupported-claim rate is reported BOTH filtered (excluding Hyphae connective sentences) and raw. The filter benefits Hyphae; consult both columns.",
+    "N=1 hardware (arm). Generalisation to other hardware classes is a separate ADR (planned: 0028).",
+    "No ablation studies in this run \u2014 every Hyphae component is enabled. ADR-0029 (planned) covers the ablation harness."
+  ]
+}

@@ -347,6 +347,18 @@ Total cost: ~$0.50 in DO Inference tokens.
 - **Larger corpus** (separate ADR series). The CIs at N=34 admit
   several rank-order swaps; a 200-query corpus would harden the
   ranking around the top of the table.
+
+  **Update — 2026-05-28**: ADR-0031 (planned) landed a
+  **TriviaQA-150 standard-benchmark** column. The results are in
+  [`triviaqa-comparison.md`](triviaqa-comparison.md). The picture
+  changes substantially: **Hyphae alone in rank 1 (unsup_f=0.000)**;
+  the closest LLM (DeepSeek-V4-Pro oracle) at 0.400 — gap widens
+  to 40 percentage points. GPT-4.1 strong-RAG, which tied Hyphae
+  here at N=34, falls to rank 8 (0.620). The own-corpus tie is
+  corpus-specific, not architectural; the TriviaQA picture is the
+  better measurement for single-fact retrieval, the own-corpus
+  picture is the better measurement for multi-fragment
+  composition.
 - **RAG-Fusion + GraphRAG** (ADR-0030c hypothetical). Tests
   whether stacking additional retrieval techniques shifts the
   Pareto frontier.
