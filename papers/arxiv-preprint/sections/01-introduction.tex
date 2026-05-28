@@ -45,77 +45,94 @@ Intel Xeon Platinum 8168 server).
 \label{sec:contributions}
 
 \begin{enumerate}
-    \item \textbf{Hash-chained verbatim quotation as an
-    architectural commitment.} Every emitted body in a \hyphae{}
-    response is byte-identical to a fragment stored in a
-    SHA-256 hash-chained substrate journal. An external auditor can
-    independently confirm that the response was assembled from named
-    fragments without re-running the system. Hard Commitment 12
-    (Section~\ref{sec:hc12}) makes the property load-bearing for the
-    architecture; the empirical sections quantify what that
-    commitment is worth on standard tasks.
+    \item \textbf{Verifiable provenance as an addable layer, not a
+    property of any one system.} The paper's object of study is the
+    (verbatim-emission $+$ SHA-256 hash-chained journal) layer: any
+    system that emits byte-identical quotations of stored fragments
+    over such a journal can have every output independently audited
+    back to named, unaltered sources, without re-running the
+    system. We show this property is \emph{realizer-independent} ---
+    it belongs to the storage layer, is shared identically by
+    \hyphae{} and by a trivial echo$+$journal baseline, and is
+    absent from both plain echo and every LLM-RAG pipeline
+    (Section~\ref{sec:results-provenance}). \hyphae{} is our worked
+    instance of a system carrying the layer, not the source of the
+    guarantee. The cryptographic mechanism (hash-chaining) is
+    classical; our contribution is the observation that paraphrastic
+    generation destroys the byte-bindability the audit relation
+    requires, while extractive emission preserves it --- which is
+    what divides auditable from non-auditable retrieval systems.
 
     \item \textbf{An echo baseline that bounds what the standard
     benchmark can measure.} We include a trivial control --- emit
     the retrieved seed sentence verbatim, no model, no lexicon,
     no composition --- and evaluate it identically. On both
-    corpora the echo baseline \emph{ties or exceeds} \hyphae{} on
+    corpora echo \emph{ties or exceeds} \hyphae{} on
     every comparable metric: gold-answer match, unsupported-claim
     rate, n-gram overlap, and verbatim-pass rate. This is the
-    paper's pivotal negative result: it demonstrates that the
-    measured correctness and grounding are properties of
-    verbatim quotation \emph{per se}, which any echo possesses,
-    and not of \hyphae{}'s composition machinery. The standard
-    correctness benchmark cannot distinguish \hyphae{} from a
-    \texttt{print} statement, because the property that does ---
-    verifiable provenance --- is off-axis for every metric in it.
+    paper's pivotal negative result: measured correctness and
+    grounding are properties of verbatim quotation \emph{per se},
+    which any echo possesses, not of \hyphae{}'s composition
+    machinery. The standard correctness benchmark cannot
+    distinguish \hyphae{} from a \texttt{print} statement, because
+    the property that does --- verifiable provenance --- is
+    off-axis for every metric in it.
 
-    \item \textbf{A two-axis comparison against 18 LLM-based
-    configurations, read as a sanity check rather than a win.}
-    We score every system on an NLI-grounded unsupported-claim
+    \item \textbf{A minimal provenance benchmark that locates the
+    property precisely.} We test the layer adversarially against
+    the real journal across four tampering modes (edit, delete,
+    insert, reorder) and two adversaries (store-only, chain-aware).
+    The layer detects and localises 100\% of store-only tampering
+    --- and so does echo$+$journal, identically --- while plain
+    echo and LLM-RAG detect 0\%, and a chain-aware attacker who
+    rewrites the persisted head defeats the bare chain entirely.
+    The benchmark thus establishes both the guarantee
+    (tamper-evidence against a store-level adversary) and its
+    boundary (the head's integrity is the single load-bearing
+    assumption), and confirms the dividing line is
+    journal-vs-no-journal, not \hyphae{}-vs-the-rest.
+
+    \item \textbf{A two-axis correctness comparison against 18
+    LLM-based configurations, read as a sanity check rather than a
+    win.} We score every system on an NLI-grounded unsupported-claim
     rate and a gold-answer match rate, across vanilla RAG, HyDE
     plus cross-encoder reranking, and oracle context. The result
-    establishes that \hyphae{} is \emph{correctness-neutral}: it
-    does not sacrifice gold-answer correctness relative to either
-    the echo baseline or frontier LLMs in oracle mode
-    ($0.840$--$0.960$). It does not establish that \hyphae{} is
-    \emph{more} correct, and we explicitly retract any such
-    reading --- the echo control forecloses it.
+    establishes that verbatim emission is \emph{correctness-neutral}:
+    it does not sacrifice gold-answer correctness relative to either
+    echo or frontier LLMs in oracle mode ($0.840$--$0.960$). It does
+    not establish that \hyphae{} is \emph{more} correct, and we
+    explicitly retract any such reading --- the echo control
+    forecloses it. The one architectural correctness effect that is
+    real --- verbatim emission removing the paraphrase-away failure
+    mode LLM oracles still exhibit --- is shared by echo, not unique
+    to \hyphae{}.
 
-    \item \textbf{Per-query latency as a corollary of not
-    generating.} \hyphae{}'s realizer runs in $0.002$--$0.024$ ms
-    mean per query (single-seed to multi-fragment); the LLM
-    baselines run in $1{,}858$--$6{,}083$ ms whether hosted
-    locally or via API, the network round-trip accounting for
-    only $\sim 30\%$ (Section~\ref{sec:results-latency-honest}).
-    The five-to-six-order-of-magnitude gap is real and matters
-    for deployment economics, but it is a consequence of the
-    architectural decision not to run a generative model, shared
-    with the echo baseline, not an independent contribution.
-    Memory footprint differs by $\sim$five orders of magnitude
-    (50 MB vs multiple GB).
+    \item \textbf{Latency and footprint as corollaries of not
+    generating.} The realizer runs in $0.002$--$0.024$ ms mean per
+    query; the LLM baselines run in $1{,}858$--$6{,}083$ ms whether
+    hosted locally or via API (network round-trip $\sim 30\%$,
+    Section~\ref{sec:results-latency-honest}), at $\sim 50$ MB
+    versus multiple GB of resident memory. The
+    five-to-six-order-of-magnitude gap is real and matters for
+    deployment economics, but it follows from the decision not to
+    run a generative model and is shared with the echo baseline ---
+    a corollary, not independent evidence for \hyphae{}.
 
-    \item \textbf{Component-level ablations that support the
-    reframing.} We disable four \hyphae{} components in turn
-    (cascade-shape composition, ethics gate, lexicon scale,
-    boundary smoothing). Only lexicon scale moves a correctness
-    metric, and only marginally; the other three produce null
-    deltas. Far from a weakness, this corroborates the central
-    claim: the realizer's machinery serves readability and
-    multi-fragment structure, not the measured correctness ---
-    and \emph{none} of the four components touches the
-    hash-chained provenance guarantee, which is invariant across
-    every ablation and every baseline.
-
-    \item \textbf{Hardware matrix.} We re-run the matrix on a
-    server-class CPU-only Linux instance. Quality metrics are
-    hardware-invariant within $\pm 0.03$. The
-    \hyphae{}:Llama-8B latency ratio \emph{widens} from
-    $\sim 1.9\times10^5$ on the laptop to $\sim 9.3\times10^5$ on
-    the GPU-less droplet (\hyphae{} speeds up on the dedicated
-    Xeon while the LLM slows without Metal), confirming the
-    architectural advantage generalises beyond the laptop's
-    Metal backend.
+    \item \textbf{Component ablations and a hardware matrix
+    consistent with the reframing.} We disable four \hyphae{}
+    components in turn (cascade-shape composition, ethics gate,
+    lexicon scale, boundary smoothing); only lexicon scale moves a
+    correctness metric, and only marginally. We present this as
+    corroboration, not independent proof --- at $N=34$ the ablations
+    are underpowered, and the clean load-bearing evidence is the
+    echo control (Section~\ref{sec:results-triviaqa}). Crucially,
+    none of the four components, and neither the echo nor
+    echo$+$journal baseline, perturbs the provenance layer: it is
+    the one axis invariant across every configuration in the paper.
+    The matrix re-runs on a server-class CPU-only instance, where
+    quality metrics are hardware-invariant within $\pm 0.03$ and the
+    latency ratio widens from $\sim 1.9\times10^5$ to
+    $\sim 9.3\times10^5$.
 \end{enumerate}
 
 \subsection{Roadmap}

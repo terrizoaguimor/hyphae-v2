@@ -81,6 +81,37 @@ phrases and verbatim quotations. This shifts the operating
 point of the system at the cost of generative flexibility
 that some applications require and others do not.
 
+\subsection{Tamper-Evident Logs and Provenance}
+
+The cryptographic mechanism underlying \hyphae{}'s journal --- a
+hash chain linking each record to its predecessor by digest --- is
+classical, and we are explicit about that. Linked timestamping by
+hash-chaining dates to \citet{haber1991timestamp}; Merkle trees
+\citep{merkle1988digital} give the same tamper-evidence with
+logarithmic verification; Certificate Transparency
+\citep{laurie2014ct} deploys append-only Merkle logs at internet
+scale with external auditing; and content-addressed DAGs such as
+Git \citep{git} make the construction everyday infrastructure. We
+claim none of this machinery as novel. What \hyphae{}'s journal
+adds over a bare hash chain is only what every audited store needs
+(durable persistence, an ordered chain over fragment ingests); the
+contribution of this paper is not the chain.
+
+Our contribution is an \emph{observation} about where such a chain
+can and cannot be attached in a generation system: the audit
+relation requires that the emitted output be byte-bindable to a
+journalled source, and \textbf{paraphrastic generation destroys
+that bindability} while \textbf{extractive (verbatim) emission
+preserves it}. An LLM-RAG pipeline can hash-chain its corpus all it
+likes; because its output paraphrases the retrieved text, no output
+span is byte-identical to any journalled fragment, and the chain
+cannot bind the answer the user received to the source it came
+from. This is the property that divides auditable from
+non-auditable retrieval systems, it is orthogonal to retrieval
+quality and to the choice of hash construction, and to our
+knowledge it has not been stated as the operative criterion for
+provenance in retrieval-augmented generation.
+
 \subsection{Where This Paper Fits}
 
 We do not claim that \hyphae{} subsumes or replaces LLM-based

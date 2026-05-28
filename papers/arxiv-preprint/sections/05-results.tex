@@ -285,6 +285,29 @@ contribution is the architectural base layer and its measured
 tamper-evidence, with the anchoring extension flagged as the path
 to end-to-end tamper-proofing.
 
+\paragraph{Where the head lives, and why the two adversaries are
+distinct.} The store-only and chain-aware adversaries are
+separated by exactly one assumption: that the persisted chain head
+is outside the attacker's write scope. We are explicit that in the
+configuration measured here this assumption does \emph{not} hold
+--- the head is a record in the same \texttt{fjall} keyspace (the
+\texttt{meta} partition) as the fragment bodies, so an attacker
+with write access to the store can write the head as well, and the
+store-only adversary therefore collapses into the chain-aware one.
+The 100\% store-only detection result should accordingly be read
+as establishing the base-layer \emph{mechanism} --- that in-place
+record edits break the recomputed chain and are localised --- under
+the explicit assumption of an isolated head, not as a deployed
+end-to-end guarantee against a store-level attacker. Making the
+assumption real is a deployment step, not a redesign: persisting
+the head on write-isolated media, signing it under a key the store
+process does not hold, or anchoring it to an external append-only
+timestamp each promote the demonstrated tamper-evidence to a
+guarantee that survives a full store compromise. We flag this as
+the single load-bearing dependency of the positive result, and
+external head anchoring (Section~\ref{sec:discussion}) as the work
+that discharges it.
+
 \paragraph{Reading.} This is the paper's positive result, and the
 echo control sharpens rather than supports \hyphae{} specifically.
 On correctness, echo $\equiv$ \hyphae{}; on provenance,
