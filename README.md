@@ -1,4 +1,4 @@
-<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
 <!-- Copyright 2026 Celiums Solutions LLC -->
 
 # Hyphae v2
@@ -226,8 +226,23 @@ attempt learns from this one.
 
 ## License
 
-- **Code**: [Apache 2.0](LICENSE)
-- **Specification and documentation**: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+Hyphae v2 ships under a **dual-licensing scheme**:
+
+- **Code** (Rust source, `Cargo.toml` configuration, CI workflows):
+  [Apache License 2.0](LICENSE). Every code file carries an
+  `SPDX-License-Identifier: Apache-2.0` header.
+- **Specification and documentation** (`docs/rfc/`, `docs/adr/`,
+  `docs/perf/`, and top-level Markdown files such as this README,
+  `CHANGELOG.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`,
+  `SECURITY.md`): [Creative Commons Attribution 4.0 International
+  (CC BY 4.0)](LICENSE-CC-BY-4.0). Every documentation file
+  carries an `SPDX-License-Identifier: CC-BY-4.0` header.
+
+The full Apache 2.0 license text is in [`LICENSE`](LICENSE).
+The CC BY 4.0 notice + the canonical-text link is in
+[`LICENSE-CC-BY-4.0`](LICENSE-CC-BY-4.0). Contributors agree to
+these terms by submitting; the project does not require a separate
+Contributor License Agreement.
 
 ## Governance
 

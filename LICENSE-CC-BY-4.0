@@ -1,0 +1,50 @@
+Creative Commons Attribution 4.0 International Public License
+SPDX-License-Identifier: CC-BY-4.0
+
+Copyright (c) 2026 Celiums Solutions LLC and Hyphae v2 contributors.
+
+The documentation and specification portions of this project — the
+files in `docs/` (including `docs/rfc/`, `docs/adr/`, `docs/perf/`),
+plus the project's top-level Markdown files (CHANGELOG.md,
+CODE_OF_CONDUCT.md, CONTRIBUTING.md, README.md, SECURITY.md) — are
+licensed under the Creative Commons Attribution 4.0 International
+License ("CC BY 4.0"). Code and configuration files in this repository
+are licensed under the Apache License 2.0; see the companion `LICENSE`
+file.
+
+The canonical full legal text of CC BY 4.0 is available at:
+
+    https://creativecommons.org/licenses/by/4.0/legalcode
+
+A human-readable summary of the license is available at:
+
+    https://creativecommons.org/licenses/by/4.0/
+
+In brief, the CC BY 4.0 license permits any user to:
+
+  - Share — copy and redistribute the documentation in any medium or
+    format.
+  - Adapt — remix, transform, and build upon the documentation for
+    any purpose, including commercially.
+
+Under the following terms:
+
+  - Attribution — You must give appropriate credit to "Celiums
+    Solutions LLC and Hyphae v2 contributors", provide a link to the
+    license (https://creativecommons.org/licenses/by/4.0/), and
+    indicate if changes were made. You may do so in any reasonable
+    manner, but not in any way that suggests the licensor endorses
+    you or your use.
+  - No additional restrictions — You may not apply legal terms or
+    technological measures that legally restrict others from doing
+    anything the license permits.
+
+The licensor cannot revoke these freedoms as long as you follow the
+license terms. No warranties are given. The license may not give you
+all of the permissions necessary for your intended use. For example,
+other rights such as publicity, privacy, or moral rights may limit
+how you use the material.
+
+For the legally binding terms please consult the canonical text at
+https://creativecommons.org/licenses/by/4.0/legalcode — that text
+prevails in any dispute over interpretation.
