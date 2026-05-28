@@ -1,0 +1,1155 @@
+{
+  "metadata": {
+    "comparator_version": "0.1.0",
+    "adr": "0027",
+    "system": "hyphae",
+    "mode": "native",
+    "nli": "roberta-large-mnli",
+    "hardware": {
+      "os": "Linux 6.8.0-71-generic",
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "python_version": "3.11.15",
+      "cpu_count": 16,
+      "torch_device_available": {
+        "cuda": false,
+        "mps": false
+      }
+    },
+    "wall_clock_s": 12.44,
+    "hyphae_output_path": "hyphae-results-no-shape.json",
+    "queries_run": 34
+  },
+  "per_query": [
+    {
+      "query_id": "dialogue-001",
+      "response": "Per the recorded fragments, \"the migration completed at 14:02 UTC\" Per the next fragment, \"the monitoring dashboards stayed green for the hour after the cutover\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the migration completed at 14:02 UTC",
+        "the monitoring dashboards stayed green for the hour after the cutover"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4,
+        "ngram_overlap_5": 0.3448275862068966,
+        "ngram_overlap_8": 0.15384615384615385,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.01881
+      }
+    },
+    {
+      "query_id": "dialogue-002",
+      "response": "Per the recorded fragments, \"the deploy succeeded on the first attempt\" Following this, \"no rollbacks were issued in the following six hours\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the deploy succeeded on the first attempt",
+        "no rollbacks were issued in the following six hours"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.38461538461538464,
+        "ngram_overlap_5": 0.32,
+        "ngram_overlap_8": 0.09090909090909091,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.008132
+      }
+    },
+    {
+      "query_id": "dialogue-003",
+      "response": "Per the recorded fragments, \"the integration suite covers the auth path end to end\" Following this, \"unit coverage for the payment module stayed above 85 percent\" Additionally, \"the team agreed to add chaos tests in the next quarter\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the integration suite covers the auth path end to end",
+        "unit coverage for the payment module stayed above 85 percent",
+        "the team agreed to add chaos tests in the next quarter"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5238095238095238,
+        "ngram_overlap_5": 0.4634146341463415,
+        "ngram_overlap_8": 0.2631578947368421,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 4
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.020873
+      }
+    },
+    {
+      "query_id": "dialogue-004",
+      "response": "Per the recorded fragments, \"the primary on-call rotates weekly across four engineers\" Following this, \"secondary cover is handled by the platform team\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the primary on-call rotates weekly across four engineers",
+        "secondary cover is handled by the platform team"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4074074074074074,
+        "ngram_overlap_5": 0.34615384615384615,
+        "ngram_overlap_8": 0.13043478260869565,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.010868
+      }
+    },
+    {
+      "query_id": "assert-001",
+      "response": "Per the recorded fragments, From the indexed fragment: \"the migration completed at 14:02 UTC with zero errors\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the migration completed at 14:02 UTC with zero errors"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.3181818181818182,
+        "ngram_overlap_5": 0.2857142857142857,
+        "ngram_overlap_8": 0.16666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.001585
+      }
+    },
+    {
+      "query_id": "assert-002",
+      "response": "From the material at hand, Per the cited material: \"either party may terminate the contract with thirty days written notice\" That constitutes the present evidence.",
+      "retrieved_chunks": [
+        "either party may terminate the contract with thirty days written notice"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.36363636363636365,
+        "ngram_overlap_5": 0.3333333333333333,
+        "ngram_overlap_8": 0.2222222222222222,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.003081
+      }
+    },
+    {
+      "query_id": "empty-001",
+      "response": "[limitation:empty_working_set] I do not have material in working memory to ground a response to this query.",
+      "retrieved_chunks": [],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": null,
+        "ngram_overlap_5": null,
+        "ngram_overlap_8": null,
+        "unsupported_claim_rate_filtered": null,
+        "unsupported_claim_rate_raw": null,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 0.001647
+      }
+    },
+    {
+      "query_id": "empty-002",
+      "response": "[limitation:empty_working_set] I do not have material in working memory to ground a response to this query.",
+      "retrieved_chunks": [],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": null,
+        "ngram_overlap_5": null,
+        "ngram_overlap_8": null,
+        "unsupported_claim_rate_filtered": null,
+        "unsupported_claim_rate_raw": null,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "quoted_content_supported_rate": null,
+        "quoted_content_counts": {
+          "supported": 0,
+          "total_quoted": 0
+        },
+        "latency_ms": 0.000556
+      }
+    },
+    {
+      "query_id": "risk-001",
+      "response": "Per the recorded fragments, \"an unnamed colleague reportedly said the architecture would not scale\" That is the substrate's current view.\n\n[limitation:high_confab_risk] The material I am drawing from carries elevated confabulation risk; treat the following as provisional.",
+      "retrieved_chunks": [
+        "an unnamed colleague reportedly said the architecture would not scale"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2,
+        "ngram_overlap_5": 0.17647058823529413,
+        "ngram_overlap_8": 0.0967741935483871,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.002093
+      }
+    },
+    {
+      "query_id": "risk-002",
+      "response": "Per the recorded fragments, From the indexed fragment: \"a third-party blog post claims the new release is safe to ship\" That is the substrate's current view.\n\n[limitation:high_confab_risk] The material I am drawing from carries elevated confabulation risk; treat the following as provisional.",
+      "retrieved_chunks": [
+        "a third-party blog post claims the new release is safe to ship"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.23809523809523808,
+        "ngram_overlap_5": 0.21951219512195122,
+        "ngram_overlap_8": 0.15789473684210525,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.002061
+      }
+    },
+    {
+      "query_id": "shallow-001",
+      "response": "Per the recorded fragments, \"the current sprint focuses on the auth refactor\" That is the substrate's current view.\n\n[limitation:shallow_cascade] I am reaching directly from a small set of fragments without associative depth; the response may be narrower than the query warrants.",
+      "retrieved_chunks": [
+        "the current sprint focuses on the auth refactor"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.125,
+        "ngram_overlap_5": 0.10256410256410256,
+        "ngram_overlap_8": 0.027777777777777776,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.004753
+      }
+    },
+    {
+      "query_id": "contrast-001",
+      "response": "Per the recorded fragments, \"the launch succeeded and traffic ramped smoothly\" Per the next fragment, \"the rollback at 02:14 UTC was painful and lost three hours of writes\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the launch succeeded and traffic ramped smoothly",
+        "the rollback at 02:14 UTC was painful and lost three hours of writes"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.45454545454545453,
+        "ngram_overlap_5": 0.40625,
+        "ngram_overlap_8": 0.2413793103448276,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.009543
+      }
+    },
+    {
+      "query_id": "fluency-multirole-001",
+      "response": "Per the recorded fragments, \"the staging environment validated the new pricing engine end to end\" Per the next fragment, \"the data warehouse migration finished six days ahead of plan\" Additionally, \"the customer support team flagged three onboarding regressions in the beta cohort\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the staging environment validated the new pricing engine end to end",
+        "the data warehouse migration finished six days ahead of plan",
+        "the customer support team flagged three onboarding regressions in the beta cohort"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5217391304347826,
+        "ngram_overlap_5": 0.4666666666666667,
+        "ngram_overlap_8": 0.2857142857142857,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 4
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.020458
+      }
+    },
+    {
+      "query_id": "fluency-causation-001",
+      "response": "Per the recorded fragments, \"the deploy rolled out a new serialization format at 09:14 UTC\" Per the next fragment, \"the cache layer rejected all entries written in the previous format\" Additionally, \"the hit rate dropped from 94 percent to 41 percent over the next hour\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the deploy rolled out a new serialization format at 09:14 UTC",
+        "the cache layer rejected all entries written in the previous format",
+        "the hit rate dropped from 94 percent to 41 percent over the next hour"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.56,
+        "ngram_overlap_5": 0.5102040816326531,
+        "ngram_overlap_8": 0.34782608695652173,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 4
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.019319
+      }
+    },
+    {
+      "query_id": "fluency-opposed-001",
+      "response": "Per the recorded fragments, \"the enterprise tier reported a measurable latency improvement\" Per the next fragment, \"the free tier reported intermittent connection resets for six hours\" That is the substrate's current view.",
+      "retrieved_chunks": [
+        "the enterprise tier reported a measurable latency improvement",
+        "the free tier reported intermittent connection resets for six hours"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4,
+        "ngram_overlap_5": 0.3448275862068966,
+        "ngram_overlap_8": 0.15384615384615385,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 3,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.008518
+      }
+    },
+    {
+      "query_id": "conv-001",
+      "response": "Looking at this, \"the team mood has been pretty upbeat since the holiday week\" Also worth noting, \"people are still buzzing about the offsite next month\" That is what I can speak to.",
+      "retrieved_chunks": [
+        "the team mood has been pretty upbeat since the holiday week",
+        "people are still buzzing about the offsite next month"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4666666666666667,
+        "ngram_overlap_5": 0.41379310344827586,
+        "ngram_overlap_8": 0.23076923076923078,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.009689
+      }
+    },
+    {
+      "query_id": "conv-002",
+      "response": "Looking at this, \"the demo broke mid-presentation and the whole room laughed\" Also worth noting, \"the recovery was quick and the audience stayed engaged\" That is what I can speak to.",
+      "retrieved_chunks": [
+        "the demo broke mid-presentation and the whole room laughed",
+        "the recovery was quick and the audience stayed engaged"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4482758620689655,
+        "ngram_overlap_5": 0.39285714285714285,
+        "ngram_overlap_8": 0.2,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.01131
+      }
+    },
+    {
+      "query_id": "conv-003",
+      "response": "Looking at this, \"the new onboarding feels noticeably smoother than the previous version\" Also worth noting, \"people seem to find their bearings within the first day now\" That is what I can speak to.",
+      "retrieved_chunks": [
+        "the new onboarding feels noticeably smoother than the previous version",
+        "people seem to find their bearings within the first day now"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.4838709677419355,
+        "ngram_overlap_5": 0.43333333333333335,
+        "ngram_overlap_8": 0.25925925925925924,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.009616
+      }
+    },
+    {
+      "query_id": "formal-001",
+      "response": "From the material at hand, \"the data retention policy requires deletion within ninety days of account closure\" Moreover, \"any deviation must be reviewed by the privacy office before approval\" That constitutes the present evidence.",
+      "retrieved_chunks": [
+        "the data retention policy requires deletion within ninety days of account closure",
+        "any deviation must be reviewed by the privacy office before approval"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5483870967741935,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.3333333333333333,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.011102
+      }
+    },
+    {
+      "query_id": "formal-002",
+      "response": "From the material at hand, \"the quarterly audit confirmed compliance with the relevant regulatory standards\" Moreover, \"the auditor noted no material findings during the engagement\" That constitutes the present evidence.",
+      "retrieved_chunks": [
+        "the quarterly audit confirmed compliance with the relevant regulatory standards",
+        "the auditor noted no material findings during the engagement"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.48148148148148145,
+        "ngram_overlap_5": 0.4230769230769231,
+        "ngram_overlap_8": 0.21739130434782608,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.011025
+      }
+    },
+    {
+      "query_id": "formal-003",
+      "response": "From the material at hand, Per the cited material: \"the indemnification clause survives termination of the agreement\" That constitutes the present evidence.",
+      "retrieved_chunks": [
+        "the indemnification clause survives termination of the agreement"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.2631578947368421,
+        "ngram_overlap_5": 0.2222222222222222,
+        "ngram_overlap_8": 0.06666666666666667,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.002803
+      }
+    },
+    {
+      "query_id": "neutral-001",
+      "response": "Drawing from working memory, \"the team agreed to revisit the priority list at the end of the quarter\" Likewise, \"the working hours will stay flexible through the next two sprints\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "the team agreed to revisit the priority list at the end of the quarter",
+        "the working hours will stay flexible through the next two sprints"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5428571428571428,
+        "ngram_overlap_5": 0.5,
+        "ngram_overlap_8": 0.3548387096774194,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.014677
+      }
+    },
+    {
+      "query_id": "neutral-002",
+      "response": "Drawing from working memory, \"the cross-functional working group meets on alternating fridays\" Likewise, \"the rotation schedule is shared in the team handbook\" That is what working memory holds on this.",
+      "retrieved_chunks": [
+        "the cross-functional working group meets on alternating fridays",
+        "the rotation schedule is shared in the team handbook"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.42857142857142855,
+        "ngram_overlap_5": 0.37037037037037035,
+        "ngram_overlap_8": 0.16666666666666666,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.009922
+      }
+    },
+    {
+      "query_id": "mixed-001",
+      "response": "From the material at hand, \"the open source audit completed without any licensing concerns\" Moreover, \"the dependency manifest was attached to the compliance record\" That constitutes the present evidence.",
+      "retrieved_chunks": [
+        "the open source audit completed without any licensing concerns",
+        "the dependency manifest was attached to the compliance record"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.46153846153846156,
+        "ngram_overlap_5": 0.4,
+        "ngram_overlap_8": 0.18181818181818182,
+        "unsupported_claim_rate_filtered": 1.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.010167
+      }
+    },
+    {
+      "query_id": "mixed-002",
+      "response": "From the material at hand, \"the SOC 2 controls were reviewed against the new infrastructure changes\" Moreover, \"the operations team accepted the residual risk in writing\" That constitutes the present evidence.",
+      "retrieved_chunks": [
+        "the SOC 2 controls were reviewed against the new infrastructure changes",
+        "the operations team accepted the residual risk in writing"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5,
+        "ngram_overlap_5": 0.4444444444444444,
+        "ngram_overlap_8": 0.25,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.011476
+      }
+    },
+    {
+      "query_id": "summary-001",
+      "response": "Per the recorded fragments, \"the payment service deploy completed without errors at 09:14 UTC\" Per the next fragment, \"the notification service deploy needed a hot patch at 09:36 UTC\" Additionally, \"the search service stayed on the previous version pending the q3 cutover\" Aggregate:",
+      "retrieved_chunks": [
+        "the payment service deploy completed without errors at 09:14 UTC",
+        "the notification service deploy needed a hot patch at 09:36 UTC",
+        "the search service stayed on the previous version pending the q3 cutover"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6190476190476191,
+        "ngram_overlap_5": 0.5609756097560976,
+        "ngram_overlap_8": 0.3684210526315789,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.6666666666666666,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.019146
+      }
+    },
+    {
+      "query_id": "summary-002",
+      "response": "Per the recorded fragments, \"weekly active users grew six percent over the trailing seven days\" Per the next fragment, \"the p95 request latency rose from 180 to 210 milliseconds on the same window\" Additionally, \"the support ticket queue dropped from 84 to 61 open items\" Aggregate:",
+      "retrieved_chunks": [
+        "weekly active users grew six percent over the trailing seven days",
+        "the p95 request latency rose from 180 to 210 milliseconds on the same window",
+        "the support ticket queue dropped from 84 to 61 open items"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.627906976744186,
+        "ngram_overlap_5": 0.5714285714285714,
+        "ngram_overlap_8": 0.38461538461538464,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 0,
+          "total_factual": 3
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.022594
+      }
+    },
+    {
+      "query_id": "compare-001",
+      "response": "Per the recorded fragments, \"the staging deploy completed cleanly at 09:14 UTC\" However, \"the production deploy required a hot patch at 09:36 UTC\" Aggregate:",
+      "retrieved_chunks": [
+        "the staging deploy completed cleanly at 09:14 UTC",
+        "the production deploy required a hot patch at 09:36 UTC"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6086956521739131,
+        "ngram_overlap_5": 0.5454545454545454,
+        "ngram_overlap_8": 0.3157894736842105,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 2,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.009004
+      }
+    },
+    {
+      "query_id": "compare-002",
+      "response": "Per the recorded fragments, \"weekly active users grew six percent quarter-over-quarter\" However, \"the p95 request latency rose from 180 to 210 milliseconds quarter-over-quarter\" Aggregate:",
+      "retrieved_chunks": [
+        "weekly active users grew six percent quarter-over-quarter",
+        "the p95 request latency rose from 180 to 210 milliseconds quarter-over-quarter"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.64,
+        "ngram_overlap_5": 0.5833333333333334,
+        "ngram_overlap_8": 0.38095238095238093,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 0.5,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 2
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.009095
+      }
+    },
+    {
+      "query_id": "narrate-001",
+      "response": "Per the recorded fragments, \"the engineering team froze the codebase at 17:00 UTC the night before\" Phase 2: \"the deploy ran at 09:00 UTC on launch day and completed in fourteen minutes\" Sequence step: \"the monitoring dashboards stayed green for the four hours after cutover\" Aggregate:",
+      "retrieved_chunks": [
+        "the engineering team froze the codebase at 17:00 UTC the night before",
+        "the deploy ran at 09:00 UTC on launch day and completed in fourteen minutes",
+        "the monitoring dashboards stayed green for the four hours after cutover"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.6666666666666666,
+        "ngram_overlap_5": 0.6136363636363636,
+        "ngram_overlap_8": 0.43902439024390244,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.020101
+      }
+    },
+    {
+      "query_id": "narrate-002",
+      "response": "Per the recorded fragments, \"the customer filed a support ticket at 10:14 UTC\" Phase 2: \"the on-call engineer responded within twelve minutes\" Sequence step: \"the root cause was identified as a stale cache by 11:02 UTC\" Aggregate:",
+      "retrieved_chunks": [
+        "the customer filed a support ticket at 10:14 UTC",
+        "the on-call engineer responded within twelve minutes",
+        "the root cause was identified as a stale cache by 11:02 UTC"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5945945945945946,
+        "ngram_overlap_5": 0.5277777777777778,
+        "ngram_overlap_8": 0.30303030303030304,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 3,
+          "total_quoted": 3
+        },
+        "latency_ms": 0.014849
+      }
+    },
+    {
+      "query_id": "reflect-001",
+      "response": "Per the recorded fragments, \"the staging environment validated the pricing flow end to end\" Admittedly, \"the production rollout had three onboarding regressions in the beta cohort\" Aggregate:",
+      "retrieved_chunks": [
+        "the staging environment validated the pricing flow end to end",
+        "the production rollout had three onboarding regressions in the beta cohort"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.625,
+        "ngram_overlap_5": 0.5652173913043478,
+        "ngram_overlap_8": 0.35,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.014711
+      }
+    },
+    {
+      "query_id": "reflect-002",
+      "response": "Per the recorded fragments, \"the latest project plan targets completion by friday\" Admittedly, \"the data team flagged two open blockers in monday's standup\" Aggregate:",
+      "retrieved_chunks": [
+        "the latest project plan targets completion by friday",
+        "the data team flagged two open blockers in monday's standup"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.5909090909090909,
+        "ngram_overlap_5": 0.5238095238095238,
+        "ngram_overlap_8": 0.2777777777777778,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 2,
+          "total_quoted": 2
+        },
+        "latency_ms": 0.010911
+      }
+    },
+    {
+      "query_id": "summary-003",
+      "response": "Per the recorded fragments, \"the standup notes mention the migration is on track for next tuesday\" Aggregate:\n\n[limitation:shallow_cascade] I am reaching directly from a small set of fragments without associative depth; the response may be narrower than the query warrants.",
+      "retrieved_chunks": [
+        "the standup notes mention the migration is on track for next tuesday"
+      ],
+      "retrieved_provenance": [],
+      "metrics": {
+        "verbatim_pass": true,
+        "connective_hygiene_pass": true,
+        "ngram_overlap_4": 0.23684210526315788,
+        "ngram_overlap_5": 0.21621621621621623,
+        "ngram_overlap_8": 0.14705882352941177,
+        "unsupported_claim_rate_filtered": 0.0,
+        "unsupported_claim_rate_raw": 1.0,
+        "unsupported_claims_filtered": {
+          "unsupported": 0,
+          "total_factual": 0
+        },
+        "unsupported_claims_raw": {
+          "unsupported": 1,
+          "total_factual": 1
+        },
+        "quoted_content_supported_rate": 1.0,
+        "quoted_content_counts": {
+          "supported": 1,
+          "total_quoted": 1
+        },
+        "latency_ms": 0.002052
+      }
+    }
+  ],
+  "aggregate": {
+    "queries": 34,
+    "verbatim_pass_rate": 1.0,
+    "connective_hygiene_pass_rate": 1.0,
+    "latency_p50_ms": 0.010167,
+    "latency_p95_ms": 0.020458,
+    "latency_mean_ms": 0.010486676470588235,
+    "ngram_overlap_4_mean": 0.4603593758925725,
+    "ngram_overlap_4_ci95": [
+      0.4127900305462462,
+      0.5095134826438991
+    ],
+    "ngram_overlap_4_n": 32,
+    "ngram_overlap_5_mean": 0.4102464305766174,
+    "ngram_overlap_5_ci95": [
+      0.36558720464068933,
+      0.45671913257770974
+    ],
+    "ngram_overlap_5_n": 32,
+    "ngram_overlap_8_mean": 0.23643319671947702,
+    "ngram_overlap_8_ci95": [
+      0.20149254752343287,
+      0.27330929660288145
+    ],
+    "ngram_overlap_8_n": 32,
+    "unsupported_claim_rate_filtered_mean": 0.21875,
+    "unsupported_claim_rate_filtered_ci95": [
+      0.09375,
+      0.375
+    ],
+    "unsupported_claim_rate_filtered_n": 32,
+    "unsupported_claim_rate_raw_mean": 0.65625,
+    "unsupported_claim_rate_raw_ci95": [
+      0.5260416666666666,
+      0.78125
+    ],
+    "unsupported_claim_rate_raw_n": 32,
+    "quoted_content_supported_rate_mean": 1.0,
+    "quoted_content_supported_rate_ci95": [
+      1.0,
+      1.0
+    ],
+    "quoted_content_supported_rate_n": 32
+  },
+  "caveats": [
+    "Hyphae's latency is measured for the realizer pass only (composer + lexicon lookup + boundary smoothing). Substrate ingest + recall are measured separately in docs/perf/v0.2-baseline.md.",
+    "verbatim_pass_rate = 1.0 here is the architectural commitment surfaced by the metric, not a result. ngram_overlap and unsupported_claim_rate are the informative measurements."
+  ]
+}

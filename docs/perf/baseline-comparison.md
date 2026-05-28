@@ -307,3 +307,15 @@ remaining three components (cascade-shape, ethics gate, boundary
 smoothing) produced null deltas on the comparator metrics at this
 corpus size; the ablation writeup discusses what that does and does
 not mean.
+
+**Update — 2026-05-28**: ADR-0028 (hardware matrix) is also landed
+and its results are in [`hardware-matrix.md`](hardware-matrix.md).
+On the second hardware configuration (DigitalOcean c-16 droplet,
+Intel Xeon Platinum 8168, CPU-only Linux x86_64) the quality
+metrics agree with the laptop run within ±0.03, and **the
+Hyphae:LLM latency ratio widens to ~654,000×** (oracle) /
+~904,000× (RAG). Without GPU acceleration the LLM baseline's p95
+crosses 10 seconds while Hyphae stays under 100 microseconds. The
+gap the laptop-only comparison exposed is not a Mac/MPS quirk — it
+amplifies in the direction of every cloud deployment without a
+dedicated GPU.
