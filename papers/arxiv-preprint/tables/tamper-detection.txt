@@ -13,21 +13,30 @@ insert       YES          10
 reorder      YES          4             
 
 ## Adversary B: chain-aware (recomputes chain forward + rewrites head)
-edit         NO (defeats bare chain) -             
+verification           detected                   localised seq 
+------------------------------------------------------------
+bare chain (verify)    NO (defeats bare chain)    -             
+anchored head (Ed25519) YES (anchor catches it)    n/a           
+#   (bare-chain verify still passes after the chain-aware attack: true; 
+#    the anchored signature over the original head fails against the rewritten head.)
 
 # Detection matrix (post-ingest store tampering):
 #
-#   System                         store-only adv   chain-aware adv
-#   Verbatim + journal             100% (all modes) defeated -> needs
-#     (Hyphae AND echo+journal)     + localised     external head anchor
-#   Echo (no journal)                0%               0%
-#   LLM-RAG (no journal,             0%               0%
+#   System                       store-only  chain-aware   chain-aware
+#                                    adv          adv        + anchor
+#   Verbatim + journal            100% (all)   defeated      DETECTED
+#     (Hyphae AND echo+journal)   + localised  (bare chain)  (Ed25519 head)
+#   Echo (no journal)               0%           0%            n/a
+#   LLM-RAG (no journal,            0%           0%            n/a
 #     paraphrases; not byte-bindable for post-hoc audit either)
 #
 # Reading: the (verbatim + hash-chain journal) layer detects and
-# localises every store-only tampering mode, and is realizer-
-# independent -- Hyphae and a trivial echo+journal baseline share it
-# identically. The chain-aware adversary defeats the bare local chain,
-# which is exactly why the chain head must be anchored outside the
-# attacker's write scope (signed external ledger / timestamp). The
-# contribution is the addable provenance layer, not the realizer.
+# localises every store-only tampering mode, realizer-independently
+# (Hyphae and echo+journal share it identically). A chain-aware
+# adversary defeats the BARE chain by rewriting the head -- but an
+# externally anchored head (Ed25519-signed by a key the store does
+# not hold) catches even that attack, because the attacker cannot
+# re-sign the rewritten head. This closes the load-bearing
+# dependency: tamper-evidence now holds against any attacker who
+# does not hold the anchor signing key. The contribution is the
+# addable provenance layer, not the realizer.

@@ -147,14 +147,26 @@ documents that point.
 
 \paragraph{Scaling the provenance benchmark.} The tamper-detection
 experiment (Section~\ref{sec:results-provenance}) demonstrates the
-property in the small, on a single hash chain. A community-scale
-provenance benchmark --- diverse tampering models (insertion,
-deletion, reordering, partial-byte edits), adversaries with
-varying store access, and a standard detection-and-localisation
-scoring protocol --- would let verifiable-generation systems be
-compared on the axis that distinguishes them, the way correctness
-benchmarks compare LLM-RAG systems today. Building it is the
-natural next contribution.
+property in the small, on a single hash chain, with the
+chain-aware adversary closed by an implemented Ed25519 head anchor
+(ADR-0032). A community-scale provenance benchmark --- diverse
+tampering models, adversaries with varying store and key access,
+and a standard detection-and-localisation scoring protocol ---
+would let verifiable-generation systems be compared on the axis
+that distinguishes them, the way correctness benchmarks compare
+LLM-RAG systems today. Building it is the natural next
+contribution.
+
+\paragraph{External anchor publication and key management.} The
+head anchor we implement signs the head with a key held outside
+the store, which catches the chain-aware attacker. Two extensions
+remain: publishing anchors to an external append-only ledger or
+timestamp authority (so freshness and non-equivocation hold across
+snapshots, not just integrity of the latest head), and a key-
+rotation / KMS-sourcing policy so the signing key is never
+materialised in the store process in production. Both are
+deployment engineering on top of the demonstrated mechanism, not
+open research questions.
 
 \paragraph{Reader preference study.} Human evaluation on a
 subset of the TriviaQA corpus. The template-rigid prose's

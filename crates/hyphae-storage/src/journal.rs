@@ -271,6 +271,14 @@ impl Journal {
         Ok(())
     }
 
+    /// The current chain head: the content hash of the most recent
+    /// entry (or all-zeros for an empty journal). This is the single
+    /// value an external anchor signs (see [`crate::anchor`]).
+    #[must_use]
+    pub fn head(&self) -> [u8; 32] {
+        self.last_hash
+    }
+
     /// The number of entries in the journal.
     #[must_use]
     pub fn len(&self) -> u64 {

@@ -70,6 +70,10 @@ serde_json = "1"
 # Crypto — journal hash chain (Hard Commitment: SHA-256 chain shared
 # between substrate journal and ethics audit, see ADR-0003).
 sha2 = "0.10"
+# External head anchoring (ADR-0032): Ed25519-signed chain head so a
+# store-level attacker who recomputes the chain cannot forge the head
+# without the anchor's signing key (held outside the store).
+ed25519-dalek = "2"
 
 # Error handling
 thiserror = "1"

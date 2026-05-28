@@ -31,10 +31,15 @@ store; \hyphae{} emits spans that are byte-identical to fragments
 in a SHA-256 hash-chained journal, so any output can be
 mechanically audited back to named, unaltered sources without
 re-running the system. No retrieval-augmented LLM offers this by
-construction, because generation paraphrases; no echo offers it
-either, because it has no journal. This is the contribution, and
-it is precisely the axis on which every metric in the standard
-correctness benchmark is silent.
+construction, because generation paraphrases; no plain echo offers
+it either, because it has no journal --- but echo$+$journal does,
+which is why we frame the contribution as an addable layer rather
+than a property of \hyphae{}. A chain-aware attacker who rewrites
+the persisted head defeats the bare chain; an implemented external
+head anchor (Ed25519, key held outside the store) closes that gap,
+demonstrated in §\ref{sec:results-provenance}. This layer is the
+contribution, and it is precisely the axis on which every metric
+in the standard correctness benchmark is silent.
 
 The cost profile is a corollary of the same decision not to run a
 generative model: \hyphae{}'s realizer runs in 2--24 microseconds

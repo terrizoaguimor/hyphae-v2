@@ -131,11 +131,13 @@ and the realizer is irrelevant to it. Provenance, like
 correctness, is not \hyphae{}-specific; it is an addable layer,
 and the line that separates systems is journal-vs-no-journal
 (plain echo and LLM-RAG detect 0\%). The guarantee is
-\emph{tamper-evident}, not tamper-proof: a chain-aware adversary
-who rewrites the persisted head defeats the bare chain, which is
-why external head anchoring is the natural extension. The
-sub-millisecond, CPU-only cost is a corollary of not generating,
-shared with echo. We argue the durable contribution is the
+\emph{tamper-evident}: a chain-aware adversary who rewrites the
+persisted head defeats the bare chain, but is caught once the head
+is externally anchored with an Ed25519 signature held outside the
+store, which we implement and demonstrate --- so detection holds
+against any attacker who does not also compromise the anchor key.
+The sub-millisecond, CPU-only cost is a corollary of not
+generating, shared with echo. We argue the durable contribution is the
 provenance layer and the benchmark critique --- the standard
 correctness benchmark cannot measure either, since a \texttt{print}
 statement saturates it --- and that evaluating verifiable

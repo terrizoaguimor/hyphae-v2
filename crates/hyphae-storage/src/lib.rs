@@ -22,8 +22,10 @@
 
 #![warn(missing_docs)]
 
+pub mod anchor;
 pub mod journal;
 pub mod state_store;
 
+pub use anchor::{AnchoredHead, HeadAnchor, verify_anchored_head};
 pub use journal::{Journal, JournalEntry, JournalError};
 pub use state_store::{StateStore, StateStoreError};

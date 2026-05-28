@@ -35,7 +35,7 @@ as ``\hyphae{} wins'' but as ``\hyphae{} does not \emph{lose}
 correctness relative to a trivial echo or to frontier LLMs, while
 adding an audit property neither has.''
 
-\begin{table}[ht]
+\begin{table}[tb]
 \centering
 \caption{\textbf{TriviaQA-150 ranking, with the echo control on
 top.} \texttt{gold} = gold-answer match rate (correctness).
@@ -219,37 +219,42 @@ entry's stored \texttt{prev\_hash} inconsistent with the
 recomputed chain (insertion of a forged trailing record is caught
 at that record; deletion and reorder break the successor link;
 the final-entry case is caught by the persisted head). The
-chain-aware adversary \textbf{defeats the bare chain in 100\% of
-trials}: having recomputed the chain and rewritten the head, the
-forged journal verifies cleanly. This is not a flaw in the
-experiment --- it is the boundary the threat model below makes
-explicit, and the reason external head anchoring is the natural
-extension.
+chain-aware adversary \textbf{defeats the bare chain}: having
+recomputed the chain and rewritten the head, the forged journal
+verifies cleanly. We close that gap by anchoring the head: an
+Ed25519 signature over the head, produced by a key the store
+process does not hold (ADR-0032), is published outside the store.
+The same chain-aware attack now \textbf{fails anchored
+verification} --- the attacker cannot re-sign the rewritten head
+without the anchor key --- so detection returns to 100\% for any
+attacker who does not additionally compromise that key. We
+implement and run this; it is not a promissory note.
 
-\begin{table}[ht]
+\begin{table}[tb]
 \centering
 \caption{\textbf{Minimal provenance benchmark: post-ingest
 store-tampering detection.} The (verbatim $+$ hash-chain journal)
 layer --- shared identically by \hyphae{} and a trivial
 echo$+$journal baseline, since the journal stores raw bodies ---
-detects and localises every store-only tampering mode, and is
-defeated only by a chain-aware adversary who can rewrite the
-persisted head (motivating external anchoring, §threat model).
-Echo \emph{without} a journal and LLM-RAG have no integrity layer
-at all. LLM-RAG is doubly exposed: its output paraphrases the
-source (\verbpass{} $0.09$--$0.24$,
-Tables~\ref{tab:triviaqa}--\ref{tab:own}), so it cannot even be
+detects and localises every store-only tampering mode. A
+chain-aware adversary who rewrites the persisted head defeats the
+\emph{bare} chain, but is caught once the head is externally
+anchored with an Ed25519 signature (ADR-0032, key held outside the
+store). Echo \emph{without} a journal and LLM-RAG have no
+integrity layer at all; LLM-RAG is doubly exposed, as its output
+paraphrases the source (\verbpass{} $0.09$--$0.24$,
+Tables~\ref{tab:triviaqa}--\ref{tab:own}) and so cannot even be
 string-matched back to a source for post-hoc audit.}
 \label{tab:tamper}
 \small
 \begin{tabular}{l c c c}
 \toprule
-\textbf{System} & store-only adv. & chain-aware adv. & output auditable to source \\
+\textbf{System} & store-only adv. & chain-aware (bare) & chain-aware (anchored) \\
 \midrule
-Verbatim $+$ journal               & \textbf{100\%} detect \& localise & defeated (needs anchor) & yes (byte-identical $+$ journalled) \\
-\quad(\hyphae{} \emph{and} echo$+$journal) & all 4 modes & & \\
-Echo (no journal)                  & 0\% & 0\% & only with external hashes (none kept) \\
-LLM-RAG (no journal)               & 0\% & 0\% & no (paraphrased; not byte-bindable) \\
+Verbatim $+$ journal               & \textbf{100\%} detect \& localise & defeated & \textbf{DETECTED} \\
+\quad(\hyphae{} \emph{and} echo$+$journal) & all 4 modes & (rewrites head) & (Ed25519 head) \\
+Echo (no journal)                  & 0\% & 0\% & --- \\
+LLM-RAG (no journal)               & 0\% & 0\% & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -280,33 +285,38 @@ layer for that construction --- it makes every entry's integrity
 checkable against the head --- and external anchoring is a natural
 add-on, not a redesign. We state this explicitly because the
 high-level language of ``cryptographic audit'' can suggest a
-stronger guarantee than a local chain delivers on its own; the
-contribution is the architectural base layer and its measured
-tamper-evidence, with the anchoring extension flagged as the path
-to end-to-end tamper-proofing.
+stronger guarantee than a \emph{bare} local chain delivers on its
+own. The next paragraph closes exactly this gap with an implemented
+external anchor; the bare-chain analysis here is the baseline
+against which that closure is measured.
 
-\paragraph{Where the head lives, and why the two adversaries are
-distinct.} The store-only and chain-aware adversaries are
-separated by exactly one assumption: that the persisted chain head
-is outside the attacker's write scope. We are explicit that in the
-configuration measured here this assumption does \emph{not} hold
---- the head is a record in the same \texttt{fjall} keyspace (the
-\texttt{meta} partition) as the fragment bodies, so an attacker
-with write access to the store can write the head as well, and the
-store-only adversary therefore collapses into the chain-aware one.
-The 100\% store-only detection result should accordingly be read
-as establishing the base-layer \emph{mechanism} --- that in-place
-record edits break the recomputed chain and are localised --- under
-the explicit assumption of an isolated head, not as a deployed
-end-to-end guarantee against a store-level attacker. Making the
-assumption real is a deployment step, not a redesign: persisting
-the head on write-isolated media, signing it under a key the store
-process does not hold, or anchoring it to an external append-only
-timestamp each promote the demonstrated tamper-evidence to a
-guarantee that survives a full store compromise. We flag this as
-the single load-bearing dependency of the positive result, and
-external head anchoring (Section~\ref{sec:discussion}) as the work
-that discharges it.
+\paragraph{Where the head lives, and how anchoring closes the
+gap.} The store-only and chain-aware adversaries are separated by
+exactly one assumption: that the persisted chain head is outside
+the attacker's write scope. In the bare configuration this
+assumption does \emph{not} hold --- the head is a record in the
+same \texttt{fjall} keyspace (the \texttt{meta} partition) as the
+fragment bodies, so an attacker with store write access can
+rewrite the head and the store-only adversary collapses into the
+chain-aware one. This was, in earlier drafts, the single
+load-bearing dependency of the positive result, and we treated it
+honestly as such. We now \textbf{discharge it rather than
+declare it}: external head anchoring (ADR-0032) signs the head with
+an Ed25519 key the store process does not hold and publishes the
+signature outside the store. A chain-aware attacker who rewrites
+the head to a recomputed value cannot produce a matching signature
+without the anchor key; anchored verification fails, and the
+attack is detected (Table~\ref{tab:tamper}, rightmost column). The
+guarantee therefore strengthens from ``tamper-evident against an
+attacker who cannot write the head'' (vacuous when the head shares
+the store) to ``tamper-evident against an attacker who does not
+hold the anchor signing key'' --- realistic, because the key lives
+in an HSM / offline signer / audit service, whereas the head
+necessarily lives in the store. The residual assumption (the
+attacker does not compromise the signing key) is the standard key-
+management reduction every signed-log scheme carries; publishing
+anchors to an external append-only ledger for cross-snapshot
+freshness is the natural next step (Section~\ref{sec:discussion}).
 
 \paragraph{Reading.} This is the paper's positive result, and the
 echo control sharpens rather than supports \hyphae{} specifically.
@@ -336,7 +346,7 @@ own 34-query corpus. The picture is different: GPT-4.1 with
 strong retrieval reaches rank 1 (\unsupf$=0.211$), with \hyphae{}
 at rank 2 (\unsupf$=0.219$), within the bootstrap 95\% CI overlap.
 
-\begin{table}[ht]
+\begin{table}[tb]
 \centering
 \caption{\textbf{Own corpus (N=34) ranking, with the echo control
 on top.} Sorted by \unsupf{}. The echo baseline again ties or
@@ -477,7 +487,7 @@ between the two regimes is \emph{\hyphae{} getting slower as the
 working set grows}, not the LLM getting faster, and not the
 network.
 
-\begin{table}[ht]
+\begin{table}[tb]
 \centering
 \caption{\textbf{Mean per-query latency, held at fixed corpus.}
 The ratio to \hyphae{} is computed within each corpus block.
@@ -551,7 +561,7 @@ on the own corpus. The headline observation:
     advantage from the low-$10^5$ range toward $10^6$.
 \end{itemize}
 
-\begin{table}[ht]
+\begin{table}[tb]
 \centering
 \caption{\textbf{Hardware matrix} on the own corpus. Quality
 metrics are hardware-invariant within $\pm 0.03$. Latencies are

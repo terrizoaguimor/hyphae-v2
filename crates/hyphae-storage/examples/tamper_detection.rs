@@ -261,6 +261,45 @@ fn trial(mode: Mode, adv: Adversary, facts: &[&str]) -> (bool, Option<u64>) {
     r
 }
 
+/// Chain-aware adversary against an EXTERNALLY ANCHORED head.
+///
+/// Before the attack, an anchor (key held outside the store) signs
+/// the legitimate head. The attacker then edits a fragment, recomputes
+/// the whole chain, and rewrites the persisted head --- defeating the
+/// bare `verify()` --- but cannot re-sign the new head without the
+/// anchor key. Anchored verification therefore catches it. Returns
+/// (chain_verify_passes, anchored_verify_passes).
+fn trial_anchored_chain_aware(facts: &[&str]) -> (bool, bool) {
+    use hyphae_storage::{verify_anchored_head, HeadAnchor};
+
+    let dir = std::env::temp_dir().join("hyphae-prov-anchored");
+    let _ = std::fs::remove_dir_all(&dir);
+    std::fs::create_dir_all(&dir).expect("mkdir");
+    ingest(&dir, facts);
+
+    // The audit service (key NOT held by the store) anchors the
+    // legitimate head before any attack.
+    let anchor = HeadAnchor::from_seed(&[7u8; 32]);
+    let verifying_key = anchor.verifying_key();
+    let legit_head = {
+        let j = Journal::open(&dir).expect("reopen");
+        j.head()
+    };
+    let anchored = anchor.anchor(legit_head);
+
+    // Chain-aware attack: edit + recompute chain + rewrite head.
+    chain_aware_edit(&dir, 3, "the migration completed at 23:59 UTC");
+
+    let j = Journal::open(&dir).expect("reopen post-tamper");
+    let chain_ok = j.verify().is_ok(); // true: attacker forged a consistent chain
+    // Anchored check: does the published signature still match the
+    // (now rewritten) head? The attacker cannot have re-signed it.
+    let anchored_ok = verify_anchored_head(&j.head(), &anchored, &verifying_key);
+
+    let _ = std::fs::remove_dir_all(&dir);
+    (chain_ok, anchored_ok)
+}
+
 fn main() {
     let facts = facts();
     println!("# Minimal provenance benchmark");
@@ -285,26 +324,49 @@ fn main() {
     println!("\n## Adversary B: chain-aware (recomputes chain forward + rewrites head)");
     let (d, loc) = trial(Mode::Edit, Adversary::ChainAware, &facts);
     println!(
-        "{:<12} {:<12} {:<14}",
-        "edit",
+        "{:<22} {:<26} {:<14}",
+        "verification",
+        "detected",
+        "localised seq"
+    );
+    println!("{}", "-".repeat(60));
+    println!(
+        "{:<22} {:<26} {:<14}",
+        "bare chain (verify)",
         if d { "YES" } else { "NO (defeats bare chain)" },
         loc.map(|s| s.to_string()).unwrap_or_else(|| "-".into())
     );
 
+    // Same attack, now with an externally anchored (Ed25519-signed) head.
+    let (chain_ok, anchored_ok) = trial_anchored_chain_aware(&facts);
+    println!(
+        "{:<22} {:<26} {:<14}",
+        "anchored head (Ed25519)",
+        if anchored_ok { "NO (anchor missed it!)" } else { "YES (anchor catches it)" },
+        "n/a"
+    );
+    println!(
+        "#   (bare-chain verify still passes after the chain-aware attack: {chain_ok}; \n#    the anchored signature over the original head fails against the rewritten head.)"
+    );
+
     println!("\n# Detection matrix (post-ingest store tampering):");
     println!("#");
-    println!("#   System                         store-only adv   chain-aware adv");
-    println!("#   Verbatim + journal             100% (all modes) defeated -> needs");
-    println!("#     (Hyphae AND echo+journal)     + localised     external head anchor");
-    println!("#   Echo (no journal)                0%               0%");
-    println!("#   LLM-RAG (no journal,             0%               0%");
+    println!("#   System                       store-only  chain-aware   chain-aware");
+    println!("#                                    adv          adv        + anchor");
+    println!("#   Verbatim + journal            100% (all)   defeated      DETECTED");
+    println!("#     (Hyphae AND echo+journal)   + localised  (bare chain)  (Ed25519 head)");
+    println!("#   Echo (no journal)               0%           0%            n/a");
+    println!("#   LLM-RAG (no journal,            0%           0%            n/a");
     println!("#     paraphrases; not byte-bindable for post-hoc audit either)");
     println!("#");
     println!("# Reading: the (verbatim + hash-chain journal) layer detects and");
-    println!("# localises every store-only tampering mode, and is realizer-");
-    println!("# independent -- Hyphae and a trivial echo+journal baseline share it");
-    println!("# identically. The chain-aware adversary defeats the bare local chain,");
-    println!("# which is exactly why the chain head must be anchored outside the");
-    println!("# attacker's write scope (signed external ledger / timestamp). The");
-    println!("# contribution is the addable provenance layer, not the realizer.");
+    println!("# localises every store-only tampering mode, realizer-independently");
+    println!("# (Hyphae and echo+journal share it identically). A chain-aware");
+    println!("# adversary defeats the BARE chain by rewriting the head -- but an");
+    println!("# externally anchored head (Ed25519-signed by a key the store does");
+    println!("# not hold) catches even that attack, because the attacker cannot");
+    println!("# re-sign the rewritten head. This closes the load-bearing");
+    println!("# dependency: tamper-evidence now holds against any attacker who");
+    println!("# does not hold the anchor signing key. The contribution is the");
+    println!("# addable provenance layer, not the realizer.");
 }
