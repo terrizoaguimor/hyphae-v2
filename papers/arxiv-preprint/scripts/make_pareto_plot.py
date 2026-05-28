@@ -68,6 +68,7 @@ def collect(
 
 
 OWN_CORPUS = [
+    ("echo", "v0.1-laptop-echo-own.json"),
     ("Hyphae", "v0.1-laptop-hyphae-none.json"),
     ("Llama-8B oracle", "v0.1-laptop-oracle.json"),
     ("Llama-8B rag", "v0.1-laptop-rag.json"),
@@ -90,6 +91,7 @@ OWN_CORPUS = [
 ]
 
 TRIVIAQA_CORPUS = [
+    ("echo", "v0.1-laptop-triviaqa-echo.json"),
     ("Hyphae", "v0.1-laptop-triviaqa-hyphae-none.json"),
     ("Llama-8B oracle", "v0.1-laptop-triviaqa-oracle.json"),
     ("Llama-8B rag", "v0.1-laptop-triviaqa-rag.json"),

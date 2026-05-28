@@ -6,10 +6,15 @@
 \textbf{substrate} (memory state, fragment storage,
 hash-chained journal), \textbf{cognition path} (the operations
 that retrieve, compose, and emit), and \textbf{realizer}
-(the prose-emission stage). The architectural commitments
-load-bearing for the empirical results are concentrated at the
-realizer boundary; we describe each layer briefly with that
-focus.
+(the prose-emission stage). The single property that
+distinguishes \hyphae{} from every baseline in this paper ---
+including the trivial echo baseline that matches it on all
+correctness metrics --- is the \emph{audit relation} between the
+realizer's output and the substrate's hash-chained journal: every
+emitted quotation is byte-identical to a journalled fragment, and
+that correspondence is independently checkable. We describe each
+layer with that property in focus, and return to it as the core
+of the contribution in Section~\ref{sec:hc12}.
 
 \subsection{Substrate}
 

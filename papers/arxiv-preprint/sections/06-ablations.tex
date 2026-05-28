@@ -35,15 +35,33 @@ contract) intact.
     Rule~1/Rule~3 boundary filter.
 \end{itemize}
 
-\paragraph{Headline finding.}
+\paragraph{Headline finding, read through the echo control.}
 
 Table~\ref{tab:ablations} shows the results. The architectural
-quotation contract (\verbpass{}, connective hygiene, quoted-content
-support) holds at $1.000$ across every ablation. Of the two
-head-to-head metrics, \unsupf{} moves measurably under
-\textbf{A3 only}; A1, A2, and A4 produce null deltas.
-(Gold-answer match is invariant across these ablations: every
-condition still quotes the gold-bearing seed verbatim.)
+quotation contract (\verbpass{}, connective hygiene,
+quoted-content support) holds at $1.000$ across every ablation,
+and gold-answer match is invariant (every condition still quotes
+the gold-bearing seed verbatim). Of the two head-to-head metrics,
+\unsupf{} moves measurably under \textbf{A3 (minimal lexicon)
+only}; A1, A2, and A4 produce null deltas.
+
+Under the original (benchmark) framing this read as a weakness:
+three of \hyphae{}'s four components do nothing measurable. Under
+the verifiability framing, taken together with the echo baseline
+(Section~\ref{sec:results-triviaqa}), it is corroborating
+evidence. The echo control already established that the
+correctness and grounding metrics are saturated by verbatim
+quotation alone; it follows directly that \emph{ablating the
+machinery layered on top of verbatim quotation should not move
+those metrics}, and it does not. The ablations are not failing to
+find an effect --- they are confirming that the effect the
+metrics measure lives entirely in the quotation, not in the
+composition. Crucially, \textbf{every one of the four components,
+and the echo baseline, leaves the hash-chained provenance
+relation intact}: no ablation in this study, and no baseline in
+the paper, can produce an output whose quoted spans are not
+byte-identical to journalled fragments. The property that
+distinguishes \hyphae{} is the one axis nothing here perturbs.
 
 \begin{table}[ht]
 \centering

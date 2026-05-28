@@ -5,7 +5,7 @@
 \subsection{TriviaQA Standard Benchmark}
 \label{sec:results-triviaqa}
 
-Table~\ref{tab:triviaqa} reports the 19-system ranking on the
+Table~\ref{tab:triviaqa} reports the system ranking on the
 TriviaQA 150-query subset on \textbf{two complementary axes}:
 \textbf{gold-answer match} (\texttt{gold}, does the response
 contain the benchmark's reference answer or any alias, with
@@ -14,26 +14,52 @@ rate} (\unsupf, does the response stay inside the retrieved
 context?). The first axis measures correctness; the second
 measures grounding.
 
+\paragraph{Read the echo control first.} The top row of
+Table~\ref{tab:triviaqa} is the \textbf{echo baseline}: emit the
+retrieved seed sentence verbatim, with no model, no lexicon, and
+no composition. It reaches $1.000$ gold-answer, $0.000$ \unsupf{},
+$0.000$ \unsupr{}, and $1.000$ n-gram overlap --- it ties
+\hyphae{} on gold-answer and \unsupf{}, and \emph{exceeds} it on
+\unsupr{} and overlap, because \hyphae{}'s connective scaffolding
+(``Drawing from working memory, \ldots'') is the only material in
+\hyphae{}'s output that the NLI can score as non-entailed or that
+dilutes the n-gram match. The consequence is stark and is the
+organising fact of this paper: \textbf{a one-line \texttt{print}
+of the retrieved sentence is at least as good as \hyphae{} on
+every metric in this table.} Whatever \hyphae{} contributes over
+echo --- multi-fragment composition, register-appropriate
+connectives, and most importantly the hash-chained provenance
+relation --- is not visible to, or is penalised by, this metric
+suite. The remainder of this section should therefore be read not
+as ``\hyphae{} wins'' but as ``\hyphae{} does not \emph{lose}
+correctness relative to a trivial echo or to frontier LLMs, while
+adding an audit property neither has.''
+
 \begin{table}[ht]
 \centering
-\caption{\textbf{TriviaQA-150 ranking.} 19 system configurations
-on two complementary axes. \texttt{gold} = gold-answer match
-rate (correctness). \unsupf{} = NLI-grounded unsupported-claim
-rate (grounding). \unsupr{} = same NLI metric without the
-connective-sentence filter. \textsc{Hyphae} reaches $1.000$
-gold-answer (by construction of the corpus filter; see text)
-and a metric-degenerate $0.000$ \unsupf. The best LLM
+\caption{\textbf{TriviaQA-150 ranking, with the echo control on
+top.} \texttt{gold} = gold-answer match rate (correctness).
+\unsupf{} = NLI-grounded unsupported-claim rate (grounding).
+\unsupr{} = same NLI metric without the connective-sentence
+filter. The \textit{echo baseline} (verbatim emit of the
+retrieved sentence, no model) ties \hyphae{} on gold-answer and
+\unsupf{} and exceeds it on \unsupr{} and overlap --- the
+benchmark cannot separate \hyphae{} from a \texttt{print}
+statement. \textsc{Hyphae}'s $1.000$ gold-answer holds by
+construction of the corpus filter (see text). The LLM
 configurations reach $0.84$--$0.96$ gold-answer at
-$0.400$--$0.737$ \unsupf, indicating that they are nearly as
-\emph{correct} as \hyphae{} on this benchmark while being scored
-less \emph{grounded} by the chosen NLI metric.}
+$0.400$--$0.737$ \unsupf: nearly as \emph{correct} as both echo
+and \hyphae{}, scored less \emph{grounded} by the NLI metric for
+reasons of phrasing, not of whether they answer correctly.}
 \label{tab:triviaqa}
 \small
 \begin{tabular}{rl rrrr r}
 \toprule
 \textbf{Rank} & \textbf{System} & \texttt{gold} & \unsupf & \unsupr & overlap$_4$ & $\text{lat}_{p50}$ (ms) \\
 \midrule
-1  & \textbf{Hyphae}                      & \textbf{1.000} & \textbf{0.000} & 0.013 & \textbf{0.600} & $<\!0.1$ \\
+-- & \textit{Echo baseline (control)}     & \textit{1.000} & \textit{0.000} & \textit{0.000} & \textit{1.000} & $<\!0.1$ \\
+\midrule
+1  & \textbf{Hyphae}                      & \textbf{1.000} & \textbf{0.000} & 0.013 & 0.600 & $<\!0.1$ \\
 2  & Claude-4.6-Sonnet oracle             & 0.960 & 0.623 & 0.651 & 0.123 & 2{,}363 \\
 3  & Claude-4.6-Sonnet rag                & 0.933 & 0.606 & 0.635 & 0.155 & 2{,}509 \\
 3  & router:celiums rag                   & 0.933 & 0.737 & 0.756 & 0.161 & 1{,}119 \\
@@ -120,18 +146,24 @@ disagree because they measure different things; both numbers are
 correct.
 
 \paragraph{The honest comparison.}
-The architectural finding that survives disaggregation is the one
-the gold-answer column makes precise: in oracle mode, where every
-system receives the same gold-bearing seed body, verbatim
-quotation removes a paraphrase-away failure mode that costs the
-LLM oracle baselines four (Claude) to sixteen (DeepSeek-V4-Pro)
-percentage points of correctness. That mechanism is real and
-architectural. The NLI grounding gap is, on this corpus,
-predominantly a metric artefact --- documented honestly via the
-side-by-side filtered/unfiltered rates and the sample outputs in
-Appendix~\ref{app:samples}. The cost dimension, which the next
-sections quantify, is where the architectural commitment
-generalises unambiguously.
+The one correctness mechanism that is real and architectural ---
+visible in the gold-answer column --- is that verbatim quotation
+removes a paraphrase-away failure mode: in oracle mode, where
+every system receives the same gold-bearing seed body, the LLM
+oracle baselines still drop four (Claude) to thirty
+(Llama-8B-local) percentage points of gold-answer correctness by
+paraphrasing the answer out of their response, while \hyphae{}
+and the echo baseline cannot. But note the company \hyphae{}
+keeps in that finding: \emph{the echo baseline shares it
+exactly}. Verbatim emission is what removes paraphrase-away, and
+echo is verbatim emission with nothing else. The NLI grounding
+gap, meanwhile, is on this corpus predominantly a metric artefact
+(documented via the filtered/unfiltered rates and the samples in
+Appendix~\ref{app:samples}). Neither the correctness axis nor the
+grounding axis isolates anything \hyphae{} does that echo does
+not. What does --- the hash-chained provenance relation
+(Section~\ref{sec:hc12}) --- is not measured by either axis, and
+is the subject of Section~\ref{sec:discussion}.
 
 \subsection{Own Corpus}
 \label{sec:results-own}
@@ -143,15 +175,23 @@ at rank 2 (\unsupf$=0.219$), within the bootstrap 95\% CI overlap.
 
 \begin{table}[ht]
 \centering
-\caption{\textbf{Own corpus (N=34) ranking.} Sorted by \unsupf{}.
-GPT-4.1 with strong retrieval ties \hyphae{} within bootstrap CI;
-every other system lands further. The verbatim-quotation rate
-remains uniquely $1.000$ for \hyphae{}.}
+\caption{\textbf{Own corpus (N=34) ranking, with the echo control
+on top.} Sorted by \unsupf{}. The echo baseline again ties or
+beats every system, including \hyphae{}, on the comparable
+metrics --- on this multi-fragment corpus the margin is wider
+($0.000$ vs \hyphae{}'s $0.219$ \unsupf{}) because \hyphae{}'s
+multi-fragment compositions carry more connective scaffolding for
+the NLI to score neutral. GPT-4.1 with strong retrieval is the
+strongest LLM here, within bootstrap CI of \hyphae{} on \unsupf{}.
+None of this is a correctness win for \hyphae{}; it is evidence
+that the metric rewards bare quotation, which echo maximises.}
 \label{tab:own}
 \small
 \begin{tabular}{rl rrrr r}
 \toprule
 \textbf{Rank} & \textbf{System} & \verbpass & \unsupf & \unsupr & overlap$_4$ & $\text{lat}_{p50}$ (ms) \\
+\midrule
+-- & \textit{Echo baseline (control)}     & \textit{1.000} & \textit{0.000} & \textit{0.000} & \textit{1.000} & $<\!0.1$ \\
 \midrule
 1  & GPT-4.1 strong-rag                   & 0.176 & 0.211 & 0.210 & 0.468 & 2{,}314 \\
 2  & \textbf{Hyphae}                      & \textbf{1.000} & 0.219 & 0.625 & 0.466 & $<\!0.1$ \\
@@ -207,26 +247,34 @@ by quotient when the denominator collapses; the panel is
 illustrative, not load-bearing) and gold-answer is the axis
 that carries the architectural correctness claim.
 
-On the \unsupf{} axis the non-dominated frontier on TriviaQA
-contains a single point (\hyphae{}); on the own corpus it
-contains two (\hyphae{} and GPT-4.1 with strong retrieval). On
-the gold-answer axis the TriviaQA frontier expands: \hyphae{}
-at the latency-advantaged endpoint plus a handful of oracle-mode
-LLMs (Claude-4.6-Sonnet at $0.960$, Llama-3.3-70B and GPT-4.1
-at $0.900$--$0.907$) at the right-end. No system dominates
-\hyphae{} on either axis on either corpus.
+The decisive feature of every panel is that \hyphae{} does not
+sit alone at the favourable corner: \textbf{the echo baseline is
+co-located with it} (and on the own corpus strictly dominates it,
+sitting at lower \unsupf{} and equal latency). Any ``\hyphae{} is
+on the Pareto frontier'' claim is therefore shared with a
+\texttt{print} statement, and the frontier on these axes is not
+evidence for the architecture. On the gold-answer axis the
+TriviaQA frontier also includes a handful of oracle-mode LLMs
+(Claude-4.6-Sonnet at $0.960$, Llama-3.3-70B and GPT-4.1
+at $0.900$--$0.907$) at the high-correctness/high-latency
+end. No system dominates
+\hyphae{} on either axis on either corpus --- but neither does
+\hyphae{} dominate echo, which is the point.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/pareto-frontier.pdf}
-\caption{\textbf{Latency-quality Pareto frontier on two metrics.}
-Each point is one system configuration; latency on the horizontal
-axis is $p50$ in milliseconds, log scale. Top row uses \unsupf{}
-(lower better); bottom-left uses gold-answer match (higher
-better). Red points are non-dominated on each panel. The
-gold-answer panel addresses the v1 critique that \unsupf{} is
-metric-degenerate on TriviaQA for \hyphae{}; the gold-answer
-panel surfaces the correctness comparison directly.}
+\caption{\textbf{Latency-quality frontier on two metrics, with
+the echo control.} Each point is one system configuration;
+latency on the horizontal axis is $p50$ in milliseconds, log
+scale. Top row uses \unsupf{} (lower better); bottom-left uses
+gold-answer match (higher better). Red points are non-dominated.
+The echo baseline sits at the same favourable corner as
+\hyphae{} (and dominates it on the own-corpus \unsupf{} panel):
+the metric-space frontier does not separate the architecture
+from a verbatim \texttt{print}. The distinguishing property ---
+hash-chained provenance --- is not an axis any of these panels
+can plot.}
 \label{fig:pareto}
 \end{figure}
 

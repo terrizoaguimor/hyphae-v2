@@ -55,49 +55,57 @@ Intel Xeon Platinum 8168 server).
     architecture; the empirical sections quantify what that
     commitment is worth on standard tasks.
 
-    \item \textbf{A two-axis correctness-and-grounding comparison
-    against 18 LLM-based configurations.} We re-evaluate every
-    system on both an NLI-grounded unsupported-claim rate
-    (\unsupf{}, does the response stay inside the retrieved
-    context?) and a gold-answer match rate (does the response
-    contain the benchmark's reference answer?). On TriviaQA,
-    \hyphae{} reaches $1.000$ gold-answer match and a
-    metric-degenerate $0.000$ \unsupf{}, while the twelve
-    LLM-based configurations with gold-answer match $\geq 0.84$
-    score $0.400$--$0.737$ \unsupf{}. The honest reading: frontier
-    LLMs are nearly as correct on this benchmark and less
-    efficiently grounded as measured by the chosen NLI filter.
+    \item \textbf{An echo baseline that bounds what the standard
+    benchmark can measure.} We include a trivial control --- emit
+    the retrieved seed sentence verbatim, no model, no lexicon,
+    no composition --- and evaluate it identically. On both
+    corpora the echo baseline \emph{ties or exceeds} \hyphae{} on
+    every comparable metric: gold-answer match, unsupported-claim
+    rate, n-gram overlap, and verbatim-pass rate. This is the
+    paper's pivotal negative result: it demonstrates that the
+    measured correctness and grounding are properties of
+    verbatim quotation \emph{per se}, which any echo possesses,
+    and not of \hyphae{}'s composition machinery. The standard
+    correctness benchmark cannot distinguish \hyphae{} from a
+    \texttt{print} statement, because the property that does ---
+    verifiable provenance --- is off-axis for every metric in it.
 
-    \item \textbf{Per-query latency advantage of $\sim 10^5$ to
-    $\sim 10^6$ depending on working-set size.} \hyphae{}'s
-    realizer runs in $0.002$ ms mean per query on single-seed
-    TriviaQA queries and $0.024$ ms on the multi-fragment own
-    corpus; the LLM baselines run in $1{,}858$--$6{,}083$ ms
-    (roughly corpus-independent across configurations), whether
-    hosted locally or via API. The ratio is therefore
-    $\sim 10^6$ for single-seed retrieval and $\sim 10^5$ for
-    multi-fragment composition; the network round-trip accounts
-    for only $\sim 30\%$
-    (Section~\ref{sec:results-latency-honest}). Memory footprint
-    differs by approximately five orders of magnitude (50 MB vs
-    multiple GB).
+    \item \textbf{A two-axis comparison against 18 LLM-based
+    configurations, read as a sanity check rather than a win.}
+    We score every system on an NLI-grounded unsupported-claim
+    rate and a gold-answer match rate, across vanilla RAG, HyDE
+    plus cross-encoder reranking, and oracle context. The result
+    establishes that \hyphae{} is \emph{correctness-neutral}: it
+    does not sacrifice gold-answer correctness relative to either
+    the echo baseline or frontier LLMs in oracle mode
+    ($0.840$--$0.960$). It does not establish that \hyphae{} is
+    \emph{more} correct, and we explicitly retract any such
+    reading --- the echo control forecloses it.
 
-    \item \textbf{Two corpora, with honest acknowledgement of
-    their limits.} A 34-query project corpus designed to exercise
-    multi-fragment composition, and a 150-query random sample from
-    TriviaQA. The TriviaQA picture is hardened by the larger N and
-    independent dataset; the own-corpus picture surfaces the
-    multi-fragment regime that single-hop benchmarks do not. We
-    discuss the partial circularity of measuring on a project-built
-    corpus (Section~\ref{sec:threats}).
+    \item \textbf{Per-query latency as a corollary of not
+    generating.} \hyphae{}'s realizer runs in $0.002$--$0.024$ ms
+    mean per query (single-seed to multi-fragment); the LLM
+    baselines run in $1{,}858$--$6{,}083$ ms whether hosted
+    locally or via API, the network round-trip accounting for
+    only $\sim 30\%$ (Section~\ref{sec:results-latency-honest}).
+    The five-to-six-order-of-magnitude gap is real and matters
+    for deployment economics, but it is a consequence of the
+    architectural decision not to run a generative model, shared
+    with the echo baseline, not an independent contribution.
+    Memory footprint differs by $\sim$five orders of magnitude
+    (50 MB vs multiple GB).
 
-    \item \textbf{Component-level ablations.} We disable four
-    \hyphae{} components in turn (cascade-shape composition,
-    ethics gate, lexicon scale, boundary smoothing) and measure
-    the metric deltas. Only lexicon scale produces a measurable
-    effect; the other three produce null deltas at this corpus
-    size. We report null results honestly and constrain claims
-    accordingly.
+    \item \textbf{Component-level ablations that support the
+    reframing.} We disable four \hyphae{} components in turn
+    (cascade-shape composition, ethics gate, lexicon scale,
+    boundary smoothing). Only lexicon scale moves a correctness
+    metric, and only marginally; the other three produce null
+    deltas. Far from a weakness, this corroborates the central
+    claim: the realizer's machinery serves readability and
+    multi-fragment structure, not the measured correctness ---
+    and \emph{none} of the four components touches the
+    hash-chained provenance guarantee, which is invariant across
+    every ablation and every baseline.
 
     \item \textbf{Hardware matrix.} We re-run the matrix on a
     server-class CPU-only Linux instance. Quality metrics are

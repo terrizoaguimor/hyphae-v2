@@ -10,42 +10,44 @@ journal. Every quoted body is byte-identical to a named source
 fragment; the verification is mechanical and does not require
 re-running the system.
 
-On the TriviaQA-150 standard benchmark, \hyphae{} reaches a
-$1.000$ gold-answer match rate by construction (the corpus
-filter selects seed bodies that contain the answer; verbatim
-quotation propagates the answer to the output). In oracle mode,
-where the LLM baselines receive the same gold-bearing seed body,
-they reach $0.840$--$0.960$ gold-answer match. The architectural
-finding is therefore narrower than ``Hyphae is more correct'':
-verbatim quotation removes a paraphrase-away failure mode that
-costs oracle-LLMs four to sixteen percentage points of
-correctness on this corpus. On the NLI-grounded unsupported-claim
-metric, the headline $0.000$ vs $0.400$--$0.737$ delta
-reflects partly a real architectural property and partly a
-corpus-construction interaction with the chosen metric's
-filter; we have made the mechanism precise and reported both
-the filtered and unfiltered rates. The defensible quantitative
-claim is therefore not that the architecture is dramatically
-more truthful than frontier LLMs, but that it is
-\emph{competitive on correctness while removing entire
-infrastructure cost categories}.
+Our central empirical result is a negative one, and we lead with
+it. A trivial echo baseline --- emit the retrieved sentence
+verbatim, no model --- ties or exceeds \hyphae{} on every
+correctness and grounding metric we measured, on both corpora.
+The standard benchmark cannot distinguish \hyphae{} from a
+\texttt{print} statement, and our ablations confirm why: the
+metrics are saturated by verbatim quotation alone, so the
+composition machinery layered on top moves them only marginally
+or not at all. We therefore explicitly decline the claim that
+\hyphae{} is more correct or better-grounded than LLM-RAG. On
+correctness it is \emph{neutral} --- it does not lose gold-answer
+accuracy relative to echo or to frontier LLMs in oracle mode
+($0.840$--$0.960$) --- and that is the honest ceiling of what the
+benchmark establishes.
 
-The cost dimension is where the architectural commitment
-matters unambiguously. \hyphae{}'s realizer runs in 2--24
-microseconds mean on commodity CPU ($0.002$ ms on single-seed
-queries, $0.024$ ms on multi-fragment composition); the
-fastest competitive LLM-based configuration runs in
-approximately $1.9$ seconds on the same hardware with Metal
-acceleration, and slower without it. The ratio is five orders
-of magnitude on the multi-fragment workload and six on
-single-seed retrieval; the network round-trip to a hosted API
-accounts for only $\sim 30\%$, not an order of magnitude.
-Memory footprint differs by approximately five orders of
-magnitude. For the subset of tasks in which the unit of
-grounding is a discrete retrieved fragment quoted verbatim,
-the trade-off is not between two systems of comparable cost;
-it is between running on a single CPU core and provisioning
-model-serving infrastructure.
+What the benchmark cannot see is the property that motivated the
+architecture. Echo emits text with no relation to a tamper-evident
+store; \hyphae{} emits spans that are byte-identical to fragments
+in a SHA-256 hash-chained journal, so any output can be
+mechanically audited back to named, unaltered sources without
+re-running the system. No retrieval-augmented LLM offers this by
+construction, because generation paraphrases; no echo offers it
+either, because it has no journal. This is the contribution, and
+it is precisely the axis on which every metric in the standard
+correctness benchmark is silent.
+
+The cost profile is a corollary of the same decision not to run a
+generative model: \hyphae{}'s realizer runs in 2--24 microseconds
+mean on commodity CPU, five-to-six orders of magnitude below LLM
+inference, in a $\sim 50$ MB footprint. This is real and matters
+for deployment, but it is shared with the echo baseline and is
+not, on its own, evidence for the architecture either. For the
+subset of tasks in which the unit of grounding is a discrete
+retrieved fragment quoted verbatim \emph{and} the deployment
+requires provable provenance, the trade-off is not between two
+systems of comparable cost; it is between a single CPU core that
+can prove what it emitted and model-serving infrastructure that
+cannot.
 
 The architectural claim is positional rather than universal.
 \hyphae{}'s prose is template-rigid by design; the verbatim-
@@ -56,17 +58,25 @@ verifiable grounding, sub-millisecond latency, or audit-bound
 production economics --- and is willing to accept a
 constrained prose register in exchange.
 
-The full evaluation pipeline (\hyphae{} source, 19 comparator
-configurations, two corpora, all result envelopes, hardware
-traces, and this paper's source) is committed at
+The full evaluation pipeline (\hyphae{} source, the echo control,
+the 18 LLM configurations, two corpora, all result envelopes,
+hardware traces, and this paper's source) is committed at
 \url{https://github.com/terrizoaguimor/hyphae-v2}. Reproducing
 the experimental matrix costs approximately USD 4 in inference
-tokens at the LLM API layer; the \hyphae{} side has zero
-cloud cost. The single largest open question this paper does
-not address is reader preference: whether the template-rigid
-prose is acceptable to end users on factual-retrieval queries
-is a human-evaluation study, not a metric. We commit to that
-followup as the next honest checkpoint.
+tokens at the LLM API layer; the \hyphae{} and echo sides have
+zero cloud cost. The echo baseline tells us the most important
+next step: the standard correctness benchmark is the wrong
+instrument for this system, because a \texttt{print} statement
+saturates it. The honest next checkpoint is therefore not a
+larger correctness corpus but a \emph{provenance-centric
+evaluation} --- a task in which verifiable audit of the output's
+sources is the measured desideratum (regulatory citation,
+compliance logging, tamper-evident record-keeping), where echo
+and LLM-RAG both structurally fail to provide the guarantee and
+\hyphae{} provides it by construction. Building that benchmark,
+and a reader-preference study of the template-rigid prose, are
+the two followups that would let the architecture be evaluated on
+the axis that actually distinguishes it.
 
 \section*{Acknowledgements}
 

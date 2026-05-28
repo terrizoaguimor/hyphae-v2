@@ -81,8 +81,8 @@
 
 % Title block
 \title{
-    Verifiable Verbatim Grounding at \\
-    Six-Orders-of-Magnitude Lower Latency
+    Verifiable Provenance for Grounded Generation: \\
+    An Architectural Alternative to LLM-RAG
 }
 
 \author{
@@ -99,56 +99,44 @@
 \maketitle
 
 \begin{abstract}
-We introduce \hyphae, a cognitive substrate that composes responses
-by verbatim quotation of retrieved memory fragments stitched
-together with a curated connective lexicon, with no large language
-model (LLM) in the cognition path. The architectural commitment
-underlying the system is dual: every quoted body is preserved
-byte-identically against a hash-chained substrate journal, making
-each emitted response \emph{independently verifiable} against
-named source material; and the realizer's bounded output runs in
-microseconds on a single CPU core. We compare \hyphae{} against
-18 LLM-based configurations (vanilla retrieval-augmented generation,
-HyDE plus cross-encoder reranking, and oracle context) spanning
-five generator models --- from Anthropic, OpenAI, DeepSeek, Meta,
-and an in-house production router --- across two corpora: the
-project's own 34-query composition corpus, and 150 random samples
-from TriviaQA. We report two
-complementary metrics: NLI-grounded
-unsupported-claim rate (does the response stay inside the retrieved
-context?) and gold-answer match (does the response contain the
-benchmark's reference answer?). On TriviaQA, \hyphae{} reaches $1.000$ gold-answer match (by
-construction of the corpus filter; see Section~\ref{sec:results-triviaqa});
-in oracle mode, where the same gold-bearing seed body is supplied
-to every system, frontier LLMs reach $0.840$--$0.960$ gold-answer.
-The architectural finding is that verbatim quotation removes a
-paraphrase-away failure mode that costs oracle-LLMs four to
-sixteen percentage points of correctness. \hyphae{}'s NLI-grounded
-unsupported-claim rate is a metric-degenerate $0.000$ on this
-corpus; the twelve LLM-based configurations that reach gold-answer
-$\geq 0.84$ score $0.400$--$0.737$ on the same metric. We trace
-the gap mechanically to the metric's filter interacting with the
-substrate's compositional template, and report both filtered and
-unfiltered rates throughout. Where the architectural claim is
-unambiguous is the cost dimension: on TriviaQA, \hyphae{}'s
-realizer runs in $0.002$ ms mean per query, against $1{,}858$ ms
-for a \emph{locally-hosted} Llama-8B-Instruct quantised baseline
-(no network) and $2{,}424$ ms for GPT-4.1 with strong retrieval
-via a hosted API --- a ratio of roughly $10^6$ in both cases,
-confirming the network round-trip is not the dominant cost. On
-the own corpus, whose multi-fragment queries make \hyphae{}'s
-composition cost $12\times$ higher ($0.024$ ms mean), the ratio is
-$\sim 10^5$. The advantage is therefore five-to-six orders of
-magnitude depending on working-set size, and the \hyphae{} side
-carries no model-serving infrastructure cost at all. We do not claim the substrate
-universally replaces LLM-based generation. We claim that for tasks
-in which the unit of grounding is a discrete retrieved fragment
-quoted verbatim and the deployment requires audit-bound
-verifiability, the architectural commitment is competitive with
-frontier LLM correctness and dominates them on latency, memory
-footprint, and per-query cost by several orders of magnitude. Code,
-corpora, result envelopes, and hardware traces are available at
-\url{https://github.com/terrizoaguimor/hyphae-v2}.
+We introduce \hyphae, a cognitive substrate that answers retrieval
+queries by emitting byte-identical quotations of stored memory
+fragments, joined by a curated connective lexicon, with no large
+language model (LLM) in the cognition path. \hyphae{}'s
+distinguishing property is \emph{architectural verifiability}:
+every quoted span is preserved byte-for-byte against a SHA-256
+hash-chained journal, so any output can be independently confirmed
+to have been assembled from named, unaltered source fragments --- a
+guarantee no retrieval-augmented LLM provides by construction,
+because generation paraphrases its sources. We evaluate against 18
+LLM-based configurations (vanilla RAG, HyDE plus cross-encoder
+reranking, oracle context) spanning five generator models from
+Anthropic, OpenAI, DeepSeek, Meta, and an in-house router, plus a
+trivial \textbf{echo baseline} that emits the retrieved sentence
+verbatim with no model and no lexicon. The echo baseline is the
+critical control, and its result reframes the contribution: on
+standard correctness and NLI-grounding metrics (gold-answer match,
+unsupported-claim rate) echo \emph{ties or exceeds} \hyphae{} on
+both a 150-query TriviaQA sample and a 34-query composition
+corpus. Measured correctness is therefore a property of verbatim
+quotation itself --- shared by any echo --- not of \hyphae{}'s
+composition machinery; our ablations independently confirm that
+the lexicon, cascade-shape composition, and boundary smoothing do
+not move the correctness metrics. What echo lacks, and what no
+metric in the standard benchmark captures, is verifiable
+provenance: echo emits text with no audit relation to a
+tamper-evident store. We therefore position \hyphae{} not as a
+more-correct system but as a \emph{correctness-neutral} one that
+adds cryptographic provenance and runs in microseconds on
+commodity CPU --- five-to-six orders of magnitude below LLM
+inference, a corollary of not generating rather than a result in
+itself. We argue the durable contribution is the architectural
+audit property, that the standard correctness benchmark cannot
+measure it (a trivial echo saturates it), and that evaluating
+verifiable generation requires provenance-centric tasks the
+current literature does not provide. Code, corpora, result
+envelopes (including the echo control), and this paper's source
+are at \url{https://github.com/terrizoaguimor/hyphae-v2}.
 \end{abstract}
 
 \input{sections/01-introduction}

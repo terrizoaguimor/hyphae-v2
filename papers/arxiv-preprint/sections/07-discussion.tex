@@ -5,21 +5,26 @@
 \subsection{Threats to Validity}
 \label{sec:threats}
 
-\paragraph{Metric.} \unsupf{} measures NLI-grounded entailment
-between response sentences and retrieved context; gold-answer
-match measures correctness against a benchmark's reference
-answer. They are complementary, not redundant. \unsupf{}
-penalises hedging (Claude-4.6-Sonnet) and rewards short responses
-(\hyphae{}'s template on TriviaQA). It does not measure factual
-correctness against an external gold truth; that is the role of
-the gold-answer column. The own-corpus result holds at
-indistinguishable \unsupf{} between \hyphae{} and GPT-4.1 with
-strong RAG. The TriviaQA result holds the gold-answer gap of
-$\sim 4{-}16$ percentage points between \hyphae{} and oracle-mode
-LLMs, and the \unsupf{} gap that derives in part from the
-metric's filter mechanically catching \hyphae{}'s scaffolding
-template. We report both axes alongside \unsupr{} (the raw
-unfiltered NLI rate) for honesty. Readers should weigh all three.
+\paragraph{The metrics cannot measure the contribution (the
+central threat).} The echo baseline establishes this directly: a
+verbatim \texttt{print} of the retrieved sentence ties or beats
+\hyphae{} on gold-answer match, \unsupf{}, \unsupr{}, and n-gram
+overlap on both corpora. Every correctness and grounding number
+in this paper is therefore a measurement of verbatim quotation,
+a property echo shares, and not of \hyphae{}'s architecture. We
+do not treat this as a flaw in the experiments but as the
+finding: the standard correctness benchmark is the wrong
+instrument for a verifiable-provenance system, because the
+quantity that distinguishes such a system --- whether the output
+can be cryptographically audited back to named, unaltered sources
+--- is off-axis for it. \unsupf{} additionally penalises hedging
+(Claude-4.6-Sonnet) and rewards short verbatim responses, and we
+report \unsupr{} (unfiltered) alongside it so the filter's effect
+is visible; but no amount of metric refinement closes the gap the
+echo control exposes, because the gap is categorical, not
+quantitative. A defensible evaluation of \hyphae{} requires a
+provenance-centric task (Section~\ref{sec:discussion}, future
+work), not a better-tuned correctness metric.
 
 \paragraph{Corpus.} The own corpus is concentrated on
 deployment and engineering scenarios and was authored by the
