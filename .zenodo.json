@@ -1,0 +1,25 @@
+{
+  "title": "Hyphae v2: Hash-Chained Verbatim Quotation — A Verifiable Provenance Layer for Grounded Retrieval",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "creators": [
+    {
+      "name": "Gutiérrez, Mario",
+      "affiliation": "Celiums Solutions LLC"
+    }
+  ],
+  "description": "Hyphae is a cognitive substrate that answers retrieval queries by emitting byte-identical quotations of stored memory fragments over a SHA-256 hash-chained journal, with no large language model in the cognition path. Its distinguishing property is verifiable provenance: every output span can be independently audited back to named, unaltered source fragments, with an external Ed25519 head anchor closing the chain-aware adversary. The accompanying preprint studies verifiable provenance as an addable layer for any extractive retrieval system. A trivial echo control (and echo+journal) shows that measured correctness and grounding are properties of verbatim quotation rather than of the system; evaluation spans 18 LLM-based configurations (six models x three retrieval modes) across two corpora, plus a minimal tamper-detection benchmark (four tampering modes x two adversaries). This Zenodo record archives the full repository: the Rust substrate, the LLM+RAG comparator, all result envelopes, the provenance experiment, and the LaTeX source and PDF of the preprint. Code is licensed Apache-2.0; documentation, corpora, and the preprint are licensed CC BY 4.0.",
+  "keywords": [
+    "verifiable provenance",
+    "tamper-evident logs",
+    "hash chain",
+    "retrieval-augmented generation",
+    "grounded generation",
+    "cognitive substrate",
+    "verbatim quotation",
+    "provenance benchmark"
+  ],
+  "notes": "Code under Apache-2.0; documentation, corpora, and preprint under CC BY 4.0. Preprint also intended for arXiv (cs.CL primary; cs.CR, cs.AI cross-list) pending endorsement."
+}

@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this software or the accompanying preprint, please cite it as below."
+title: "Hyphae v2: Hash-Chained Verbatim Quotation — A Verifiable Provenance Layer for Grounded Retrieval"
+abstract: >-
+  Hyphae is a cognitive substrate that answers retrieval queries by emitting
+  byte-identical quotations of stored memory fragments over a SHA-256
+  hash-chained journal, with no large language model in the cognition path.
+  Its distinguishing property is verifiable provenance: every output span can
+  be independently audited back to named, unaltered source fragments, with an
+  external Ed25519 head anchor closing the chain-aware adversary. The
+  accompanying preprint frames verifiable provenance as an addable layer for
+  any extractive retrieval system, uses a trivial echo (and echo+journal)
+  control to show that measured correctness and grounding are properties of
+  verbatim quotation rather than of the system, and evaluates against 18
+  LLM-based configurations across two corpora plus a minimal tamper-detection
+  benchmark.
+type: software
+authors:
+  - family-names: "Gutiérrez"
+    given-names: "Mario"
+    affiliation: "Celiums Solutions LLC"
+    email: terrizoaguimor@gmail.com
+repository-code: "https://github.com/terrizoaguimor/hyphae-v2"
+url: "https://github.com/terrizoaguimor/hyphae-v2"
+license:
+  - Apache-2.0
+  - CC-BY-4.0
+keywords:
+  - verifiable provenance
+  - tamper-evident logs
+  - hash chain
+  - retrieval-augmented generation
+  - grounded generation
+  - cognitive substrate
+  - verbatim quotation
+date-released: "2026-05-28"
+preferred-citation:
+  type: article
+  title: "Hash-Chained Verbatim Quotation: A Verifiable Provenance Layer for Grounded Retrieval"
+  authors:
+    - family-names: "Gutiérrez"
+      given-names: "Mario"
+      affiliation: "Celiums Solutions LLC"
+  year: 2026
+  notes: "Preprint. Code, corpora, and result envelopes at https://github.com/terrizoaguimor/hyphae-v2"
