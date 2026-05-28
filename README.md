@@ -129,6 +129,21 @@ failure mode by construction. The eval harness publishes honest
 numbers without target thresholds — per ADR-0001's anti-greenwashing
 discipline.
 
+## Performance
+
+A criterion-driven baseline is committed to
+[`docs/perf/v0.2-baseline.md`](docs/perf/v0.2-baseline.md).
+Headline numbers from the v0.2 measurements (laptop, release
+profile, single-threaded):
+
+- `compose`: 559 ns – 5.5 µs across working-set sizes 1–7
+- `ingest`: 8.7 – 9.6 ms across stored populations 10 – 1000
+- `recall`: 4.0 – 6.3 ms across stored populations 10 – 1000
+
+Reproduce with `cargo bench -p hyphae-bench --bench substrate_ops`.
+The perf doc records both dev and bench profiles for honest
+comparison.
+
 ## How to run
 
 ```bash
