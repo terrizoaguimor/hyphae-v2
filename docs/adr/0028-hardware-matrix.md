@@ -56,8 +56,8 @@ results.
   assignment is opaque (DO doesn't guarantee AMD vs Intel) — the
   droplet we received ran Intel; the writeup records the
   `/proc/cpuinfo` model name for reproducibility.
-- **NYC1**: same region as the existing `celiums-memory` and
-  `atlas-inference` infrastructure; uses available DC capacity.
+- **NYC1**: the region where the project's other infrastructure
+  already runs; uses available DC capacity.
 - **Ubuntu 24.04 LTS**: long-term support, the same Linux base most
   reviewers will reach for first.
 - **CPU-only (no GPU)**: most cloud nodes do not have a per-instance

@@ -63,7 +63,7 @@ baseline.
 | Frontier closed (Anthropic) | Claude 4.6 Sonnet | `anthropic-claude-4.6-sonnet` | Frontier flagship at time of run; Sonnet over Opus because Opus 4.7 was not reachable via the catalogue ("model not found") |
 | Frontier closed (OpenAI) | GPT-4.1 | `openai-gpt-4.1` | Most-recent verified-working OpenAI model in the catalogue; 1M context window |
 | Open reasoning | DeepSeek-V4-Pro | `deepseek-v4-pro` | Reasoning-tuned open model, frontier MoE; tests whether reasoning chain helps the unsupported-claim metric |
-| Atlas in-house | router:celiums-conversation | `router:celiums-conversation` | The project's own conversational router (atlas-inference); bonus column for self-comparison |
+| In-house | router:celiums-conversation | `router:celiums-conversation` | The authors' own production conversational router (Atlas); bonus column for self-comparison |
 
 Each model runs all three modes from the existing pipeline:
 

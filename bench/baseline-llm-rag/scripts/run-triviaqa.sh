@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Run Hyphae + Llama-8B-local + 5×DO-Inference all on TriviaQA-150 corpus.
+# Run from anywhere; resolves the bench dir relative to this script.
 set -uo pipefail
 
-cd "/Volumes/My Book/Documents/hyphae-v2/bench/baseline-llm-rag"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "${SCRIPT_DIR}/.."
 
 if [[ -z "${DO_INFERENCE_KEY:-}" ]]; then
     echo "ERROR: DO_INFERENCE_KEY env var required" >&2
