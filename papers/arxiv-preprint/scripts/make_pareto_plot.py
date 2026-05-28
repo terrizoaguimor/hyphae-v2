@@ -187,7 +187,7 @@ def main():
         "space frontier does NOT separate the\n"
         "architecture from a verbatim print(). The\n"
         "distinguishing property -- tamper-evident\n"
-        "provenance (Table 3) -- is not an axis any\n"
+        "provenance (Table 2) -- is not an axis any\n"
         "of these panels can plot.",
         fontsize=10, va="center",
     )

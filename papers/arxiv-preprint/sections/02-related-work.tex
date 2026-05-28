@@ -93,9 +93,13 @@ unit of grounding is a discrete retrieved fragment and the
 deployment requires provable provenance}, \hyphae{} provides a
 property no LLM-RAG pipeline and no echo baseline provides by
 construction: every emitted span is byte-identical to a fragment
-in a tamper-evident hash-chained journal, so the output can be
-cryptographically audited back to named, unaltered sources. We
-demonstrate this directly with a tamper-detection experiment
+in a hash-chained journal, so the output can be
+cryptographically audited back to named, unaltered sources ---
+tamper-evident under the threat model of
+Section~\ref{sec:results-provenance} (a store-level attacker who
+does not forge the anchored chain head), with external anchoring
+the path to full tamper-proofing. We demonstrate the base-layer
+guarantee directly with a tamper-detection experiment
 (Section~\ref{sec:results-provenance}). The trade-off, made
 explicit, is that the prose is template-rigid; users wanting
 LLM-style paraphrastic composition need an LLM.

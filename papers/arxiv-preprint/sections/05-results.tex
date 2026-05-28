@@ -227,18 +227,51 @@ LLM-RAG                 & 0\%            & ---       & no (paraphrased; not byte
 \end{tabular}
 \end{table}
 
+\paragraph{Threat model --- what this does and does not show.}
+The experiment demonstrates \emph{tamper-evidence}, not
+\emph{tamper-proofing}, and the distinction is load-bearing. We
+assume an attacker with \textbf{write access to the fragment
+store} who edits entries but \textbf{does not reimplement the
+chain logic} --- the realistic store-level adversary who rewrites
+records in place. Against that attacker the hash chain is
+decisive: any edited entry's recomputed content hash no longer
+matches its successor's stored \texttt{prev\_hash}, so
+\texttt{verify()} fails and localises the break. What the bare
+chain does \emph{not} defend against is a stronger attacker who
+\emph{does} know the chain logic: such an attacker can recompute
+every hash forward from the edit point and re-persist a chain that
+verifies cleanly. The entire security of the scheme therefore
+reduces to the integrity of one value --- the persisted chain
+head. In this experiment the head is a local record, so the
+guarantee is ``tamper-evident against an attacker who cannot forge
+the head''. \textbf{Tamper-proofing in the full sense requires
+anchoring the chain head outside the attacker's write scope}: a
+signed Merkle root published to an external append-only ledger, a
+third-party timestamp, or simply a head stored on
+write-isolated media. The local hash chain is the correct base
+layer for that construction --- it makes every entry's integrity
+checkable against the head --- and external anchoring is a natural
+add-on, not a redesign. We state this explicitly because the
+high-level language of ``cryptographic audit'' can suggest a
+stronger guarantee than a local chain delivers on its own; the
+contribution is the architectural base layer and its measured
+tamper-evidence, with the anchoring extension flagged as the path
+to end-to-end tamper-proofing.
+
 \paragraph{Reading.} This is the paper's positive result, and it
 is the inverse of the echo finding. On the standard correctness
 benchmark, echo is indistinguishable from \hyphae{}; on
 provenance, echo collapses to the LLM-RAG row --- it emits the
-tampered text with no signal. The property is small to state and
-small to demonstrate, but it is categorical: a system either
-binds its output to a tamper-evident store or it does not, and of
-the systems evaluated here only \hyphae{} does. Scaling this
-demonstration into a community provenance benchmark
-(Section~\ref{sec:discussion}) is the contribution's natural next
-step; the experiment here establishes that the property is real
-and measurable, not merely asserted.
+tampered text with no signal, and has no chain head to anchor in
+the first place. The property is small to state and small to
+demonstrate, but it is categorical: a system either binds its
+output to a tamper-evident store or it does not, and of the
+systems evaluated here only \hyphae{} does. Scaling this
+demonstration into a community provenance benchmark, and adding
+external chain-head anchoring, are the contribution's natural next
+steps (Section~\ref{sec:discussion}); the experiment here
+establishes that the base-layer property is real and measurable,
+not merely asserted.
 
 \subsection{Own Corpus}
 \label{sec:results-own}
@@ -348,8 +381,8 @@ The echo baseline sits at the same favourable corner as
 \hyphae{} (and dominates it on the own-corpus \unsupf{} panel):
 the metric-space frontier does not separate the architecture
 from a verbatim \texttt{print}. The distinguishing property ---
-hash-chained provenance --- is not an axis any of these panels
-can plot.}
+tamper-evident provenance, measured in Table~\ref{tab:tamper} ---
+is not an axis any of these panels can plot.}
 \label{fig:pareto}
 \end{figure}
 
