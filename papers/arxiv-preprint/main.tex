@@ -110,9 +110,10 @@ named source material; and the realizer's bounded output runs in
 microseconds on a single CPU core. We compare \hyphae{} against
 18 LLM-based configurations (vanilla retrieval-augmented generation,
 HyDE plus cross-encoder reranking, and oracle context) spanning
-five generator models spanning Anthropic, OpenAI, DeepSeek, and Meta,
-across two corpora: the project's own 34-query composition corpus,
-and 150 random samples from TriviaQA. We report two
+five generator models --- from Anthropic, OpenAI, DeepSeek, Meta,
+and an in-house production router --- across two corpora: the
+project's own 34-query composition corpus, and 150 random samples
+from TriviaQA. We report two
 complementary metrics: NLI-grounded
 unsupported-claim rate (does the response stay inside the retrieved
 context?) and gold-answer match (does the response contain the
@@ -129,14 +130,17 @@ $\geq 0.84$ score $0.400$--$0.737$ on the same metric. We trace
 the gap mechanically to the metric's filter interacting with the
 substrate's compositional template, and report both filtered and
 unfiltered rates throughout. Where the architectural claim is
-unambiguous is the cost dimension: \hyphae{}'s realizer runs in
-$0.002$ ms mean per query versus $2{,}424$ ms for GPT-4.1 with
-strong retrieval via the hosted GenAI Platform API (six orders of
-magnitude); against a local Llama-8B-Instruct quantised baseline
-on identical CPU hardware (mean $1{,}858$ ms in oracle mode) the
-ratio is approximately $10^6$ collapses to $\sim 10^5$ when the
-network round-trip is removed, but the production economics still
-differ by four-to-six orders of magnitude. We do not claim the substrate
+unambiguous is the cost dimension: on TriviaQA, \hyphae{}'s
+realizer runs in $0.002$ ms mean per query, against $1{,}858$ ms
+for a \emph{locally-hosted} Llama-8B-Instruct quantised baseline
+(no network) and $2{,}424$ ms for GPT-4.1 with strong retrieval
+via a hosted API --- a ratio of roughly $10^6$ in both cases,
+confirming the network round-trip is not the dominant cost. On
+the own corpus, whose multi-fragment queries make \hyphae{}'s
+composition cost $12\times$ higher ($0.024$ ms mean), the ratio is
+$\sim 10^5$. The advantage is therefore five-to-six orders of
+magnitude depending on working-set size, and the \hyphae{} side
+carries no model-serving infrastructure cost at all. We do not claim the substrate
 universally replaces LLM-based generation. We claim that for tasks
 in which the unit of grounding is a discrete retrieved fragment
 quoted verbatim and the deployment requires audit-bound

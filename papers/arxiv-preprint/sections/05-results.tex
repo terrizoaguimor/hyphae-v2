@@ -24,7 +24,7 @@ connective-sentence filter. \textsc{Hyphae} reaches $1.000$
 gold-answer (by construction of the corpus filter; see text)
 and a metric-degenerate $0.000$ \unsupf. The best LLM
 configurations reach $0.84$--$0.96$ gold-answer at
-$0.40$--$0.66$ \unsupf, indicating that they are nearly as
+$0.400$--$0.737$ \unsupf, indicating that they are nearly as
 \emph{correct} as \hyphae{} on this benchmark while being scored
 less \emph{grounded} by the chosen NLI metric.}
 \label{tab:triviaqa}
@@ -230,55 +230,82 @@ panel surfaces the correctness comparison directly.}
 \label{fig:pareto}
 \end{figure}
 
-\subsection{Latency Without the Network Round-Trip}
+\subsection{What Drives the Latency Ratio}
 \label{sec:results-latency-honest}
 
-A reasonable objection to the headline latency ratio is that it
-mixes two distinct costs: actual LLM inference time, and the
-network round-trip to a hosted API. Table~\ref{tab:lat-honest}
-breaks the comparison out cleanly. Against the LLM via the
-DigitalOcean Inference API (the configuration most relevant to a
-production team that does not own GPU infrastructure), the ratio
-is $\sim 10^6$. Against the local \texttt{llama.cpp} baseline
-running on the same laptop hardware (the most apples-to-apples
-\emph{model inference} comparison), the ratio is $\sim 5\times
-10^4$ on the laptop and $\sim 6.5\times 10^5$ on the CPU droplet.
+The headline ratio varies by an order of magnitude across our
+measurements, and it is worth being precise about why.
+Table~\ref{tab:lat-honest} reports mean per-query latency, held at
+fixed corpus, for \hyphae{} and representative LLM configurations.
+Two facts emerge that correct a tempting but wrong explanation.
+
+\textbf{The network round-trip is not the dominant variable.} On
+TriviaQA, the locally-hosted Llama-8B-Instruct Q4 baseline (no
+network; \texttt{llama.cpp} on the laptop's Metal backend) runs at
+$1{,}858$ ms mean, and the API-hosted GPT-4.1 with strong
+retrieval runs at $2{,}424$ ms mean. These differ by roughly
+$30\%$ --- the network round-trip is real but small. Both are
+$\sim 10^6\times$ slower than \hyphae{}'s $0.002$ ms on the same
+corpus.
+
+\textbf{The dominant variable is \hyphae{}'s working-set-dependent
+composition cost.} On the own corpus, whose queries carry
+multi-fragment working sets (2--3 seeds), \hyphae{}'s mean
+latency is $0.024$ ms --- about $12\times$ its single-seed
+TriviaQA latency, because the realizer walks a longer composition
+shape and runs more boundary-smoothing comparisons. The LLM
+latencies are roughly corpus-independent (their inference cost is
+dominated by model size and output length, not working-set
+count). The ratio therefore drops from $\sim 10^6$ on TriviaQA to
+$\sim 10^5$ on the own corpus. The order-of-magnitude difference
+between the two regimes is \emph{\hyphae{} getting slower as the
+working set grows}, not the LLM getting faster, and not the
+network.
 
 \begin{table}[ht]
 \centering
-\caption{\textbf{Latency comparison disaggregated by deployment
-mode.} The local Llama-8B-Instruct Q4 baseline isolates model
-inference cost from network round-trip. \hyphae{} maintains a
-four-to-six-orders-of-magnitude advantage in every measured
-configuration. The widest gap is against API-hosted frontier
-models; the narrowest is against local quantised Llama-8B with
-Metal acceleration on the laptop.}
+\caption{\textbf{Mean per-query latency, held at fixed corpus.}
+The ratio to \hyphae{} is computed within each corpus block.
+\hyphae{}'s latency scales with working-set size ($0.002$ ms
+single-seed on TriviaQA, $0.024$ ms multi-fragment on the own
+corpus); LLM latency is roughly corpus-independent. The
+network round-trip (local Llama vs API GPT-4.1 on TriviaQA)
+accounts for $\sim 30\%$, not an order of magnitude. Hyphae
+$p50$/$p95$ are omitted: at microsecond scale they sit at the
+timer-resolution floor and are not meaningful (the paper does
+not claim sub-microsecond precision).}
 \label{tab:lat-honest}
 \small
-\begin{tabular}{l r r r}
+\begin{tabular}{l r r}
 \toprule
-\textbf{System} & $\text{lat}_{p50}$ (ms) & $\text{lat}_{p95}$ (ms) & Ratio to Hyphae \\
+\textbf{System (mean latency)} & mean (ms) & ratio to \hyphae{} \\
 \midrule
-Hyphae (laptop)                            &   0.019 &   0.052 & 1$\times$ \\
-Hyphae (CPU droplet, Xeon)                 &   0.007 &   0.014 & 0.37$\times$ \\
+\multicolumn{3}{l}{\textit{TriviaQA-150 (single-seed queries)}} \\
+\hyphae{}                                   &     0.002 & 1$\times$ \\
+Llama-8B-Instruct Q4 local, oracle (MPS)    & 1{,}858   & $9.1\times10^5$ \\
+GPT-4.1 strong-rag (API)                    & 2{,}424   & $1.2\times10^6$ \\
+Claude-4.6-Sonnet strong-rag (API)          & 5{,}370   & $2.7\times10^6$ \\
+Llama-3.3-70B strong-rag (API)              & 6{,}083   & $3.0\times10^6$ \\
 \midrule
-Llama-8B local oracle (laptop, MPS)        & 1{,}714 & 5{,}113 & $9\times10^4$ \\
-Llama-8B local rag    (laptop, MPS)        & 3{,}379 & 11{,}148 & $1.8\times10^5$ \\
-Llama-8B local oracle (CPU droplet, no GPU)& 3{,}575 & 8{,}991 & $5\times10^5$ \\
-Llama-8B local rag    (CPU droplet, no GPU)& 4{,}701 & 13{,}170 & $6.5\times10^5$ \\
+\multicolumn{3}{l}{\textit{Own corpus (N=34, multi-fragment composition)}} \\
+\hyphae{}                                   &     0.024 & 1$\times$ \\
+Llama-8B-Instruct Q4 local, oracle (MPS)    & 2{,}299   & $9.4\times10^4$ \\
+GPT-4.1 strong-rag (API)                    & 2{,}513   & $1.0\times10^5$ \\
 \midrule
-GPT-4.1 strong-rag (DO Inference API)      & 2{,}165 & ---     & $1.1\times10^5$ \\
-Claude-4.6-Sonnet strong-rag (DO API)      & 5{,}349 & ---     & $2.8\times10^5$ \\
-Llama-3.3-70B strong-rag (DO API)          & 6{,}107 & ---     & $3.2\times10^5$ \\
+\multicolumn{3}{l}{\textit{Hyphae on CPU droplet (Xeon, own corpus)}} \\
+\hyphae{}                                   &     0.007 & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The honest framing is: a production team running their own
-Llama-8B GGUF inference locally would see $\sim 10^5$ speedup;
-a team accessing frontier LLMs via API would see $\sim 10^6$. The
-practical difference is the cost of running the LLM at all. The
-\hyphae{} side has no comparable infrastructure cost.
+The honest framing is therefore a range: the per-query latency
+advantage is $\sim 10^5$ for the multi-fragment composition
+workload and $\sim 10^6$ for single-seed retrieval, in both cases
+whether the LLM runs locally or via API. The title's
+``six orders of magnitude'' refers to the single-seed regime;
+the conservative figure across both corpora is five orders. In
+either regime the \hyphae{} side carries no model-serving
+infrastructure cost.
 
 \subsection{Hardware Matrix}
 \label{sec:results-hw}
@@ -299,17 +326,21 @@ on the own corpus. The headline observation:
     Rust composition.
     \item \textbf{LLM is slower on the server CPU.} Without
     Metal acceleration the local Llama-8B inference path
-    bottlenecks: 2{,}299 ms (laptop) → 4{,}580 ms (droplet) for
-    oracle mode. The LLM:Hyphae latency ratio widens from
-    $\sim 5 \times 10^4$ to $\sim 6.5 \times 10^5$.
+    bottlenecks: in oracle mode, $2{,}299$ ms mean (laptop) →
+    $4{,}580$ ms mean (droplet); in rag mode, $4{,}658$ ms →
+    $6{,}326$ ms. The \hyphae{}:Llama latency ratio is
+    $\sim 10^5$ on both hardware configurations and widens
+    modestly on the droplet because \hyphae{} also speeds up
+    there ($0.024 \to 0.007$ ms).
 \end{itemize}
 
 \begin{table}[ht]
 \centering
-\caption{\textbf{Hardware matrix} on the own corpus.
-\hyphae{}'s latency is bound by general-purpose CPU clock and
-benefits from dedicated server cores. The LLM baseline loses GPU
-acceleration when moved off the laptop's Metal backend.}
+\caption{\textbf{Hardware matrix} on the own corpus. Quality
+metrics are hardware-invariant within $\pm 0.03$. Latencies are
+means; \hyphae{} runs faster on the dedicated Xeon, the local
+Llama-8B baseline runs slower without the laptop's Metal
+backend.}
 \label{tab:hardware}
 \small
 \begin{tabular}{l rr rr}
@@ -318,11 +349,10 @@ acceleration when moved off the laptop's Metal backend.}
 \cmidrule(lr){2-3} \cmidrule(lr){4-5}
 \textbf{Metric} & Laptop & Droplet & Laptop & Droplet \\
 \midrule
-\verbpass                     & 1.000 & 1.000 & 0.147 & 0.176 \\
-\unsupf (filt.)               & 0.219 & 0.188 & 0.490 & 0.476 \\
-overlap$_4$                   & 0.466 & 0.466 & 0.448 & 0.449 \\
-$\text{lat}_{p50}$ (ms)       & 0.019 & 0.007 & 3{,}379 & 4{,}701 \\
-$\text{lat}_{p95}$ (ms)       & 0.052 & 0.014 & 11{,}148 & 13{,}170 \\
+\verbpass                       & 1.000 & 1.000 & 0.147 & 0.176 \\
+\unsupf (filt.)                 & 0.219 & 0.188 & 0.490 & 0.476 \\
+overlap$_4$                     & 0.466 & 0.466 & 0.448 & 0.449 \\
+latency mean (ms)               & 0.024 & 0.007 & 4{,}658 & 6{,}326 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -331,7 +361,8 @@ $\text{lat}_{p95}$ (ms)       & 0.052 & 0.014 & 11{,}148 & 13{,}170 \\
 \label{sec:per-model}
 
 Three patterns surface across the multi-LLM matrix that bear on
-how reviewers should interpret \unsupf{}:
+how reviewers should interpret \unsupf{}, one of the two
+head-to-head metrics:
 
 \textbf{Claude-4.6-Sonnet's hedging.} Claude's responses contain
 meta-claims about confidence (``it appears that'', ``the

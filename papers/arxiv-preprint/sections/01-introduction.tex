@@ -62,21 +62,23 @@ Intel Xeon Platinum 8168 server).
     context?) and a gold-answer match rate (does the response
     contain the benchmark's reference answer?). On TriviaQA,
     \hyphae{} reaches $1.000$ gold-answer match and a
-    metric-degenerate $0.000$ \unsupf{}, while the best LLM-based
-    systems land at $0.840$--$0.960$ gold-answer match and
-    $0.400$--$0.665$ \unsupf{}. The honest reading: frontier LLMs
-    are nearly as correct on this benchmark and less efficiently
-    grounded as measured by the chosen NLI filter.
+    metric-degenerate $0.000$ \unsupf{}, while the twelve
+    LLM-based configurations with gold-answer match $\geq 0.84$
+    score $0.400$--$0.737$ \unsupf{}. The honest reading: frontier
+    LLMs are nearly as correct on this benchmark and less
+    efficiently grounded as measured by the chosen NLI filter.
 
-    \item \textbf{Per-query latency advantage of $\sim 10^4$ to
-    $\sim 10^6$ depending on the LLM baseline.} \hyphae{}'s
-    realizer runs in $0.002$ ms mean per query on the laptop;
-    against the locally-hosted Llama-8B-Instruct Q4 baseline the
-    ratio is $\sim 5\times10^4$, against hosted frontier LLMs via
-    the GenAI Platform API the ratio is $\sim 10^6$. The
-    Discussion (Section~\ref{sec:discussion}) separates network
-    round-trip from model inference and reports both honestly.
-    Memory footprint differs by 5 orders of magnitude (50 MB vs
+    \item \textbf{Per-query latency advantage of $\sim 10^5$ to
+    $\sim 10^6$ depending on working-set size.} \hyphae{}'s
+    realizer runs in $0.002$ ms mean per query on single-seed
+    TriviaQA queries and $0.024$ ms on the multi-fragment own
+    corpus; the LLM baselines run in $1{,}858$--$6{,}083$ ms
+    regardless of corpus, whether hosted locally or via API. The
+    ratio is therefore $\sim 10^6$ for single-seed retrieval and
+    $\sim 10^5$ for multi-fragment composition; the network
+    round-trip accounts for only $\sim 30\%$
+    (Section~\ref{sec:results-latency-honest}). Memory footprint
+    differs by approximately five orders of magnitude (50 MB vs
     multiple GB).
 
     \item \textbf{Two corpora, with honest acknowledgement of

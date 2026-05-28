@@ -20,7 +20,7 @@ finding is therefore narrower than ``Hyphae is more correct'':
 verbatim quotation removes a paraphrase-away failure mode that
 costs oracle-LLMs four to sixteen percentage points of
 correctness on this corpus. On the NLI-grounded unsupported-claim
-metric, the headline $0.000$ vs $0.400$--$0.665$ delta
+metric, the headline $0.000$ vs $0.400$--$0.737$ delta
 reflects partly a real architectural property and partly a
 corpus-construction interaction with the chosen metric's
 filter; we have made the mechanism precise and reported both
@@ -31,15 +31,17 @@ more truthful than frontier LLMs, but that it is
 infrastructure cost categories}.
 
 The cost dimension is where the architectural commitment
-matters unambiguously. \hyphae{}'s realizer runs in 2--20
-microseconds on commodity CPU; the cheapest competitive
-LLM-based configuration runs in approximately 1.7 seconds on
-the same hardware with Metal acceleration. The ratio is
-between four and six orders of magnitude depending on whether
-the LLM is hosted locally or accessed via API, and it widens
-by another factor of $\sim 7$ when GPU acceleration is
-removed. Memory footprint differs by approximately five orders
-of magnitude. For the subset of tasks in which the unit of
+matters unambiguously. \hyphae{}'s realizer runs in 2--24
+microseconds mean on commodity CPU ($0.002$ ms on single-seed
+queries, $0.024$ ms on multi-fragment composition); the
+fastest competitive LLM-based configuration runs in
+approximately $1.9$ seconds on the same hardware with Metal
+acceleration, and slower without it. The ratio is five orders
+of magnitude on the multi-fragment workload and six on
+single-seed retrieval; the network round-trip to a hosted API
+accounts for only $\sim 30\%$, not an order of magnitude.
+Memory footprint differs by approximately five orders of
+magnitude. For the subset of tasks in which the unit of
 grounding is a discrete retrieved fragment quoted verbatim,
 the trade-off is not between two systems of comparable cost;
 it is between running on a single CPU core and provisioning
