@@ -326,6 +326,46 @@ def quoted_content_supported_rate(
     return supported / len(quoted), supported, len(quoted)
 
 
+# ── Gold-answer match ─────────────────────────────────────────
+
+
+def gold_answer_match(response: str, answer: str, aliases: Sequence[str] = ()) -> bool:
+    """Does the response contain the gold answer (or any alias) as a
+    word-bounded match?
+
+    Word-bounded to avoid `'5'` inside `'1958'`-style false positives.
+    Case-insensitive — gold answers in TriviaQA are stored mixed-case.
+
+    This is the *correctness* axis the NLI-grounded
+    `unsupported_claim_rate` does not measure. Per the review feedback
+    on the v1 preprint, a verbatim-grounding system can be both
+    "well-grounded" (cites the supplied context faithfully) and
+    "incorrect" (cites the context but never produces the gold answer
+    span). Conversely, an LLM-based system can be "correct" (says the
+    gold answer) and "grounded-incomplete" (its surrounding
+    elaboration is scored neutral by NLI). Reporting both axes
+    separates the two properties.
+    """
+    if not response:
+        return False
+    targets = [t for t in [answer, *(aliases or [])] if t]
+    if not targets:
+        return False
+    lower = response.lower()
+    for t in targets:
+        t_lower = t.lower().strip()
+        if not t_lower:
+            continue
+        # Word-bounded regex match. Escape regex specials; anchor on
+        # non-alphanumeric (or string boundary) both sides.
+        pat = re.compile(
+            rf"(?:^|[^\w]){re.escape(t_lower)}(?:[^\w]|$)"
+        )
+        if pat.search(lower):
+            return True
+    return False
+
+
 # ── Bootstrap CI helper ───────────────────────────────────────
 
 

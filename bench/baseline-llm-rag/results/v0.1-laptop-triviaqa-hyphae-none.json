@@ -49,14 +49,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.028458
+        "latency_ms": 0.028458,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_8177",
-      "response": "Drawing from working memory, \"(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977."
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -80,7 +81,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.003083
+        "latency_ms": 0.003083,
+        "gold_answer_match": true
       }
     },
     {
@@ -111,7 +113,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.002208
+        "latency_ms": 0.002208,
+        "gold_answer_match": true
       }
     },
     {
@@ -142,14 +145,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001875
+        "latency_ms": 0.001875,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_12369",
-      "response": "Drawing from working memory, \"In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered."
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -173,14 +177,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.002167
+        "latency_ms": 0.002167,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-wh_4199",
-      "response": "Drawing from working memory, \"Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -204,7 +209,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.002
+        "latency_ms": 0.002,
+        "gold_answer_match": true
       }
     },
     {
@@ -235,7 +241,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001917
+        "latency_ms": 0.001917,
+        "gold_answer_match": true
       }
     },
     {
@@ -266,7 +273,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.005083
+        "latency_ms": 0.005083,
+        "gold_answer_match": true
       }
     },
     {
@@ -297,7 +305,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001958
+        "latency_ms": 0.001958,
+        "gold_answer_match": true
       }
     },
     {
@@ -328,14 +337,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001791
+        "latency_ms": 0.001791,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bb_3998",
-      "response": "Drawing from working memory, \"The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"The name of the offensive comes from the Tết holiday, the Vietnamese New Year, when the first major attacks took place.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place."
+        "The name of the offensive comes from the Tết holiday, the Vietnamese New Year, when the first major attacks took place."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -359,7 +369,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001834
+        "latency_ms": 0.001834,
+        "gold_answer_match": true
       }
     },
     {
@@ -390,7 +401,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001833
+        "latency_ms": 0.001833,
+        "gold_answer_match": true
       }
     },
     {
@@ -421,7 +433,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.001708
+        "latency_ms": 0.001708,
+        "gold_answer_match": true
       }
     },
     {
@@ -452,14 +465,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001917
+        "latency_ms": 0.001917,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_18918",
-      "response": "Drawing from working memory, \"The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon."
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -483,7 +497,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001834
+        "latency_ms": 0.001834,
+        "gold_answer_match": true
       }
     },
     {
@@ -514,14 +529,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001792
+        "latency_ms": 0.001792,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_409",
-      "response": "Drawing from working memory, \"Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -545,7 +561,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.005
+        "latency_ms": 0.005,
+        "gold_answer_match": true
       }
     },
     {
@@ -576,14 +593,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001917
+        "latency_ms": 0.001917,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_6822",
-      "response": "Drawing from working memory, \"The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -607,7 +625,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001875
+        "latency_ms": 0.001875,
+        "gold_answer_match": true
       }
     },
     {
@@ -638,7 +657,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.00175
+        "latency_ms": 0.00175,
+        "gold_answer_match": true
       }
     },
     {
@@ -669,7 +689,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001834
+        "latency_ms": 0.001834,
+        "gold_answer_match": true
       }
     },
     {
@@ -700,7 +721,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001708
+        "latency_ms": 0.001708,
+        "gold_answer_match": true
       }
     },
     {
@@ -731,7 +753,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.005
+        "latency_ms": 0.005,
+        "gold_answer_match": true
       }
     },
     {
@@ -762,7 +785,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.00175
+        "latency_ms": 0.00175,
+        "gold_answer_match": true
       }
     },
     {
@@ -793,7 +817,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.003958
+        "latency_ms": 0.003958,
+        "gold_answer_match": true
       }
     },
     {
@@ -824,7 +849,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001833
+        "latency_ms": 0.001833,
+        "gold_answer_match": true
       }
     },
     {
@@ -855,7 +881,8 @@
           "supported": 3,
           "total_quoted": 3
         },
-        "latency_ms": 0.001875
+        "latency_ms": 0.001875,
+        "gold_answer_match": true
       }
     },
     {
@@ -886,7 +913,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001667
+        "latency_ms": 0.001667,
+        "gold_answer_match": true
       }
     },
     {
@@ -917,7 +945,8 @@
           "supported": 3,
           "total_quoted": 3
         },
-        "latency_ms": 0.00175
+        "latency_ms": 0.00175,
+        "gold_answer_match": true
       }
     },
     {
@@ -948,7 +977,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.00375
+        "latency_ms": 0.00375,
+        "gold_answer_match": true
       }
     },
     {
@@ -979,14 +1009,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001834
+        "latency_ms": 0.001834,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_3384",
-      "response": "Drawing from working memory, \"Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr."
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1010,14 +1041,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-jp_3913",
-      "response": "Drawing from working memory, \"Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844."
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1041,7 +1073,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -1072,7 +1105,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.004666
+        "latency_ms": 0.004666,
+        "gold_answer_match": true
       }
     },
     {
@@ -1103,7 +1137,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -1134,7 +1169,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001709
+        "latency_ms": 0.001709,
+        "gold_answer_match": true
       }
     },
     {
@@ -1165,7 +1201,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -1196,7 +1233,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001709
+        "latency_ms": 0.001709,
+        "gold_answer_match": true
       }
     },
     {
@@ -1227,7 +1265,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -1258,14 +1297,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qf_3005",
-      "response": "Drawing from working memory, \"7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio."
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1289,7 +1329,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.003875
+        "latency_ms": 0.003875,
+        "gold_answer_match": true
       }
     },
     {
@@ -1320,14 +1361,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001667
+        "latency_ms": 0.001667,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_1463",
-      "response": "Drawing from working memory, \"The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1351,7 +1393,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001666
+        "latency_ms": 0.001666,
+        "gold_answer_match": true
       }
     },
     {
@@ -1382,7 +1425,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.0015
+        "latency_ms": 0.0015,
+        "gold_answer_match": true
       }
     },
     {
@@ -1413,14 +1457,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.006958
+        "latency_ms": 0.006958,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bt_2421",
-      "response": "Drawing from working memory, \"Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982)."
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982)."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1444,14 +1489,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_4681",
-      "response": "Drawing from working memory, \"The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario."
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1475,7 +1521,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001709
+        "latency_ms": 0.001709,
+        "gold_answer_match": true
       }
     },
     {
@@ -1506,7 +1553,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -1537,7 +1585,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -1568,7 +1617,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.001667
+        "latency_ms": 0.001667,
+        "gold_answer_match": true
       }
     },
     {
@@ -1599,7 +1649,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -1630,14 +1681,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_24460",
-      "response": "Drawing from working memory, \"Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1661,7 +1713,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -1692,7 +1745,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001708
+        "latency_ms": 0.001708,
+        "gold_answer_match": true
       }
     },
     {
@@ -1723,7 +1777,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -1754,7 +1809,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -1785,7 +1841,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -1816,7 +1873,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -1847,14 +1905,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bt_1157",
-      "response": "Drawing from working memory, \"On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final."
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1878,7 +1937,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -1909,14 +1969,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_7025",
-      "response": "Drawing from working memory, \"The Hall\u00e9 is an English symphony orchestra based in Manchester, England.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"The Hallé is an English symphony orchestra based in Manchester, England.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England."
+        "The Hallé is an English symphony orchestra based in Manchester, England."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1940,7 +2001,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -1971,7 +2033,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -2002,7 +2065,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -2033,7 +2097,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -2064,7 +2129,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.003833
+        "latency_ms": 0.003833,
+        "gold_answer_match": true
       }
     },
     {
@@ -2095,7 +2161,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -2126,7 +2193,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001667
+        "latency_ms": 0.001667,
+        "gold_answer_match": true
       }
     },
     {
@@ -2157,14 +2225,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_17590",
-      "response": "Drawing from working memory, \"Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -2188,14 +2257,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_5765",
-      "response": "Drawing from working memory, \"One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted).\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted)."
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted)."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -2219,7 +2289,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001708
+        "latency_ms": 0.001708,
+        "gold_answer_match": true
       }
     },
     {
@@ -2250,7 +2321,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001667
+        "latency_ms": 0.001667,
+        "gold_answer_match": true
       }
     },
     {
@@ -2281,7 +2353,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -2312,7 +2385,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -2343,7 +2417,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -2374,7 +2449,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -2405,7 +2481,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -2436,7 +2513,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.0035
+        "latency_ms": 0.0035,
+        "gold_answer_match": true
       }
     },
     {
@@ -2467,7 +2545,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -2498,7 +2577,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -2529,7 +2609,8 @@
           "supported": 4,
           "total_quoted": 4
         },
-        "latency_ms": 0.004542
+        "latency_ms": 0.004542,
+        "gold_answer_match": true
       }
     },
     {
@@ -2560,7 +2641,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -2591,7 +2673,8 @@
           "supported": 3,
           "total_quoted": 3
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -2622,14 +2705,15 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_5913",
-      "response": "Drawing from working memory, \"Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856).\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856).\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856)."
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856)."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -2653,7 +2737,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -2684,7 +2769,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001666
+        "latency_ms": 0.001666,
+        "gold_answer_match": true
       }
     },
     {
@@ -2715,7 +2801,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001667
+        "latency_ms": 0.001667,
+        "gold_answer_match": true
       }
     },
     {
@@ -2746,7 +2833,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -2777,7 +2865,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -2808,7 +2897,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001875
+        "latency_ms": 0.001875,
+        "gold_answer_match": true
       }
     },
     {
@@ -2839,7 +2929,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -2870,7 +2961,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -2901,7 +2993,8 @@
           "supported": 5,
           "total_quoted": 5
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -2932,7 +3025,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -2963,7 +3057,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -2994,7 +3089,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -3025,7 +3121,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -3056,14 +3153,15 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.0015
+        "latency_ms": 0.0015,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-jp_2349",
-      "response": "Drawing from working memory, \"On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3087,7 +3185,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -3118,14 +3217,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_2390",
-      "response": "Drawing from working memory, \"The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second."
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3149,7 +3249,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -3180,7 +3281,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -3211,7 +3313,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -3242,7 +3345,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -3273,7 +3377,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -3304,7 +3409,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -3335,7 +3441,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -3366,7 +3473,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -3397,14 +3505,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_3932",
-      "response": "Drawing from working memory, \"President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration."
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3428,14 +3537,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-tc_2687",
-      "response": "Drawing from working memory, \"Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3459,14 +3569,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-dpql_5313",
-      "response": "Drawing from working memory, \"Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg."
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3490,14 +3601,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_4141",
-      "response": "Drawing from working memory, \"Perseus was the son of the mortal Dana\u00eb and the god Zeus.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Perseus was the son of the mortal Danaë and the god Zeus.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus."
+        "Perseus was the son of the mortal Danaë and the god Zeus."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3521,7 +3633,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -3552,7 +3665,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -3583,7 +3697,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -3614,7 +3729,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -3645,7 +3761,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.0015
+        "latency_ms": 0.0015,
+        "gold_answer_match": true
       }
     },
     {
@@ -3676,7 +3793,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -3707,7 +3825,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -3738,7 +3857,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -3769,7 +3889,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001833
+        "latency_ms": 0.001833,
+        "gold_answer_match": true
       }
     },
     {
@@ -3800,7 +3921,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -3831,7 +3953,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -3862,7 +3985,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -3893,7 +4017,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -3924,7 +4049,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -3955,7 +4081,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -3986,7 +4113,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -4017,7 +4145,8 @@
           "supported": 5,
           "total_quoted": 5
         },
-        "latency_ms": 0.001667
+        "latency_ms": 0.001667,
+        "gold_answer_match": true
       }
     },
     {
@@ -4048,7 +4177,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -4079,7 +4209,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -4110,7 +4241,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001667
+        "latency_ms": 0.001667,
+        "gold_answer_match": true
       }
     },
     {
@@ -4141,7 +4273,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -4172,7 +4305,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001625
+        "latency_ms": 0.001625,
+        "gold_answer_match": true
       }
     },
     {
@@ -4203,7 +4337,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -4234,14 +4369,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_7551",
-      "response": "Drawing from working memory, \"Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively."
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -4265,7 +4401,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -4296,7 +4433,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -4327,7 +4465,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -4358,7 +4497,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -4389,7 +4529,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 0.0015
+        "latency_ms": 0.0015,
+        "gold_answer_match": true
       }
     },
     {
@@ -4420,7 +4561,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -4451,7 +4593,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -4482,7 +4625,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001584
+        "latency_ms": 0.001584,
+        "gold_answer_match": true
       }
     },
     {
@@ -4513,7 +4657,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
@@ -4544,7 +4689,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     },
     {
@@ -4575,14 +4721,15 @@
           "supported": 3,
           "total_quoted": 3
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_9912",
-      "response": "Drawing from working memory, \"Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta."
+        "Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -4606,14 +4753,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001583
+        "latency_ms": 0.001583,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-wh_3938",
-      "response": "Drawing from working memory, \"Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.\" That is what working memory holds on this.",
+      "response": "Drawing from working memory, \"Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.\" That is what working memory holds on this.",
       "retrieved_chunks": [
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships."
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -4637,7 +4785,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001541
+        "latency_ms": 0.001541,
+        "gold_answer_match": true
       }
     },
     {
@@ -4668,7 +4817,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 0.001542
+        "latency_ms": 0.001542,
+        "gold_answer_match": true
       }
     }
   ],
@@ -4714,7 +4864,13 @@
       1.0,
       1.0
     ],
-    "quoted_content_supported_rate_n": 150
+    "quoted_content_supported_rate_n": 150,
+    "gold_answer_match_rate_mean": 1.0,
+    "gold_answer_match_rate_ci95": [
+      1.0,
+      1.0
+    ],
+    "gold_answer_match_rate_n": 150
   },
   "caveats": [
     "Hyphae's latency is measured for the realizer pass only (composer + lexicon lookup + boundary smoothing). Substrate ingest + recall are measured separately in docs/perf/v0.2-baseline.md.",

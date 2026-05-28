@@ -81,8 +81,8 @@
 
 % Title block
 \title{
-    Architectural Verbatim Quotation: \\
-    Matching Frontier LLMs at $\sim 10^6$ Lower Latency
+    Verifiable Verbatim Grounding at \\
+    Six-Orders-of-Magnitude Lower Latency
 }
 
 \author{
@@ -100,30 +100,43 @@
 
 \begin{abstract}
 We introduce \hyphae, a cognitive substrate that composes responses
-by verbatim quotation of retrieved memory fragments combined with a
-curated connective lexicon, with no large language model (LLM) in
-the cognition path. We compare \hyphae{} against 18 LLM-based
-configurations (vanilla retrieval-augmented generation, HyDE plus
-cross-encoder reranking, and oracle context) spanning five frontier
-models from Anthropic, OpenAI, DeepSeek, and Meta. On a 150-query
-TriviaQA standard-benchmark column, \hyphae{} achieves an
-NLI-grounded unsupported-claim rate of $0.000$, while the closest
-LLM-based system (DeepSeek-V4-Pro oracle) reaches $0.400$ --- a 40
-percentage-point gap. \hyphae{}'s mean latency is $0.002$ ms versus
-the LLM's $2{,}424$ ms, a $1.18\times10^6$ speedup. On the project's
-own 34-query corpus the gap is narrower: GPT-4.1 with strong
-retrieval ties \hyphae{} within bootstrap confidence intervals
-($0.211$ vs $0.219$), but the latency advantage holds at
-$\sim 5\times10^4$. We attribute this corpus-sensitivity to the
-interaction between the metric's filter and \hyphae{}'s
-compositional template. Ablations show that the lexicon-scale
-component is the single observable driver of the metric deltas;
-boundary smoothing, cascade-shape composition, and the ethics gate
-each produce null deltas at this corpus size. We argue that the
-production economics --- six orders of magnitude latency advantage
-on commodity CPU --- generalise the architectural claim even where
-NLI-quality measurements remain corpus-sensitive. Code, corpora,
-result envelopes, and hardware traces are committed at
+by verbatim quotation of retrieved memory fragments stitched
+together with a curated connective lexicon, with no large language
+model (LLM) in the cognition path. The architectural commitment
+underlying the system is dual: every quoted body is preserved
+byte-identically against a hash-chained substrate journal, making
+each emitted response \emph{independently verifiable} against
+named source material; and the realizer's bounded output runs in
+microseconds on a single CPU core. We compare \hyphae{} against
+18 LLM-based configurations (vanilla retrieval-augmented generation,
+HyDE plus cross-encoder reranking, and oracle context) spanning
+five frontier models from Anthropic, OpenAI, DeepSeek, and Meta,
+across two corpora: the project's own 34-query composition corpus,
+and 150 random samples from TriviaQA. We report two
+complementary metrics: NLI-grounded
+unsupported-claim rate (does the response stay inside the retrieved
+context?) and gold-answer match (does the response contain the
+benchmark's reference answer?). On TriviaQA, \hyphae{} reaches both
+$1.000$ gold-answer match and a degenerate-zero unsupported-claim
+rate explained mechanically by the metric's filter interacting with
+the substrate's compositional template; the best LLM-based
+configuration reaches $0.960$ gold-answer match but $0.400$--$0.665$
+NLI unsupported-claim. The honest reading is that frontier LLMs are
+\emph{nearly as correct} on this corpus and \emph{less efficiently
+grounded} by the chosen metric. Where the architectural claim is
+unambiguous is the cost dimension: \hyphae{}'s realizer runs in
+$0.002$ ms versus the hosted LLM's $2{,}424$ ms (six orders of
+magnitude); against a local Llama-8B-Instruct quantised baseline on
+identical CPU hardware the ratio is approximately $10^5$ rather
+than $10^6$ but the production economics still differ by
+$\sim 4{-}5$ orders of magnitude. We do not claim the substrate
+universally replaces LLM-based generation. We claim that for tasks
+in which the unit of grounding is a discrete retrieved fragment
+quoted verbatim and the deployment requires audit-bound
+verifiability, the architectural commitment is competitive with
+frontier LLM correctness and dominates them on latency, memory
+footprint, and per-query cost by several orders of magnitude. Code,
+corpora, result envelopes, and hardware traces are available at
 \url{https://github.com/terrizoaguimor/hyphae-v2}.
 \end{abstract}
 

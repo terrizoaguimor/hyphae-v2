@@ -49,7 +49,7 @@
       "response": "The provided context does not contain the answer to this question.",
       "retrieved_chunks": [
         "Pearson did not make the move into politics until a few years later, after King had announced his retirement as the Prime Minister of Canada.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "Star Trek aired on NBC from September 8, 1966 to June 3, 1969  and from September 6 on Canada's CTV network.",
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006."
@@ -97,18 +97,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1647
+        "latency_ms": 1647,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-qb_8177",
       "response": "Based on the provided context, the US President born Leslie Lynch King Jr. is the one who served as the 38th President of the United States from 1974 to 1977.",
       "retrieved_chunks": [
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.",
         "Pearson did not make the move into politics until a few years later, after King had announced his retirement as the Prime Minister of Canada.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
       ],
       "retrieved_provenance": [
         [
@@ -153,7 +154,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1966
+        "latency_ms": 1966,
+        "gold_answer_match": true
       }
     },
     {
@@ -162,7 +164,7 @@
       "retrieved_chunks": [
         "In addition, if the volume is expanded by heat but reduced again by pressure, the viscosity remains the same.",
         "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer.",
-        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta.",
+        "Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta.",
         "Spanish\n\nSpanish-style bullfighting is called corrida de toros (literally \"running of bulls\") or la fiesta (\"the festival\").",
         "* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden."
       ],
@@ -209,7 +211,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1345
+        "latency_ms": 1345,
+        "gold_answer_match": false
       }
     },
     {
@@ -218,8 +221,8 @@
       "retrieved_chunks": [
         "In 2007 an archeological dig uncovered the remains of Ville-Marie under a maritime warehouse in Montreal.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
         "Geology \n\nThe bulk of the Marquesas Islands are of volcanic origin, created by the Marquesas hotspot that underlies the Pacific Plate."
       ],
       "retrieved_provenance": [
@@ -265,17 +268,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1567
+        "latency_ms": 1567,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_12369",
       "response": "The provided context only mentions that in 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs. It does not contain information about the year the Roman Catholic Church took Galileo's \"Dialogue\" off their list of banned books or the year Britain repealed the death penalty for over 100 crimes. Therefore, I cannot answer the full question based on the given context.",
       "retrieved_chunks": [
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
         "The highway code was first published in 1931 as a booklet and has been regularly updated to reflect current practices.",
         "The Naked and the Dead is a 1948 novel by Norman Mailer.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "The Castle of Otranto is a 1764 novel by Horace Walpole."
       ],
       "retrieved_provenance": [
@@ -321,14 +325,15 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 2845
+        "latency_ms": 2845,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-wh_4199",
       "response": "Marge Simpson's maiden name is Bouvier.",
       "retrieved_chunks": [
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
@@ -377,7 +382,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1251
+        "latency_ms": 1251,
+        "gold_answer_match": true
       }
     },
     {
@@ -433,7 +439,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1703
+        "latency_ms": 1703,
+        "gold_answer_match": false
       }
     },
     {
@@ -444,7 +451,7 @@
         "Asher met the illustrator Gerald Scarfe in 1971.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg."
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg."
       ],
       "retrieved_provenance": [
         [
@@ -489,7 +496,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 3135
+        "latency_ms": 3135,
+        "gold_answer_match": false
       }
     },
     {
@@ -497,7 +505,7 @@
       "response": "The provided context does not contain the answer to this question.",
       "retrieved_chunks": [
         "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge.",
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon.",
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon.",
         "In August, Keswick features the Derwentwater Regatta.",
         "Cape Wrath (Gaelic: Am Parbh, known as An Carbh in Lewis) is a cape in the Durness parish of the county of Sutherland in the Highlands of Scotland.",
         "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River."
@@ -545,7 +553,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1756
+        "latency_ms": 1756,
+        "gold_answer_match": false
       }
     },
     {
@@ -554,7 +563,7 @@
       "retrieved_chunks": [
         "The Type IV for the jet-powered aircraft went to de Havilland and became, in 1949, the world's first jet airliner, the Comet.",
         "Star Trek aired on NBC from September 8, 1966 to June 3, 1969  and from September 6 on Canada's CTV network.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
         "The United States' Apollo 11 was the first manned mission to land on the Moon, on 20 July 1969.",
         "Due to German and Italian naval and air force activity in the Mediterranean, the Thistlegorm sailed as part of a convoy via Cape Town, South Africa, where she refuelled, before heading north up the East coast of Africa and into the Red Sea."
       ],
@@ -601,14 +610,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2399
+        "latency_ms": 2399,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bb_3998",
       "response": "The word Tet in the Tet Offensive referred to the Vietnamese New Year.",
       "retrieved_chunks": [
-        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place.",
+        "The name of the offensive comes from the Tết holiday, the Vietnamese New Year, when the first major attacks took place.",
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
@@ -657,7 +667,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1787
+        "latency_ms": 1787,
+        "gold_answer_match": true
       }
     },
     {
@@ -665,7 +676,7 @@
       "response": "The provided context does not contain the answer to your question.",
       "retrieved_chunks": [
         "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "Chesterton is well known for his fictional priest-detective Father Brown,  and for his reasoned apologetics.",
         "History of the concept\n\nThe law was named after Sir Thomas Gresham, a sixteenth-century financial agent of the English Crown in the city of Antwerp, to explain to Queen Elizabeth I what was happening to the English shilling.",
         "* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538."
@@ -713,7 +724,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1748
+        "latency_ms": 1748,
+        "gold_answer_match": false
       }
     },
     {
@@ -722,7 +734,7 @@
       "retrieved_chunks": [
         "When the Club was founded in 1831 Rule 1 of the Garrick Club Rules and Regulations called for the \"formation of a theatrical Library, with works on costume\".",
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England.",
+        "The Hallé is an English symphony orchestra based in Manchester, England.",
         "Persimmon wood was also heavily used in making the highest-quality heads of the golf clubs known as \"woods\" until the golf industry moved primarily to metal woods in the last years of the 20th century.",
         "The name \"aardvark\" comes from earlier Afrikaans (erdvark) and means \"earth pig\" or \"ground pig\" (aarde: earth/ground, vark: pig), because of its burrowing habits  (similar origin to the name groundhog)."
       ],
@@ -769,12 +781,13 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1887
+        "latency_ms": 1887,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-odql_981",
-      "response": "The provided context does not contain information about which famous British actor is or was married to Anouk Aim\u00e9e.",
+      "response": "The provided context does not contain information about which famous British actor is or was married to Anouk Aimée.",
       "retrieved_chunks": [
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
@@ -825,16 +838,17 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2363
+        "latency_ms": 2363,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-sfq_18918",
       "response": "Near Avignon.",
       "retrieved_chunks": [
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon.",
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon.",
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "Some definitions of southern Europe, also known as Mediterranean Europe, include the countries of the Iberian peninsula (Spain and Portugal), the Italian peninsula, Southern France, Greece and Malta.",
         "Cape Wrath (Gaelic: Am Parbh, known as An Carbh in Lewis) is a cape in the Durness parish of the county of Sutherland in the Highlands of Scotland."
       ],
@@ -881,7 +895,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1258
+        "latency_ms": 1258,
+        "gold_answer_match": true
       }
     },
     {
@@ -890,8 +905,8 @@
       "retrieved_chunks": [
         "Outside of Italy, focaccia is used extensively as a sandwich bread.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
-        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006."
       ],
       "retrieved_provenance": [
@@ -937,18 +952,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2512
+        "latency_ms": 2512,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_409",
       "response": "Professor Cuthbert Calculus is an associate of Tintin, Snowy, and Captain Haddock.",
       "retrieved_chunks": [
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
         "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [
         [
@@ -993,7 +1009,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1648
+        "latency_ms": 1648,
+        "gold_answer_match": true
       }
     },
     {
@@ -1049,14 +1066,15 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 2004
+        "latency_ms": 2004,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_6822",
       "response": "Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
       "retrieved_chunks": [
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
@@ -1105,7 +1123,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1765
+        "latency_ms": 1765,
+        "gold_answer_match": true
       }
     },
     {
@@ -1114,7 +1133,7 @@
       "retrieved_chunks": [
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
         "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy.",
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor."
       ],
@@ -1161,7 +1180,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 10218
+        "latency_ms": 10218,
+        "gold_answer_match": true
       }
     },
     {
@@ -1217,7 +1237,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1738
+        "latency_ms": 1738,
+        "gold_answer_match": true
       }
     },
     {
@@ -1226,8 +1247,8 @@
       "retrieved_chunks": [
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
         "The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals."
       ],
       "retrieved_provenance": [
@@ -1273,15 +1294,16 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1418
+        "latency_ms": 1418,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_9945",
       "response": "The provided context does not contain information about who was elected US President in November 2012. The closest information is a mention of the Electoral College formally re-electing President Obama on December 17, 2012.",
       "retrieved_chunks": [
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
         "* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden.",
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China."
@@ -1329,7 +1351,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1674
+        "latency_ms": 1674,
+        "gold_answer_match": true
       }
     },
     {
@@ -1338,8 +1361,8 @@
       "retrieved_chunks": [
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China.",
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy."
       ],
       "retrieved_provenance": [
@@ -1385,7 +1408,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1836
+        "latency_ms": 1836,
+        "gold_answer_match": true
       }
     },
     {
@@ -1396,7 +1420,7 @@
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
         "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.",
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor.",
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships."
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships."
       ],
       "retrieved_provenance": [
         [
@@ -1441,16 +1465,17 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1956
+        "latency_ms": 1956,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_10250",
       "response": "The provided context does not contain information about which mythical creature is found in the Chinese zodiac.",
       "retrieved_chunks": [
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "Since the zodiac animal cycle of 12 is divisible by two, every zodiac sign can occur only as either Yin or Yang: the Dragon is always yang, the Snake is always yin, etc.",
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "Pyracantha is a genus of large, thorny evergreen shrubs in the family Rosaceae, with common names firethorn or pyracantha."
       ],
@@ -1497,7 +1522,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1418
+        "latency_ms": 1418,
+        "gold_answer_match": false
       }
     },
     {
@@ -1505,7 +1531,7 @@
       "response": "Richard Marx had an '80s No. 1 hit with \"Hold On to the Nights.\"",
       "retrieved_chunks": [
         "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
         "\"Take a Bow\" is a song recorded by Barbadian singer Rihanna for Good Girl Gone Bad: Reloaded (2008), the re-release of her third studio album Good Girl Gone Bad (2007).",
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China."
@@ -1553,7 +1579,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1609
+        "latency_ms": 1609,
+        "gold_answer_match": true
       }
     },
     {
@@ -1564,7 +1591,7 @@
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
         "The Richardson Gang was an English crime gang based in south London, England, in the 1960s.",
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England."
+        "The Hallé is an English symphony orchestra based in Manchester, England."
       ],
       "retrieved_provenance": [
         [
@@ -1609,7 +1636,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1787
+        "latency_ms": 1787,
+        "gold_answer_match": true
       }
     },
     {
@@ -1617,7 +1645,7 @@
       "response": "The provided context does not contain information about the book *The Red Badge of Courage* or the war in which it is set.",
       "retrieved_chunks": [
         "While modern critics have noted Crane's \"anticipation of the modern spectacle of war\",  others, such as Crane scholar Stanley Wertheim, believe the work to be \"unquestionably the most realistic novel about the American Civil War\".",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor.",
         "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England."
@@ -1665,7 +1693,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2728
+        "latency_ms": 2728,
+        "gold_answer_match": false
       }
     },
     {
@@ -1676,7 +1705,7 @@
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
         "\"Take a Bow\" is a song recorded by Barbadian singer Rihanna for Good Girl Gone Bad: Reloaded (2008), the re-release of her third studio album Good Girl Gone Bad (2007).",
         "Live performances \n\nShakira performed \"Waka Waka (This Time for Africa)\" at the 2010 FIFA World Cup opening ceremony on 10 June at the Orlando Stadium in Johannesburg, South Africa.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
       ],
       "retrieved_provenance": [
         [
@@ -1721,7 +1750,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1618
+        "latency_ms": 1618,
+        "gold_answer_match": false
       }
     },
     {
@@ -1730,7 +1760,7 @@
       "retrieved_chunks": [
         "Mindanao ( ) is the second largest and southernmost major island in the Philippines.",
         "In comparison to the celebrations in Japan, the festival is celebrated on a much smaller scale in Penang, Selangor and Sabah, and is less associated with Buddhism and more with Japanese culture.",
-        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place.",
+        "The name of the offensive comes from the Tết holiday, the Vietnamese New Year, when the first major attacks took place.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones."
       ],
@@ -1777,18 +1807,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1674
+        "latency_ms": 1674,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-qg_3384",
       "response": "In Norse mythology, valkyries decide who lives and dies during battle, and then transport half of the dead to Valhalla.",
       "retrieved_chunks": [
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
         "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982)."
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982)."
       ],
       "retrieved_provenance": [
         [
@@ -1833,7 +1864,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1855
+        "latency_ms": 1855,
+        "gold_answer_match": true
       }
     },
     {
@@ -1841,10 +1873,10 @@
       "response": "Friedrich Engels famously worked with Karl Marx.",
       "retrieved_chunks": [
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
         "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
       ],
       "retrieved_provenance": [
         [
@@ -1889,7 +1921,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1379
+        "latency_ms": 1379,
+        "gold_answer_match": true
       }
     },
     {
@@ -1945,7 +1978,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 10357
+        "latency_ms": 10357,
+        "gold_answer_match": false
       }
     },
     {
@@ -1953,8 +1987,8 @@
       "response": "Husband.",
       "retrieved_chunks": [
         "Associated Polyandry, or polyandry that begins as monogamy, with the second husband entering the relationship later, is also practiced  and it sometimes initiated by the wife.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "Pyracantha is a genus of large, thorny evergreen shrubs in the family Rosaceae, with common names firethorn or pyracantha."
       ],
@@ -2001,7 +2035,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1485
+        "latency_ms": 1485,
+        "gold_answer_match": true
       }
     },
     {
@@ -2057,7 +2092,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 3761
+        "latency_ms": 3761,
+        "gold_answer_match": true
       }
     },
     {
@@ -2065,7 +2101,7 @@
       "response": "Marcel Duchamp created L.H.O.O.Q. in 1919.",
       "retrieved_chunks": [
         "In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "\"You're So Vain\" is a song written and performed by Carly Simon and released in November 1972.",
         "Spanish\n\nSpanish-style bullfighting is called corrida de toros (literally \"running of bulls\") or la fiesta (\"the festival\").",
         "Carpenter and Debra Hill began drafting a story titled The Babysitter Murders, but the title was changed at Yablans' request, suggesting the setting be changed to Halloween night and naming it Halloween instead."
@@ -2113,7 +2149,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2596
+        "latency_ms": 2596,
+        "gold_answer_match": true
       }
     },
     {
@@ -2169,7 +2206,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 3907
+        "latency_ms": 3907,
+        "gold_answer_match": true
       }
     },
     {
@@ -2225,7 +2263,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1674
+        "latency_ms": 1674,
+        "gold_answer_match": false
       }
     },
     {
@@ -2281,17 +2320,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2196
+        "latency_ms": 2196,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-qf_3005",
       "response": "Yes, based on the context, Beethoven's only opera is named Fidelio.",
       "retrieved_chunks": [
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "Recording credits\n\nSee Huey Lewis and the News discography for albums and singles by the band.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England.",
+        "The Hallé is an English symphony orchestra based in Manchester, England.",
         "The musical was inspired by the painting \"A Sunday Afternoon on the Island of La Grande Jatte\" by Georges Seurat."
       ],
       "retrieved_provenance": [
@@ -2337,7 +2377,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2130
+        "latency_ms": 2130,
+        "gold_answer_match": true
       }
     },
     {
@@ -2393,14 +2434,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1373
+        "latency_ms": 1373,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_1463",
       "response": "Velma Kelly",
       "retrieved_chunks": [
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
@@ -2449,7 +2491,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1686
+        "latency_ms": 1686,
+        "gold_answer_match": true
       }
     },
     {
@@ -2505,7 +2548,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1658
+        "latency_ms": 1658,
+        "gold_answer_match": true
       }
     },
     {
@@ -2516,7 +2560,7 @@
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
         "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.",
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
       ],
       "retrieved_provenance": [
         [
@@ -2561,18 +2605,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1394
+        "latency_ms": 1394,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bt_2421",
       "response": "Violet",
       "retrieved_chunks": [
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
       ],
       "retrieved_provenance": [
         [
@@ -2617,17 +2662,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1478
+        "latency_ms": 1478,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_4681",
-      "response": "The Ambassador Bridge, Detroit\u2013Windsor Tunnel, and Michigan Central Railway Tunnel are all mentioned as international border crossings linking Detroit to Windsor, Ontario.",
+      "response": "The Ambassador Bridge, Detroit–Windsor Tunnel, and Michigan Central Railway Tunnel are all mentioned as international border crossings linking Detroit to Windsor, Ontario.",
       "retrieved_chunks": [
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge.",
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.",
         "Mackintosh took his inspiration from his Scottish upbringing and blended them with the flourish of Art Nouveau and the simplicity of Japanese forms."
       ],
       "retrieved_provenance": [
@@ -2673,7 +2719,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1738
+        "latency_ms": 1738,
+        "gold_answer_match": true
       }
     },
     {
@@ -2682,7 +2729,7 @@
       "retrieved_chunks": [
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
         "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright."
       ],
@@ -2729,7 +2776,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2459
+        "latency_ms": 2459,
+        "gold_answer_match": false
       }
     },
     {
@@ -2785,7 +2833,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1651
+        "latency_ms": 1651,
+        "gold_answer_match": true
       }
     },
     {
@@ -2841,7 +2890,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1994
+        "latency_ms": 1994,
+        "gold_answer_match": false
       }
     },
     {
@@ -2897,7 +2947,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1422
+        "latency_ms": 1422,
+        "gold_answer_match": true
       }
     },
     {
@@ -2905,10 +2956,10 @@
       "response": "Rihanna had a 2008 number one hit with the song \"Take a Bow,\" as indicated in the provided context.",
       "retrieved_chunks": [
         "\"Take a Bow\" is a song recorded by Barbadian singer Rihanna for Good Girl Gone Bad: Reloaded (2008), the re-release of her third studio album Good Girl Gone Bad (2007).",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
         "Recording credits\n\nSee Huey Lewis and the News discography for albums and singles by the band.",
         "* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice.",
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
       ],
       "retrieved_provenance": [
         [
@@ -2953,18 +3004,19 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1816
+        "latency_ms": 1816,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_24460",
       "response": "The provided context does not contain the answer to this question.",
       "retrieved_chunks": [
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [
         [
@@ -3009,7 +3061,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1873
+        "latency_ms": 1873,
+        "gold_answer_match": false
       }
     },
     {
@@ -3017,9 +3070,9 @@
       "response": "On a standard guitar, the same notes as the open strings, but an octave higher, are found at the 12th fret, as each set of twelve frets represents an octave [1].",
       "retrieved_chunks": [
         "Each set of twelve frets represents an octave.",
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.",
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
+        "The Hallé is an English symphony orchestra based in Manchester, England.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.",
         "The Gulf of Carpentaria () is a large, shallow sea enclosed on three sides by northern Australia and bounded on the north by the Arafura Sea (the body of water that lies between Australia and New Guinea)."
       ],
       "retrieved_provenance": [
@@ -3065,7 +3118,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1794
+        "latency_ms": 1794,
+        "gold_answer_match": true
       }
     },
     {
@@ -3076,7 +3130,7 @@
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer.",
         "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [
         [
@@ -3121,7 +3175,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1372
+        "latency_ms": 1372,
+        "gold_answer_match": true
       }
     },
     {
@@ -3177,7 +3232,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 3797
+        "latency_ms": 3797,
+        "gold_answer_match": false
       }
     },
     {
@@ -3186,9 +3242,9 @@
       "retrieved_chunks": [
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
         "While modern critics have noted Crane's \"anticipation of the modern spectacle of war\",  others, such as Crane scholar Stanley Wertheim, believe the work to be \"unquestionably the most realistic novel about the American Civil War\".",
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856)."
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856)."
       ],
       "retrieved_provenance": [
         [
@@ -3233,7 +3289,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1547
+        "latency_ms": 1547,
+        "gold_answer_match": true
       }
     },
     {
@@ -3289,7 +3346,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1642
+        "latency_ms": 1642,
+        "gold_answer_match": true
       }
     },
     {
@@ -3345,16 +3403,17 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1559
+        "latency_ms": 1559,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bt_1157",
       "response": "West Ham United",
       "retrieved_chunks": [
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals."
       ],
@@ -3401,7 +3460,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1546
+        "latency_ms": 1546,
+        "gold_answer_match": true
       }
     },
     {
@@ -3457,14 +3517,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1869
+        "latency_ms": 1869,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_7025",
-      "response": "The Hall\u00e9 is based in Manchester, England.",
+      "response": "The Hallé is based in Manchester, England.",
       "retrieved_chunks": [
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England.",
+        "The Hallé is an English symphony orchestra based in Manchester, England.",
         "The Richardson Gang was an English crime gang based in south London, England, in the 1960s.",
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
         "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England.",
@@ -3513,7 +3574,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1273
+        "latency_ms": 1273,
+        "gold_answer_match": true
       }
     },
     {
@@ -3569,7 +3631,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2358
+        "latency_ms": 2358,
+        "gold_answer_match": false
       }
     },
     {
@@ -3577,7 +3640,7 @@
       "response": "Norman Mailer wrote the novel *The Naked and the Dead*.",
       "retrieved_chunks": [
         "The Naked and the Dead is a 1948 novel by Norman Mailer.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "Songs of Innocence and of Experience  is an illustrated collection of poems by William Blake.",
         "Books \n\nThe character of Charlie Chan was created by Earl Derr Biggers."
@@ -3625,7 +3688,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1339
+        "latency_ms": 1339,
+        "gold_answer_match": true
       }
     },
     {
@@ -3681,7 +3745,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1928
+        "latency_ms": 1928,
+        "gold_answer_match": true
       }
     },
     {
@@ -3691,7 +3756,7 @@
         "The Singing Detective is a BBC television serial drama, written by Dennis Potter, which stars Michael Gambon and was directed by Jon Amiel.",
         "Books \n\nThe character of Charlie Chan was created by Earl Derr Biggers.",
         "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England.",
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856).",
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856).",
         "In the early 17th century, Shakespeare wrote the so-called \"problem plays\" Measure for Measure, Troilus and Cressida, and All's Well That Ends Well and a number of his best known tragedies."
       ],
       "retrieved_provenance": [
@@ -3737,7 +3802,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1787
+        "latency_ms": 1787,
+        "gold_answer_match": true
       }
     },
     {
@@ -3793,7 +3859,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1477
+        "latency_ms": 1477,
+        "gold_answer_match": true
       }
     },
     {
@@ -3802,7 +3869,7 @@
       "retrieved_chunks": [
         "Portrait \n\nHistory \n\nBecause of the gate's position at the front of the Imperial City, and historical events that have taken place on Tiananmen Square, the gate has great political significance.",
         "Before work was completed, however, the Soviet Union launched a second satellite, Sputnik 2, on 3 November 1957.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov."
       ],
@@ -3849,7 +3916,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1798
+        "latency_ms": 1798,
+        "gold_answer_match": false
       }
     },
     {
@@ -3905,16 +3973,17 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1280
+        "latency_ms": 1280,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_17590",
       "response": "Based on the provided context, Clara Petacci was the mistress of the Italian dictator Benito Mussolini.",
       "retrieved_chunks": [
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "In late 1694, however, she contracted smallpox.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy."
       ],
@@ -3961,18 +4030,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2281
+        "latency_ms": 2281,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_5765",
       "response": "In David Hockney's painting \"Mr and Mrs Clark and Percy\", Percy is a cat. The context mentions that the cat in the painting was not actually named Percy, but Hockney thought \"Percy made a better title than Blanche, the cat he painted.\"",
       "retrieved_chunks": [
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).",
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted).",
         "The Monocled Mutineer\n\nMcGann's first major dramatic role was the infamous British deserter and criminal Percy Toplis in the 1986 BBC serial The Monocled Mutineer.",
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856).",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856).",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [
         [
@@ -4017,7 +4087,8 @@
           "supported": 0,
           "total_quoted": 2
         },
-        "latency_ms": 1886
+        "latency_ms": 1886,
+        "gold_answer_match": true
       }
     },
     {
@@ -4026,9 +4097,9 @@
       "retrieved_chunks": [
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
         "Tsipras has been leader of the left-wing Greek political party Syriza since 4 October 2009.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "Donald Trump purchased the hotel and golf courses from Leisurecorp in April 2014,   and the resort was renamed Trump Turnberry in June 2014.",
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
       ],
       "retrieved_provenance": [
         [
@@ -4073,7 +4144,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1774
+        "latency_ms": 1774,
+        "gold_answer_match": true
       }
     },
     {
@@ -4083,7 +4155,7 @@
         "The Monocled Mutineer\n\nMcGann's first major dramatic role was the infamous British deserter and criminal Percy Toplis in the 1986 BBC serial The Monocled Mutineer.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France."
       ],
       "retrieved_provenance": [
@@ -4129,7 +4201,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2976
+        "latency_ms": 2976,
+        "gold_answer_match": true
       }
     },
     {
@@ -4139,7 +4212,7 @@
         "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River.",
         "Mindanao ( ) is the second largest and southernmost major island in the Philippines.",
         "Due to German and Italian naval and air force activity in the Mediterranean, the Thistlegorm sailed as part of a convoy via Cape Town, South Africa, where she refuelled, before heading north up the East coast of Africa and into the Red Sea.",
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon.",
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon.",
         "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge."
       ],
       "retrieved_provenance": [
@@ -4185,7 +4258,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1178
+        "latency_ms": 1178,
+        "gold_answer_match": true
       }
     },
     {
@@ -4196,7 +4270,7 @@
         "Recording credits\n\nSee Huey Lewis and the News discography for albums and singles by the band.",
         "The second single released from the album, \"Not Fair\", reached the number 9 position.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
       ],
       "retrieved_provenance": [
         [
@@ -4241,7 +4315,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1866
+        "latency_ms": 1866,
+        "gold_answer_match": false
       }
     },
     {
@@ -4250,8 +4325,8 @@
       "retrieved_chunks": [
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
         "The move of the race to the early evening made it possible for drivers to do Double Duty - run the Indianapolis 500, then immediately fly from Indianapolis to Charlotte, and participate in the Coca-Cola 600.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "The Hallé is an English symphony orchestra based in Manchester, England.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones."
       ],
       "retrieved_provenance": [
@@ -4297,7 +4372,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1884
+        "latency_ms": 1884,
+        "gold_answer_match": false
       }
     },
     {
@@ -4353,7 +4429,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1210
+        "latency_ms": 1210,
+        "gold_answer_match": true
       }
     },
     {
@@ -4409,7 +4486,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1710
+        "latency_ms": 1710,
+        "gold_answer_match": true
       }
     },
     {
@@ -4418,7 +4496,7 @@
       "retrieved_chunks": [
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
         "Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms."
       ],
@@ -4465,16 +4543,17 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2059
+        "latency_ms": 2059,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-dpql_4129",
-      "response": "The provided context does not contain information about who reached number 3 in the UK charts with \u2018You\u2019re So Vain\u2019 in 1972.",
+      "response": "The provided context does not contain information about who reached number 3 in the UK charts with ‘You’re So Vain’ in 1972.",
       "retrieved_chunks": [
         "\"You're So Vain\" is a song written and performed by Carly Simon and released in November 1972.",
         "The second single released from the album, \"Not Fair\", reached the number 9 position.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "Songs of Innocence and of Experience  is an illustrated collection of poems by William Blake.",
         "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week."
       ],
@@ -4521,7 +4600,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2158
+        "latency_ms": 2158,
+        "gold_answer_match": false
       }
     },
     {
@@ -4532,7 +4612,7 @@
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus."
+        "Perseus was the son of the mortal Danaë and the god Zeus."
       ],
       "retrieved_provenance": [
         [
@@ -4577,7 +4657,8 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 2154
+        "latency_ms": 2154,
+        "gold_answer_match": true
       }
     },
     {
@@ -4585,7 +4666,7 @@
       "response": "The provided context does not contain the answer to this question.",
       "retrieved_chunks": [
         "In the early 17th century, Shakespeare wrote the so-called \"problem plays\" Measure for Measure, Troilus and Cressida, and All's Well That Ends Well and a number of his best known tragedies.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms.",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
         "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer."
@@ -4633,7 +4714,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1963
+        "latency_ms": 1963,
+        "gold_answer_match": false
       }
     },
     {
@@ -4689,7 +4771,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1877
+        "latency_ms": 1877,
+        "gold_answer_match": true
       }
     },
     {
@@ -4700,7 +4783,7 @@
         "Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms.",
         "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week.",
         "In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee.",
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio."
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio."
       ],
       "retrieved_provenance": [
         [
@@ -4745,14 +4828,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1810
+        "latency_ms": 1810,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_5913",
       "response": "The provided context does not contain the answer to this question.",
       "retrieved_chunks": [
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856).",
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856).",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
@@ -4801,7 +4885,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1839
+        "latency_ms": 1839,
+        "gold_answer_match": false
       }
     },
     {
@@ -4857,7 +4942,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1877
+        "latency_ms": 1877,
+        "gold_answer_match": true
       }
     },
     {
@@ -4913,7 +4999,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1690
+        "latency_ms": 1690,
+        "gold_answer_match": true
       }
     },
     {
@@ -4969,7 +5056,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1039
+        "latency_ms": 1039,
+        "gold_answer_match": true
       }
     },
     {
@@ -4979,8 +5067,8 @@
         "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
         "Geology \n\nThe bulk of the Marquesas Islands are of volcanic origin, created by the Marquesas hotspot that underlies the Pacific Plate.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second."
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second."
       ],
       "retrieved_provenance": [
         [
@@ -5025,7 +5113,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 2725
+        "latency_ms": 2725,
+        "gold_answer_match": true
       }
     },
     {
@@ -5033,7 +5122,7 @@
       "response": "The provided context does not contain the answer to this question. It mentions that Nero was declared a public enemy by the Senate, but it does not state that he committed suicide in 68 AD.",
       "retrieved_chunks": [
         "The Senate, when news of his death reached Rome, posthumously declared Nero a public enemy to appease the coming Galba (as the Senate had initially declared Galba as a public enemy) and proclaimed Galba the new emperor.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France.",
         "Portrait \n\nHistory \n\nBecause of the gate's position at the front of the Imperial City, and historical events that have taken place on Tiananmen Square, the gate has great political significance.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama."
@@ -5081,7 +5170,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2457
+        "latency_ms": 2457,
+        "gold_answer_match": true
       }
     },
     {
@@ -5137,7 +5227,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1671
+        "latency_ms": 1671,
+        "gold_answer_match": false
       }
     },
     {
@@ -5146,7 +5237,7 @@
       "retrieved_chunks": [
         "Carpenter and Debra Hill began drafting a story titled The Babysitter Murders, but the title was changed at Yablans' request, suggesting the setting be changed to Halloween night and naming it Halloween instead.",
         "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia.",
         "The first version was hosted by Michael Miles (after its demise, Miles hosted a similar show for Southern Television called Wheel of Fortune, not to be confused with the later Wheel of Fortune of the same title)."
       ],
@@ -5193,7 +5284,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 6887
+        "latency_ms": 6887,
+        "gold_answer_match": true
       }
     },
     {
@@ -5249,7 +5341,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2044
+        "latency_ms": 2044,
+        "gold_answer_match": false
       }
     },
     {
@@ -5257,7 +5350,7 @@
       "response": "According to the provided context, the most frequently used paper size is A4 measuring 210 x [no width dimension given]. The context does not provide the width of A4 paper in millimetres.",
       "retrieved_chunks": [
         "The most frequently used paper size is A4 measuring 210 x.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
         "A full Braille cell includes six raised dots arranged in two lateral rows each having three dots.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman."
@@ -5305,7 +5398,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1989
+        "latency_ms": 1989,
+        "gold_answer_match": true
       }
     },
     {
@@ -5361,7 +5455,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 2424
+        "latency_ms": 2424,
+        "gold_answer_match": true
       }
     },
     {
@@ -5417,7 +5512,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1404
+        "latency_ms": 1404,
+        "gold_answer_match": false
       }
     },
     {
@@ -5473,7 +5569,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2026
+        "latency_ms": 2026,
+        "gold_answer_match": true
       }
     },
     {
@@ -5484,7 +5581,7 @@
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
         "In eight-ball, straight pool, and related games, all sixteen balls are employed.",
         "It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast .",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
       ],
       "retrieved_provenance": [
         [
@@ -5529,17 +5626,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 5007
+        "latency_ms": 5007,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-jp_2349",
       "response": "Blue Ivy Carter",
       "retrieved_chunks": [
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama."
       ],
       "retrieved_provenance": [
@@ -5585,7 +5683,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1241
+        "latency_ms": 1241,
+        "gold_answer_match": true
       }
     },
     {
@@ -5595,7 +5694,7 @@
         "In August, Keswick features the Derwentwater Regatta.",
         "The Gulf of Carpentaria () is a large, shallow sea enclosed on three sides by northern Australia and bounded on the north by the Arafura Sea (the body of water that lies between Australia and New Guinea).",
         "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River.",
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon.",
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon.",
         "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones."
       ],
       "retrieved_provenance": [
@@ -5641,14 +5740,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1879
+        "latency_ms": 1879,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_2390",
       "response": "The provided context does not contain the answer.",
       "retrieved_chunks": [
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.",
         "In addition, if the volume is expanded by heat but reduced again by pressure, the viscosity remains the same.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry.",
@@ -5697,18 +5797,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1640
+        "latency_ms": 1640,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-sfq_2769",
       "response": "The provided context does not contain the answer to this question. The context mentions The Richardson Gang, a crime gang based in south London, but does not state it was led by Charles and Eddie or that it was a rival of the Krays.",
       "retrieved_chunks": [
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "The Richardson Gang was an English crime gang based in south London, England, in the 1960s.",
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
         "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges.",
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
       ],
       "retrieved_provenance": [
         [
@@ -5753,7 +5854,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2055
+        "latency_ms": 2055,
+        "gold_answer_match": true
       }
     },
     {
@@ -5809,7 +5911,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 2646
+        "latency_ms": 2646,
+        "gold_answer_match": false
       }
     },
     {
@@ -5817,10 +5920,10 @@
       "response": "The context does not contain the answer to your question.",
       "retrieved_chunks": [
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "Star Trek aired on NBC from September 8, 1966 to June 3, 1969  and from September 6 on Canada's CTV network.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
       ],
       "retrieved_provenance": [
         [
@@ -5865,7 +5968,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1902
+        "latency_ms": 1902,
+        "gold_answer_match": false
       }
     },
     {
@@ -5921,7 +6025,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2481
+        "latency_ms": 2481,
+        "gold_answer_match": false
       }
     },
     {
@@ -5930,7 +6035,7 @@
       "retrieved_chunks": [
         "The Castle of Otranto is a 1764 novel by Horace Walpole.",
         "Songs of Innocence and of Experience  is an illustrated collection of poems by William Blake.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "Books \n\nThe character of Charlie Chan was created by Earl Derr Biggers.",
         "Carpenter and Debra Hill began drafting a story titled The Babysitter Murders, but the title was changed at Yablans' request, suggesting the setting be changed to Halloween night and naming it Halloween instead."
       ],
@@ -5977,12 +6082,13 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1750
+        "latency_ms": 1750,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_7327",
-      "response": "Malcolm Bradbury wrote the 1975 novel \u2018The History Man\u2019.",
+      "response": "Malcolm Bradbury wrote the 1975 novel ‘The History Man’.",
       "retrieved_chunks": [
         "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England.",
         "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer.",
@@ -6033,7 +6139,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1511
+        "latency_ms": 1511,
+        "gold_answer_match": true
       }
     },
     {
@@ -6089,7 +6196,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1497
+        "latency_ms": 1497,
+        "gold_answer_match": true
       }
     },
     {
@@ -6099,8 +6207,8 @@
         "The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "The locomotive nameplates read: 'Harry Patch The last survivor of the trenches' and included a coloured line of all eight ribbons from the medals awarded to Patch.",
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final."
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final."
       ],
       "retrieved_provenance": [
         [
@@ -6145,15 +6253,16 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1624
+        "latency_ms": 1624,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-qg_3932",
-      "response": "Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, not 1899, and the provided context does not include his birthdate or any mention of his time as a North Dakota rancher. Therefore, I cannot confirm the specific details of your question using only the given context.",
+      "response": "Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, not 1899, and the provided context does not include his birthdate or any mention of his time as a North Dakota rancher. Therefore, I cannot confirm the specific details of your question using only the given context.",
       "retrieved_chunks": [
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov."
@@ -6201,14 +6310,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1752
+        "latency_ms": 1752,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-tc_2687",
       "response": "James Watt formed a successful partnership with Matthew Boulton.",
       "retrieved_chunks": [
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
         "* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538.",
         "(1999) John Flamsteed, the first Astronomer Royal.",
@@ -6257,17 +6367,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1615
+        "latency_ms": 1615,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-dpql_5313",
       "response": "Salzburg",
       "retrieved_chunks": [
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy."
       ],
       "retrieved_provenance": [
@@ -6313,18 +6424,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1206
+        "latency_ms": 1206,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_4141",
-      "response": "According to the provided context, the mother of Perseus was the mortal Dana\u00eb.",
+      "response": "According to the provided context, the mother of Perseus was the mortal Danaë.",
       "retrieved_chunks": [
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "In late 1694, however, she contracted smallpox.",
         "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [
         [
@@ -6369,7 +6481,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1727
+        "latency_ms": 1727,
+        "gold_answer_match": true
       }
     },
     {
@@ -6425,7 +6538,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1359
+        "latency_ms": 1359,
+        "gold_answer_match": true
       }
     },
     {
@@ -6481,7 +6595,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 999
+        "latency_ms": 999,
+        "gold_answer_match": true
       }
     },
     {
@@ -6490,7 +6605,7 @@
       "retrieved_chunks": [
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
         "Mindanao ( ) is the second largest and southernmost major island in the Philippines.",
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
         "Some definitions of southern Europe, also known as Mediterranean Europe, include the countries of the Iberian peninsula (Spain and Portugal), the Italian peninsula, Southern France, Greece and Malta.",
         "Europe is the world's second-smallest continent by surface area, covering about  or 2% of the Earth's surface and about 6.8% of its land area."
       ],
@@ -6537,7 +6652,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1308
+        "latency_ms": 1308,
+        "gold_answer_match": true
       }
     },
     {
@@ -6545,9 +6661,9 @@
       "response": "The provided context mentions the \"preflood (antediluvian)\" period from the Sumerian King List [3], but it does not specify the exact word used in the Old Testament of the Bible to refer to the period before \"The Great Flood.\"",
       "retrieved_chunks": [
         "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.",
         "In the Sumerian King List, it relies on the flood motif to divide its history into preflood (antediluvian) and postflood periods.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "Long after the end of Egypt's own pyramid-building period, a burst of pyramid-building occurred in what is present-day Sudan, after much of Egypt came under the rule of the Kings of Napata."
       ],
       "retrieved_provenance": [
@@ -6593,7 +6709,8 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 2160
+        "latency_ms": 2160,
+        "gold_answer_match": true
       }
     },
     {
@@ -6602,7 +6719,7 @@
       "retrieved_chunks": [
         "Donald Trump purchased the hotel and golf courses from Leisurecorp in April 2014,   and the resort was renamed Trump Turnberry in June 2014.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
         "Lease to Prince Edward, Earl of Wessex \n\nIn March 1998, the Mansion House at Bagshot Park, including a block of stables and Sunningdale Lodge, was leased by the Crown Estate to Prince Edward for 50 years.",
         "Persimmon wood was also heavily used in making the highest-quality heads of the golf clubs known as \"woods\" until the golf industry moved primarily to metal woods in the last years of the 20th century."
       ],
@@ -6649,7 +6766,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1703
+        "latency_ms": 1703,
+        "gold_answer_match": true
       }
     },
     {
@@ -6659,7 +6777,7 @@
         "The United States' Apollo 11 was the first manned mission to land on the Moon, on 20 July 1969.",
         "The first space burial occurred in 1992 when the NASA space shuttle Columbia (mission STS-52) carried a portion of Gene Roddenberry's cremated remains into space and returned them to Earth.",
         "Star Trek aired on NBC from September 8, 1966 to June 3, 1969  and from September 6 on Canada's CTV network.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.",
         "(1999) John Flamsteed, the first Astronomer Royal."
       ],
       "retrieved_provenance": [
@@ -6705,12 +6823,13 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2674
+        "latency_ms": 2674,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-jp_1699",
-      "response": "Based on the provided context, the country is not explicitly named, but the context mentions that \u201cafter much of Egypt came under the rule of the Kings of Napata,\u201d a burst of pyramid-building occurred in what is **present-day Sudan**. The hint also refers to the Nubian Pyramids, which are located in Sudan.  \n\nTherefore, according to the context, the answer is **Sudan**.",
+      "response": "Based on the provided context, the country is not explicitly named, but the context mentions that “after much of Egypt came under the rule of the Kings of Napata,” a burst of pyramid-building occurred in what is **present-day Sudan**. The hint also refers to the Nubian Pyramids, which are located in Sudan.  \n\nTherefore, according to the context, the answer is **Sudan**.",
       "retrieved_chunks": [
         "Long after the end of Egypt's own pyramid-building period, a burst of pyramid-building occurred in what is present-day Sudan, after much of Egypt came under the rule of the Kings of Napata.",
         "Europe is the world's second-smallest continent by surface area, covering about  or 2% of the Earth's surface and about 6.8% of its land area.",
@@ -6761,7 +6880,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 3171
+        "latency_ms": 3171,
+        "gold_answer_match": true
       }
     },
     {
@@ -6817,7 +6937,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1638
+        "latency_ms": 1638,
+        "gold_answer_match": false
       }
     },
     {
@@ -6873,7 +6994,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 2049
+        "latency_ms": 2049,
+        "gold_answer_match": false
       }
     },
     {
@@ -6883,7 +7005,7 @@
         "Alex McAvoy, who played Sunny Jim in The Vital Spark, appears in one episode as a fellow captain of Para Handy in the coastal trade.",
         "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
         "The Monocled Mutineer\n\nMcGann's first major dramatic role was the infamous British deserter and criminal Percy Toplis in the 1986 BBC serial The Monocled Mutineer."
       ],
       "retrieved_provenance": [
@@ -6929,7 +7051,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1878
+        "latency_ms": 1878,
+        "gold_answer_match": false
       }
     },
     {
@@ -6940,7 +7063,7 @@
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "Twilight is a series of four vampire-themed fantasy romance novels by American author Stephenie Meyer.",
         "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [
         [
@@ -6985,7 +7108,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1548
+        "latency_ms": 1548,
+        "gold_answer_match": true
       }
     },
     {
@@ -7041,7 +7165,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1551
+        "latency_ms": 1551,
+        "gold_answer_match": true
       }
     },
     {
@@ -7097,7 +7222,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1448
+        "latency_ms": 1448,
+        "gold_answer_match": false
       }
     },
     {
@@ -7106,8 +7232,8 @@
       "retrieved_chunks": [
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman."
       ],
       "retrieved_provenance": [
@@ -7153,7 +7279,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 2851
+        "latency_ms": 2851,
+        "gold_answer_match": true
       }
     },
     {
@@ -7209,7 +7336,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2601
+        "latency_ms": 2601,
+        "gold_answer_match": false
       }
     },
     {
@@ -7217,7 +7345,7 @@
       "response": "A sophomore is a second-year student in the US college system, as indicated by the context classifying students as \"freshmen\", \"sophomores\", \"juniors\" and \"seniors.\"",
       "retrieved_chunks": [
         "University students are generally classified as first, second, third or fourth-year students, and the American system of classifying them as \"freshmen\", \"sophomores\", \"juniors\" and \"seniors\" is seldom used or even understood in Canada.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden.",
         "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr."
@@ -7265,7 +7393,8 @@
           "supported": 3,
           "total_quoted": 4
         },
-        "latency_ms": 2000
+        "latency_ms": 2000,
+        "gold_answer_match": true
       }
     },
     {
@@ -7274,7 +7403,7 @@
       "retrieved_chunks": [
         "A hi-hat, also spelled hihat, is a combination cymbal and stand found in a standard drum kit used by percussionists playing popular music.",
         "Each set of twelve frets represents an octave.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
         "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones.",
         "Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St."
       ],
@@ -7321,7 +7450,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1862
+        "latency_ms": 1862,
+        "gold_answer_match": false
       }
     },
     {
@@ -7331,7 +7461,7 @@
         "Cape Wrath (Gaelic: Am Parbh, known as An Carbh in Lewis) is a cape in the Durness parish of the county of Sutherland in the Highlands of Scotland.",
         "Europe is the world's second-smallest continent by surface area, covering about  or 2% of the Earth's surface and about 6.8% of its land area.",
         "Mindanao ( ) is the second largest and southernmost major island in the Philippines.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "Some definitions of southern Europe, also known as Mediterranean Europe, include the countries of the Iberian peninsula (Spain and Portugal), the Italian peninsula, Southern France, Greece and Malta."
       ],
       "retrieved_provenance": [
@@ -7377,7 +7507,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1444
+        "latency_ms": 1444,
+        "gold_answer_match": true
       }
     },
     {
@@ -7387,8 +7518,8 @@
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia.",
         "In late 1694, however, she contracted smallpox.",
         "A dramatic increase in the incidence of pertussis followed.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
       ],
       "retrieved_provenance": [
         [
@@ -7433,7 +7564,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1679
+        "latency_ms": 1679,
+        "gold_answer_match": false
       }
     },
     {
@@ -7442,7 +7574,7 @@
       "retrieved_chunks": [
         "Lease to Prince Edward, Earl of Wessex \n\nIn March 1998, the Mansion House at Bagshot Park, including a block of stables and Sunningdale Lodge, was leased by the Crown Estate to Prince Edward for 50 years.",
         "Chesterton is well known for his fictional priest-detective Father Brown,  and for his reasoned apologetics.",
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman."
       ],
@@ -7489,7 +7621,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1826
+        "latency_ms": 1826,
+        "gold_answer_match": true
       }
     },
     {
@@ -7545,7 +7678,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1558
+        "latency_ms": 1558,
+        "gold_answer_match": true
       }
     },
     {
@@ -7553,7 +7687,7 @@
       "response": "Ronseal woodstain and wood-dye.",
       "retrieved_chunks": [
         "It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast .",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia."
@@ -7601,7 +7735,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1849
+        "latency_ms": 1849,
+        "gold_answer_match": true
       }
     },
     {
@@ -7657,16 +7792,17 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1476
+        "latency_ms": 1476,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_7551",
       "response": "The provided context does not contain the answer to which American city has districts called Financial, Mission, Japantown and Richmond.",
       "retrieved_chunks": [
-        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
         "Tallahassee is the state capital.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
         "Portrait \n\nHistory \n\nBecause of the gate's position at the front of the Imperial City, and historical events that have taken place on Tiananmen Square, the gate has great political significance."
       ],
@@ -7713,7 +7849,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1904
+        "latency_ms": 1904,
+        "gold_answer_match": false
       }
     },
     {
@@ -7769,7 +7906,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1649
+        "latency_ms": 1649,
+        "gold_answer_match": true
       }
     },
     {
@@ -7825,7 +7963,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1854
+        "latency_ms": 1854,
+        "gold_answer_match": true
       }
     },
     {
@@ -7835,8 +7974,8 @@
         "Tsipras has been leader of the left-wing Greek political party Syriza since 4 October 2009.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr."
       ],
       "retrieved_provenance": [
         [
@@ -7881,7 +8020,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1633
+        "latency_ms": 1633,
+        "gold_answer_match": true
       }
     },
     {
@@ -7892,7 +8032,7 @@
         "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final."
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final."
       ],
       "retrieved_provenance": [
         [
@@ -7937,7 +8077,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1564
+        "latency_ms": 1564,
+        "gold_answer_match": true
       }
     },
     {
@@ -7945,7 +8086,7 @@
       "response": "Alessandro Volta",
       "retrieved_chunks": [
         "Alessandro Volta built and described the first electrochemical battery, the voltaic pile, in 1800.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.",
         "It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast .",
         "(1999) John Flamsteed, the first Astronomer Royal.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr."
@@ -7993,7 +8134,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1526
+        "latency_ms": 1526,
+        "gold_answer_match": true
       }
     },
     {
@@ -8001,7 +8143,7 @@
       "response": "The provided context does not contain information about who won more heavyweight title fights than Mohammed Ali. The only relevant information is that ESPN ranked Ali second on a list of the greatest heavyweights, behind Joe Louis. However, that list is based on \"greatest heavyweights,\" not necessarily on the number of title fights won. Therefore, I cannot answer your question based on the given context.",
       "retrieved_chunks": [
         "In December 2007, ESPN listed Ali second in its choice of the greatest heavyweights of all time, behind Joe Louis.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
         "Live performances \n\nShakira performed \"Waka Waka (This Time for Africa)\" at the 2010 FIFA World Cup opening ceremony on 10 June at the Orlando Stadium in Johannesburg, South Africa.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals."
@@ -8049,7 +8191,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 2471
+        "latency_ms": 2471,
+        "gold_answer_match": true
       }
     },
     {
@@ -8058,7 +8201,7 @@
       "retrieved_chunks": [
         "The third, rearmost molar in each group is called a wisdom tooth.",
         "A full Braille cell includes six raised dots arranged in two lateral rows each having three dots.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov.",
         "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright."
       ],
@@ -8105,7 +8248,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 3746
+        "latency_ms": 3746,
+        "gold_answer_match": true
       }
     },
     {
@@ -8114,7 +8258,7 @@
       "retrieved_chunks": [
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "The Singing Detective is a BBC television serial drama, written by Dennis Potter, which stars Michael Gambon and was directed by Jon Amiel."
       ],
@@ -8161,7 +8305,8 @@
           "supported": 1,
           "total_quoted": 3
         },
-        "latency_ms": 2818
+        "latency_ms": 2818,
+        "gold_answer_match": true
       }
     },
     {
@@ -8217,7 +8362,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1899
+        "latency_ms": 1899,
+        "gold_answer_match": true
       }
     },
     {
@@ -8225,7 +8371,7 @@
       "response": "The context does not contain the answer to your question.",
       "retrieved_chunks": [
         "He is the kingly Messiah, referred to repeatedly as \"king\" and \"Son of David.\" A noteworthy feature of this gospel are the five discourses, collections of teachings on particular themes, including the Sermon on the Mount.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "Chesterton is well known for his fictional priest-detective Father Brown,  and for his reasoned apologetics.",
         "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges."
@@ -8273,14 +8419,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1645
+        "latency_ms": 1645,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-sfq_9912",
       "response": "The provided context does not contain the answer to this question.",
       "retrieved_chunks": [
-        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta.",
+        "Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta.",
         "Outside of Italy, focaccia is used extensively as a sandwich bread.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
         "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy.",
@@ -8329,17 +8476,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1594
+        "latency_ms": 1594,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-wh_3938",
       "response": "According to the provided context, Lew Hoad (AUS) defeated Ken Rosewall (AUS) in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships. The context does not mention the winner of the 1957 title.",
       "retrieved_chunks": [
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals."
       ],
       "retrieved_provenance": [
@@ -8385,17 +8533,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 3194
+        "latency_ms": 3194,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_10284",
-      "response": "The context does not specify the US state where the original Ferris Wheel was erected for the 1893 World\u2019s Columbian Exposition.",
+      "response": "The context does not specify the US state where the original Ferris Wheel was erected for the 1893 World’s Columbian Exposition.",
       "retrieved_chunks": [
         "Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "The United States' Apollo 11 was the first manned mission to land on the Moon, on 20 July 1969.",
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
         "Portrait \n\nHistory \n\nBecause of the gate's position at the front of the Imperial City, and historical events that have taken place on Tiananmen Square, the gate has great political significance."
       ],
       "retrieved_provenance": [
@@ -8441,7 +8590,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1679
+        "latency_ms": 1679,
+        "gold_answer_match": false
       }
     }
   ],
@@ -8487,12 +8637,18 @@
       0.15873015873015875,
       0.5238095238095238
     ],
-    "quoted_content_supported_rate_n": 21
+    "quoted_content_supported_rate_n": 21,
+    "gold_answer_match_rate_mean": 0.6933333333333334,
+    "gold_answer_match_rate_ci95": [
+      0.62,
+      0.76
+    ],
+    "gold_answer_match_rate_n": 150
   },
   "caveats": [
-    "ADR-0027: only verbatim_pass + connective_hygiene from the Hyphae 9-dimension scorer are directly comparable across systems. Schema fidelity, limitation recall/precision, lexical diversity, role coverage, boundary smoothness are Hyphae-specific by design \u2014 see ADR-0027 \u00a7'Comparable subset' before reading the writeup.",
+    "ADR-0027: only verbatim_pass + connective_hygiene from the Hyphae 9-dimension scorer are directly comparable across systems. Schema fidelity, limitation recall/precision, lexical diversity, role coverage, boundary smoothness are Hyphae-specific by design — see ADR-0027 §'Comparable subset' before reading the writeup.",
     "Unsupported-claim rate is reported BOTH filtered (excluding Hyphae connective sentences) and raw. The filter benefits Hyphae; consult both columns.",
     "N=1 hardware (arm). Generalisation to other hardware classes is a separate ADR (planned: 0028).",
-    "No ablation studies in this run \u2014 every Hyphae component is enabled. ADR-0029 (planned) covers the ablation harness."
+    "No ablation studies in this run — every Hyphae component is enabled. ADR-0029 (planned) covers the ablation harness."
   ]
 }

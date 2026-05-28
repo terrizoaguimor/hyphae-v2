@@ -93,18 +93,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1164
+        "latency_ms": 1164,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_8177",
       "response": "The US President born Leslie Lynch King Jr. was the 38th President of the United States, as mentioned in [1]. Therefore, the answer is the president mentioned in the first context, Gerald Ford.",
       "retrieved_chunks": [
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr.",
         "Asher met the illustrator Gerald Scarfe in 1971.",
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982)."
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982)."
       ],
       "retrieved_provenance": [
         [
@@ -149,7 +150,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 920
+        "latency_ms": 920,
+        "gold_answer_match": true
       }
     },
     {
@@ -157,7 +159,7 @@
       "response": "The context does not contain the answer to the question.",
       "retrieved_chunks": [
         "In addition, if the volume is expanded by heat but reduced again by pressure, the viscosity remains the same.",
-        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta.",
+        "Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta.",
         "\"Like a Virgin\" is a song by American singer Madonna.",
         "A full Braille cell includes six raised dots arranged in two lateral rows each having three dots.",
         "The most frequently used paper size is A4 measuring 210 x."
@@ -205,7 +207,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 637
+        "latency_ms": 637,
+        "gold_answer_match": false
       }
     },
     {
@@ -213,8 +216,8 @@
       "response": "The context does not directly state that Ville-Marie was the original name of a Canadian city, but it does mention an archeological dig that uncovered the remains of Ville-Marie under a maritime warehouse in Montreal. This implies that Ville-Marie is related to Montreal. Therefore, the answer is Montreal.",
       "retrieved_chunks": [
         "In 2007 an archeological dig uncovered the remains of Ville-Marie under a maritime warehouse in Montreal.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "Pearson did not make the move into politics until a few years later, after King had announced his retirement as the Prime Minister of Canada.",
         "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River."
       ],
@@ -261,15 +264,16 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 979
+        "latency_ms": 979,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_12369",
       "response": "The context does not provide the information required to answer the question. Specifically, it does not mention the year Jean-Francois Champollion published the first correct translation of Egyptian hieroglyphs from the Rosetta Stone (although it mentions his 1822 publication related to deciphering Rosetta hieroglyphs), the Roman Catholic Church's actions regarding Galileo Galilei's \"Dialogue\", or Britain repealing the death penalty for over 100 crimes. Therefore, the answer to the question cannot be determined based on the provided context.",
       "retrieved_chunks": [
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
         "Asher met the illustrator Gerald Scarfe in 1971.",
         "History of the concept\n\nThe law was named after Sir Thomas Gresham, a sixteenth-century financial agent of the English Crown in the city of Antwerp, to explain to Queen Elizabeth I what was happening to the English shilling.",
         "In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee."
@@ -317,17 +321,18 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1982
+        "latency_ms": 1982,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-wh_4199",
-      "response": "Marge Simpson's maiden name is Bouvier. This is stated in the given context: \"Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier)\". The term \"n\u00e9e\" is used to indicate a woman's maiden name, i.e., her surname before she married.",
+      "response": "Marge Simpson's maiden name is Bouvier. This is stated in the given context: \"Marjorie Jacqueline \"Marge\" Simpson (née Bouvier)\". The term \"née\" is used to indicate a woman's maiden name, i.e., her surname before she married.",
       "retrieved_chunks": [
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).",
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family.",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted).",
         "Carpenter and Debra Hill began drafting a story titled The Babysitter Murders, but the title was changed at Yablans' request, suggesting the setting be changed to Halloween night and naming it Halloween instead."
       ],
       "retrieved_provenance": [
@@ -373,7 +378,8 @@
           "supported": 3,
           "total_quoted": 3
         },
-        "latency_ms": 1371
+        "latency_ms": 1371,
+        "gold_answer_match": true
       }
     },
     {
@@ -384,7 +390,7 @@
         "Some definitions of southern Europe, also known as Mediterranean Europe, include the countries of the Iberian peninsula (Spain and Portugal), the Italian peninsula, Southern France, Greece and Malta.",
         "The Gulf of Carpentaria () is a large, shallow sea enclosed on three sides by northern Australia and bounded on the north by the Arafura Sea (the body of water that lies between Australia and New Guinea).",
         "Outside of Italy, focaccia is used extensively as a sandwich bread.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England."
+        "The Hallé is an English symphony orchestra based in Manchester, England."
       ],
       "retrieved_provenance": [
         [
@@ -429,7 +435,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1296
+        "latency_ms": 1296,
+        "gold_answer_match": false
       }
     },
     {
@@ -437,10 +444,10 @@
       "response": "The context does not contain information about an artist married to Jane Asher. However, it does mention that Asher met Gerald Scarfe in 1971. Further research is not possible within the given context, but based on external general knowledge, it is known that Jane Asher was married to Gerald Scarfe is not correct, she was actually married to  Richard Attenborough's friend and fellow actor is not mentioned but  actually to  Gerald Scarfe is not the one, the one is actually  Gerald Scarfe is married to Jane Asher is not the case. The correct information is that Jane Asher was in a long-term relationship with  Gerald Scarfe is not the one, actually it is  Gerald Scarfe is the illustrator and he is married to Jane Asher. They have three children together. So the answer is Gerald Scarfe.",
       "retrieved_chunks": [
         "Asher met the illustrator Gerald Scarfe in 1971.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee.",
         "When the novel The Joy Luck Club was released in 1989, Wayne Wang approached Amy Tan, the novel's author, with the idea of adapting the novel that he admired into a film.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
       ],
       "retrieved_provenance": [
         [
@@ -485,7 +492,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1912
+        "latency_ms": 1912,
+        "gold_answer_match": true
       }
     },
     {
@@ -541,7 +549,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1471
+        "latency_ms": 1471,
+        "gold_answer_match": true
       }
     },
     {
@@ -597,14 +606,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1733
+        "latency_ms": 1733,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bb_3998",
-      "response": "New Year. According to the context, \"The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year...\" Therefore, the word Tet in the Tet Offensive referred to the Vietnamese national New Year.",
+      "response": "New Year. According to the context, \"The name of the offensive comes from the Tết holiday, the Vietnamese New Year...\" Therefore, the word Tet in the Tet Offensive referred to the Vietnamese national New Year.",
       "retrieved_chunks": [
-        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place.",
+        "The name of the offensive comes from the Tết holiday, the Vietnamese New Year, when the first major attacks took place.",
         "Pottinger sent this old draft treaty on shore, with the letter s struck out of islands and the words Hong Kong placed after it.",
         "The locomotive nameplates read: 'Harry Patch The last survivor of the trenches' and included a coloured line of all eight ribbons from the medals awarded to Patch.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
@@ -653,7 +663,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 847
+        "latency_ms": 847,
+        "gold_answer_match": true
       }
     },
     {
@@ -709,7 +720,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1479
+        "latency_ms": 1479,
+        "gold_answer_match": true
       }
     },
     {
@@ -718,7 +730,7 @@
       "retrieved_chunks": [
         "When the Club was founded in 1831 Rule 1 of the Garrick Club Rules and Regulations called for the \"formation of a theatrical Library, with works on costume\".",
         "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
         "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges.",
         "Asher met the illustrator Gerald Scarfe in 1971."
       ],
@@ -765,7 +777,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1076
+        "latency_ms": 1076,
+        "gold_answer_match": true
       }
     },
     {
@@ -775,7 +788,7 @@
         "Albert Finney  (born 9 May 1936) is an English actor.",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
         "Asher met the illustrator Gerald Scarfe in 1971.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute."
       ],
       "retrieved_provenance": [
@@ -821,14 +834,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 821
+        "latency_ms": 821,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-sfq_18918",
-      "response": "The River Durance flows into the Rh\u00f4ne near Avignon.",
+      "response": "The River Durance flows into the Rhône near Avignon.",
       "retrieved_chunks": [
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon.",
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon.",
         "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River.",
         "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge.",
         "In August, Keswick features the Derwentwater Regatta.",
@@ -877,7 +891,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1137
+        "latency_ms": 1137,
+        "gold_answer_match": true
       }
     },
     {
@@ -886,8 +901,8 @@
       "retrieved_chunks": [
         "Outside of Italy, focaccia is used extensively as a sandwich bread.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
-        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "The little dog laughed,\nTo see such sport,\nAnd the dish ran away with the spoon.I."
       ],
       "retrieved_provenance": [
@@ -933,14 +948,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1367
+        "latency_ms": 1367,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_409",
       "response": "According to the context, 'Professor Cuthbert Calculus' is associated with Tintin. The context states that \"Professor Cuthbert Calculus... is a regular character alongside Tintin, Snowy, and Captain Haddock.\" Therefore, the answer is Tintin.",
       "retrieved_chunks": [
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
         "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges.",
         "Alex McAvoy, who played Sunny Jim in The Vital Spark, appears in one episode as a fellow captain of Para Handy in the coastal trade.",
         "Asher met the illustrator Gerald Scarfe in 1971.",
@@ -989,7 +1005,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 962
+        "latency_ms": 962,
+        "gold_answer_match": true
       }
     },
     {
@@ -1045,16 +1062,17 @@
           "supported": 2,
           "total_quoted": 5
         },
-        "latency_ms": 1734
+        "latency_ms": 1734,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_6822",
       "response": "The context does not mention Ayrton Senna. However, it does provide information about the 1994 San Marino Grand Prix. According to [1], the 1994 San Marino Grand Prix was held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy. Therefore, based on external knowledge that Ayrton Senna died during the 1994 San Marino Grand Prix, the answer is: Autodromo Enzo e Dino Ferrari.",
       "retrieved_chunks": [
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "The move of the race to the early evening made it possible for drivers to do Double Duty - run the Indianapolis 500, then immediately fly from Indianapolis to Charlotte, and participate in the Coca-Cola 600.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy."
       ],
@@ -1101,7 +1119,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1267
+        "latency_ms": 1267,
+        "gold_answer_match": true
       }
     },
     {
@@ -1109,10 +1128,10 @@
       "response": "The context does not directly mention a Frenchman who was a football administrator and head of FIFA from 1921 to 1954. However, it does mention that the World Cup was renamed in 1946 after the FIFA president Jules Rimet. Although Jules Rimet's nationality is not explicitly stated in the context, it is known from general knowledge that Jules Rimet was French. The context [1] implies that Jules Rimet is regarded as the founder of the football World Cup as it states he \"set up the first tournament.\" Therefore, based on the information given and general knowledge about Jules Rimet, the answer is Jules Rimet.",
       "retrieved_chunks": [
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
         "(1999) John Flamsteed, the first Astronomer Royal.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
       ],
       "retrieved_provenance": [
         [
@@ -1157,7 +1176,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1533
+        "latency_ms": 1533,
+        "gold_answer_match": true
       }
     },
     {
@@ -1213,7 +1233,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1155
+        "latency_ms": 1155,
+        "gold_answer_match": true
       }
     },
     {
@@ -1269,7 +1290,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1361
+        "latency_ms": 1361,
+        "gold_answer_match": true
       }
     },
     {
@@ -1277,9 +1299,9 @@
       "response": "The context does not directly state who was elected US President in November 2012. However, it is mentioned that \"The Electoral College formally re-elects President Obama and Vice President Biden\" on December 17, 2012. This implies that President Obama was elected/re-elected. Therefore, based on this information, it can be inferred that Barack Obama was elected US President in November 2012.",
       "retrieved_chunks": [
         "* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.",
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.",
         "Donald Trump purchased the hotel and golf courses from Leisurecorp in April 2014,   and the resort was renamed Trump Turnberry in June 2014."
       ],
       "retrieved_provenance": [
@@ -1325,7 +1347,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1678
+        "latency_ms": 1678,
+        "gold_answer_match": true
       }
     },
     {
@@ -1381,7 +1404,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 958
+        "latency_ms": 958,
+        "gold_answer_match": true
       }
     },
     {
@@ -1392,7 +1416,7 @@
         "Albert Finney  (born 9 May 1936) is an English actor.",
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor.",
         "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
       ],
       "retrieved_provenance": [
         [
@@ -1437,7 +1461,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 754
+        "latency_ms": 754,
+        "gold_answer_match": true
       }
     },
     {
@@ -1448,7 +1473,7 @@
         "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "Books \n\nThe character of Charlie Chan was created by Earl Derr Biggers.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus."
+        "Perseus was the son of the mortal Danaë and the god Zeus."
       ],
       "retrieved_provenance": [
         [
@@ -1493,7 +1518,8 @@
           "supported": 4,
           "total_quoted": 4
         },
-        "latency_ms": 1742
+        "latency_ms": 1742,
+        "gold_answer_match": true
       }
     },
     {
@@ -1549,7 +1575,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 795
+        "latency_ms": 795,
+        "gold_answer_match": true
       }
     },
     {
@@ -1605,7 +1632,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 874
+        "latency_ms": 874,
+        "gold_answer_match": true
       }
     },
     {
@@ -1661,7 +1689,8 @@
           "supported": 1,
           "total_quoted": 3
         },
-        "latency_ms": 1191
+        "latency_ms": 1191,
+        "gold_answer_match": true
       }
     },
     {
@@ -1717,7 +1746,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1046
+        "latency_ms": 1046,
+        "gold_answer_match": true
       }
     },
     {
@@ -1725,7 +1755,7 @@
       "response": "The context does not directly state the country where the Obon (or Bon) Buddhist festival is held annually. However, sentence [1] mentions that \"in comparison to the celebrations in Japan, the festival is celebrated on a much smaller scale in Penang, Selangor and Sabah\", suggesting that the Obon festival is celebrated in Japan. Therefore, the answer is Japan.",
       "retrieved_chunks": [
         "In comparison to the celebrations in Japan, the festival is celebrated on a much smaller scale in Penang, Selangor and Sabah, and is less associated with Buddhism and more with Japanese culture.",
-        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place.",
+        "The name of the offensive comes from the Tết holiday, the Vietnamese New Year, when the first major attacks took place.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia.",
         "In August, Keswick features the Derwentwater Regatta."
@@ -1773,15 +1803,16 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1119
+        "latency_ms": 1119,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_3384",
       "response": "According to the provided context, specifically point [1], the group of female figures known as valkyries are responsible for leading half of those who die in combat to Valhalla upon death. They are chosen by Odin. Therefore, the answer is valkyries.",
       "retrieved_chunks": [
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia.",
         "In the Sumerian King List, it relies on the flood motif to divide its history into preflood (antediluvian) and postflood periods.",
         "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones."
@@ -1829,18 +1860,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 980
+        "latency_ms": 980,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-jp_3913",
       "response": "Karl Marx. According to the context, specifically sentence [1] and [3], Friedrich Engels worked with Karl Marx. Sentence [1] states that Engels wrote for a journal edited by Marx, and sentence [3] states that Marx and Engels co-authored The Communist Manifesto.",
       "retrieved_chunks": [
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
         "While modern critics have noted Crane's \"anticipation of the modern spectacle of war\",  others, such as Crane scholar Stanley Wertheim, believe the work to be \"unquestionably the most realistic novel about the American Civil War\".",
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
       ],
       "retrieved_provenance": [
         [
@@ -1885,7 +1917,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1035
+        "latency_ms": 1035,
+        "gold_answer_match": true
       }
     },
     {
@@ -1896,7 +1929,7 @@
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
         "The Dominican Republic () is a sovereign state occupying the eastern five-eighths of the island of Hispaniola, in the Greater Antilles archipelago in the Caribbean region.",
         "The Dominican Republic () is a sovereign state occupying the eastern five-eighths of the island of Hispaniola, in the Greater Antilles archipelago in the Caribbean region.",
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
       ],
       "retrieved_provenance": [
         [
@@ -1941,7 +1974,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 3723
+        "latency_ms": 3723,
+        "gold_answer_match": true
       }
     },
     {
@@ -1950,8 +1984,8 @@
       "retrieved_chunks": [
         "Associated Polyandry, or polyandry that begins as monogamy, with the second husband entering the relationship later, is also practiced  and it sometimes initiated by the wife.",
         "Since the zodiac animal cycle of 12 is divisible by two, every zodiac sign can occur only as either Yin or Yang: the Dragon is always yang, the Snake is always yin, etc.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "University students are generally classified as first, second, third or fourth-year students, and the American system of classifying them as \"freshmen\", \"sophomores\", \"juniors\" and \"seniors\" is seldom used or even understood in Canada."
       ],
       "retrieved_provenance": [
@@ -1997,7 +2031,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 868
+        "latency_ms": 868,
+        "gold_answer_match": false
       }
     },
     {
@@ -2053,7 +2088,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 685
+        "latency_ms": 685,
+        "gold_answer_match": true
       }
     },
     {
@@ -2063,7 +2099,7 @@
         "In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee.",
         "The musical was inspired by the painting \"A Sunday Afternoon on the Island of La Grande Jatte\" by Georges Seurat.",
         "It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast .",
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).",
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted).",
         "Asher met the illustrator Gerald Scarfe in 1971."
       ],
       "retrieved_provenance": [
@@ -2109,7 +2145,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1209
+        "latency_ms": 1209,
+        "gold_answer_match": true
       }
     },
     {
@@ -2165,18 +2202,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1679
+        "latency_ms": 1679,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-wh_1283",
       "response": "The context does not contain information about a war veteran nicknamed 'The Last Fighting Tommy' who died in 2009. However, it does mention Harry Patch, \"the last survivor of the trenches\", which is related to World War I. Further research is not possible within the given context, but Harry Patch died in 2009 and was known as \"the last survivor of the trenches\" and also sometimes referred to as \"the last Fighting Tommy\" in some sources outside of the given context.",
       "retrieved_chunks": [
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.",
         "The locomotive nameplates read: 'Harry Patch The last survivor of the trenches' and included a coloured line of all eight ribbons from the medals awarded to Patch.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor.",
-        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place."
+        "The name of the offensive comes from the Tết holiday, the Vietnamese New Year, when the first major attacks took place."
       ],
       "retrieved_provenance": [
         [
@@ -2221,7 +2259,8 @@
           "supported": 0,
           "total_quoted": 3
         },
-        "latency_ms": 1415
+        "latency_ms": 1415,
+        "gold_answer_match": true
       }
     },
     {
@@ -2277,18 +2316,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 950
+        "latency_ms": 950,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-qf_3005",
       "response": "Yes, Beethoven wrote only one opera, and it is called \"Fidelio\". This information is found in the given context at [1].",
       "retrieved_chunks": [
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
         "The musical was inspired by the painting \"A Sunday Afternoon on the Island of La Grande Jatte\" by Georges Seurat.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England."
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
+        "The Hallé is an English symphony orchestra based in Manchester, England."
       ],
       "retrieved_provenance": [
         [
@@ -2333,7 +2373,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 794
+        "latency_ms": 794,
+        "gold_answer_match": true
       }
     },
     {
@@ -2343,7 +2384,7 @@
         "The highway code was first published in 1931 as a booklet and has been regularly updated to reflect current practices.",
         "History of the concept\n\nThe law was named after Sir Thomas Gresham, a sixteenth-century financial agent of the English Crown in the city of Antwerp, to explain to Queen Elizabeth I what was happening to the English shilling.",
         "The United States' Apollo 11 was the first manned mission to land on the Moon, on 20 July 1969.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
         "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge."
       ],
       "retrieved_provenance": [
@@ -2389,17 +2430,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 742
+        "latency_ms": 742,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_1463",
-      "response": "The context does not mention Catherine Zeta-Jones winning the Best Supporting Actress Oscar. However, it does state that Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002). To answer the question, we would need additional information that is not provided in the context. Nevertheless, based on external knowledge, Catherine Zeta-Jones won the Academy Award for Best Supporting Actress for her role as Velma Kelly in Chicago. Therefore, according to external information, the answer is Velma Kelly. However, to be precise with the given instruction, the correct response should be: The context does not contain the answer.",
+      "response": "The context does not mention Catherine Zeta-Jones winning the Best Supporting Actress Oscar. However, it does state that Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002). To answer the question, we would need additional information that is not provided in the context. Nevertheless, based on external knowledge, Catherine Zeta-Jones won the Academy Award for Best Supporting Actress for her role as Velma Kelly in Chicago. Therefore, according to external information, the answer is Velma Kelly. However, to be precise with the given instruction, the correct response should be: The context does not contain the answer.",
       "retrieved_chunks": [
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
         "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute.",
         "* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice.",
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
         "When the novel The Joy Luck Club was released in 1989, Wayne Wang approached Amy Tan, the novel's author, with the idea of adapting the novel that he admired into a film."
       ],
       "retrieved_provenance": [
@@ -2445,7 +2487,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1585
+        "latency_ms": 1585,
+        "gold_answer_match": true
       }
     },
     {
@@ -2501,7 +2544,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 777
+        "latency_ms": 777,
+        "gold_answer_match": true
       }
     },
     {
@@ -2557,17 +2601,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 929
+        "latency_ms": 929,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bt_2421",
       "response": "The first name of the Kray twins' mother was Violet. According to the context, Ronnie and Reggie Kray were born to Charles David Kray and Violet Annie Lee.",
       "retrieved_chunks": [
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "Associated Polyandry, or polyandry that begins as monogamy, with the second husband entering the relationship later, is also practiced  and it sometimes initiated by the wife."
       ],
       "retrieved_provenance": [
@@ -2613,18 +2658,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 839
+        "latency_ms": 839,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_4681",
-      "response": "The context does not mention a bridge connecting Detroit and Windsor directly. However, it does mention three international border crossings between the two cities: the Ambassador Bridge, Detroit\u2013Windsor Tunnel, and Michigan Central Railway Tunnel. The Ambassador Bridge is likely the answer to the question, as it is referred to as a bridge. Therefore, the answer is the Ambassador Bridge.",
+      "response": "The context does not mention a bridge connecting Detroit and Windsor directly. However, it does mention three international border crossings between the two cities: the Ambassador Bridge, Detroit–Windsor Tunnel, and Michigan Central Railway Tunnel. The Ambassador Bridge is likely the answer to the question, as it is referred to as a bridge. Therefore, the answer is the Ambassador Bridge.",
       "retrieved_chunks": [
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge.",
         "In August, Keswick features the Derwentwater Regatta.",
         "Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St.",
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon."
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon."
       ],
       "retrieved_provenance": [
         [
@@ -2669,7 +2715,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1101
+        "latency_ms": 1101,
+        "gold_answer_match": true
       }
     },
     {
@@ -2677,7 +2724,7 @@
       "response": "The context does not provide the answer to the question. The information about Tottenham Hotspur winning the League and F.A. in sentence [1] and Bolton winning their first major trophy in sentence [2] is related to FA Cup history, but it does not directly answer the question. Sentence [2] mentions Bolton winning in 1923, and sentence [1] does not specify the year. There is no information in the context that directly answers the question about a team from outside the League or Premier League winning the FA Cup in 1901. Therefore, the answer is not available in the given context.",
       "retrieved_chunks": [
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
         "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "When the Club was founded in 1831 Rule 1 of the Garrick Club Rules and Regulations called for the \"formation of a theatrical Library, with works on costume\"."
@@ -2725,7 +2772,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1455
+        "latency_ms": 1455,
+        "gold_answer_match": true
       }
     },
     {
@@ -2781,7 +2829,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 701
+        "latency_ms": 701,
+        "gold_answer_match": true
       }
     },
     {
@@ -2789,7 +2838,7 @@
       "response": "The context does not provide information about a St Helens born ex Rugby League player who died recently after a seven-year battle with cancer. The context does mention Steve Prescott, a player who came through the St Helens Colts (now known as the reserves), but it does not mention his death or a battle with cancer. Therefore, the answer to the question is not available in the provided context.",
       "retrieved_chunks": [
         "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr.",
         "Shane Keith Warne (born 13 September 1969) is an Australian former international cricketer, widely regarded as one of the best bowlers in the history of the game."
@@ -2837,7 +2886,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1218
+        "latency_ms": 1218,
+        "gold_answer_match": true
       }
     },
     {
@@ -2845,7 +2895,7 @@
       "response": "According to the given context, specifically in [1], taphophobia is related to Edgar Allan Poe's horror story \"The Premature Burial\". Therefore, taphophobia is the abnormal fear of being buried alive.",
       "retrieved_chunks": [
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia.",
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
         "A full Braille cell includes six raised dots arranged in two lateral rows each having three dots.",
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor.",
         "In late 1694, however, she contracted smallpox."
@@ -2893,7 +2943,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 898
+        "latency_ms": 898,
+        "gold_answer_match": true
       }
     },
     {
@@ -2949,18 +3000,19 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 1093
+        "latency_ms": 1093,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_24460",
       "response": "The context does not directly mention the US President who died in office in July 1850. However, it does provide some relevant information: Zachary Taylor was nominated for President at the 1848 Whig National Convention and was a slaveholder from Virginia. Although it is not directly stated in the context, historical knowledge based on the given information indicates that Zachary Taylor was the President who died in office. Taylor died on July 9, 1850. According to historical records not provided in the context, Millard Fillmore was indeed his Vice President. Therefore, based on external knowledge, the answer is Zachary Taylor. However, as per the instructions, since the context does not directly contain the answer, the correct response should be: The context does not contain the answer.",
       "retrieved_chunks": [
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "Lease to Prince Edward, Earl of Wessex \n\nIn March 1998, the Mansion House at Bagshot Park, including a block of stables and Sunningdale Lodge, was leased by the Crown Estate to Prince Edward for 50 years.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [
         [
@@ -3005,7 +3057,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1673
+        "latency_ms": 1673,
+        "gold_answer_match": true
       }
     },
     {
@@ -3013,7 +3066,7 @@
       "response": "According to the context, \"Each set of twelve frets represents an octave.\" Therefore, the same notes as the open strings, but an octave higher, are found at the 12th fret on a standard guitar.",
       "retrieved_chunks": [
         "Each set of twelve frets represents an octave.",
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
         "The most frequently used paper size is A4 measuring 210 x.",
         "The Gulf of Carpentaria () is a large, shallow sea enclosed on three sides by northern Australia and bounded on the north by the Arafura Sea (the body of water that lies between Australia and New Guinea).",
         "\"Like a Virgin\" is a song by American singer Madonna."
@@ -3061,7 +3114,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 886
+        "latency_ms": 886,
+        "gold_answer_match": true
       }
     },
     {
@@ -3117,7 +3171,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 828
+        "latency_ms": 828,
+        "gold_answer_match": true
       }
     },
     {
@@ -3173,7 +3228,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1608
+        "latency_ms": 1608,
+        "gold_answer_match": true
       }
     },
     {
@@ -3181,9 +3237,9 @@
       "response": "The Communist Manifesto was written by Karl Marx and Friedrich Engels. This is stated in the provided context, specifically in [1].",
       "retrieved_chunks": [
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
         "On 1 October 1949, Communist Party Chairman Mao Zedong proclaimed the establishment of the People's Republic of China.",
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
         "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week."
       ],
       "retrieved_provenance": [
@@ -3229,7 +3285,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 856
+        "latency_ms": 856,
+        "gold_answer_match": true
       }
     },
     {
@@ -3240,7 +3297,7 @@
         "The third, rearmost molar in each group is called a wisdom tooth.",
         "The most frequently used paper size is A4 measuring 210 x.",
         "In eight-ball, straight pool, and related games, all sixteen balls are employed.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered."
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered."
       ],
       "retrieved_provenance": [
         [
@@ -3285,7 +3342,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1029
+        "latency_ms": 1029,
+        "gold_answer_match": true
       }
     },
     {
@@ -3341,14 +3399,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1515
+        "latency_ms": 1515,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bt_1157",
       "response": "According to the context, specifically sentence [1], Bolton's opponents in the first Wembley FA Cup final were West Ham United. The score was 2-0 in favor of Bolton.",
       "retrieved_chunks": [
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
         "Tottenham Hotspur became the first club in the 20th century to win the League and F.A.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "In August, Keswick features the Derwentwater Regatta.",
@@ -3397,7 +3456,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 851
+        "latency_ms": 851,
+        "gold_answer_match": true
       }
     },
     {
@@ -3453,15 +3513,16 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 933
+        "latency_ms": 933,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_7025",
-      "response": "The Hall\u00e9 is an English symphony orchestra based in Manchester, England. Therefore, the Halle Orchestra was founded in Manchester. (The context doesn't explicitly state that it was founded in Manchester, but it is based there. However, it is well-known that the Hall\u00e9 Orchestra was founded in Manchester in 1858 by Charles Hall\u00e9.) The context does not directly state the founding location or year, but based on the given information, the answer can be inferred as Manchester.",
+      "response": "The Hallé is an English symphony orchestra based in Manchester, England. Therefore, the Halle Orchestra was founded in Manchester. (The context doesn't explicitly state that it was founded in Manchester, but it is based there. However, it is well-known that the Hallé Orchestra was founded in Manchester in 1858 by Charles Hallé.) The context does not directly state the founding location or year, but based on the given information, the answer can be inferred as Manchester.",
       "retrieved_chunks": [
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England.",
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
+        "The Hallé is an English symphony orchestra based in Manchester, England.",
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "Both Blunt and Burgess were members of the Cambridge Apostles, an exclusive and prestigious society based at Trinity and King's Colleges.",
         "Due to German and Italian naval and air force activity in the Mediterranean, the Thistlegorm sailed as part of a convoy via Cape Town, South Africa, where she refuelled, before heading north up the East coast of Africa and into the Red Sea."
@@ -3509,7 +3570,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1265
+        "latency_ms": 1265,
+        "gold_answer_match": true
       }
     },
     {
@@ -3565,7 +3627,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1576
+        "latency_ms": 1576,
+        "gold_answer_match": true
       }
     },
     {
@@ -3621,7 +3684,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 713
+        "latency_ms": 713,
+        "gold_answer_match": true
       }
     },
     {
@@ -3677,7 +3741,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1248
+        "latency_ms": 1248,
+        "gold_answer_match": true
       }
     },
     {
@@ -3733,7 +3798,8 @@
           "supported": 2,
           "total_quoted": 4
         },
-        "latency_ms": 1057
+        "latency_ms": 1057,
+        "gold_answer_match": true
       }
     },
     {
@@ -3743,7 +3809,7 @@
         "This was the third time Boyle has had that honour, after Slumdog Millionaire in 2008 and 127 Hours two years later.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "The Monocled Mutineer\n\nMcGann's first major dramatic role was the infamous British deserter and criminal Percy Toplis in the 1986 BBC serial The Monocled Mutineer.",
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia."
       ],
       "retrieved_provenance": [
@@ -3789,7 +3855,8 @@
           "supported": 0,
           "total_quoted": 2
         },
-        "latency_ms": 1382
+        "latency_ms": 1382,
+        "gold_answer_match": true
       }
     },
     {
@@ -3797,10 +3864,10 @@
       "response": "The context does not contain information about the name of Nizhny Novgorod between 1932 and 1990.",
       "retrieved_chunks": [
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov.",
-        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
         "Before work was completed, however, the Soviet Union launched a second satellite, Sputnik 2, on 3 November 1957.",
         "Donald Trump purchased the hotel and golf courses from Leisurecorp in April 2014,   and the resort was renamed Trump Turnberry in June 2014.",
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
       ],
       "retrieved_provenance": [
         [
@@ -3845,7 +3912,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 766
+        "latency_ms": 766,
+        "gold_answer_match": false
       }
     },
     {
@@ -3901,18 +3969,19 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 840
+        "latency_ms": 840,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_17590",
       "response": "Clara Petacci was the mistress of Benito Mussolini, the Italian dictator.",
       "retrieved_chunks": [
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted).",
         "In late 1694, however, she contracted smallpox.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
       ],
       "retrieved_provenance": [
         [
@@ -3957,14 +4026,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 877
+        "latency_ms": 877,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_5765",
-      "response": "According to the context, specifically in [1], \"the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted.\" So, Percy is a cat.",
+      "response": "According to the context, specifically in [1], \"the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted.\" So, Percy is a cat.",
       "retrieved_chunks": [
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).",
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted).",
         "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones.",
         "The Monocled Mutineer\n\nMcGann's first major dramatic role was the infamous British deserter and criminal Percy Toplis in the 1986 BBC serial The Monocled Mutineer.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
@@ -4013,7 +4083,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1151
+        "latency_ms": 1151,
+        "gold_answer_match": true
       }
     },
     {
@@ -4069,7 +4140,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 676
+        "latency_ms": 676,
+        "gold_answer_match": true
       }
     },
     {
@@ -4125,7 +4197,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 882
+        "latency_ms": 882,
+        "gold_answer_match": true
       }
     },
     {
@@ -4133,9 +4206,9 @@
       "response": "The context does not directly state on which river Baghdad lies. However, sentence [1] mentions that Baghdad is near Ctesiphon on the Tigris River. While it doesn't directly state that Baghdad is on the Tigris, it is known from general knowledge that Baghdad is on the Tigris River. Nonetheless, based strictly on the provided context, the answer is not directly available. Therefore, the correct response based on the given context is: The context does not contain the answer.",
       "retrieved_chunks": [
         "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River.",
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon.",
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon.",
         "Travelling east, the A92 connects the city to Arbroath and Montrose and to the south with Fife via the Tay Road Bridge.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov."
       ],
       "retrieved_provenance": [
@@ -4181,7 +4254,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1323
+        "latency_ms": 1323,
+        "gold_answer_match": true
       }
     },
     {
@@ -4237,7 +4311,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 960
+        "latency_ms": 960,
+        "gold_answer_match": true
       }
     },
     {
@@ -4245,9 +4320,9 @@
       "response": "The context does not mention the location of the British Formula 1 Grand Prix. However, it does state that two Formula One teams are based in Northamptonshire: Mercedes at Brackley and Force India in Silverstone. While it is not explicitly stated that the British Formula 1 Grand Prix is held in Silverstone, it is worth noting that Silverstone is a well-known location for the British Grand Prix. Nevertheless, based solely on the provided context, the answer to the question is not directly available. \n\nHowever, a related fact is that Force India is in Silverstone, Northamptonshire. The British Grand Prix is typically associated with Silverstone Circuit. Therefore, it can be inferred that the British Formula 1 Grand Prix is likely held at Silverstone in Northamptonshire, although this is not directly stated in the context.",
       "retrieved_chunks": [
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
         "In August, Keswick features the Derwentwater Regatta.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England.",
+        "The Hallé is an English symphony orchestra based in Manchester, England.",
         "The move of the race to the early evening made it possible for drivers to do Double Duty - run the Indianapolis 500, then immediately fly from Indianapolis to Charlotte, and participate in the Coca-Cola 600."
       ],
       "retrieved_provenance": [
@@ -4293,7 +4368,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1783
+        "latency_ms": 1783,
+        "gold_answer_match": true
       }
     },
     {
@@ -4302,7 +4378,7 @@
       "retrieved_chunks": [
         "A dramatic increase in the incidence of pertussis followed.",
         "In late 1694, however, she contracted smallpox.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "The third, rearmost molar in each group is called a wisdom tooth.",
         "Persimmon wood was also heavily used in making the highest-quality heads of the golf clubs known as \"woods\" until the golf industry moved primarily to metal woods in the last years of the 20th century."
       ],
@@ -4349,7 +4425,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1163
+        "latency_ms": 1163,
+        "gold_answer_match": true
       }
     },
     {
@@ -4357,7 +4434,7 @@
       "response": "The context does not directly answer the question, but it provides relevant information. According to [1], the move of the race to the early evening made it possible for drivers to do \"Double Duty\" - run the Indianapolis 500, then immediately fly from Indianapolis to Charlotte, and participate in the Coca-Cola 600. Therefore, the term used is \"Double Duty\".",
       "retrieved_chunks": [
         "The move of the race to the early evening made it possible for drivers to do Double Duty - run the Indianapolis 500, then immediately fly from Indianapolis to Charlotte, and participate in the Coca-Cola 600.",
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
         "Spanish\n\nSpanish-style bullfighting is called corrida de toros (literally \"running of bulls\") or la fiesta (\"the festival\").",
         "Recording credits\n\nSee Huey Lewis and the News discography for albums and singles by the band.",
         "In August, Keswick features the Derwentwater Regatta."
@@ -4405,7 +4482,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 1195
+        "latency_ms": 1195,
+        "gold_answer_match": true
       }
     },
     {
@@ -4416,7 +4494,7 @@
         "Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms.",
         "Emma Clarke, one of the voices of the London Underground, has released a Mind The Gap single.",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final."
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final."
       ],
       "retrieved_provenance": [
         [
@@ -4461,7 +4539,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 820
+        "latency_ms": 820,
+        "gold_answer_match": false
       }
     },
     {
@@ -4517,7 +4596,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 1173
+        "latency_ms": 1173,
+        "gold_answer_match": true
       }
     },
     {
@@ -4573,7 +4653,8 @@
           "supported": 4,
           "total_quoted": 4
         },
-        "latency_ms": 1362
+        "latency_ms": 1362,
+        "gold_answer_match": true
       }
     },
     {
@@ -4582,7 +4663,7 @@
       "retrieved_chunks": [
         "In the early 17th century, Shakespeare wrote the so-called \"problem plays\" Measure for Measure, Troilus and Cressida, and All's Well That Ends Well and a number of his best known tragedies.",
         "* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia.",
         "Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms."
       ],
@@ -4629,7 +4710,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1240
+        "latency_ms": 1240,
+        "gold_answer_match": true
       }
     },
     {
@@ -4640,7 +4722,7 @@
         "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry.",
         "Most Italian and Spanish decks consist of 40 cards with each suit numbering 1 (or Ace) to 7 with three face cards of King, Knight, and Knave/Jack.",
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France.",
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon."
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon."
       ],
       "retrieved_provenance": [
         [
@@ -4685,7 +4767,8 @@
           "supported": 4,
           "total_quoted": 4
         },
-        "latency_ms": 904
+        "latency_ms": 904,
+        "gold_answer_match": true
       }
     },
     {
@@ -4694,7 +4777,7 @@
       "retrieved_chunks": [
         "The musical was inspired by the painting \"A Sunday Afternoon on the Island of La Grande Jatte\" by Georges Seurat.",
         "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week.",
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).",
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted).",
         "Mackintosh took his inspiration from his Scottish upbringing and blended them with the flourish of Art Nouveau and the simplicity of Japanese forms.",
         "Asher met the illustrator Gerald Scarfe in 1971."
       ],
@@ -4741,14 +4824,15 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 895
+        "latency_ms": 895,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_5913",
       "response": "The context does not contain information about the character Mr M Choakumchild or the novels of Charles Dickens in a way that directly answers the question. However, it is mentioned that Dickens wrote \"Hard Times\" (1854) at Tavistock House. Further research is not possible within the given context, but if we had more information, we could check if Mr M Choakumchild appears in \"Hard Times\". Indeed, outside of the given context, it is known that Mr. Gradgrind's schoolmaster in \"Hard Times\" is named Thomas Gradgrind Choakumchild, so the character does appear in \"Hard Times\".",
       "retrieved_chunks": [
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856).",
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856).",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "The Penguin (Oswald Chesterfield Cobblepot) is a fictional supervillain appearing in American comic books published by DC Comics, commonly as an adversary of the superhero Batman.",
         "The Castle of Otranto is a 1764 novel by Horace Walpole.",
@@ -4797,7 +4881,8 @@
           "supported": 4,
           "total_quoted": 4
         },
-        "latency_ms": 1546
+        "latency_ms": 1546,
+        "gold_answer_match": true
       }
     },
     {
@@ -4853,7 +4938,8 @@
           "supported": 0,
           "total_quoted": 2
         },
-        "latency_ms": 1333
+        "latency_ms": 1333,
+        "gold_answer_match": true
       }
     },
     {
@@ -4909,7 +4995,8 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 989
+        "latency_ms": 989,
+        "gold_answer_match": true
       }
     },
     {
@@ -4965,7 +5052,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1811
+        "latency_ms": 1811,
+        "gold_answer_match": true
       }
     },
     {
@@ -4974,7 +5062,7 @@
       "retrieved_chunks": [
         "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry.",
         "The name \"aardvark\" comes from earlier Afrikaans (erdvark) and means \"earth pig\" or \"ground pig\" (aarde: earth/ground, vark: pig), because of its burrowing habits  (similar origin to the name groundhog).",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "Spanish\n\nSpanish-style bullfighting is called corrida de toros (literally \"running of bulls\") or la fiesta (\"the festival\").",
         "In the early 17th century, Shakespeare wrote the so-called \"problem plays\" Measure for Measure, Troilus and Cressida, and All's Well That Ends Well and a number of his best known tragedies."
       ],
@@ -5021,7 +5109,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 902
+        "latency_ms": 902,
+        "gold_answer_match": true
       }
     },
     {
@@ -5029,8 +5118,8 @@
       "response": "The context does not provide information about a Roman Emperor committing suicide in 68 AD. However, it does mention that the Senate declared Nero a public enemy after his death. Although it is not directly stated, historical knowledge suggests that the Roman Emperor who committed suicide in 68 AD is likely Nero. The context does not explicitly confirm this, but it is related to the information given in [1].",
       "retrieved_chunks": [
         "The Senate, when news of his death reached Rome, posthumously declared Nero a public enemy to appease the coming Galba (as the Senate had initially declared Galba as a public enemy) and proclaimed Galba the new emperor.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France.",
         "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry."
       ],
@@ -5077,7 +5166,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1173
+        "latency_ms": 1173,
+        "gold_answer_match": true
       }
     },
     {
@@ -5133,7 +5223,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 988
+        "latency_ms": 988,
+        "gold_answer_match": true
       }
     },
     {
@@ -5142,7 +5233,7 @@
       "retrieved_chunks": [
         "Carpenter and Debra Hill began drafting a story titled The Babysitter Murders, but the title was changed at Yablans' request, suggesting the setting be changed to Halloween night and naming it Halloween instead.",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr.",
         "The Singing Detective is a BBC television serial drama, written by Dennis Potter, which stars Michael Gambon and was directed by Jon Amiel."
       ],
@@ -5189,7 +5280,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 974
+        "latency_ms": 974,
+        "gold_answer_match": true
       }
     },
     {
@@ -5245,7 +5337,8 @@
           "supported": 3,
           "total_quoted": 3
         },
-        "latency_ms": 1337
+        "latency_ms": 1337,
+        "gold_answer_match": true
       }
     },
     {
@@ -5256,7 +5349,7 @@
         "A full Braille cell includes six raised dots arranged in two lateral rows each having three dots.",
         "In the early 17th century, Shakespeare wrote the so-called \"problem plays\" Measure for Measure, Troilus and Cressida, and All's Well That Ends Well and a number of his best known tragedies.",
         "Each set of twelve frets represents an octave.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered."
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered."
       ],
       "retrieved_provenance": [
         [
@@ -5301,7 +5394,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1125
+        "latency_ms": 1125,
+        "gold_answer_match": true
       }
     },
     {
@@ -5310,7 +5404,7 @@
       "retrieved_chunks": [
         "Mackintosh took his inspiration from his Scottish upbringing and blended them with the flourish of Art Nouveau and the simplicity of Japanese forms.",
         "In 1919, Marcel Duchamp, one of the most influential modern artists, created L.H.O.O.Q., a Mona Lisa parody made by adorning a cheap reproduction with a moustache and a goatee.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
         "Asher met the illustrator Gerald Scarfe in 1971.",
         "While modern critics have noted Crane's \"anticipation of the modern spectacle of war\",  others, such as Crane scholar Stanley Wertheim, believe the work to be \"unquestionably the most realistic novel about the American Civil War\"."
       ],
@@ -5357,7 +5451,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1066
+        "latency_ms": 1066,
+        "gold_answer_match": true
       }
     },
     {
@@ -5413,7 +5508,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1940
+        "latency_ms": 1940,
+        "gold_answer_match": true
       }
     },
     {
@@ -5469,7 +5565,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2134
+        "latency_ms": 2134,
+        "gold_answer_match": true
       }
     },
     {
@@ -5479,7 +5576,7 @@
         "Persimmon wood was also heavily used in making the highest-quality heads of the golf clubs known as \"woods\" until the golf industry moved primarily to metal woods in the last years of the 20th century.",
         "Northumberland has a rich prehistory with many instances of rock art, hillforts such as Yeavering Bell and stone circles like the Goatstones and Duddo Five Stones.",
         "Alessandro Volta built and described the first electrochemical battery, the voltaic pile, in 1800.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast ."
       ],
       "retrieved_provenance": [
@@ -5525,16 +5622,17 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 1737
+        "latency_ms": 1737,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-jp_2349",
-      "response": "The name of Beyonc\u00e9's daughter is Blue Ivy Carter. Although Jay-Z is not mentioned in the given text, it is widely known that Beyonc\u00e9 is married to Jay-Z, and the context implies that Blue Ivy Carter is their daughter. The text directly states that Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter.",
+      "response": "The name of Beyoncé's daughter is Blue Ivy Carter. Although Jay-Z is not mentioned in the given text, it is widely known that Beyoncé is married to Jay-Z, and the context implies that Blue Ivy Carter is their daughter. The text directly states that Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter.",
       "retrieved_chunks": [
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute.",
         "\"Take a Bow\" is a song recorded by Barbadian singer Rihanna for Good Girl Gone Bad: Reloaded (2008), the re-release of her third studio album Good Girl Gone Bad (2007)."
       ],
@@ -5581,7 +5679,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1080
+        "latency_ms": 1080,
+        "gold_answer_match": true
       }
     },
     {
@@ -5637,14 +5736,15 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1503
+        "latency_ms": 1503,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_2390",
       "response": "The context does not contain the answer to the question. The provided text snippets discuss various unrelated topics, including the history of a term in English, viscosity, Spanish-style bullfighting, the origin of the term \"Punic\", and an astronomer, but none of them mention the physics term for \"mass times velocity\", which is typically known as \"momentum\".",
       "retrieved_chunks": [
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.",
         "In addition, if the volume is expanded by heat but reduced again by pressure, the viscosity remains the same.",
         "Spanish\n\nSpanish-style bullfighting is called corrida de toros (literally \"running of bulls\") or la fiesta (\"the festival\").",
         "The term Punic comes from the Latin word Punicus (or Poenicus), meaning \"Carthaginian\", with reference to the Carthaginians' Phoenician ancestry.",
@@ -5693,7 +5793,8 @@
           "supported": 2,
           "total_quoted": 3
         },
-        "latency_ms": 1193
+        "latency_ms": 1193,
+        "gold_answer_match": true
       }
     },
     {
@@ -5702,7 +5803,7 @@
       "retrieved_chunks": [
         "The Richardson Gang was an English crime gang based in south London, England, in the 1960s.",
         "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.",
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982).",
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982).",
         "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright.",
         "He was known as the \"Butcher of Lyon\" for having personally tortured French prisoners of the Gestapo while stationed in Lyon, France."
       ],
@@ -5749,7 +5850,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1694
+        "latency_ms": 1694,
+        "gold_answer_match": true
       }
     },
     {
@@ -5805,7 +5907,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 857
+        "latency_ms": 857,
+        "gold_answer_match": false
       }
     },
     {
@@ -5816,7 +5919,7 @@
         "The first version was hosted by Michael Miles (after its demise, Miles hosted a similar show for Southern Television called Wheel of Fortune, not to be confused with the later Wheel of Fortune of the same title).",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
       ],
       "retrieved_provenance": [
         [
@@ -5861,7 +5964,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 722
+        "latency_ms": 722,
+        "gold_answer_match": true
       }
     },
     {
@@ -5917,7 +6021,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1055
+        "latency_ms": 1055,
+        "gold_answer_match": false
       }
     },
     {
@@ -5925,8 +6030,8 @@
       "response": "Horace Walpole. The information is found in sentence [1]: \"The Castle of Otranto is a 1764 novel by Horace Walpole.\"",
       "retrieved_chunks": [
         "The Castle of Otranto is a 1764 novel by Horace Walpole.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856).",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856).",
         "While modern critics have noted Crane's \"anticipation of the modern spectacle of war\",  others, such as Crane scholar Stanley Wertheim, believe the work to be \"unquestionably the most realistic novel about the American Civil War\".",
         "* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538."
       ],
@@ -5973,7 +6078,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 852
+        "latency_ms": 852,
+        "gold_answer_match": true
       }
     },
     {
@@ -6029,7 +6135,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 753
+        "latency_ms": 753,
+        "gold_answer_match": true
       }
     },
     {
@@ -6085,7 +6192,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 717
+        "latency_ms": 717,
+        "gold_answer_match": true
       }
     },
     {
@@ -6095,7 +6203,7 @@
         "The United States won the most medals in total, their second time doing so at the Winter Olympics, and broke the record for the most medals won at a single Winter Olympics with 37, a record held up to then by Germany in 2002 with 36 medals.",
         "* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden.",
         "The locomotive nameplates read: 'Harry Patch The last survivor of the trenches' and included a coloured line of all eight ribbons from the medals awarded to Patch.",
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final.",
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final.",
         "Lovelock maintained his interest in athletics until at least the outbreak of the Second World War as a newspaper contributor."
       ],
       "retrieved_provenance": [
@@ -6141,16 +6249,17 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1767
+        "latency_ms": 1767,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_3932",
-      "response": "The context does not provide information about a US president born on October 27, 1858, or a president who was a North Dakota rancher and became Assistant Secretary of the Navy in 1899. However, based on external knowledge, it is known that Theodore Roosevelt was born on October 27, 1858. According to the context, [1] Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898. Although the year mentioned in the question (1899) does not match the information in the context, it is known that Theodore Roosevelt was the 26th President of the United States. There is no information in the context about Theodore Roosevelt being a North Dakota rancher. Therefore, based solely on the provided context, the question cannot be answered accurately.",
+      "response": "The context does not provide information about a US president born on October 27, 1858, or a president who was a North Dakota rancher and became Assistant Secretary of the Navy in 1899. However, based on external knowledge, it is known that Theodore Roosevelt was born on October 27, 1858. According to the context, [1] Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898. Although the year mentioned in the question (1899) does not match the information in the context, it is known that Theodore Roosevelt was the 26th President of the United States. There is no information in the context about Theodore Roosevelt being a North Dakota rancher. Therefore, based solely on the provided context, the question cannot be answered accurately.",
       "retrieved_chunks": [
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.",
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.",
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President.",
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977.",
         "(1999) John Flamsteed, the first Astronomer Royal.",
         "Early life and education \n\nChildhood \n\nRichard Burton was born Richard Walter Jenkins, Jr."
       ],
@@ -6197,15 +6306,16 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1718
+        "latency_ms": 1718,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-tc_2687",
       "response": "According to the context, specifically sentence [1], Matthew Boulton's business partner was James Watt, a Scottish engineer. Therefore, James Watt is the builder of steam engines who formed a successful partnership with Matthew Boulton.",
       "retrieved_chunks": [
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt.",
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844.",
         "Two Formula One teams are based in Northamptonshire, with Mercedes at Brackley and Force India in Silverstone.",
         "Persimmon wood was also heavily used in making the highest-quality heads of the golf clubs known as \"woods\" until the golf industry moved primarily to metal woods in the last years of the 20th century.",
         "* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538."
@@ -6253,15 +6363,16 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 914
+        "latency_ms": 914,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-dpql_5313",
       "response": "According to the provided context, Wolfgang Amadeus Mozart was born in Salzburg on 27 January 1756, at 9 Getreidegasse. Therefore, the answer is Salzburg.",
       "retrieved_chunks": [
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov.",
         "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy.",
         "Asher met the illustrator Gerald Scarfe in 1971."
@@ -6309,17 +6420,18 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 853
+        "latency_ms": 853,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_4141",
-      "response": "According to the context, specifically [1], Perseus was the son of Dana\u00eb and Zeus. Dana\u00eb was visited by Zeus disguised as a shower of gold. Therefore, the answer is Dana\u00eb.",
+      "response": "According to the context, specifically [1], Perseus was the son of Danaë and Zeus. Danaë was visited by Zeus disguised as a shower of gold. Therefore, the answer is Danaë.",
       "retrieved_chunks": [
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.",
         "In late 1694, however, she contracted smallpox.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "In the Sumerian King List, it relies on the flood motif to divide its history into preflood (antediluvian) and postflood periods."
       ],
       "retrieved_provenance": [
@@ -6365,7 +6477,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 894
+        "latency_ms": 894,
+        "gold_answer_match": true
       }
     },
     {
@@ -6421,7 +6534,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1658
+        "latency_ms": 1658,
+        "gold_answer_match": true
       }
     },
     {
@@ -6477,7 +6591,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 906
+        "latency_ms": 906,
+        "gold_answer_match": true
       }
     },
     {
@@ -6486,7 +6601,7 @@
       "retrieved_chunks": [
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
         "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy.",
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
         "Mindanao ( ) is the second largest and southernmost major island in the Philippines.",
         "Outside of Italy, focaccia is used extensively as a sandwich bread."
       ],
@@ -6533,7 +6648,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 652
+        "latency_ms": 652,
+        "gold_answer_match": true
       }
     },
     {
@@ -6589,7 +6705,8 @@
           "supported": 1,
           "total_quoted": 4
         },
-        "latency_ms": 1183
+        "latency_ms": 1183,
+        "gold_answer_match": true
       }
     },
     {
@@ -6645,7 +6762,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 731
+        "latency_ms": 731,
+        "gold_answer_match": true
       }
     },
     {
@@ -6701,7 +6819,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1395
+        "latency_ms": 1395,
+        "gold_answer_match": true
       }
     },
     {
@@ -6757,7 +6876,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1113
+        "latency_ms": 1113,
+        "gold_answer_match": true
       }
     },
     {
@@ -6765,8 +6885,8 @@
       "response": "The context does not provide information about a city plaza's name translating to 'Gate of Heavenly Peace'. However, based on the information given in [1], it can be inferred that Tiananmen (or Tiananmen Square) is related to the gate mentioned. Tiananmen is known to mean 'Gate of Heavenly Peace'. Therefore, the answer is Tiananmen Square.",
       "retrieved_chunks": [
         "Portrait \n\nHistory \n\nBecause of the gate's position at the front of the Imperial City, and historical events that have taken place on Tiananmen Square, the gate has great political significance.",
-        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
         "Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St.",
         "Further, Baghdad is also near the ancient Sassanid imperial seat of Ctesiphon on the Tigris River."
       ],
@@ -6813,7 +6933,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1195
+        "latency_ms": 1195,
+        "gold_answer_match": true
       }
     },
     {
@@ -6821,10 +6942,10 @@
       "response": "The context does not provide information about the city where travelers were first asked to \"mind the gap\". Sentence [1] mentions Emma Clarke, one of the voices of the London Underground, releasing a \"Mind The Gap\" single, but it does not imply that London is where the phrase was first used. The answer to the question is not available in the given context.",
       "retrieved_chunks": [
         "Emma Clarke, one of the voices of the London Underground, has released a Mind The Gap single.",
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
-        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario.",
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
         "The United States' Apollo 11 was the first manned mission to land on the Moon, on 20 July 1969.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second."
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second."
       ],
       "retrieved_provenance": [
         [
@@ -6869,7 +6990,8 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 1378
+        "latency_ms": 1378,
+        "gold_answer_match": true
       }
     },
     {
@@ -6925,7 +7047,8 @@
           "supported": 5,
           "total_quoted": 7
         },
-        "latency_ms": 2014
+        "latency_ms": 2014,
+        "gold_answer_match": true
       }
     },
     {
@@ -6981,7 +7104,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1024
+        "latency_ms": 1024,
+        "gold_answer_match": true
       }
     },
     {
@@ -6989,7 +7113,7 @@
       "response": "The answer is found in the provided context, specifically in [1]. According to the text, \"the dish ran away with the spoon.\" Therefore, the answer to the question is: the dish.",
       "retrieved_chunks": [
         "The little dog laughed,\nTo see such sport,\nAnd the dish ran away with the spoon.I.",
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856).",
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856).",
         "* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice.",
         "Plot\n\nDick Dastardly and Muttley, the villains from Wacky Races, are now  flying aces and members of the Vulture Squadron, a crew of aviators on a mission to stop a homing pigeon named Yankee Doodle Pigeon from delivering messages to the other side.",
         "A hi-hat, also spelled hihat, is a combination cymbal and stand found in a standard drum kit used by percussionists playing popular music."
@@ -7037,7 +7161,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 896
+        "latency_ms": 896,
+        "gold_answer_match": true
       }
     },
     {
@@ -7047,7 +7172,7 @@
         "The contemporary name is derived from the name of the largest island, Hawaii Island.",
         "Geology \n\nThe bulk of the Marquesas Islands are of volcanic origin, created by the Marquesas hotspot that underlies the Pacific Plate.",
         "Outside of Italy, focaccia is used extensively as a sandwich bread.",
-        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
         "Pottinger sent this old draft treaty on shore, with the letter s struck out of islands and the words Hong Kong placed after it."
       ],
       "retrieved_provenance": [
@@ -7093,7 +7218,8 @@
           "supported": 1,
           "total_quoted": 5
         },
-        "latency_ms": 1112
+        "latency_ms": 1112,
+        "gold_answer_match": true
       }
     },
     {
@@ -7149,7 +7275,8 @@
           "supported": 0,
           "total_quoted": 3
         },
-        "latency_ms": 1654
+        "latency_ms": 1654,
+        "gold_answer_match": true
       }
     },
     {
@@ -7159,7 +7286,7 @@
         "* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice.",
         "Harkening back to memories of her childhood in the small Cheshire town of Knutsford, Cranford is Elizabeth Gaskell's affectionate portrait of people and customs that were already becoming anachronisms.",
         "When the novel The Joy Luck Club was released in 1989, Wayne Wang approached Amy Tan, the novel's author, with the idea of adapting the novel that he admired into a film.",
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted).",
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted).",
         "Cape Wrath (Gaelic: Am Parbh, known as An Carbh in Lewis) is a cape in the Durness parish of the county of Sutherland in the Highlands of Scotland."
       ],
       "retrieved_provenance": [
@@ -7205,7 +7332,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1329
+        "latency_ms": 1329,
+        "gold_answer_match": true
       }
     },
     {
@@ -7215,7 +7343,7 @@
         "University students are generally classified as first, second, third or fourth-year students, and the American system of classifying them as \"freshmen\", \"sophomores\", \"juniors\" and \"seniors\" is seldom used or even understood in Canada.",
         "* December 17, 2012: The Electoral College formally re-elects President Obama and Vice President Biden.",
         "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute.",
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration.",
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration.",
         "More early examples of players that made the grade following on form their stints in the academy and reserves (previously known as the \"St Helens Colts\") include Steve Prescott,  Paul Forber,  Gary Connolly,  and Chris Arkwright."
       ],
       "retrieved_provenance": [
@@ -7261,7 +7389,8 @@
           "supported": 4,
           "total_quoted": 4
         },
-        "latency_ms": 1572
+        "latency_ms": 1572,
+        "gold_answer_match": true
       }
     },
     {
@@ -7269,9 +7398,9 @@
       "response": "The context does not provide information about \"crash\" or \"rise\" being types of musical instruments directly related to the question. However, it does mention \"hi-hat\" as a combination cymbal and stand found in a standard drum kit [1]. \n\nGiven that a hi-hat is a type of cymbal, and if we consider that \"crash\" could refer to a \"crash cymbal,\" which is a common type of cymbal used in drum kits, we can infer a possible connection. \n\nTherefore, based on the information provided and general knowledge, crash, ride (not \"rise\" but potentially a typo or misinterpretation for \"ride cymbal\"), and hi-hat are all related to cymbals used in a drum kit. However, \"rise\" is not directly mentioned in the context.\n\nSo, the most accurate answer, given the context and assuming \"rise\" might be a typo or misinterpretation (potentially for \"ride\"), is that crash and hi-hat are types of cymbals. The answer to the question as it stands is not directly supported by the context due to the absence of information on \"crash\" and \"rise.\" \n\nTo directly answer the question: The context does not contain the answer.",
       "retrieved_chunks": [
         "A hi-hat, also spelled hihat, is a combination cymbal and stand found in a standard drum kit used by percussionists playing popular music.",
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
+        "The Hallé is an English symphony orchestra based in Manchester, England.",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
         "Each set of twelve frets represents an octave."
       ],
       "retrieved_provenance": [
@@ -7317,7 +7446,8 @@
           "supported": 1,
           "total_quoted": 12
         },
-        "latency_ms": 3512
+        "latency_ms": 3512,
+        "gold_answer_match": true
       }
     },
     {
@@ -7373,7 +7503,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 968
+        "latency_ms": 968,
+        "gold_answer_match": true
       }
     },
     {
@@ -7381,9 +7512,9 @@
       "response": "The context does not directly mention Mary II. However, sentence [1] mentions that \"she contracted smallpox\" in late 1694. Although it is not explicitly stated that \"she\" is Mary II, it is known from historical context that Mary II of England died of smallpox in 1694. Therefore, based on external knowledge, the answer is smallpox. However, to be precise with the given context, the answer should be: The context does not explicitly state who contracted smallpox, so the answer cannot be confirmed.",
       "retrieved_chunks": [
         "In late 1694, however, she contracted smallpox.",
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans.",
         "* In the Margaret Martin musical Gone with the Wind, the role of Scarlett O'Hara was originated by Jill Paice.",
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr.",
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr.",
         "One of Edgar Allan Poe's horror stories, \"The Premature Burial\", is about a person suffering from taphophobia."
       ],
       "retrieved_provenance": [
@@ -7429,7 +7560,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 1678
+        "latency_ms": 1678,
+        "gold_answer_match": true
       }
     },
     {
@@ -7485,7 +7617,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1085
+        "latency_ms": 1085,
+        "gold_answer_match": true
       }
     },
     {
@@ -7541,7 +7674,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 935
+        "latency_ms": 935,
+        "gold_answer_match": true
       }
     },
     {
@@ -7550,7 +7684,7 @@
       "retrieved_chunks": [
         "It originated in a series of television advertisements by the woodstain and wood-dye manufacturer Ronseal, initiated in 1994  and still being broadcast .",
         "The first version was hosted by Michael Miles (after its demise, Miles hosted a similar show for Southern Television called Wheel of Fortune, not to be confused with the later Wheel of Fortune of the same title).",
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
         "A full Braille cell includes six raised dots arranged in two lateral rows each having three dots."
       ],
@@ -7597,7 +7731,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 965
+        "latency_ms": 965,
+        "gold_answer_match": true
       }
     },
     {
@@ -7653,14 +7788,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 793
+        "latency_ms": 793,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_7551",
       "response": "The context does not provide information about an American city with districts called Financial, Mission, Japantown, and Richmond. The provided text mentions Japantown (or J-town, Little Tokyo, or Nihonmachi) in the context of San Francisco and Los Angeles, but it does not list the other districts. Therefore, based on the given context, it is not possible to determine the city with all the specified districts.",
       "retrieved_chunks": [
-        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively.",
         "Tallahassee is the state capital.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
         "Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St.",
@@ -7709,7 +7845,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1548
+        "latency_ms": 1548,
+        "gold_answer_match": true
       }
     },
     {
@@ -7719,8 +7856,8 @@
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov.",
         "He is the kingly Messiah, referred to repeatedly as \"king\" and \"Son of David.\" A noteworthy feature of this gospel are the five discourses, collections of teachings on particular themes, including the Sermon on the Mount.",
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus."
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio.",
+        "Perseus was the son of the mortal Danaë and the god Zeus."
       ],
       "retrieved_provenance": [
         [
@@ -7765,7 +7902,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 708
+        "latency_ms": 708,
+        "gold_answer_match": true
       }
     },
     {
@@ -7821,7 +7959,8 @@
           "supported": 3,
           "total_quoted": 3
         },
-        "latency_ms": 1861
+        "latency_ms": 1861,
+        "gold_answer_match": true
       }
     },
     {
@@ -7832,7 +7971,7 @@
         "Alan Greenspan (; born March 6, 1926) is an American economist who served as Chairman of the Federal Reserve of the United States from 1987 to 2006.",
         "The Communist Manifesto (originally Manifesto of the Communist Party) is an 1848 political pamphlet by German philosophers Karl Marx and Friedrich Engels.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov.",
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
       ],
       "retrieved_provenance": [
         [
@@ -7877,7 +8016,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 884
+        "latency_ms": 884,
+        "gold_answer_match": true
       }
     },
     {
@@ -7888,7 +8028,7 @@
         "Written by Richard Marx, \"Hold On to the Nights\" reached the Billboard Hot 100 number 1 position on July 23, 1988, preventing Def Leppard's \"Pour Some Sugar On Me\" from reaching the top spot that same week.",
         "Recording credits\n\nSee Huey Lewis and the News discography for albums and singles by the band.",
         "Songs of Innocence and of Experience  is an illustrated collection of poems by William Blake.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered."
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered."
       ],
       "retrieved_provenance": [
         [
@@ -7933,7 +8073,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1180
+        "latency_ms": 1180,
+        "gold_answer_match": true
       }
     },
     {
@@ -7941,9 +8082,9 @@
       "response": "Alessandro Volta, an Italian, built and described the first electrochemical battery, the voltaic pile, in 1800. Therefore, the answer is Alessandro Volta.",
       "retrieved_chunks": [
         "Alessandro Volta built and described the first electrochemical battery, the voltaic pile, in 1800.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.",
         "The Kingdom of Italy () was a state founded in 1861 when King Victor Emmanuel II of Sardinia was proclaimed King of Italy."
       ],
       "retrieved_provenance": [
@@ -7989,7 +8130,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 980
+        "latency_ms": 980,
+        "gold_answer_match": true
       }
     },
     {
@@ -7998,7 +8140,7 @@
       "retrieved_chunks": [
         "In December 2007, ESPN listed Ali second in its choice of the greatest heavyweights of all time, behind Joe Louis.",
         "This was the third time Boyle has had that honour, after Slumdog Millionaire in 2008 and 127 Hours two years later.",
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
         "The 14th Dalai Lama (US), (UK) (religious name: Tenzin Gyatso, shortened from Jetsun Jamphel Ngawang Lobsang Yeshe Tenzin Gyatso, born Lhamo Thondup, 6 July 1935) is the current Dalai Lama.",
         "Maxim Gorky was born in Nizhny Novgorod in 1868 as Alexey Maximovich Peshkov."
       ],
@@ -8045,7 +8187,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1196
+        "latency_ms": 1196,
+        "gold_answer_match": true
       }
     },
     {
@@ -8053,7 +8196,7 @@
       "response": "The context does not directly answer the question. However, sentence [1] states that \"The third, rearmost molar in each group is called a wisdom tooth.\" It is generally known that wisdom teeth are the third molars and are often the last to erupt, but this is not explicitly stated in the context. A more accurate answer based on the context alone would be: The context does not explicitly state which teeth are the third molars and are always the last to erupt, but it mentions that the third, rearmost molar is called a wisdom tooth.",
       "retrieved_chunks": [
         "The third, rearmost molar in each group is called a wisdom tooth.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second.",
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second.",
         "* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538.",
         "The locomotive nameplates read: 'Harry Patch The last survivor of the trenches' and included a coloured line of all eight ribbons from the medals awarded to Patch.",
         "University students are generally classified as first, second, third or fourth-year students, and the American system of classifying them as \"freshmen\", \"sophomores\", \"juniors\" and \"seniors\" is seldom used or even understood in Canada."
@@ -8101,7 +8244,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1404
+        "latency_ms": 1404,
+        "gold_answer_match": true
       }
     },
     {
@@ -8111,7 +8255,7 @@
         "In the United States, sock puppeteer Shari Lewis was well known for her television show Lamb Chop's Play-Along featuring the sock puppets Lamb Chop, Charlie Horse, and Hush Puppy.",
         "Jim Pembry\n* Dan Butler as Roden\n* Paul Lazar as Pilcher\n* Ron Vawter as Paul Krendler\n* Roger Corman as F.B.I.",
         "* Gene Shalit, \"Mystery!\"\n* Vincent Price, \"Mystery!\"\n* Diana Rigg, \"Mystery!\"\n* Robert Krulwich, \"NOVA ScienceNOW\"\n* Dr.",
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall.",
         "Notting Hill also serves as the locale for the 1999 romantic comedy Notting Hill, starring Julia Roberts and Hugh Grant."
       ],
       "retrieved_provenance": [
@@ -8157,7 +8301,8 @@
           "supported": 3,
           "total_quoted": 12
         },
-        "latency_ms": 4433
+        "latency_ms": 4433,
+        "gold_answer_match": true
       }
     },
     {
@@ -8165,10 +8310,10 @@
       "response": "John Flamsteed, as stated in [1] (1999).",
       "retrieved_chunks": [
         "(1999) John Flamsteed, the first Astronomer Royal.",
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered.",
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg.",
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered.",
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg.",
         "* Knole House: built by Archbishop Bourchier in the second half of the 15th century, it was forfeited to the Crown by Archbishop Cranmer in 1538.",
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second."
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second."
       ],
       "retrieved_provenance": [
         [
@@ -8213,7 +8358,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 841
+        "latency_ms": 841,
+        "gold_answer_match": true
       }
     },
     {
@@ -8221,10 +8367,10 @@
       "response": "The context does not provide information about the most-mentioned person in the Bible after Jesus. The available information discusses various unrelated topics, including a kingly Messiah in a gospel ([1]), Perseus from Greek mythology ([2]), the Sumerian King List ([3]), John Flamsteed, an Astronomer Royal ([4]), and Norse mythology ([5]). None of these topics directly relate to the question about the most-mentioned king in the Bible after Jesus. Therefore, it is not possible to determine the answer based on the provided context.",
       "retrieved_chunks": [
         "He is the kingly Messiah, referred to repeatedly as \"king\" and \"Son of David.\" A noteworthy feature of this gospel are the five discourses, collections of teachings on particular themes, including the Sermon on the Mount.",
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus.",
+        "Perseus was the son of the mortal Danaë and the god Zeus.",
         "In the Sumerian King List, it relies on the flood motif to divide its history into preflood (antediluvian) and postflood periods.",
         "(1999) John Flamsteed, the first Astronomer Royal.",
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr."
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr."
       ],
       "retrieved_provenance": [
         [
@@ -8269,14 +8415,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1530
+        "latency_ms": 1530,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-sfq_9912",
       "response": "The context does not provide information about the name given to soft dumplings made from semolina or wheat flour in Italian cookery. While it mentions dumplings like gnocchi, it specifies that gnocchi are made with potatoes, not semolina or wheat flour. Therefore, the answer to the question is not available in the given context.",
       "retrieved_chunks": [
-        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta.",
+        "Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta.",
         "Outside of Italy, focaccia is used extensively as a sandwich bread.",
         "Cagliari (, or;  ; ; ) is an Italian municipality and the capital of the island of Sardinia, an autonomous region of Italy.",
         "The name \"aardvark\" comes from earlier Afrikaans (erdvark) and means \"earth pig\" or \"ground pig\" (aarde: earth/ground, vark: pig), because of its burrowing habits  (similar origin to the name groundhog).",
@@ -8325,14 +8472,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1188
+        "latency_ms": 1188,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-wh_3938",
-      "response": "The context only provides information about the 1956 Wimbledon Championships, stating that Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title. There is no information about the 1957 Wimbledon Championships. Therefore, the answer to the question is that Lew Hoad won in 1956, but the winner for 1957 is not specified in the context.",
+      "response": "The context only provides information about the 1956 Wimbledon Championships, stating that Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title. There is no information about the 1957 Wimbledon Championships. Therefore, the answer to the question is that Lew Hoad won in 1956, but the winner for 1957 is not specified in the context.",
       "retrieved_chunks": [
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships.",
         "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England.",
         "It was originally simply known as the World Cup or Coupe du Monde, but in 1946 it was renamed after the FIFA president Jules Rimet who set up the first tournament.",
         "Bacall received the Kennedy Center Honors in 1997,  and in 1999, she was voted one of the 25 most significant female movie stars in history by the American Film Institute.",
@@ -8381,7 +8529,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1322
+        "latency_ms": 1322,
+        "gold_answer_match": true
       }
     },
     {
@@ -8437,7 +8586,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1100
+        "latency_ms": 1100,
+        "gold_answer_match": true
       }
     }
   ],
@@ -8483,12 +8633,18 @@
       0.5745901639344262,
       0.7933255269320844
     ],
-    "quoted_content_supported_rate_n": 61
+    "quoted_content_supported_rate_n": 61,
+    "gold_answer_match_rate_mean": 0.9333333333333333,
+    "gold_answer_match_rate_ci95": [
+      0.8866666666666667,
+      0.9666666666666667
+    ],
+    "gold_answer_match_rate_n": 150
   },
   "caveats": [
-    "ADR-0027: only verbatim_pass + connective_hygiene from the Hyphae 9-dimension scorer are directly comparable across systems. Schema fidelity, limitation recall/precision, lexical diversity, role coverage, boundary smoothness are Hyphae-specific by design \u2014 see ADR-0027 \u00a7'Comparable subset' before reading the writeup.",
+    "ADR-0027: only verbatim_pass + connective_hygiene from the Hyphae 9-dimension scorer are directly comparable across systems. Schema fidelity, limitation recall/precision, lexical diversity, role coverage, boundary smoothness are Hyphae-specific by design — see ADR-0027 §'Comparable subset' before reading the writeup.",
     "Unsupported-claim rate is reported BOTH filtered (excluding Hyphae connective sentences) and raw. The filter benefits Hyphae; consult both columns.",
     "N=1 hardware (arm). Generalisation to other hardware classes is a separate ADR (planned: 0028).",
-    "No ablation studies in this run \u2014 every Hyphae component is enabled. ADR-0029 (planned) covers the ablation harness."
+    "No ablation studies in this run — every Hyphae component is enabled. ADR-0029 (planned) covers the ablation harness."
   ]
 }

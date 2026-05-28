@@ -68,14 +68,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 905
+        "latency_ms": 905,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_8177",
       "response": "The US President who was born Leslie Lynch King Jr. was Gerald Ford.",
       "retrieved_chunks": [
-        "(born Leslie Lynch King Jr.; July 14, 1913 \u2013 December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977."
+        "(born Leslie Lynch King Jr.; July 14, 1913 – December 26, 2006) was an American politician who served as the 38th President of the United States from 1974 to 1977."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -99,7 +100,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 746
+        "latency_ms": 746,
+        "gold_answer_match": true
       }
     },
     {
@@ -130,7 +132,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 768
+        "latency_ms": 768,
+        "gold_answer_match": false
       }
     },
     {
@@ -161,14 +164,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 732
+        "latency_ms": 732,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_12369",
-      "response": "Based on the provided context, Jean-Fran\u00e7ois Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs in 1822.\n\nThe context does not provide information about the year the Roman Catholic Church took Galileo Galilei's \"Dialogue\" off their list of banned books, nor about the year Britain repealed the death penalty for over 100 crimes. Therefore, I cannot answer those parts of your question using the given context.",
+      "response": "Based on the provided context, Jean-François Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs in 1822.\n\nThe context does not provide information about the year the Roman Catholic Church took Galileo Galilei's \"Dialogue\" off their list of banned books, nor about the year Britain repealed the death penalty for over 100 crimes. Therefore, I cannot answer those parts of your question using the given context.",
       "retrieved_chunks": [
-        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs \u2013 the first such script discovered."
+        "In 1822 Champollion published his first breakthrough in the decipherment of the Rosetta hieroglyphs, showing that the Egyptian writing system was a combination of phonetic and ideographic signs – the first such script discovered."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -192,14 +196,15 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1761
+        "latency_ms": 1761,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-wh_4199",
       "response": "Marge Simpson's maiden name is Bouvier.",
       "retrieved_chunks": [
-        "Marjorie Jacqueline \"Marge\" Simpson (n\u00e9e Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
+        "Marjorie Jacqueline \"Marge\" Simpson (née Bouvier) is a fictional character in the American animated sitcom The Simpsons and part of the eponymous family."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -223,7 +228,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1083
+        "latency_ms": 1083,
+        "gold_answer_match": true
       }
     },
     {
@@ -254,7 +260,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 937
+        "latency_ms": 937,
+        "gold_answer_match": false
       }
     },
     {
@@ -285,7 +292,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1272
+        "latency_ms": 1272,
+        "gold_answer_match": true
       }
     },
     {
@@ -316,7 +324,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 846
+        "latency_ms": 846,
+        "gold_answer_match": false
       }
     },
     {
@@ -347,14 +356,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 741
+        "latency_ms": 741,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bb_3998",
       "response": "The word \"Tet\" in the Tet Offensive referred to the national Vietnamese New Year holiday.",
       "retrieved_chunks": [
-        "The name of the offensive comes from the T\u1ebft holiday, the Vietnamese New Year, when the first major attacks took place."
+        "The name of the offensive comes from the Tết holiday, the Vietnamese New Year, when the first major attacks took place."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -378,7 +388,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 789
+        "latency_ms": 789,
+        "gold_answer_match": true
       }
     },
     {
@@ -409,7 +420,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 751
+        "latency_ms": 751,
+        "gold_answer_match": false
       }
     },
     {
@@ -440,12 +452,13 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1089
+        "latency_ms": 1089,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_981",
-      "response": "The provided context does not contain information about which famous British actor is or was married to Anouk Aim\u00e9e.",
+      "response": "The provided context does not contain information about which famous British actor is or was married to Anouk Aimée.",
       "retrieved_chunks": [
         "Albert Finney  (born 9 May 1936) is an English actor."
       ],
@@ -471,14 +484,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1158
+        "latency_ms": 1158,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-sfq_18918",
-      "response": "The River Durance flows into the Rh\u00f4ne near Avignon.",
+      "response": "The River Durance flows into the Rhône near Avignon.",
       "retrieved_chunks": [
-        "The Durance itself is a tributary of the Rh\u00f4ne and flows into the Rh\u00f4ne near Avignon."
+        "The Durance itself is a tributary of the Rhône and flows into the Rhône near Avignon."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -502,12 +516,13 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2086
+        "latency_ms": 2086,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_14484",
-      "response": "Based on the provided context, if you asked for Focaccia in an Italian restaurant, you would likely receive focaccia as it is traditionally served in Italy, not necessarily as a sandwich bread. The context notes that outside of Italy, focaccia is used extensively as a sandwich bread, implying that in Italy (and likely in an Italian restaurant), it may be served differently\u2014perhaps as a flatbread or appetizer rather than as a sandwich.",
+      "response": "Based on the provided context, if you asked for Focaccia in an Italian restaurant, you would likely receive focaccia as it is traditionally served in Italy, not necessarily as a sandwich bread. The context notes that outside of Italy, focaccia is used extensively as a sandwich bread, implying that in Italy (and likely in an Italian restaurant), it may be served differently—perhaps as a flatbread or appetizer rather than as a sandwich.",
       "retrieved_chunks": [
         "Outside of Italy, focaccia is used extensively as a sandwich bread."
       ],
@@ -533,14 +548,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1256
+        "latency_ms": 1256,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_409",
       "response": "Professor Cuthbert Calculus is an associate of Tintin.",
       "retrieved_chunks": [
-        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Herg\u00e9's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
+        "Professor Calculus \n\nProfessor Cuthbert Calculus (Professeur Tryphon Tournesol in Hergé's original version), an absent-minded and half-deaf physicist, is a regular character alongside Tintin, Snowy, and Captain Haddock."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -564,7 +580,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1952
+        "latency_ms": 1952,
+        "gold_answer_match": true
       }
     },
     {
@@ -595,14 +612,15 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 808
+        "latency_ms": 808,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_6822",
       "response": "Ayrton Senna died while leading the 1994 San Marino Grand Prix at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy.",
       "retrieved_chunks": [
-        "The 1994 San Marino Grand Prix (formally the 14\u00b0 Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
+        "The 1994 San Marino Grand Prix (formally the 14° Gran Premio di San Marino) was a Formula One motor race held on 1 May 1994 at the Autodromo Enzo e Dino Ferrari, located in Imola, Italy."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -626,7 +644,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 917
+        "latency_ms": 917,
+        "gold_answer_match": true
       }
     },
     {
@@ -657,7 +676,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 903
+        "latency_ms": 903,
+        "gold_answer_match": true
       }
     },
     {
@@ -688,7 +708,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 845
+        "latency_ms": 845,
+        "gold_answer_match": true
       }
     },
     {
@@ -719,7 +740,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 937
+        "latency_ms": 937,
+        "gold_answer_match": true
       }
     },
     {
@@ -750,7 +772,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 726
+        "latency_ms": 726,
+        "gold_answer_match": true
       }
     },
     {
@@ -781,7 +804,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1604
+        "latency_ms": 1604,
+        "gold_answer_match": true
       }
     },
     {
@@ -812,7 +836,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 807
+        "latency_ms": 807,
+        "gold_answer_match": true
       }
     },
     {
@@ -843,7 +868,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 896
+        "latency_ms": 896,
+        "gold_answer_match": true
       }
     },
     {
@@ -874,7 +900,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1019
+        "latency_ms": 1019,
+        "gold_answer_match": true
       }
     },
     {
@@ -905,7 +932,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 966
+        "latency_ms": 966,
+        "gold_answer_match": true
       }
     },
     {
@@ -936,7 +964,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 665
+        "latency_ms": 665,
+        "gold_answer_match": true
       }
     },
     {
@@ -967,7 +996,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 763
+        "latency_ms": 763,
+        "gold_answer_match": true
       }
     },
     {
@@ -998,14 +1028,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 922
+        "latency_ms": 922,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_3384",
       "response": "In Norse mythology, the group of female figures who decides who lives and dies during battle and then transports half of the dead to Valhalla are the valkyries.",
       "retrieved_chunks": [
-        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field F\u00f3lkvangr."
+        "Chosen by Odin, half of those who die in combat travel to Valhalla upon death, led by valkyries, while the other half go to the goddess Freyja's field Fólkvangr."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1029,14 +1060,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1132
+        "latency_ms": 1132,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-jp_3913",
       "response": "Friedrich Engels famously worked with Karl Marx.",
       "retrieved_chunks": [
-        "Engels' earliest contribution to Marx's work was writing for the Deutsch\u2013Franz\u00f6sische Jahrb\u00fccher, edited by both Marx and Arnold Ruge, in Paris in 1844."
+        "Engels' earliest contribution to Marx's work was writing for the Deutsch–Französische Jahrbücher, edited by both Marx and Arnold Ruge, in Paris in 1844."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1060,7 +1092,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 978
+        "latency_ms": 978,
+        "gold_answer_match": true
       }
     },
     {
@@ -1091,7 +1124,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1156
+        "latency_ms": 1156,
+        "gold_answer_match": true
       }
     },
     {
@@ -1122,7 +1156,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1008
+        "latency_ms": 1008,
+        "gold_answer_match": true
       }
     },
     {
@@ -1153,7 +1188,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 922
+        "latency_ms": 922,
+        "gold_answer_match": true
       }
     },
     {
@@ -1184,7 +1220,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 932
+        "latency_ms": 932,
+        "gold_answer_match": true
       }
     },
     {
@@ -1215,7 +1252,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 958
+        "latency_ms": 958,
+        "gold_answer_match": true
       }
     },
     {
@@ -1246,7 +1284,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1400
+        "latency_ms": 1400,
+        "gold_answer_match": true
       }
     },
     {
@@ -1277,14 +1316,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 787
+        "latency_ms": 787,
+        "gold_answer_match": false
       }
     },
     {
       "query_id": "triviaqa-qf_3005",
       "response": "Beethoven wrote only one opera, and its name is Fidelio.",
       "retrieved_chunks": [
-        "7\u201311), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio."
+        "7–11), several piano sonatas (including the Moonlight, Waldstein and Appassionata sonatas), the Kreutzer violin sonata and Beethoven's only opera, Fidelio."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1308,7 +1348,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 926
+        "latency_ms": 926,
+        "gold_answer_match": true
       }
     },
     {
@@ -1339,14 +1380,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 761
+        "latency_ms": 761,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_1463",
       "response": "Catherine Zeta-Jones won the Best Supporting Actress Oscar for her role as Velma Kelly in the film musical \"Chicago.\"",
       "retrieved_chunks": [
-        "The following year, Zeta-Jones starred alongside Ren\u00e9e Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
+        "The following year, Zeta-Jones starred alongside Renée Zellweger as the murderous nightclub singer Velma Kelly in Chicago (2002), a film adaptation of the Broadway musical of the same name from the director Rob Marshall."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1370,7 +1412,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 979
+        "latency_ms": 979,
+        "gold_answer_match": true
       }
     },
     {
@@ -1401,7 +1444,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1312
+        "latency_ms": 1312,
+        "gold_answer_match": false
       }
     },
     {
@@ -1432,14 +1476,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 811
+        "latency_ms": 811,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bt_2421",
       "response": "The first name of the Kray twins' mother was Violet.",
       "retrieved_chunks": [
-        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 \u2013 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 \u2013 4 August 1982)."
+        "Early life\n\nRonnie and Reggie Kray were born on 24 October 1933 in Hoxton, East London, to Charles David Kray (10 March 1907 – 8 March 1983), a scrap gold dealer,  and Violet Annie Lee (5 August 1909 – 4 August 1982)."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1463,14 +1508,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 5339
+        "latency_ms": 5339,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_4681",
       "response": "The Ambassador Bridge connects Detroit, Michigan, USA and Windsor, Ontario, Canada.",
       "retrieved_chunks": [
-        "The city has three international border crossings, the Ambassador Bridge, Detroit\u2013Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario."
+        "The city has three international border crossings, the Ambassador Bridge, Detroit–Windsor Tunnel and Michigan Central Railway Tunnel, linking Detroit to Windsor, Ontario."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1494,7 +1540,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 795
+        "latency_ms": 795,
+        "gold_answer_match": true
       }
     },
     {
@@ -1525,7 +1572,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1420
+        "latency_ms": 1420,
+        "gold_answer_match": true
       }
     },
     {
@@ -1556,7 +1604,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 790
+        "latency_ms": 790,
+        "gold_answer_match": true
       }
     },
     {
@@ -1587,7 +1636,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 936
+        "latency_ms": 936,
+        "gold_answer_match": true
       }
     },
     {
@@ -1618,7 +1668,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 731
+        "latency_ms": 731,
+        "gold_answer_match": true
       }
     },
     {
@@ -1649,14 +1700,15 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 833
+        "latency_ms": 833,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_24460",
       "response": "Based on the provided context, General Zachary Taylor was nominated for President by the Whig National Convention in 1848. Therefore, the US President who died in office in July 1850 and was succeeded by his Vice President Millard Fillmore was Zachary Taylor.",
       "retrieved_chunks": [
-        "Vice presidency (1849\u20131850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
+        "Vice presidency (1849–1850)\n\nThe 1848 Whig National Convention nominated General Zachary Taylor, a slaveholder from Virginia, for President."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1680,7 +1732,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 915
+        "latency_ms": 915,
+        "gold_answer_match": true
       }
     },
     {
@@ -1711,7 +1764,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1276
+        "latency_ms": 1276,
+        "gold_answer_match": true
       }
     },
     {
@@ -1742,7 +1796,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 783
+        "latency_ms": 783,
+        "gold_answer_match": true
       }
     },
     {
@@ -1773,7 +1828,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 693
+        "latency_ms": 693,
+        "gold_answer_match": true
       }
     },
     {
@@ -1804,7 +1860,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 858
+        "latency_ms": 858,
+        "gold_answer_match": true
       }
     },
     {
@@ -1835,7 +1892,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 924
+        "latency_ms": 924,
+        "gold_answer_match": true
       }
     },
     {
@@ -1866,14 +1924,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1138
+        "latency_ms": 1138,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-bt_1157",
       "response": "Bolton Wanderers' opponents in the first Wembley F.A. Cup Final were West Ham United.",
       "retrieved_chunks": [
-        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2\u20130 in the first ever Wembley FA Cup final."
+        "On 28 April 1923, Bolton won their first major trophy in their third final, beating West Ham United 2–0 in the first ever Wembley FA Cup final."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1897,7 +1956,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 851
+        "latency_ms": 851,
+        "gold_answer_match": true
       }
     },
     {
@@ -1928,14 +1988,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 654
+        "latency_ms": 654,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_7025",
-      "response": "The Hall\u00e9 Orchestra was founded in Manchester, England.",
+      "response": "The Hallé Orchestra was founded in Manchester, England.",
       "retrieved_chunks": [
-        "The Hall\u00e9 is an English symphony orchestra based in Manchester, England."
+        "The Hallé is an English symphony orchestra based in Manchester, England."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -1959,7 +2020,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 791
+        "latency_ms": 791,
+        "gold_answer_match": true
       }
     },
     {
@@ -1990,7 +2052,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1303
+        "latency_ms": 1303,
+        "gold_answer_match": true
       }
     },
     {
@@ -2021,7 +2084,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 769
+        "latency_ms": 769,
+        "gold_answer_match": true
       }
     },
     {
@@ -2052,7 +2116,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 7700
+        "latency_ms": 7700,
+        "gold_answer_match": true
       }
     },
     {
@@ -2083,7 +2148,8 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 943
+        "latency_ms": 943,
+        "gold_answer_match": true
       }
     },
     {
@@ -2114,7 +2180,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 2179
+        "latency_ms": 2179,
+        "gold_answer_match": true
       }
     },
     {
@@ -2145,7 +2212,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 896
+        "latency_ms": 896,
+        "gold_answer_match": false
       }
     },
     {
@@ -2176,14 +2244,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 656
+        "latency_ms": 656,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_17590",
       "response": "Clara Petacci was the mistress of the Italian dictator Benito Mussolini.",
       "retrieved_chunks": [
-        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 \u2013 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
+        "Clara Petacci, known as Claretta Petacci (; 28 February 1912 – 28 April 1945) was the mistress of the Italian dictator Benito Mussolini, and was executed with him by partisans."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -2207,14 +2276,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 733
+        "latency_ms": 733,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qw_5765",
       "response": "In David Hockney's painting \"Mr and Mrs Clark and Percy,\" Percy is the name of a cat. However, the cat in the painting was actually named Blanche, but Hockney thought Percy made a better title.",
       "retrieved_chunks": [
-        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy \u2014 this was the name of one of their other cats \u2014 but Hockney thought Percy made a better title than Blanche, the cat he painted)."
+        "One of their cats sits on Ossie's knee (the cat in the painting was not in fact Percy — this was the name of one of their other cats — but Hockney thought Percy made a better title than Blanche, the cat he painted)."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -2238,7 +2308,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 978
+        "latency_ms": 978,
+        "gold_answer_match": true
       }
     },
     {
@@ -2269,7 +2340,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 850
+        "latency_ms": 850,
+        "gold_answer_match": true
       }
     },
     {
@@ -2300,7 +2372,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 774
+        "latency_ms": 774,
+        "gold_answer_match": true
       }
     },
     {
@@ -2331,7 +2404,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 740
+        "latency_ms": 740,
+        "gold_answer_match": true
       }
     },
     {
@@ -2362,7 +2436,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1165
+        "latency_ms": 1165,
+        "gold_answer_match": false
       }
     },
     {
@@ -2393,7 +2468,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 935
+        "latency_ms": 935,
+        "gold_answer_match": true
       }
     },
     {
@@ -2424,7 +2500,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 838
+        "latency_ms": 838,
+        "gold_answer_match": true
       }
     },
     {
@@ -2455,7 +2532,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 2593
+        "latency_ms": 2593,
+        "gold_answer_match": true
       }
     },
     {
@@ -2486,7 +2564,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 686
+        "latency_ms": 686,
+        "gold_answer_match": false
       }
     },
     {
@@ -2517,7 +2596,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 1297
+        "latency_ms": 1297,
+        "gold_answer_match": true
       }
     },
     {
@@ -2548,7 +2628,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 916
+        "latency_ms": 916,
+        "gold_answer_match": true
       }
     },
     {
@@ -2579,7 +2660,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 965
+        "latency_ms": 965,
+        "gold_answer_match": true
       }
     },
     {
@@ -2610,7 +2692,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 786
+        "latency_ms": 786,
+        "gold_answer_match": true
       }
     },
     {
@@ -2641,14 +2724,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1658
+        "latency_ms": 1658,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_5913",
       "response": "Mr. M'Choakumchild appears in the Charles Dickens novel \"Hard Times.\"",
       "retrieved_chunks": [
-        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852\u201353), Hard Times (1854), and Little Dorrit (1856)."
+        "Middle years\n\nIn late November 1851, Dickens moved into Tavistock House where he wrote Bleak House (1852–53), Hard Times (1854), and Little Dorrit (1856)."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -2672,7 +2756,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 819
+        "latency_ms": 819,
+        "gold_answer_match": true
       }
     },
     {
@@ -2703,7 +2788,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 706
+        "latency_ms": 706,
+        "gold_answer_match": false
       }
     },
     {
@@ -2734,7 +2820,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 995
+        "latency_ms": 995,
+        "gold_answer_match": true
       }
     },
     {
@@ -2765,7 +2852,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 878
+        "latency_ms": 878,
+        "gold_answer_match": true
       }
     },
     {
@@ -2796,7 +2884,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 1275
+        "latency_ms": 1275,
+        "gold_answer_match": true
       }
     },
     {
@@ -2827,7 +2916,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 660
+        "latency_ms": 660,
+        "gold_answer_match": true
       }
     },
     {
@@ -2858,7 +2948,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 958
+        "latency_ms": 958,
+        "gold_answer_match": false
       }
     },
     {
@@ -2889,7 +2980,8 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 916
+        "latency_ms": 916,
+        "gold_answer_match": true
       }
     },
     {
@@ -2920,7 +3012,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 879
+        "latency_ms": 879,
+        "gold_answer_match": true
       }
     },
     {
@@ -2951,7 +3044,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 2469
+        "latency_ms": 2469,
+        "gold_answer_match": true
       }
     },
     {
@@ -2982,7 +3076,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1077
+        "latency_ms": 1077,
+        "gold_answer_match": true
       }
     },
     {
@@ -3013,7 +3108,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 823
+        "latency_ms": 823,
+        "gold_answer_match": true
       }
     },
     {
@@ -3044,7 +3140,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 972
+        "latency_ms": 972,
+        "gold_answer_match": true
       }
     },
     {
@@ -3075,14 +3172,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1046
+        "latency_ms": 1046,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-jp_2349",
-      "response": "The name of Jay-Z and Beyonc\u00e9's daughter is Blue Ivy Carter.",
+      "response": "The name of Jay-Z and Beyoncé's daughter is Blue Ivy Carter.",
       "retrieved_chunks": [
-        "On January 7, 2012, Beyonc\u00e9 gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
+        "On January 7, 2012, Beyoncé gave birth to her first child, a daughter, Blue Ivy Carter, at Lenox Hill Hospital in New York."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3106,7 +3204,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1564
+        "latency_ms": 1564,
+        "gold_answer_match": true
       }
     },
     {
@@ -3137,14 +3236,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 818
+        "latency_ms": 818,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_2390",
       "response": "The context does not provide the physics term for mass times velocity.",
       "retrieved_chunks": [
-        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010\u20131012,  where it was defined as 1/564 of a momentum (1\u00bd minutes),  and thus equal to 15/94 of a second."
+        "The earliest known occurrence in English is in Byrhtferth's Enchiridion (a science text) of 1010–1012,  where it was defined as 1/564 of a momentum (1½ minutes),  and thus equal to 15/94 of a second."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3168,7 +3268,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1614
+        "latency_ms": 1614,
+        "gold_answer_match": false
       }
     },
     {
@@ -3199,7 +3300,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 700
+        "latency_ms": 700,
+        "gold_answer_match": true
       }
     },
     {
@@ -3230,7 +3332,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1015
+        "latency_ms": 1015,
+        "gold_answer_match": false
       }
     },
     {
@@ -3261,7 +3364,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 793
+        "latency_ms": 793,
+        "gold_answer_match": true
       }
     },
     {
@@ -3292,7 +3396,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 809
+        "latency_ms": 809,
+        "gold_answer_match": false
       }
     },
     {
@@ -3323,12 +3428,13 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 926
+        "latency_ms": 926,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_7327",
-      "response": "The 1975 novel \u2018The History Man\u2019 was written by Malcolm Bradbury.",
+      "response": "The 1975 novel ‘The History Man’ was written by Malcolm Bradbury.",
       "retrieved_chunks": [
         "The History Man (1975) is a campus novel by the British author Malcolm Bradbury set in 1972 in the fictional seaside town of Watermouth in the South of England."
       ],
@@ -3354,7 +3460,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 638
+        "latency_ms": 638,
+        "gold_answer_match": true
       }
     },
     {
@@ -3385,7 +3492,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 857
+        "latency_ms": 857,
+        "gold_answer_match": true
       }
     },
     {
@@ -3416,14 +3524,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 5354
+        "latency_ms": 5354,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qg_3932",
-      "response": "The answer is Theodore Roosevelt. He was born on October 27, 1858, became the 26th President of the United States, spent time as a North Dakota rancher, and served as Assistant Secretary of the Navy from 1897\u20131898. (Note: The context says he became Assistant Secretary in 1897, not 1899.)",
+      "response": "The answer is Theodore Roosevelt. He was born on October 27, 1858, became the 26th President of the United States, spent time as a North Dakota rancher, and served as Assistant Secretary of the Navy from 1897–1898. (Note: The context says he became Assistant Secretary in 1897, not 1899.)",
       "retrieved_chunks": [
-        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897\u20131898, during the William McKinley administration."
+        "President Theodore Roosevelt served as Assistant Secretary of the Navy from 1897–1898, during the William McKinley administration."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3447,14 +3556,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1201
+        "latency_ms": 1201,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-tc_2687",
       "response": "The builder of steam engines who formed a successful partnership with Matthew Boulton was James Watt.",
       "retrieved_chunks": [
-        "Matthew Boulton  (; 3 September 1728 \u2013 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
+        "Matthew Boulton  (; 3 September 1728 – 17 August 1809) was an English manufacturer and business partner of Scottish engineer James Watt."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3478,14 +3588,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1142
+        "latency_ms": 1142,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-dpql_5313",
       "response": "Wolfgang Amadeus Mozart was born in Salzburg in 1756.",
       "retrieved_chunks": [
-        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719\u20131787) and Anna Maria, n\u00e9e Pertl (1720\u20131778), at 9\u00a0Getreidegasse in Salzburg."
+        "Life and career\n\nEarly life\n\nFamily and childhood\n\nWolfgang Amadeus Mozart was born on 27January 1756 to Leopold Mozart (1719–1787) and Anna Maria, née Pertl (1720–1778), at 9 Getreidegasse in Salzburg."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3509,14 +3620,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 816
+        "latency_ms": 816,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-odql_4141",
-      "response": "In Greek mythology, the mother of Perseus, who was visited by Zeus disguised as a shower of gold, was Dana\u00eb.",
+      "response": "In Greek mythology, the mother of Perseus, who was visited by Zeus disguised as a shower of gold, was Danaë.",
       "retrieved_chunks": [
-        "Perseus was the son of the mortal Dana\u00eb and the god Zeus."
+        "Perseus was the son of the mortal Danaë and the god Zeus."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -3540,7 +3652,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 711
+        "latency_ms": 711,
+        "gold_answer_match": true
       }
     },
     {
@@ -3571,7 +3684,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 875
+        "latency_ms": 875,
+        "gold_answer_match": true
       }
     },
     {
@@ -3602,7 +3716,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 864
+        "latency_ms": 864,
+        "gold_answer_match": true
       }
     },
     {
@@ -3633,7 +3748,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1263
+        "latency_ms": 1263,
+        "gold_answer_match": true
       }
     },
     {
@@ -3664,7 +3780,8 @@
           "supported": 0,
           "total_quoted": 2
         },
-        "latency_ms": 932
+        "latency_ms": 932,
+        "gold_answer_match": true
       }
     },
     {
@@ -3695,7 +3812,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 719
+        "latency_ms": 719,
+        "gold_answer_match": true
       }
     },
     {
@@ -3726,7 +3844,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1693
+        "latency_ms": 1693,
+        "gold_answer_match": true
       }
     },
     {
@@ -3757,7 +3876,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 889
+        "latency_ms": 889,
+        "gold_answer_match": true
       }
     },
     {
@@ -3788,7 +3908,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 806
+        "latency_ms": 806,
+        "gold_answer_match": true
       }
     },
     {
@@ -3819,7 +3940,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 865
+        "latency_ms": 865,
+        "gold_answer_match": true
       }
     },
     {
@@ -3850,7 +3972,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 762
+        "latency_ms": 762,
+        "gold_answer_match": true
       }
     },
     {
@@ -3881,7 +4004,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 671
+        "latency_ms": 671,
+        "gold_answer_match": true
       }
     },
     {
@@ -3912,7 +4036,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 837
+        "latency_ms": 837,
+        "gold_answer_match": true
       }
     },
     {
@@ -3943,7 +4068,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 3385
+        "latency_ms": 3385,
+        "gold_answer_match": true
       }
     },
     {
@@ -3974,7 +4100,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 809
+        "latency_ms": 809,
+        "gold_answer_match": true
       }
     },
     {
@@ -4005,7 +4132,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1157
+        "latency_ms": 1157,
+        "gold_answer_match": true
       }
     },
     {
@@ -4036,7 +4164,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 743
+        "latency_ms": 743,
+        "gold_answer_match": true
       }
     },
     {
@@ -4067,7 +4196,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 968
+        "latency_ms": 968,
+        "gold_answer_match": true
       }
     },
     {
@@ -4098,7 +4228,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 677
+        "latency_ms": 677,
+        "gold_answer_match": true
       }
     },
     {
@@ -4129,7 +4260,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1166
+        "latency_ms": 1166,
+        "gold_answer_match": true
       }
     },
     {
@@ -4160,7 +4292,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 761
+        "latency_ms": 761,
+        "gold_answer_match": true
       }
     },
     {
@@ -4191,7 +4324,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 755
+        "latency_ms": 755,
+        "gold_answer_match": true
       }
     },
     {
@@ -4222,7 +4356,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1212
+        "latency_ms": 1212,
+        "gold_answer_match": true
       }
     },
     {
@@ -4253,14 +4388,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 890
+        "latency_ms": 890,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_7551",
       "response": "Based on the context provided, San Francisco has a district called Japantown, which is also referred to as J-town. The context also mentions that \"Little Tokyo\" is the common name for the Japanese community in Los Angeles, but \"Japantown\" specifically refers to San Francisco. Additionally, San Francisco is known to have districts called Financial (Financial District), Mission (Mission District), and Richmond (Richmond District).\n\nTherefore, the American city with districts called Financial, Mission, Japantown, and Richmond is San Francisco.",
       "retrieved_chunks": [
-        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (\u65e5\u672c\u753a), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively."
+        "Alternatively, a Japantown may be called J-town, Little Tokyo, or Nihonmachi (日本町), the first two being common names for the Japanese communities in San Francisco and Los Angeles, respectively."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -4284,7 +4420,8 @@
           "supported": 2,
           "total_quoted": 2
         },
-        "latency_ms": 1247
+        "latency_ms": 1247,
+        "gold_answer_match": true
       }
     },
     {
@@ -4315,7 +4452,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 820
+        "latency_ms": 820,
+        "gold_answer_match": true
       }
     },
     {
@@ -4346,7 +4484,8 @@
           "supported": 0,
           "total_quoted": 1
         },
-        "latency_ms": 1246
+        "latency_ms": 1246,
+        "gold_answer_match": true
       }
     },
     {
@@ -4377,7 +4516,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1091
+        "latency_ms": 1091,
+        "gold_answer_match": true
       }
     },
     {
@@ -4408,7 +4548,8 @@
           "supported": 1,
           "total_quoted": 1
         },
-        "latency_ms": 855
+        "latency_ms": 855,
+        "gold_answer_match": true
       }
     },
     {
@@ -4439,7 +4580,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1026
+        "latency_ms": 1026,
+        "gold_answer_match": true
       }
     },
     {
@@ -4470,7 +4612,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1340
+        "latency_ms": 1340,
+        "gold_answer_match": true
       }
     },
     {
@@ -4501,7 +4644,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 806
+        "latency_ms": 806,
+        "gold_answer_match": true
       }
     },
     {
@@ -4532,7 +4676,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 950
+        "latency_ms": 950,
+        "gold_answer_match": true
       }
     },
     {
@@ -4563,7 +4708,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 854
+        "latency_ms": 854,
+        "gold_answer_match": true
       }
     },
     {
@@ -4594,14 +4740,15 @@
           "supported": 1,
           "total_quoted": 2
         },
-        "latency_ms": 910
+        "latency_ms": 910,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-sfq_9912",
       "response": "In Italian cookery, soft dumplings made from semolina or wheat flour are called gnocchi.",
       "retrieved_chunks": [
-        "Dumplings, like gnocchi (made with potatoes) and noodles like sp\u00e4tzle, are sometimes considered pasta."
+        "Dumplings, like gnocchi (made with potatoes) and noodles like spätzle, are sometimes considered pasta."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -4625,14 +4772,15 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 700
+        "latency_ms": 700,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-wh_3938",
-      "response": "Based on the provided context, Lew Hoad (AUS) won the men\u2019s singles title at Wimbledon in 1956. The context does not provide information about the 1957 winner.",
+      "response": "Based on the provided context, Lew Hoad (AUS) won the men’s singles title at Wimbledon in 1956. The context does not provide information about the 1957 winner.",
       "retrieved_chunks": [
-        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6\u20132, 4\u20136, 7\u20135, 6\u20134 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships."
+        "Lew Hoad (AUS) defeated Ken Rosewall (AUS) 6–2, 4–6, 7–5, 6–4 in the final to win the Gentlemen's Singles tennis title at the 1956 Wimbledon Championships."
       ],
       "retrieved_provenance": [],
       "metrics": {
@@ -4656,12 +4804,13 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1013
+        "latency_ms": 1013,
+        "gold_answer_match": true
       }
     },
     {
       "query_id": "triviaqa-qb_10284",
-      "response": "The original Ferris Wheel was erected in Illinois for the 1893 World\u2019s Columbian Exposition.",
+      "response": "The original Ferris Wheel was erected in Illinois for the 1893 World’s Columbian Exposition.",
       "retrieved_chunks": [
         "Larger examples include the original Ferris Wheel, which operated at two sites in Chicago, Illinois, and a third in St."
       ],
@@ -4687,7 +4836,8 @@
           "supported": 0,
           "total_quoted": 0
         },
-        "latency_ms": 1292
+        "latency_ms": 1292,
+        "gold_answer_match": true
       }
     }
   ],
@@ -4733,12 +4883,18 @@
       0.07575757575757576,
       0.3333333333333333
     ],
-    "quoted_content_supported_rate_n": 33
+    "quoted_content_supported_rate_n": 33,
+    "gold_answer_match_rate_mean": 0.9,
+    "gold_answer_match_rate_ci95": [
+      0.8533333333333334,
+      0.9466666666666667
+    ],
+    "gold_answer_match_rate_n": 150
   },
   "caveats": [
-    "ADR-0027: only verbatim_pass + connective_hygiene from the Hyphae 9-dimension scorer are directly comparable across systems. Schema fidelity, limitation recall/precision, lexical diversity, role coverage, boundary smoothness are Hyphae-specific by design \u2014 see ADR-0027 \u00a7'Comparable subset' before reading the writeup.",
+    "ADR-0027: only verbatim_pass + connective_hygiene from the Hyphae 9-dimension scorer are directly comparable across systems. Schema fidelity, limitation recall/precision, lexical diversity, role coverage, boundary smoothness are Hyphae-specific by design — see ADR-0027 §'Comparable subset' before reading the writeup.",
     "Unsupported-claim rate is reported BOTH filtered (excluding Hyphae connective sentences) and raw. The filter benefits Hyphae; consult both columns.",
     "N=1 hardware (arm). Generalisation to other hardware classes is a separate ADR (planned: 0028).",
-    "No ablation studies in this run \u2014 every Hyphae component is enabled. ADR-0029 (planned) covers the ablation harness."
+    "No ablation studies in this run — every Hyphae component is enabled. ADR-0029 (planned) covers the ablation harness."
   ]
 }
