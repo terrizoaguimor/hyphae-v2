@@ -47,6 +47,7 @@ from .metrics_extra import (
     unsupported_claim_rate,
     verbatim_pass,
 )
+from .do_inference import DEFAULT_DO_INFERENCE_ENDPOINT, DoInferenceGenerator
 from .rag_pipeline import (
     DEFAULT_DECODING,
     DEFAULT_SYSTEM_PROMPT,
@@ -57,6 +58,12 @@ from .rag_pipeline import (
     Mode,
     RagPipeline,
     RagResponse,
+)
+from .strong_rag import (
+    FINAL_TOP_K as STRONG_RAG_FINAL_TOP_K,
+    HYDE_OVER_RETRIEVAL_K,
+    RERANKER_MODEL,
+    StrongRagPipeline,
 )
 
 console = Console(stderr=True)
@@ -257,9 +264,13 @@ def _hardware_metadata() -> dict[str, Any]:
 @click.command()
 @click.option(
     "--mode",
-    type=click.Choice(["oracle", "rag"]),
+    type=click.Choice(["oracle", "rag", "strong-rag"]),
     required=True,
-    help="oracle: LLM sees corpus seeds directly. rag: full FAISS retrieval.",
+    help=(
+        "oracle: LLM sees corpus seeds directly. "
+        "rag: full FAISS retrieval. "
+        "strong-rag: HyDE + cross-encoder reranking (ADR-0030)."
+    ),
 )
 @click.option(
     "--corpus",
@@ -274,11 +285,41 @@ def _hardware_metadata() -> dict[str, Any]:
     help="Where to write the result JSON.",
 )
 @click.option(
+    "--llm-backend",
+    type=click.Choice(["local", "do-inference"]),
+    default="local",
+    show_default=True,
+    help=(
+        "local: llama-cpp-python with a GGUF file. "
+        "do-inference: DigitalOcean Inference OpenAI-compatible API (ADR-0028b)."
+    ),
+)
+@click.option(
     "--model-path",
-    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    type=click.Path(dir_okay=False, path_type=Path),
     default=Path("models/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf"),
     show_default=True,
-    help="Path to the Llama GGUF file (downloaded by scripts/download-model.sh).",
+    help="Path to the Llama GGUF file (local backend only).",
+)
+@click.option(
+    "--model",
+    type=str,
+    default=None,
+    help="DO Inference model id (do-inference backend only, e.g. 'llama3.3-70b-instruct').",
+)
+@click.option(
+    "--api-key",
+    type=str,
+    envvar="DO_INFERENCE_KEY",
+    default=None,
+    help="DO Inference API key. Env: DO_INFERENCE_KEY.",
+)
+@click.option(
+    "--endpoint",
+    type=str,
+    default=DEFAULT_DO_INFERENCE_ENDPOINT,
+    show_default=True,
+    help="DO Inference base URL.",
 )
 @click.option(
     "--retrieval-k",
@@ -294,10 +335,14 @@ def _hardware_metadata() -> dict[str, Any]:
     help="Optional cap on queries for smoke testing.",
 )
 def main(
-    mode: Mode,
+    mode: str,
     corpus: Path,
     output: Path,
+    llm_backend: str,
     model_path: Path,
+    model: str | None,
+    api_key: str | None,
+    endpoint: str,
     retrieval_k: int,
     limit: int | None,
 ) -> None:
@@ -311,14 +356,38 @@ def main(
     log.info("Loaded %d queries", len(queries))
 
     nli = NliPipeline()
-    generator = LlamaGenerator(model_path)
-    pipeline = RagPipeline(
-        mode=mode,
-        generator=generator,
-        retrieval_k=retrieval_k,
-    )
-    if mode == "rag":
+
+    # Generator backend: local llama.cpp or DO Inference API.
+    generator: LlamaGenerator | DoInferenceGenerator
+    if llm_backend == "do-inference":
+        if not model:
+            raise click.ClickException("--model is required when --llm-backend=do-inference")
+        if not api_key:
+            raise click.ClickException(
+                "--api-key (or DO_INFERENCE_KEY env) required when --llm-backend=do-inference"
+            )
+        log.info("Using DO Inference backend, model=%s", model)
+        generator = DoInferenceGenerator(model=model, api_key=api_key, endpoint=endpoint)
+    else:
+        if not model_path.exists():
+            raise click.ClickException(
+                f"local backend requires model file at {model_path}; run scripts/download-model.sh"
+            )
+        log.info("Using local llama.cpp backend, model=%s", model_path.name)
+        generator = LlamaGenerator(model_path)
+
+    pipeline: RagPipeline | StrongRagPipeline
+    if mode == "strong-rag":
+        pipeline = StrongRagPipeline(generator=generator)
         pipeline.build_index(queries)
+    else:
+        pipeline = RagPipeline(
+            mode=mode,  # type: ignore[arg-type]
+            generator=generator,
+            retrieval_k=retrieval_k,
+        )
+        if mode == "rag":
+            pipeline.build_index(queries)
 
     per_query: list[dict[str, Any]] = []
     with Progress(
@@ -339,22 +408,43 @@ def main(
     aggregate = _aggregate(per_query)
     wall_clock_s = time.perf_counter() - t_start
 
+    # Backend-conditional model metadata
+    if llm_backend == "do-inference":
+        model_meta: dict[str, Any] = {
+            "backend": "do-inference",
+            "endpoint": endpoint,
+            "model_id": model,
+        }
+    else:
+        model_meta = {
+            "backend": "local-llama-cpp",
+            "repo": "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF",
+            "file": model_path.name,
+            "sha256": _file_sha256(model_path),
+        }
+
     envelope = {
         "metadata": {
             "comparator_version": __version__,
             "adr": "0027",
             "mode": mode,
-            "model": {
-                "repo": "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF",
-                "file": model_path.name,
-                "sha256": _file_sha256(model_path),
-            },
+            "llm_backend": llm_backend,
+            "model": model_meta,
             "embedder": EMBED_MODEL,
             "nli": _NLI_MODEL,
             "vector_index": "faiss.IndexFlatIP",
             "chunk_size": 256,
             "chunk_overlap": 32,
-            "retrieval_k": retrieval_k if mode == "rag" else None,
+            "retrieval_k": retrieval_k if mode == "rag" else (STRONG_RAG_FINAL_TOP_K if mode == "strong-rag" else None),
+            "strong_rag": (
+                {
+                    "reranker": RERANKER_MODEL,
+                    "over_retrieval_k": HYDE_OVER_RETRIEVAL_K,
+                    "final_top_k": STRONG_RAG_FINAL_TOP_K,
+                }
+                if mode == "strong-rag"
+                else None
+            ),
             "decoding": dict(DEFAULT_DECODING),
             "system_prompt": DEFAULT_SYSTEM_PROMPT,
             "hardware": _hardware_metadata(),

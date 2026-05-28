@@ -71,6 +71,8 @@ echo "=== LLM oracle ==="
 uv run baseline-llm-rag --mode oracle --corpus corpus-en.json --output "results/v0.1-${HW_TAG}-oracle.json" 2>&1 | tail -3
 echo "=== LLM rag ==="
 uv run baseline-llm-rag --mode rag --corpus corpus-en.json --output "results/v0.1-${HW_TAG}-rag.json" 2>&1 | tail -3
+echo "=== LLM strong-rag (HyDE + bge-reranker, ADR-0030) ==="
+uv run baseline-llm-rag --mode strong-rag --corpus corpus-en.json --output "results/v0.1-${HW_TAG}-strong-rag.json" 2>&1 | tail -3
 
 # ── List final result files ──────────────────────────────────
 echo "=== Done. Result files: ==="

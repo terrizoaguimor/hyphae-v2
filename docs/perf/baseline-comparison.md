@@ -319,3 +319,17 @@ crosses 10 seconds while Hyphae stays under 100 microseconds. The
 gap the laptop-only comparison exposed is not a Mac/MPS quirk — it
 amplifies in the direction of every cloud deployment without a
 dedicated GPU.
+
+**Update — 2026-05-28**: ADR-0030 (strong-RAG) AND ADR-0030b
+(multi-LLM matrix) are landed and their combined results are in
+[`multi-llm-comparison.md`](multi-llm-comparison.md). The
+**headline that supersedes this writeup's claim**: across 19
+LLM-based system configurations (vanilla, strong-RAG, plus 5 LLMs
+× 3 modes via DO Inference), **only GPT-4.1 with HyDE + cross-
+encoder reranking matches Hyphae's unsupported-claim rate** (0.211
+vs 0.219, within bootstrap CI). Every other system lands further
+from Hyphae than the vanilla naive RAG this writeup measured.
+Hyphae's latency advantage remains 50,000+× even against the
+single LLM-based system that ties it on quality. Read the
+multi-LLM writeup before quoting the numbers in this document —
+the refined paper claim lives there.
