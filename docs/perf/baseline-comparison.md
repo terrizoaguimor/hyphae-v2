@@ -296,3 +296,14 @@ ablations, the comparison establishes that Hyphae beats vanilla RAG
 on the comparable subset, but not which Hyphae component is doing
 the work**. That is the next milestone before the writeup is
 paper-grade in the strict sense.
+
+**Update — 2026-05-28**: ADR-0029 is now landed and its results are
+in [`ablation-study.md`](ablation-study.md). The headline finding
+relevant to this comparison: the `ngram_overlap_8` inversion against
+the LLM (Hyphae 0.240 vs LLM 0.329) is **causally attributable to
+lexicon scale**, not to citation fidelity — disabling the rich
+lexicon raises Hyphae's `ngram_overlap_4` from 0.466 to 0.521. The
+remaining three components (cascade-shape, ethics gate, boundary
+smoothing) produced null deltas on the comparator metrics at this
+corpus size; the ablation writeup discusses what that does and does
+not mean.

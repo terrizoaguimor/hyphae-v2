@@ -89,10 +89,26 @@ pub struct RealizationOutput {
 /// The realizer. Holds the connective-tissue lexicon and the
 /// limitation-context defaults. Construct once per substrate; use
 /// many times via [`Self::realize`].
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone)]
 pub struct SurfaceRealizer {
     lexicon: Lexicon,
     limitation_context: LimitationContext,
+    /// **ADR-0029.** When `false`, the realize loop bypasses
+    /// boundary smoothing (ADR-0007) and falls through to the
+    /// plain `Lexicon::pick_in_context` selector. Default `true`
+    /// — production callers preserve existing behaviour. Only the
+    /// ablation harness flips this.
+    smoothing_enabled: bool,
+}
+
+impl Default for SurfaceRealizer {
+    fn default() -> Self {
+        Self {
+            lexicon: Lexicon::default(),
+            limitation_context: LimitationContext::default(),
+            smoothing_enabled: true,
+        }
+    }
 }
 
 impl SurfaceRealizer {
@@ -118,6 +134,22 @@ impl SurfaceRealizer {
     /// associative depth).
     pub fn set_limitation_context(&mut self, context: LimitationContext) {
         self.limitation_context = context;
+    }
+
+    /// **ADR-0029.** Disable boundary smoothing for this realizer.
+    /// The realize loop's connective pick falls through to
+    /// `Lexicon::pick_in_context` instead of
+    /// `pick_with_smoothing`. Exists exclusively for the ablation
+    /// study; production callers should not invoke this.
+    pub fn disable_smoothing(&mut self) {
+        self.smoothing_enabled = false;
+    }
+
+    /// **ADR-0029.** `true` when boundary smoothing is active
+    /// (the default). Surfaced for tests + the ablation harness.
+    #[must_use]
+    pub fn smoothing_enabled(&self) -> bool {
+        self.smoothing_enabled
     }
 
     /// Read-only access to the connective lexicon.
@@ -279,13 +311,21 @@ impl SurfaceRealizer {
                     BoundarySignal::extract_with_rules(fragment_body(prev_fragment), rules);
                 let next_signal =
                     BoundarySignal::extract_with_rules(fragment_body(fragment), rules);
-                let connective = self.lexicon.pick_with_smoothing(
-                    effective_role,
-                    &ctx,
-                    idx,
-                    Some(&prev_signal),
-                    Some(&next_signal),
-                );
+                let connective = if self.smoothing_enabled {
+                    self.lexicon.pick_with_smoothing(
+                        effective_role,
+                        &ctx,
+                        idx,
+                        Some(&prev_signal),
+                        Some(&next_signal),
+                    )
+                } else {
+                    // ADR-0029 no-smoothing ablation — skip the
+                    // boundary filter and use the plain context
+                    // picker. Same picker the realizer falls back
+                    // to when boundary signals are absent.
+                    self.lexicon.pick_in_context(effective_role, &ctx, idx)
+                };
                 text.push(' ');
                 text.push_str(connective);
                 text.push(' ');
@@ -1116,5 +1156,61 @@ mod tests {
             "Summary closing must not be the DialogueReply default: {}",
             out.text,
         );
+    }
+
+    // ── ADR-0029 ablation-enabler tests ───────────────────────
+
+    #[test]
+    fn smoothing_enabled_default_true_preserves_existing_behaviour() {
+        let realizer = SurfaceRealizer::new();
+        assert!(
+            realizer.smoothing_enabled(),
+            "new() must keep smoothing on by default — production callers depend on it"
+        );
+    }
+
+    #[test]
+    fn disable_smoothing_flips_the_flag() {
+        let mut realizer = SurfaceRealizer::new();
+        realizer.disable_smoothing();
+        assert!(!realizer.smoothing_enabled());
+    }
+
+    #[test]
+    fn disable_smoothing_still_produces_well_formed_composition() {
+        // ADR-0029 A4: with smoothing off the realizer still produces
+        // a well-formed quoted composition. Verbatim quotation is
+        // preserved (Hard Commitment 12).
+        use crate::Intent;
+        use hyphae_core::{CognitiveFragment, FragmentContent};
+
+        let mut realizer = SurfaceRealizer::new();
+        realizer.disable_smoothing();
+        let f1 = CognitiveFragment::new(
+            FragmentContent::Observation {
+                body: "the migration completed at 14:02 UTC".into(),
+            },
+            "test",
+        );
+        let f2 = CognitiveFragment::new(
+            FragmentContent::Observation {
+                body: "the monitoring dashboards stayed green".into(),
+            },
+            "test",
+        );
+        let working_set = vec![f1, f2];
+        let out = realizer
+            .realize(&RealizationRequest {
+                intent: Intent::Dialogue,
+                query: "status?",
+                working_set: &working_set,
+                ethics: None,
+                shape: None,
+            })
+            .expect("realizer maps Dialogue");
+        // Verbatim quotation invariant survives the ablation.
+        assert!(out.text.contains("the migration completed at 14:02 UTC"));
+        assert!(out.text.contains("the monitoring dashboards stayed green"));
+        assert!(!out.is_acknowledgment_only);
     }
 }

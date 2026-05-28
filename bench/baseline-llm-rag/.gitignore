@@ -16,6 +16,7 @@ results/scratch-*.json
 corpus-en.json
 corpus-es.json
 hyphae-results.json
+hyphae-results-*.json
 
 # Python build artifacts
 __pycache__/

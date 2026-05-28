@@ -234,6 +234,48 @@ impl Lexicon {
         }
     }
 
+    /// **ADR-0029.** A deliberately minimal English lexicon — one
+    /// entry per [`ConnectiveRole`] variant at neutral register,
+    /// neutral polarity, mid formality. Exists exclusively to enable
+    /// the lexicon-scale ablation (`minimal-lexicon` condition) for
+    /// the paper-grade ablation study. The picker's 4-level
+    /// fallback chain resolves register/polarity/formality
+    /// preferences against the single minimal entry per role.
+    ///
+    /// **Do not use in production callers.** The minimal lexicon
+    /// produces grammatically valid but lexically monotonous
+    /// composition; it is included in the public API so the
+    /// ablation harness can construct it without duplicating the
+    /// `ConnectiveRole` enum walk.
+    #[must_use]
+    pub fn minimal_en() -> Self {
+        use ConnectiveRole::{
+            Attribution, Causation, Closing, Concession, Continuation, Contrast, Elaboration,
+            Opening, Sequence, Summary,
+        };
+        let entries = [
+            (Opening, "Note that"),
+            (Continuation, "Also,"),
+            (Contrast, "However,"),
+            (Attribution, "Per the record:"),
+            (Closing, "That is what is on record."),
+            (Concession, "Granted,"),
+            (Causation, "Because of this,"),
+            (Elaboration, "Specifically,"),
+            (Sequence, "Next,"),
+            (Summary, "Overall,"),
+        ]
+        .into_iter()
+        .map(|(role, phrase)| {
+            Connective::new(phrase, role, Register::Neutral, Polarity::Neutral, Formality::Mid)
+        })
+        .collect();
+        Self {
+            entries,
+            boundary_rules: &crate::boundary::BoundaryRules::ENGLISH,
+        }
+    }
+
     /// Add a connective. Useful for register-specific extensions
     /// without rewriting the baseline.
     pub fn add(&mut self, connective: Connective) {
@@ -639,5 +681,53 @@ mod tests {
         // Trivially distinct because the roles differ — but the
         // test pins the contract.
         assert_ne!(cont, contrast);
+    }
+
+    // ── ADR-0029 ablation-enabler tests ───────────────────────
+
+    #[test]
+    fn minimal_en_has_one_entry_per_role() {
+        let lex = Lexicon::minimal_en();
+        for role in [
+            ConnectiveRole::Opening,
+            ConnectiveRole::Continuation,
+            ConnectiveRole::Contrast,
+            ConnectiveRole::Attribution,
+            ConnectiveRole::Closing,
+            ConnectiveRole::Concession,
+            ConnectiveRole::Causation,
+            ConnectiveRole::Elaboration,
+            ConnectiveRole::Sequence,
+            ConnectiveRole::Summary,
+        ] {
+            assert_eq!(
+                lex.count(role),
+                1,
+                "minimal_en must carry exactly one entry per role; missing/extra: {role:?}"
+            );
+        }
+        assert_eq!(lex.len(), 10);
+    }
+
+    #[test]
+    fn minimal_en_resolves_every_role_through_fallback_chain() {
+        // ADR-0029: the minimal lexicon's entries are all at Neutral
+        // register / Neutral polarity / Mid formality. Pick calls with
+        // any context must still resolve via the 4-level fallback chain.
+        let lex = Lexicon::minimal_en();
+        let tech_ctx = PickContext {
+            register: Register::Technical,
+            polarity: Polarity::ContrastHard,
+            formality: Formality::High,
+        };
+        // Every role resolves to a non-empty phrase even when the
+        // context's exact bucket is empty.
+        for role in [
+            ConnectiveRole::Opening,
+            ConnectiveRole::Causation,
+            ConnectiveRole::Summary,
+        ] {
+            assert!(!lex.pick_in_context(role, &tech_ctx, 0).is_empty());
+        }
     }
 }
