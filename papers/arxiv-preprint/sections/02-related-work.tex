@@ -70,9 +70,10 @@ with them.
 \subsection{Sub-millisecond Production Inference}
 
 The latency-quality trade-off in conversational AI is widely
-acknowledged \citep{leviathan2023speculative,
-chen2023fastinference, kumar2024sublinearmemory}. Most
-recent work targets sub-second response under high token
+acknowledged, and a large line of work attacks LLM inference cost
+directly --- e.g. speculative and staged-speculative decoding
+\citep{leviathan2023speculative, chen2023fastinference}. Most
+such work targets sub-second response under high token
 generation budgets. \hyphae{} sits in a different operating
 point: sub-millisecond composition under the structural
 constraint that the response is bounded by curated lexicon

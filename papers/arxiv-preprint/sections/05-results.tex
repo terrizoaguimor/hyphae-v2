@@ -50,7 +50,9 @@ construction of the corpus filter (see text). The LLM
 configurations reach $0.84$--$0.96$ gold-answer at
 $0.400$--$0.737$ \unsupf: nearly as \emph{correct} as both echo
 and \hyphae{}, scored less \emph{grounded} by the NLI metric for
-reasons of phrasing, not of whether they answer correctly.}
+reasons of phrasing, not of whether they answer correctly.
+\texttt{router:celiums} is the authors' own production LLM router
+(Atlas), included for self-comparison and labelled as such.}
 \label{tab:triviaqa}
 \small
 \begin{tabular}{rl rrrr r}
@@ -93,10 +95,18 @@ quotes the seed body verbatim, so the gold answer always appears
 in \hyphae{}'s response. The $1.000$ rate is therefore a property
 of the corpus construction interacting with the verbatim-quotation
 commitment, not an unconditional empirical claim. We flag this
-explicitly because the same property guarantees \hyphae{} can
-\emph{never} fail at gold-answer match on this corpus by paraphrase
-or omission; an LLM, given identical seed bodies in oracle mode,
-can.
+explicitly, and one further limit deserves emphasis: this parity
+holds only because the seed is guaranteed to contain the answer.
+On a corpus where retrieval can fail to surface an answer-bearing
+fragment, \hyphae{} would be \emph{retrieval-capped} exactly like
+echo --- it can only quote what retrieval delivers, and its
+deterministic hashing embedder is a weaker retriever than the
+dense retrievers the LLM baselines use. The gold-answer comparison
+should thus be read as ``given a correct retrieval, verbatim
+quotation does not lose the answer the way generation sometimes
+does'' (the LLM oracle drop to $0.84$--$0.96$), not as a claim
+about end-to-end QA accuracy, where retrieval quality would
+dominate and \hyphae{} has no advantage.
 
 \paragraph{LLM gold-answer rates on this corpus.}
 The frontier LLMs given the same seed bodies in \emph{oracle} mode
@@ -165,64 +175,81 @@ not. What does --- the hash-chained provenance relation
 (Section~\ref{sec:hc12}) --- is not measured by either axis, and
 is the subject of Section~\ref{sec:discussion}.
 
-\subsection{Provenance: the Property the Benchmark Cannot See}
+\subsection{Provenance: a Minimal Tamper-Detection Benchmark}
 \label{sec:results-provenance}
 
 The echo control shows the correctness benchmark cannot
 distinguish \hyphae{} from a \texttt{print}. This subsection
-measures the property that does. The claim is that \hyphae{}'s
-SHA-256 hash-chained journal makes post-ingest tampering of the
-fragment store \emph{detectable and exactly localised}, and that
-neither echo nor LLM-RAG has any equivalent. We test it
-adversarially against the real \texttt{hyphae\_storage} journal
-(not a mock).
+measures the property that can --- and, just as importantly,
+locates it precisely. The property is \emph{verifiable
+provenance}: a hash-chained journal over the stored fragments
+makes post-ingest store tampering detectable and localised. We
+test it adversarially against the real \texttt{hyphae\_storage}
+journal (not a mock), crossing two axes: \textbf{tampering mode}
+and \textbf{adversary capability}.
 
-\paragraph{Protocol.} We ingest $N$ fragment bodies into a real
-journal, building the hash chain via the production
-\texttt{append} path, and confirm \texttt{verify()} passes on the
-clean chain. We then simulate an attacker with store access: we
-reopen the underlying \texttt{fjall} partition directly and
-overwrite the payload of $k$ entries with a tampered fact
-(``completed at 14:02 UTC'' $\rightarrow$ ``23:59 UTC'';
-``Prime Minister of Canada'' $\rightarrow$ ``of France''),
-preserving each record's sequence number and stored
-\texttt{prev\_hash} so the entries remain structurally valid ---
-exactly what a store-level attacker who does not reimplement the
-chain logic would produce. We reopen the journal and run
-\texttt{verify()}, recording detection and the sequence at which
-the chain first breaks.
+\paragraph{The property is realizer-independent --- it is not
+\hyphae{}'s.} This is the central honesty of the section. The
+journal stores \emph{raw fragment bodies}; the experiment invokes
+no lexicon, no cascade-shape composition, no realizer at all.
+Whatever the detection result is, it is a property of the
+(verbatim-store $+$ hash-chain) layer, and it is therefore shared
+identically by \hyphae{} and by an \textbf{echo$+$journal}
+baseline --- echo with the same journal bolted on. Exactly as the
+echo control showed correctness is not \hyphae{}-specific, this
+shows provenance is not \hyphae{}-specific either: it is an
+\emph{addable layer}, and \hyphae{} is one worked instance of a
+system that carries it. What both lack is captured by what echo
+(\emph{without} a journal) and LLM-RAG lack.
 
-\paragraph{Result.} Across $k \in \{1,3,5,10\}$ tampered
-fragments, the hash chain detects the tampering in \textbf{100\%}
-of trials and localises it to the exact sequence: modifying entry
-$j$ changes its recomputed content hash, so entry $j{+}1$'s stored
-\texttt{prev\_hash} no longer matches and \texttt{verify()}
-returns an integrity violation at that sequence (tampering the
-final entry is caught by the persisted chain-head check). The
-detection is independent of $N$ and of which entries are altered.
-Table~\ref{tab:tamper} states the matrix against the baselines.
+\paragraph{Protocol.} We ingest $N$ fragment bodies via the
+production \texttt{append} path and confirm \texttt{verify()}
+passes. We then apply one tampering mode and re-verify, recording
+detection and the localised sequence. Two adversaries:
+\textbf{store-only} (write access, edits records in place, does
+not reimplement the chain logic) and \textbf{chain-aware} (knows
+the hash construction; recomputes every hash forward from the
+edit and rewrites the persisted head).
+
+\paragraph{Result (Table~\ref{tab:tamper}).} Against the
+store-only adversary the layer detects and localises
+\textbf{100\%} of tampering across all four modes --- edit,
+delete, insert, reorder --- because any of them leaves some
+entry's stored \texttt{prev\_hash} inconsistent with the
+recomputed chain (insertion of a forged trailing record is caught
+at that record; deletion and reorder break the successor link;
+the final-entry case is caught by the persisted head). The
+chain-aware adversary \textbf{defeats the bare chain in 100\% of
+trials}: having recomputed the chain and rewritten the head, the
+forged journal verifies cleanly. This is not a flaw in the
+experiment --- it is the boundary the threat model below makes
+explicit, and the reason external head anchoring is the natural
+extension.
 
 \begin{table}[ht]
 \centering
-\caption{\textbf{Post-ingest store-tampering detection.}
-\hyphae{}'s hash chain detects and localises any modification;
-the baselines have no integrity layer. The LLM-RAG row is doubly
-exposed: it not only fails to detect the tampering but, because
-its output paraphrases the source (\verbpass{} $0.09$--$0.24$,
-Tables~\ref{tab:triviaqa}--\ref{tab:own}), the output cannot even
-be string-matched back to a source for post-hoc audit. Echo's
-output is byte-identical to the (tampered) source but it keeps no
-journal, so it cannot tell a tampered fragment from an authentic
-one.}
+\caption{\textbf{Minimal provenance benchmark: post-ingest
+store-tampering detection.} The (verbatim $+$ hash-chain journal)
+layer --- shared identically by \hyphae{} and a trivial
+echo$+$journal baseline, since the journal stores raw bodies ---
+detects and localises every store-only tampering mode, and is
+defeated only by a chain-aware adversary who can rewrite the
+persisted head (motivating external anchoring, §threat model).
+Echo \emph{without} a journal and LLM-RAG have no integrity layer
+at all. LLM-RAG is doubly exposed: its output paraphrases the
+source (\verbpass{} $0.09$--$0.24$,
+Tables~\ref{tab:triviaqa}--\ref{tab:own}), so it cannot even be
+string-matched back to a source for post-hoc audit.}
 \label{tab:tamper}
 \small
 \begin{tabular}{l c c c}
 \toprule
-\textbf{System} & detects tampering & localises & output auditable to source \\
+\textbf{System} & store-only adv. & chain-aware adv. & output auditable to source \\
 \midrule
-\hyphae{} (hash chain)  & \textbf{100\%} & exact seq & yes (byte-identical + journalled) \\
-Echo baseline           & 0\%            & ---       & only with external hashes (none kept) \\
-LLM-RAG                 & 0\%            & ---       & no (paraphrased; not byte-bindable) \\
+Verbatim $+$ journal               & \textbf{100\%} detect \& localise & defeated (needs anchor) & yes (byte-identical $+$ journalled) \\
+\quad(\hyphae{} \emph{and} echo$+$journal) & all 4 modes & & \\
+Echo (no journal)                  & 0\% & 0\% & only with external hashes (none kept) \\
+LLM-RAG (no journal)               & 0\% & 0\% & no (paraphrased; not byte-bindable) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -258,20 +285,25 @@ contribution is the architectural base layer and its measured
 tamper-evidence, with the anchoring extension flagged as the path
 to end-to-end tamper-proofing.
 
-\paragraph{Reading.} This is the paper's positive result, and it
-is the inverse of the echo finding. On the standard correctness
-benchmark, echo is indistinguishable from \hyphae{}; on
-provenance, echo collapses to the LLM-RAG row --- it emits the
-tampered text with no signal, and has no chain head to anchor in
-the first place. The property is small to state and small to
-demonstrate, but it is categorical: a system either binds its
-output to a tamper-evident store or it does not, and of the
-systems evaluated here only \hyphae{} does. Scaling this
-demonstration into a community provenance benchmark, and adding
-external chain-head anchoring, are the contribution's natural next
-steps (Section~\ref{sec:discussion}); the experiment here
-establishes that the base-layer property is real and measurable,
-not merely asserted.
+\paragraph{Reading.} This is the paper's positive result, and the
+echo control sharpens rather than supports \hyphae{} specifically.
+On correctness, echo $\equiv$ \hyphae{}; on provenance,
+echo$+$journal $\equiv$ \hyphae{} (the journal stores raw bodies,
+so the realizer is irrelevant to detection). The line that
+actually separates systems is not \hyphae{}-vs-the-rest but
+\textbf{journal-vs-no-journal}: a verbatim retriever that carries a
+hash-chained store can be audited; one that does not (plain echo)
+or that paraphrases its sources (LLM-RAG) cannot. The contribution
+is therefore the \emph{addable provenance layer} ---
+verbatim emission plus a tamper-evident journal --- and \hyphae{}
+is a worked instance of it, not its sole embodiment. That framing
+is deliberately more modest and more defensible than ``\hyphae{}
+is uniquely auditable''. Scaling this demonstration into a
+community provenance benchmark, and anchoring the chain head
+externally to extend tamper-evidence to tamper-proofing, are the
+natural next steps (Section~\ref{sec:discussion}); the experiment
+here establishes that the base-layer property is real, measurable,
+and realizer-independent --- not merely asserted.
 
 \subsection{Own Corpus}
 \label{sec:results-own}
@@ -375,14 +407,18 @@ end. No system dominates
 \caption{\textbf{Latency-quality frontier on two metrics, with
 the echo control.} Each point is one system configuration;
 latency on the horizontal axis is $p50$ in milliseconds, log
-scale. Top row uses \unsupf{} (lower better); bottom-left uses
+scale. The top row uses \unsupf{} and is \emph{illustrative only}:
+\unsupf{} is metric-degenerate for verbatim systems (Hyphae and
+echo both reach $0.000$ on TriviaQA by quotient; §\ref{sec:results-triviaqa}),
+so the load-bearing correctness axis is the bottom-left panel,
 gold-answer match (higher better). Red points are non-dominated.
-The echo baseline sits at the same favourable corner as
-\hyphae{} (and dominates it on the own-corpus \unsupf{} panel):
-the metric-space frontier does not separate the architecture
-from a verbatim \texttt{print}. The distinguishing property ---
-tamper-evident provenance, measured in Table~\ref{tab:tamper} ---
-is not an axis any of these panels can plot.}
+On every panel the echo baseline sits at the same favourable
+corner as \hyphae{} (and dominates it on the own-corpus \unsupf{}
+panel): the metric-space frontier does not separate the
+architecture from a verbatim \texttt{print}. The distinguishing
+property --- tamper-evident provenance, measured in
+Table~\ref{tab:tamper} --- is not an axis any of these panels can
+plot.}
 \label{fig:pareto}
 \end{figure}
 

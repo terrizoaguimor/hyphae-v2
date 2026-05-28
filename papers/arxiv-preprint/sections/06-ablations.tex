@@ -45,23 +45,31 @@ the gold-bearing seed verbatim). Of the two head-to-head metrics,
 \unsupf{} moves measurably under \textbf{A3 (minimal lexicon)
 only}; A1, A2, and A4 produce null deltas.
 
-Under the original (benchmark) framing this read as a weakness:
-three of \hyphae{}'s four components do nothing measurable. Under
-the verifiability framing, taken together with the echo baseline
-(Section~\ref{sec:results-triviaqa}), it is corroborating
-evidence. The echo control already established that the
-correctness and grounding metrics are saturated by verbatim
-quotation alone; it follows directly that \emph{ablating the
-machinery layered on top of verbatim quotation should not move
-those metrics}, and it does not. The ablations are not failing to
-find an effect --- they are confirming that the effect the
-metrics measure lives entirely in the quotation, not in the
-composition. Crucially, \textbf{every one of the four components,
-and the echo baseline, leaves the hash-chained provenance
-relation intact}: no ablation in this study, and no baseline in
-the paper, can produce an output whose quoted spans are not
-byte-identical to journalled fragments. The property that
-distinguishes \hyphae{} is the one axis nothing here perturbs.
+We are careful about how much weight these ablations carry. The
+clean, load-bearing evidence for the reframing is the echo control
+(Section~\ref{sec:results-triviaqa}): it is a single,
+unambiguous comparison showing the correctness metrics are
+saturated by verbatim quotation. The ablations are
+\emph{consistent} with that --- if echo already saturates the
+metrics, ablating the machinery layered on top should not move
+them, and it does not --- but at $N=34$ they are underpowered, so
+we present them as corroboration, not as independent proof. Two
+honesty notes. (i) A2 (no-ethics) is a \emph{declared no-op} on
+this corpus, not a real ablation: the corpus contains no
+ethically-sensitive material, so the \texttt{EthicallySensitive}
+trigger had nothing to fire whether or not the ethics report was
+supplied; its null delta is definitional. (ii) A3 (minimal
+lexicon) does move \unsupf{} slightly, but in inconsistent
+directions across the filtered and unfiltered variants
+(Table~\ref{tab:ablations}), so we do not read it as a clean
+effect either. What the ablations \emph{do} establish without
+caveat is orthogonal to correctness: \textbf{every component, and
+both the echo and echo$+$journal baselines, leaves the hash-chained
+provenance relation intact} --- no configuration in this paper can
+produce an output whose quoted spans are not byte-identical to
+journalled fragments. The provenance layer is the one axis nothing
+here perturbs, and (per Section~\ref{sec:results-provenance}) it is
+not \hyphae{}-specific.
 
 \begin{table}[ht]
 \centering

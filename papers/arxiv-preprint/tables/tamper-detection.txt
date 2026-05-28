@@ -1,17 +1,33 @@
-# Provenance tamper-detection experiment
-# Real hyphae_storage::Journal hash chain, N = 10 fragments.
+# Minimal provenance benchmark
+# Real hyphae_storage::Journal hash chain over raw fragment bodies.
+# The journal layer is realizer-independent: this measures the
+# (verbatim + hash-chain) provenance layer shared by Hyphae AND an
+# echo+journal baseline. N = 10 fragments.
 
-k tampered     detected     first break    localised?        
-------------------------------------------------------------
-1              YES          1              YES (exact seq)   
-3              YES          1              YES (exact seq)   
-5              YES          1              YES (exact seq)   
-10             YES          1              YES (exact seq)   
+## Adversary A: store-only (write access, no chain logic)
+mode         detected     localised seq 
+----------------------------------------
+edit         YES          4             
+delete       YES          4             
+insert       YES          10            
+reorder      YES          4             
 
-# Detection matrix (store tampering, post-ingest):
-#   Hyphae (hash chain):  100% detected, exact sequence localised.
-#   Echo baseline:          0% -- no journal; emits tampered text verbatim, unflagged.
-#   LLM-RAG:                0% -- no journal; paraphrases tampered source,
-#                                and output is not byte-bindable to any source
-#                                (verbatim_pass 0.09-0.24), so post-hoc string
-#                                audit also fails.
+## Adversary B: chain-aware (recomputes chain forward + rewrites head)
+edit         NO (defeats bare chain) -             
+
+# Detection matrix (post-ingest store tampering):
+#
+#   System                         store-only adv   chain-aware adv
+#   Verbatim + journal             100% (all modes) defeated -> needs
+#     (Hyphae AND echo+journal)     + localised     external head anchor
+#   Echo (no journal)                0%               0%
+#   LLM-RAG (no journal,             0%               0%
+#     paraphrases; not byte-bindable for post-hoc audit either)
+#
+# Reading: the (verbatim + hash-chain journal) layer detects and
+# localises every store-only tampering mode, and is realizer-
+# independent -- Hyphae and a trivial echo+journal baseline share it
+# identically. The chain-aware adversary defeats the bare local chain,
+# which is exactly why the chain head must be anchored outside the
+# attacker's write scope (signed external ledger / timestamp). The
+# contribution is the addable provenance layer, not the realizer.

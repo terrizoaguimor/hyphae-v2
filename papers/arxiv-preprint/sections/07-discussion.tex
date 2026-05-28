@@ -85,13 +85,19 @@ regimes.
 
 \textbf{High-throughput grounded retrieval.} A service whose
 fundamental operation is ``cite the relevant memory fragment for
-this query'' bottlenecks on LLM serial inference today. \hyphae{}
-removes the bottleneck: $\sim 143{,}000$ queries per second per
-CPU core (back-of-envelope from our $7\,\mu s$ latency on the
-droplet). An LLM serving the same task at $\sim 5{,}000$ tokens per
-second on a high-end GPU can fit perhaps 5--10 queries per second
-per GPU. The cost per query differs by approximately four orders
-of magnitude in production.
+this query'' bottlenecks on LLM serial inference today. \hyphae{}'s
+\emph{composition} stage removes that bottleneck: the $7\,\mu s$
+realizer latency on the droplet implies $\sim 143{,}000$
+\emph{compositions} per second per core. This is a composition-
+throughput figure, not an end-to-end system figure: it excludes
+ANN retrieval, the journal append, and the SHA-256 hashing on the
+write path, which dominate a real deployment's per-query cost and
+which we have not throughput-profiled. Even with those included,
+the relevant comparison is qualitative and robust: an LLM serving
+the same task at $\sim 5{,}000$ tokens/s on a high-end GPU fits on
+the order of single-digit queries per second per GPU, so the
+per-query cost differs by several orders of magnitude regardless
+of where exactly the substrate's end-to-end number lands.
 
 \textbf{Audit-bound deployments.} The hash-chained substrate and
 verbatim quotation are direct architectural answers to ``can you

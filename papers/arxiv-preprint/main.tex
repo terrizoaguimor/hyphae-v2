@@ -99,45 +99,50 @@
 \maketitle
 
 \begin{abstract}
-We introduce \hyphae, a cognitive substrate that answers retrieval
-queries by emitting byte-identical quotations of stored memory
-fragments, joined by a curated connective lexicon, with no large
-language model (LLM) in the cognition path. \hyphae{}'s
-distinguishing property is \emph{architectural verifiability}:
-every quoted span is preserved byte-for-byte against a SHA-256
-hash-chained journal, so any output can be independently confirmed
-to have been assembled from named, unaltered source fragments --- a
-guarantee no retrieval-augmented LLM provides by construction,
-because generation paraphrases its sources. We evaluate against 18
-LLM-based configurations (vanilla RAG, HyDE plus cross-encoder
-reranking, oracle context) over six generator models (from
-Anthropic, OpenAI, DeepSeek, two from Meta, and an in-house
-router; $6\times3 = 18$ configurations), plus a
-trivial \textbf{echo baseline} that emits the retrieved sentence
-verbatim with no model and no lexicon. The echo baseline is the
-critical control, and its result reframes the contribution: on
-standard correctness and NLI-grounding metrics (gold-answer match,
-unsupported-claim rate) echo \emph{ties or exceeds} \hyphae{} on
-both a 150-query TriviaQA sample and a 34-query composition
-corpus. Measured correctness is therefore a property of verbatim
-quotation itself --- shared by any echo --- not of \hyphae{}'s
-composition machinery; our ablations independently confirm that
-the lexicon, cascade-shape composition, and boundary smoothing do
-not move the correctness metrics. What echo lacks, and what no
-metric in the standard benchmark captures, is verifiable
-provenance: echo emits text with no audit relation to a
-tamper-evident store. We therefore position \hyphae{} not as a
-more-correct system but as a \emph{correctness-neutral} one that
-adds cryptographic provenance and runs in microseconds on
-commodity CPU --- five-to-six orders of magnitude below LLM
-inference, a corollary of not generating rather than a result in
-itself. We argue the durable contribution is the architectural
-audit property, that the standard correctness benchmark cannot
-measure it (a trivial echo saturates it), and that evaluating
-verifiable generation requires provenance-centric tasks the
-current literature does not provide. Code, corpora, result
-envelopes (including the echo control), and this paper's source
-are at \url{https://github.com/terrizoaguimor/hyphae-v2}.
+We study \emph{verifiable provenance} as an addable layer for
+extractive retrieval systems: a system that answers by emitting
+byte-identical quotations of stored fragments, over a SHA-256
+hash-chained journal, can have any output independently audited
+back to named, unaltered sources --- a guarantee no
+retrieval-augmented LLM provides by construction, because
+generation paraphrases its sources. Our worked instance is
+\hyphae, a cognitive substrate that composes answers by verbatim
+quotation joined with a curated lexicon, with no LLM in the
+cognition path. We evaluate it against 18 LLM-based
+configurations (vanilla RAG, HyDE plus cross-encoder reranking,
+oracle context; six generator models --- from Anthropic, OpenAI,
+DeepSeek, two from Meta, and an in-house router --- times three
+modes), plus two controls: a trivial \textbf{echo} baseline that
+emits the retrieved sentence verbatim with no model, and
+\textbf{echo$+$journal}, echo with the same hash chain. Two
+findings, both negative for ``\hyphae{} the system'' and positive
+for the layer. First, on standard correctness and NLI-grounding
+metrics, echo ties or exceeds \hyphae{} on both a 150-query
+TriviaQA sample and a 34-query composition corpus --- measured
+correctness is a property of verbatim quotation, shared by any
+echo, not of \hyphae{}'s composition machinery (our ablations
+confirm the lexicon, cascade-shape composition, and smoothing do
+not move the metrics). Second, on a minimal tamper-detection
+benchmark (four tampering modes $\times$ two adversaries, against
+the real journal), the (verbatim $+$ hash-chain) layer detects and
+localises 100\% of store-only tampering --- but so does
+echo$+$journal, identically, because the journal stores raw bodies
+and the realizer is irrelevant to it. Provenance, like
+correctness, is not \hyphae{}-specific; it is an addable layer,
+and the line that separates systems is journal-vs-no-journal
+(plain echo and LLM-RAG detect 0\%). The guarantee is
+\emph{tamper-evident}, not tamper-proof: a chain-aware adversary
+who rewrites the persisted head defeats the bare chain, which is
+why external head anchoring is the natural extension. The
+sub-millisecond, CPU-only cost is a corollary of not generating,
+shared with echo. We argue the durable contribution is the
+provenance layer and the benchmark critique --- the standard
+correctness benchmark cannot measure either, since a \texttt{print}
+statement saturates it --- and that evaluating verifiable
+generation needs provenance-centric benchmarks the literature does
+not yet provide. Code, corpora, result envelopes (including both
+controls), and this paper's source are at
+\url{https://github.com/terrizoaguimor/hyphae-v2}.
 \end{abstract}
 
 \input{sections/01-introduction}
