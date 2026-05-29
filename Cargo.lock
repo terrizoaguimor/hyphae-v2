@@ -726,6 +726,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "hyphae-provbench"
+version = "0.0.1"
+dependencies = [
+ "bincode",
+ "ed25519-dalek",
+ "fjall",
+ "hyphae-storage",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "hyphae-smoke"
 version = "0.0.1"
 dependencies = [
