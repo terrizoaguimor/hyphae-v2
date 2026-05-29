@@ -123,9 +123,13 @@ semantics or the matrix so envelopes remain comparable across versions.
   `papers/arxiv-preprint/tables/anchor-ledger.txt`. Folding a
   ledger-vs-single-anchor axis into this matrix is the next protocol
   bump (`provbench/v2`).
-- **External witness of the ledger tail** (timestamp authority /
-  gossiped signed-tree-head) so a store that *withholds* later entries
-  is also caught — deployment work (ADR-0033).
+- **External witness — implemented (ADR-0034).** A store that
+  *withholds* later ledger entries is now caught: an independent witness
+  (separate key) signs the ledger tail, and the auditor pins the
+  presented ledger to it (`hyphae-storage::witness`). In deployment the
+  witness maps to a timestamp authority / transparency witness /
+  OpenTimestamps commitment — wiring that network is the remaining
+  deployment step.
 - **Key rotation / KMS sourcing** so the signing key is never
   materialised in the store process in production.
 - **More systems.** Third-party verifiable-generation systems plug in

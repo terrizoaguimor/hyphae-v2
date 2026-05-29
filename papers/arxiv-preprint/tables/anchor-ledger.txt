@@ -22,14 +22,25 @@ tampered ledger verifies           REJECTS (DETECTED)
 #   The signature at that epoch no longer covers the forged head;
 #   verify_ledger rejects the published log.
 
+## 4. Withholding — store presents a truncated ledger as the latest
+freshness alone (ledger only)      ACCEPTS (no detection)
+ledger + external witness          REJECTS (DETECTED)
+#   The truncated ledger is internally valid and its tail matches
+#   the rolled-back head, so freshness accepts it. The witness saw
+#   epoch 7 — the withheld ledger never reaches it, so the combined
+#   check rejects it. Withholding caught.
+
 # Summary:
-#   threat                         single-head   append-only ledger
-#   chain-aware head rewrite         DETECTED        DETECTED
-#   rollback + stale-anchor replay   MISSED          DETECTED
-#   equivocation across views        n/a             DETECTED
-#   forged published anchor          n/a             DETECTED
+#   threat                         single-head   ledger    ledger+witness
+#   chain-aware head rewrite         DETECTED     DETECTED     DETECTED
+#   rollback + stale-anchor replay   MISSED       DETECTED     DETECTED
+#   equivocation across views        n/a          DETECTED     DETECTED
+#   forged published anchor          n/a          DETECTED     DETECTED
+#   withholding (truncated ledger)   n/a          MISSED       DETECTED
 #
-# The ledger closes ADR-0032's freshness/non-equivocation followup.
-# Out of scope (deployment): an EXTERNAL WITNESS of the ledger tail
-# (timestamp authority / gossiped tree head) to stop a store that
-# withholds entries, and anchor-key rotation. See ADR-0033.
+# ADR-0033 (ledger) closes freshness + non-equivocation; ADR-0034
+# (witness) closes withholding by pinning the ledger tail to an
+# INDEPENDENT observer. In deployment the witness is a timestamp
+# authority / transparency witness / OpenTimestamps commitment.
+# Remaining: anchor-key rotation, and the source-ingestion trust
+# boundary (who attests fragments were ingested faithfully).
