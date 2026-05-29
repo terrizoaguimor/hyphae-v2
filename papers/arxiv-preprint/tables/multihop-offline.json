@@ -1,0 +1,24 @@
+{
+  "naive_no_abstention": {
+    "protocol": "multihop/v1-offline",
+    "n_items": 6,
+    "n_single_hop": 3,
+    "n_multi_hop": 3,
+    "gold_appears_in_some_fragment_rate": 1.0,
+    "answered_correct_rate_single_hop": 1.0,
+    "graceful_degradation_rate": 0.0,
+    "silent_failure_rate": 1.0,
+    "lucky_synthesis_rate": 0.0
+  },
+  "abstention_on_low_coverage": {
+    "protocol": "multihop/v1-offline",
+    "n_items": 6,
+    "n_single_hop": 3,
+    "n_multi_hop": 3,
+    "gold_appears_in_some_fragment_rate": 1.0,
+    "answered_correct_rate_single_hop": 1.0,
+    "graceful_degradation_rate": 1.0,
+    "silent_failure_rate": 0.0,
+    "lucky_synthesis_rate": 0.0
+  }
+}
