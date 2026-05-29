@@ -11,6 +11,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Spec: CC-BY-4.0](https://img.shields.io/badge/Spec-CC--BY--4.0-orange.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Paper](https://img.shields.io/badge/paper-preprint-success.svg)](papers/arxiv-preprint/main.pdf)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20436643.svg)](https://doi.org/10.5281/zenodo.20436643)
 
 **TL;DR.** Hyphae's distinguishing property is *verifiable
 provenance*: every emitted span is byte-identical to a fragment in a
@@ -289,6 +290,29 @@ open work can contribute to discovering them. If the architectural bet
 validates, an alternative exists. If it does not, the attempt is
 documented, the failure is empirical signal, and the next attempt
 learns from this one.
+
+## Citation
+
+Archived and citable via Zenodo (DOI:
+[10.5281/zenodo.20436643](https://doi.org/10.5281/zenodo.20436643) —
+concept DOI, always resolves to the latest version):
+
+```bibtex
+@misc{gutierrez2026hyphae,
+  author       = {Guti{\'e}rrez, Mario},
+  title        = {{Hash-Chained Verbatim Quotation: A Verifiable
+                  Provenance Layer for Grounded Retrieval}},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20436643},
+  url          = {https://doi.org/10.5281/zenodo.20436643},
+  note         = {Hyphae v2. Code, corpora, result envelopes, and
+                  the preprint. \url{https://github.com/terrizoaguimor/hyphae-v2}}
+}
+```
+
+(arXiv version forthcoming, pending category endorsement; the same
+preprint source is in [`papers/arxiv-preprint/`](papers/arxiv-preprint/).)
 
 ## License
 
