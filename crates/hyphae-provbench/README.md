@@ -130,8 +130,12 @@ semantics or the matrix so envelopes remain comparable across versions.
   witness maps to a timestamp authority / transparency witness /
   OpenTimestamps commitment — wiring that network is the remaining
   deployment step.
-- **Key rotation / KMS sourcing** so the signing key is never
-  materialised in the store process in production.
+- **Key rotation — implemented (ADR-0035).** A signed keyring rotates
+  the anchor key safely: successors are authorized by their predecessor
+  from a trusted root, a ledger spanning rotations verifies under the
+  per-epoch active key, and a compromised key is recoverable (a retired
+  key can sign no new epochs). `hyphae-storage::keyring`. What remains is
+  KMS/HSM sourcing of the key material.
 - **More systems.** Third-party verifiable-generation systems plug in
   via the `ProvenanceSystem` trait.
 

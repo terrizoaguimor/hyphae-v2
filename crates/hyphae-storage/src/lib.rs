@@ -24,12 +24,14 @@
 
 pub mod anchor;
 pub mod journal;
+pub mod keyring;
 pub mod ledger;
 pub mod state_store;
 pub mod witness;
 
 pub use anchor::{AnchoredHead, HeadAnchor, verify_anchored_head};
 pub use journal::{Journal, JournalEntry, JournalError};
+pub use keyring::{KeyRotation, Keyring, KeyringError, verify_keyring, verify_ledger_with_keyring};
 pub use ledger::{
     AnchorLedger, LedgerEntry, LedgerError, ledgers_consistent, verify_fresh_head, verify_ledger,
 };

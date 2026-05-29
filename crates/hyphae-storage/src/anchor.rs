@@ -33,6 +33,7 @@
 
 use ed25519_dalek::{Signature, Signer, SigningKey, Verifier, VerifyingKey};
 
+use crate::keyring::KeyRotation;
 use crate::ledger::{AnchorLedger, LedgerEntry};
 
 /// A signed attestation of a chain head: the 64-byte Ed25519
@@ -104,6 +105,23 @@ impl HeadAnchor {
         };
         ledger.push(entry);
         entry
+    }
+
+    /// Authorize a successor key (key rotation, ADR-0035). This key —
+    /// the predecessor — signs the handover to `new_key`, effective
+    /// from ledger epoch `from_ledger_epoch`. Append the returned
+    /// [`KeyRotation`] to a [`crate::keyring::Keyring`].
+    pub fn authorize_rotation(
+        &self,
+        new_key: &VerifyingKey,
+        from_ledger_epoch: u64,
+    ) -> KeyRotation {
+        let msg = KeyRotation::signing_message(from_ledger_epoch, new_key);
+        KeyRotation {
+            from_ledger_epoch,
+            new_key: *new_key,
+            authorization: self.signing_key.sign(&msg).to_bytes(),
+        }
     }
 }
 

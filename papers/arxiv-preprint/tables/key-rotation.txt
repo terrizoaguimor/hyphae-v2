@@ -1,0 +1,21 @@
+# Anchor key rotation — ADR-0035
+# Ledger of 6 epochs; key rotated A -> B at epoch 3.
+# Root key A is trusted out-of-band; B is authorized by A.
+
+keyring lineage (A authorizes B)           PASS
+ledger spanning rotation, under keyring    PASS
+same ledger under retired key A alone      REJECT
+forged successor (self-authorized)         REJECT
+retired A forging post-rotation epochs     REJECT
+
+# Summary:
+#   property                                  result
+#   successor authorized by predecessor       REQUIRED (root-of-trust chain)
+#   ledger verifies across rotation           YES (per-epoch active key)
+#   retired key verifies new history          NO
+#   stolen new key inserts itself             NO (needs predecessor's signature)
+#   compromised retired key forges new epochs NO (epochs bound to active key)
+#
+# Out of scope (deployment): KMS/HSM key sourcing and the
+# revocation-timing policy (how fast a compromised key's window
+# is closed). See ADR-0035.
