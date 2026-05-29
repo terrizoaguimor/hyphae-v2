@@ -1,0 +1,35 @@
+# Append-only anchor ledger — ADR-0033
+# Real hyphae_storage::Journal: 8 appends, head anchored to an
+# append-only Ed25519 ledger after each (epochs 0..7). The ledger
+# is itself hash-chained. Key held outside the store.
+
+## 1. Freshness — rollback to epoch 3 + replay its genuine anchor
+single-head anchor (ADR-0032)      ACCEPTS (no detection)
+append-only ledger (ADR-0033)      REJECTS (DETECTED)
+#   The stale anchor is a REAL signature over the rolled-back head,
+#   so the single-head check accepts it (freshness gap). The ledger
+#   rejects it: head@epoch3 is not the ledger tail (epoch 7).
+
+## 2. Non-equivocation — two histories diverging at epoch 3
+forked view verifies on its own    YES
+cross-view consistency check       REJECTS (DETECTED)
+#   Each view is internally valid, but comparing them (an auditor
+#   holding one, gossip/witness offering the other) detects the
+#   divergence: equivocation caught.
+
+## 3. Ledger tamper-evidence — forge a published entry's head
+tampered ledger verifies           REJECTS (DETECTED)
+#   The signature at that epoch no longer covers the forged head;
+#   verify_ledger rejects the published log.
+
+# Summary:
+#   threat                         single-head   append-only ledger
+#   chain-aware head rewrite         DETECTED        DETECTED
+#   rollback + stale-anchor replay   MISSED          DETECTED
+#   equivocation across views        n/a             DETECTED
+#   forged published anchor          n/a             DETECTED
+#
+# The ledger closes ADR-0032's freshness/non-equivocation followup.
+# Out of scope (deployment): an EXTERNAL WITNESS of the ledger tail
+# (timestamp authority / gossiped tree head) to stop a store that
+# withholds entries, and anchor-key rotation. See ADR-0033.

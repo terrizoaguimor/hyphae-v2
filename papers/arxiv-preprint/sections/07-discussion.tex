@@ -159,14 +159,20 @@ contribution.
 
 \paragraph{External anchor publication and key management.} The
 head anchor we implement signs the head with a key held outside
-the store, which catches the chain-aware attacker. Two extensions
-remain: publishing anchors to an external append-only ledger or
-timestamp authority (so freshness and non-equivocation hold across
-snapshots, not just integrity of the latest head), and a key-
-rotation / KMS-sourcing policy so the signing key is never
-materialised in the store process in production. Both are
-deployment engineering on top of the demonstrated mechanism, not
-open research questions.
+the store, which catches the chain-aware attacker. Publishing those
+anchors to an append-only, hash-chained ledger --- so that
+\emph{freshness} (a rolled-back head is rejected even when the
+attacker replays its genuine but superseded anchor) and
+\emph{non-equivocation} (forked views are detected) hold across
+snapshots, not just integrity of the latest head --- is implemented
+in the repository as the \texttt{hyphae-storage::ledger} module
+(ADR-0033), with an adversarial demonstration. Two deployment
+extensions remain: an external \emph{witness} of the ledger tail (a
+timestamp authority or gossiped signed-tree-head) so a store that
+withholds later entries is also caught, and a key-rotation /
+KMS-sourcing policy so the signing key is never materialised in the
+store process in production. Both are deployment engineering on top
+of the demonstrated mechanism, not open research questions.
 
 \paragraph{Reader preference study.} Human evaluation on a
 subset of the TriviaQA corpus. The template-rigid prose's

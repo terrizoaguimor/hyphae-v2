@@ -114,12 +114,18 @@ semantics or the matrix so envelopes remain comparable across versions.
 
 ## Future work (open in `v1`)
 
-- **External anchor publication.** `v1` anchors the single latest head,
-  which already catches rollback via head mismatch. Publishing anchors
-  to an external append-only ledger / timestamp authority would add
-  **freshness** and **non-equivocation across observers** (presenting
-  different consistent histories to different auditors) — not yet
-  exercised here.
+- **Append-only anchor ledger — implemented (ADR-0033).** Beyond the
+  single latest-head anchor, `hyphae-storage::ledger` now publishes
+  anchors to an append-only, hash-chained Ed25519 ledger, adding
+  **freshness** (a rolled-back head is rejected even with a genuine
+  stale anchor) and **non-equivocation** (forked views are detected).
+  See `crates/hyphae-storage/examples/anchor_ledger.rs` and
+  `papers/arxiv-preprint/tables/anchor-ledger.txt`. Folding a
+  ledger-vs-single-anchor axis into this matrix is the next protocol
+  bump (`provbench/v2`).
+- **External witness of the ledger tail** (timestamp authority /
+  gossiped signed-tree-head) so a store that *withholds* later entries
+  is also caught — deployment work (ADR-0033).
 - **Key rotation / KMS sourcing** so the signing key is never
   materialised in the store process in production.
 - **More systems.** Third-party verifiable-generation systems plug in

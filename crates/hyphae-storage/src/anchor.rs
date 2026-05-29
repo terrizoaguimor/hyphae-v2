@@ -33,6 +33,8 @@
 
 use ed25519_dalek::{Signature, Signer, SigningKey, Verifier, VerifyingKey};
 
+use crate::ledger::{AnchorLedger, LedgerEntry};
+
 /// A signed attestation of a chain head: the 64-byte Ed25519
 /// signature over the 32-byte head digest. Publish this (and the
 /// [`VerifyingKey`]) to an append-only external location; an auditor
@@ -79,6 +81,29 @@ impl HeadAnchor {
             head,
             signature: signature.to_bytes(),
         }
+    }
+
+    /// Append a signed anchor for `head` to an append-only
+    /// [`AnchorLedger`] (ADR-0033), chaining the previous ledger entry.
+    /// Returns the entry that was appended.
+    ///
+    /// Unlike [`HeadAnchor::anchor`], which pins *a* valid head, the
+    /// ledger pins *the latest* head: an auditor checks the journal's
+    /// current head against the ledger's tail
+    /// ([`crate::ledger::verify_fresh_head`]), so a rolled-back head —
+    /// even with a genuine but superseded anchor — is rejected.
+    pub fn append_to_ledger(&self, ledger: &mut AnchorLedger, head: [u8; 32]) -> LedgerEntry {
+        let epoch = ledger.len();
+        let prev_ledger_hash = ledger.head_hash();
+        let msg = LedgerEntry::signing_message(epoch, &head, &prev_ledger_hash);
+        let entry = LedgerEntry {
+            epoch,
+            head,
+            prev_ledger_hash,
+            signature: self.signing_key.sign(&msg).to_bytes(),
+        };
+        ledger.push(entry);
+        entry
     }
 }
 
