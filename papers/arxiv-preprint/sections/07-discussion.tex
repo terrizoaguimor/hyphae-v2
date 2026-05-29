@@ -166,13 +166,20 @@ attacker replays its genuine but superseded anchor) and
 \emph{non-equivocation} (forked views are detected) hold across
 snapshots, not just integrity of the latest head --- is implemented
 in the repository as the \texttt{hyphae-storage::ledger} module
-(ADR-0033), with an adversarial demonstration. Two deployment
-extensions remain: an external \emph{witness} of the ledger tail (a
-timestamp authority or gossiped signed-tree-head) so a store that
-withholds later entries is also caught, and a key-rotation /
-KMS-sourcing policy so the signing key is never materialised in the
-store process in production. Both are deployment engineering on top
-of the demonstrated mechanism, not open research questions.
+(ADR-0033), with an adversarial demonstration. The remaining
+withholding attack --- a store that presents a truncated ledger as
+the latest --- is closed by an external \emph{witness}: an
+independent party (a separate key) that observes and signs the
+ledger tail, against which the auditor pins how far the ledger
+really went (\texttt{hyphae-storage::witness}, ADR-0034). What
+remains is deployment engineering, not open research: binding the
+witness to a concrete external service (a timestamp authority,
+transparency-log witness, or OpenTimestamps/Bitcoin commitment of
+the ledger head) and a key-rotation / KMS-sourcing policy so signing
+keys are never materialised in the store process. The one genuinely
+open boundary is source ingestion --- attesting that fragments
+entered the journal faithfully in the first place --- which the
+journal-onward guarantee does not address.
 
 \paragraph{Reader preference study.} Human evaluation on a
 subset of the TriviaQA corpus. The template-rigid prose's

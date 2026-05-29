@@ -1,30 +1,32 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 Celiums Solutions LLC
 
-//! Append-only anchor ledger demonstration (ADR-0033).
+//! Append-only anchor ledger + external witness demonstration
+//! (ADR-0033, ADR-0034).
 //!
 //! ADR-0032's single-head anchor catches a chain-aware attacker who
 //! rewrites the head. But a lone signature pins only *a* valid head,
-//! not *the latest* one, leaving two gaps this experiment exercises:
+//! not *the latest* one. This experiment exercises the gaps and how the
+//! ledger and its witness close them:
 //!
-//!   1. **Freshness.** The attacker rolls the journal back to an
-//!      earlier state and replays the *genuine but superseded* anchor
-//!      for that earlier head. Single-signature verification ACCEPTS it
-//!      (the signature is real and matches the rolled-back head). The
-//!      append-only ledger REJECTS it: the rolled-back head is not the
-//!      ledger's latest entry.
-//!   2. **Non-equivocation.** Two ledger views that diverge at some
-//!      epoch (the key holder signing two histories) are caught by a
-//!      prefix-consistency check across views.
-//!
-//! Plus the ledger is itself tamper-evident: forging any published
-//! entry fails `verify_ledger`.
+//!   1. **Freshness.** The attacker rolls the journal back and replays
+//!      the *genuine but superseded* anchor for that earlier head.
+//!      Single-signature verification ACCEPTS it; the append-only ledger
+//!      REJECTS it (the rolled-back head is not the ledger's tail).
+//!   2. **Non-equivocation.** Two ledger views diverging at an epoch are
+//!      caught by a prefix-consistency check across views.
+//!   3. **Tamper-evidence.** Forging any published entry fails
+//!      `verify_ledger`.
+//!   4. **Withholding.** A store that presents a *truncated* ledger as
+//!      the latest defeats freshness alone — but an external **witness**
+//!      (an independent observer of the ledger tail, ADR-0034) pins how
+//!      far the ledger really went, so the withheld view is rejected.
 //!
 //! Run: `cargo run -p hyphae-storage --example anchor_ledger`
 
 use hyphae_storage::{
-    AnchorLedger, HeadAnchor, Journal, ledgers_consistent, verify_anchored_head, verify_fresh_head,
-    verify_ledger,
+    AnchorLedger, HeadAnchor, Journal, Witness, ledgers_consistent, verify_against_witness,
+    verify_anchored_head, verify_fresh_against_witness, verify_fresh_head, verify_ledger,
 };
 
 fn facts() -> Vec<&'static str> {
@@ -143,17 +145,56 @@ fn main() {
          #   verify_ledger rejects the published log.\n"
     );
 
+    // ── 4. Withholding — caught only by an external witness (ADR-0034) ──
+    // An independent witness (separate key) observed the full ledger.
+    let witness = Witness::from_seed(&[3u8; 32]);
+    let wvk = witness.verifying_key();
+    let attestation = witness.observe(&ledger).unwrap(); // saw epoch n-1
+
+    // The store withholds: it presents a truncated ledger (rolled back
+    // to epoch `rollback_epoch`) plus the matching journal head.
+    let withheld = AnchorLedger::from_entries(ledger.entries()[..=rollback_epoch].to_vec());
+    let withheld_head = withheld.latest().unwrap().head;
+
+    let freshness_accepts = verify_fresh_head(&withheld_head, &withheld, &vk);
+    let witnessed_accepts =
+        verify_fresh_against_witness(&withheld_head, &withheld, &attestation, &vk, &wvk);
+
+    println!("## 4. Withholding — store presents a truncated ledger as the latest");
+    println!(
+        "{:<34} {}",
+        "freshness alone (ledger only)",
+        verdict(freshness_accepts, true)
+    );
+    println!(
+        "{:<34} {}",
+        "ledger + external witness",
+        verdict(witnessed_accepts, false)
+    );
+    println!(
+        "#   The truncated ledger is internally valid and its tail matches\n\
+         #   the rolled-back head, so freshness accepts it. The witness saw\n\
+         #   epoch {} — the withheld ledger never reaches it, so the combined\n\
+         #   check rejects it. Withholding caught.\n",
+        attestation.epoch
+    );
+    // Sanity: the genuine full ledger still passes the witnessed check.
+    assert!(verify_against_witness(&ledger, &attestation, &vk, &wvk));
+
     println!("# Summary:");
-    println!("#   threat                         single-head   append-only ledger");
-    println!("#   chain-aware head rewrite         DETECTED        DETECTED");
-    println!("#   rollback + stale-anchor replay   MISSED          DETECTED");
-    println!("#   equivocation across views        n/a             DETECTED");
-    println!("#   forged published anchor          n/a             DETECTED");
+    println!("#   threat                         single-head   ledger    ledger+witness");
+    println!("#   chain-aware head rewrite         DETECTED     DETECTED     DETECTED");
+    println!("#   rollback + stale-anchor replay   MISSED       DETECTED     DETECTED");
+    println!("#   equivocation across views        n/a          DETECTED     DETECTED");
+    println!("#   forged published anchor          n/a          DETECTED     DETECTED");
+    println!("#   withholding (truncated ledger)   n/a          MISSED       DETECTED");
     println!("#");
-    println!("# The ledger closes ADR-0032's freshness/non-equivocation followup.");
-    println!("# Out of scope (deployment): an EXTERNAL WITNESS of the ledger tail");
-    println!("# (timestamp authority / gossiped tree head) to stop a store that");
-    println!("# withholds entries, and anchor-key rotation. See ADR-0033.");
+    println!("# ADR-0033 (ledger) closes freshness + non-equivocation; ADR-0034");
+    println!("# (witness) closes withholding by pinning the ledger tail to an");
+    println!("# INDEPENDENT observer. In deployment the witness is a timestamp");
+    println!("# authority / transparency witness / OpenTimestamps commitment.");
+    println!("# Remaining: anchor-key rotation, and the source-ingestion trust");
+    println!("# boundary (who attests fragments were ingested faithfully).");
 
     let _ = std::fs::remove_dir_all(&dir);
 }

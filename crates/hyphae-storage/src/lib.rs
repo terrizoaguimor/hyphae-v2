@@ -26,6 +26,7 @@ pub mod anchor;
 pub mod journal;
 pub mod ledger;
 pub mod state_store;
+pub mod witness;
 
 pub use anchor::{AnchoredHead, HeadAnchor, verify_anchored_head};
 pub use journal::{Journal, JournalEntry, JournalError};
@@ -33,3 +34,6 @@ pub use ledger::{
     AnchorLedger, LedgerEntry, LedgerError, ledgers_consistent, verify_fresh_head, verify_ledger,
 };
 pub use state_store::{StateStore, StateStoreError};
+pub use witness::{
+    Witness, WitnessAttestation, verify_against_witness, verify_fresh_against_witness,
+};
