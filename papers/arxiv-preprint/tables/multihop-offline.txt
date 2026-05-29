@@ -1,0 +1,23 @@
+# Multi-hop offline harness — multihop/v1-offline
+# OPEN-01: does a single-span verbatim system degrade gracefully
+# (abstain) or silently (wrong quote) on multi-hop questions?
+
+  items 6  single-hop 3  multi-hop 3
+
+## system: naive_no_abstention
+  answered_correct (single-hop)     1.0
+  GRACEFUL degradation (abstain)    0.0
+  SILENT failure (wrong quote)      1.0
+  lucky synthesis                   0.0
+
+## system: abstention_on_low_coverage
+  answered_correct (single-hop)     1.0
+  GRACEFUL degradation (abstain)    1.0
+  SILENT failure (wrong quote)      0.0
+  lucky synthesis                   0.0
+
+# Reading: the single-span system silently fails on multi-hop
+# WITHOUT an abstention signal; a coverage-threshold abstention
+# rule turns those silent failures into graceful abstentions.
+# These are reference stand-ins — drop in real Hyphae / LLM
+# outputs (same SystemAnswer schema) for the live column. ADR-0036.

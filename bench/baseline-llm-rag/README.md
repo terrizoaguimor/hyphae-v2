@@ -95,11 +95,40 @@ cargo run -p hyphae-eval --example export_results > bench/baseline-llm-rag/resul
 The writeup script reads all three JSON files and emits the
 comparison table.
 
+## Multi-hop column (offline harness, ADR-0036)
+
+`src/baseline_llm_rag/multihop.py` is the offline scaffolding for the
+multi-hop generalisation column (paper OPEN-01): does a single-span
+verbatim system degrade **gracefully** (abstain) or **silently** (wrong
+quote) on questions that need synthesis across two or more sources?
+
+Runs end-to-end with no network, under the system interpreter (the
+offline path is stdlib-only; `datasets`/`click` import lazily):
+
+```sh
+# bundled 6-item sample, naive-vs-abstention contrast
+python3 -c "import sys; sys.path.insert(0,'src'); \
+from baseline_llm_rag import multihop as m; \
+print(m.render_offline_report(m.run_offline()))"
+
+# or, with the uv env, the CLI (also loads HotpotQA/MuSiQue when ready):
+uv run python -m baseline_llm_rag.multihop --offline-sample
+uv run python -m baseline_llm_rag.multihop --dataset hotpotqa --n 50 --json-out results/multihop.json
+```
+
+The offline finding (`papers/arxiv-preprint/tables/multihop-offline.txt`):
+a single-span system silently fails on multi-hop *without* an abstention
+signal; a coverage-threshold abstention turns those into graceful
+abstentions. The live LLM column + full-dataset run need infra and are
+the documented followups in ADR-0036; drop real outputs into the scorer
+via the `SystemAnswer` schema.
+
 ## Files
 
 | Path | Purpose |
 |---|---|
 | `pyproject.toml` | Pinned deps. uv-managed. |
+| `src/baseline_llm_rag/multihop.py` | Multi-hop offline harness (ADR-0036): schema, dataset loaders, bundled sample, reference answerers, scorer. |
 | `.python-version` | 3.11 — exact. |
 | `scripts/download-model.sh` | Idempotent Llama-3.1-8B GGUF Q4_K_M download via HF. |
 | `src/baseline_llm_rag/corpus_loader.py` | Reads the JSON the Rust binary emits. |
