@@ -213,7 +213,10 @@ fn chain_aware_edit(path: &Path, seq: usize, new_body: &str) {
         e.prev_hash = prev;
         prev = e.content_hash();
     }
-    let head = entries.last().map(JournalEntry::content_hash).unwrap_or([0u8; 32]);
+    let head = entries
+        .last()
+        .map(JournalEntry::content_hash)
+        .unwrap_or([0u8; 32]);
     rewrite(path, &entries, head);
 }
 
@@ -238,9 +241,13 @@ fn trial(mode: Mode, adv: Adversary, facts: &[&str]) -> (bool, Option<u64>) {
     let target = 3usize; // tamper somewhere in the middle
     match adv {
         Adversary::StoreOnly => match mode {
-            Mode::Edit => overwrite_payload(&dir, target as u64, "the migration completed at 23:59 UTC"),
+            Mode::Edit => {
+                overwrite_payload(&dir, target as u64, "the migration completed at 23:59 UTC")
+            }
             Mode::Delete => remove_entry(&dir, target as u64),
-            Mode::Insert => insert_forged(&dir, facts.len() as u64, "a fabricated fact never ingested"),
+            Mode::Insert => {
+                insert_forged(&dir, facts.len() as u64, "a fabricated fact never ingested")
+            }
             Mode::Reorder => swap_payloads(&dir, target as u64, (target + 2) as u64),
         },
         Adversary::ChainAware => {
@@ -270,7 +277,7 @@ fn trial(mode: Mode, adv: Adversary, facts: &[&str]) -> (bool, Option<u64>) {
 /// anchor key. Anchored verification therefore catches it. Returns
 /// (chain_verify_passes, anchored_verify_passes).
 fn trial_anchored_chain_aware(facts: &[&str]) -> (bool, bool) {
-    use hyphae_storage::{verify_anchored_head, HeadAnchor};
+    use hyphae_storage::{HeadAnchor, verify_anchored_head};
 
     let dir = std::env::temp_dir().join("hyphae-prov-anchored");
     let _ = std::fs::remove_dir_all(&dir);
@@ -325,9 +332,7 @@ fn main() {
     let (d, loc) = trial(Mode::Edit, Adversary::ChainAware, &facts);
     println!(
         "{:<22} {:<26} {:<14}",
-        "verification",
-        "detected",
-        "localised seq"
+        "verification", "detected", "localised seq"
     );
     println!("{}", "-".repeat(60));
     println!(
@@ -342,7 +347,11 @@ fn main() {
     println!(
         "{:<22} {:<26} {:<14}",
         "anchored head (Ed25519)",
-        if anchored_ok { "NO (anchor missed it!)" } else { "YES (anchor catches it)" },
+        if anchored_ok {
+            "NO (anchor missed it!)"
+        } else {
+            "YES (anchor catches it)"
+        },
         "n/a"
     );
     println!(

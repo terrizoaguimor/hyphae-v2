@@ -115,7 +115,11 @@ mod tests {
         let anchor = HeadAnchor::from_seed(&SEED);
         let head = [42u8; 32];
         let anchored = anchor.anchor(head);
-        assert!(verify_anchored_head(&head, &anchored, &anchor.verifying_key()));
+        assert!(verify_anchored_head(
+            &head,
+            &anchored,
+            &anchor.verifying_key()
+        ));
     }
 
     #[test]
@@ -127,7 +131,11 @@ mod tests {
         let real_head = [42u8; 32];
         let anchored = anchor.anchor(real_head);
         let forged_head = [99u8; 32];
-        assert!(!verify_anchored_head(&forged_head, &anchored, &anchor.verifying_key()));
+        assert!(!verify_anchored_head(
+            &forged_head,
+            &anchored,
+            &anchor.verifying_key()
+        ));
     }
 
     #[test]

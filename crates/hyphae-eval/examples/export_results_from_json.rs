@@ -101,10 +101,9 @@ fn main() {
     }
     let path = corpus_path.expect("usage: --corpus <path> (or HYPHAE_CORPUS_PATH env)");
 
-    let raw = fs::read_to_string(&path)
-        .unwrap_or_else(|e| panic!("read corpus {path}: {e}"));
-    let queries: Vec<ExternalQuery> = serde_json::from_str(&raw)
-        .unwrap_or_else(|e| panic!("parse corpus JSON: {e}"));
+    let raw = fs::read_to_string(&path).unwrap_or_else(|e| panic!("read corpus {path}: {e}"));
+    let queries: Vec<ExternalQuery> =
+        serde_json::from_str(&raw).unwrap_or_else(|e| panic!("parse corpus JSON: {e}"));
 
     let realizer = SurfaceRealizer::new();
     let mut out: Vec<ExportedQuery> = Vec::with_capacity(queries.len());
@@ -112,8 +111,7 @@ fn main() {
     for q in queries {
         let intent = parse_intent(&q.intent);
         let seed_bodies: Vec<String> = q.seeds.iter().map(|s| s.body.clone()).collect();
-        let working_set: Vec<CognitiveFragment> =
-            q.seeds.into_iter().map(into_fragment).collect();
+        let working_set: Vec<CognitiveFragment> = q.seeds.into_iter().map(into_fragment).collect();
 
         // Acknowledgment-only path (empty working set) still goes through
         // the realizer; produces the empty-working-set acknowledgment.

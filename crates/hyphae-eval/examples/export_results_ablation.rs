@@ -24,8 +24,7 @@ use std::time::Instant;
 
 use hyphae_eval::seed_corpus_en;
 use hyphae_surface::{
-    CompositionShape, CompositionStep, ConnectiveRole, Lexicon, RealizationRequest,
-    SurfaceRealizer,
+    CompositionShape, CompositionStep, ConnectiveRole, Lexicon, RealizationRequest, SurfaceRealizer,
 };
 use serde::Serialize;
 
@@ -56,7 +55,13 @@ fn main() {
         }
     }
 
-    let valid = ["none", "no-shape", "no-ethics", "minimal-lexicon", "no-smoothing"];
+    let valid = [
+        "none",
+        "no-shape",
+        "no-ethics",
+        "minimal-lexicon",
+        "no-smoothing",
+    ];
     if !valid.contains(&ablation.as_str()) {
         eprintln!(
             "error: unknown --ablation `{ablation}`. Valid: {}",
@@ -114,13 +119,17 @@ fn main() {
         queries: out,
     };
 
-    let json = serde_json::to_string_pretty(&envelope.queries)
-        .expect("ExportedQuery derives Serialize");
+    let json =
+        serde_json::to_string_pretty(&envelope.queries).expect("ExportedQuery derives Serialize");
     // Match `export_results.rs` output shape: a top-level JSON array
     // of ExportedQuery, so `score_hyphae.py` reads it without any
     // schema change. The ablation tag is preserved by the file
     // name the operator chooses for stdout redirection.
-    eprintln!("ablation: {}, queries: {}", envelope.ablation, envelope.queries.len());
+    eprintln!(
+        "ablation: {}, queries: {}",
+        envelope.ablation,
+        envelope.queries.len()
+    );
     println!("{json}");
 }
 

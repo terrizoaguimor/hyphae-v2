@@ -267,7 +267,13 @@ impl Lexicon {
         ]
         .into_iter()
         .map(|(role, phrase)| {
-            Connective::new(phrase, role, Register::Neutral, Polarity::Neutral, Formality::Mid)
+            Connective::new(
+                phrase,
+                role,
+                Register::Neutral,
+                Polarity::Neutral,
+                Formality::Mid,
+            )
         })
         .collect();
         Self {
