@@ -1,5 +1,5 @@
 {
-  "protocol": "provbench/v1",
+  "protocol": "provbench/v2",
   "n_fragments": 128,
   "trials_per_cell": 3,
   "seed_base": 42,

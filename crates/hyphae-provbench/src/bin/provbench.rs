@@ -11,7 +11,16 @@
 //!     --table papers/arxiv-preprint/tables/provenance-benchmark.txt
 //! ```
 
+use hyphae_provbench::escalation::{render_escalation_table, run_escalation};
 use hyphae_provbench::harness::{render_table, run};
+
+/// Insert `-escalation` before a path's extension (or append it).
+fn escalation_path(path: &str) -> String {
+    match path.rfind('.') {
+        Some(dot) => format!("{}-escalation{}", &path[..dot], &path[dot..]),
+        None => format!("{path}-escalation"),
+    }
+}
 
 fn main() {
     let mut n: u64 = 128;
@@ -57,13 +66,28 @@ fn main() {
     let table = render_table(&env);
     print!("{table}");
 
+    // provbench/v2: the defense-escalation experiment (full stack).
+    let esc = run_escalation(n, seed);
+    let esc_table = render_escalation_table(&esc);
+    println!("\n{esc_table}");
+
     if let Some(path) = json_path {
         let json = serde_json::to_string_pretty(&env).expect("serialise envelope");
         std::fs::write(&path, json).expect("write json");
         eprintln!("wrote envelope -> {path}");
+        let ep = escalation_path(&path);
+        std::fs::write(
+            &ep,
+            serde_json::to_string_pretty(&esc).expect("serialise escalation"),
+        )
+        .expect("write escalation json");
+        eprintln!("wrote escalation -> {ep}");
     }
     if let Some(path) = table_path {
         std::fs::write(&path, &table).expect("write table");
         eprintln!("wrote table -> {path}");
+        let ep = escalation_path(&path);
+        std::fs::write(&ep, &esc_table).expect("write escalation table");
+        eprintln!("wrote escalation table -> {ep}");
     }
 }

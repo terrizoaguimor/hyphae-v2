@@ -1,0 +1,17 @@
+# Defense escalation — provbench/v2
+# Full provenance stack vs four attacks (n=128, seed=42).
+# Each attack is caught by exactly the next defense layer up.
+
+attack                      bare   anchor   ledger   witness   caught-by
+------------------------------------------------------------------------
+in_place_edit             DETECT     --       --        --     bare
+chain_aware_rewrite         --     DETECT   DETECT    DETECT   anchor
+rollback_stale_anchor       --       --     DETECT    DETECT   ledger
+withholding                 --       --       --      DETECT   witness
+
+# Reading: detection escalates exactly one layer per attack —
+# bare chain → head anchor (0032) → append-only ledger (0033) →
+# external witness (0034). Every attack is caught by some layer for
+# an adversary holding none of the signing keys. Key compromise is
+# recoverable via rotation (0035); source ingestion is the open
+# boundary (0034).

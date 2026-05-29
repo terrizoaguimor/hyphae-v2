@@ -1,4 +1,4 @@
-# Provenance benchmark — provbench/v1
+# Provenance benchmark — provbench/v2
 # Realizer-independent: scores the storage layer shared by Hyphae
 # AND echo+journal. Reproducible from (n=128, trials=3, seed=42).
 # Columns: bare = hash-chain verify; loc = localised to exact seq;
