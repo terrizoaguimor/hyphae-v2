@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: Apache-2.0
+[package]
+name = "hyphae-provbench"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Community-scale provenance benchmark: a realizer-independent protocol that scores any verifiable-generation system on tamper detection and localisation across a tampering taxonomy and an adversary-capability matrix. Compares verbatim-journal provenance (Hyphae and echo+journal share it) against a no-journal control."
+
+[dependencies]
+hyphae-storage = { workspace = true }
+fjall = { workspace = true }
+bincode = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+ed25519-dalek = { workspace = true }
+
+[[bin]]
+name = "provbench"
+path = "src/bin/provbench.rs"
