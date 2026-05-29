@@ -133,7 +133,9 @@ impl ProvenanceSystem for VerbatimJournal {
 
 /// Head = content hash of the last entry (or zeros if empty).
 fn head_of(es: &[JournalEntry]) -> [u8; 32] {
-    es.last().map(JournalEntry::content_hash).unwrap_or([0u8; 32])
+    es.last()
+        .map(JournalEntry::content_hash)
+        .unwrap_or([0u8; 32])
 }
 
 /// Apply a store-only (naive) tamper directly to the partition,
@@ -151,7 +153,10 @@ fn apply_store_only(
         part.insert(seq.to_be_bytes(), &enc).expect("insert");
     };
     match mode {
-        TamperMode::Edit | TamperMode::BitFlip | TamperMode::Truncate | TamperMode::TimestampSkew => {
+        TamperMode::Edit
+        | TamperMode::BitFlip
+        | TamperMode::Truncate
+        | TamperMode::TimestampSkew => {
             mutate_one(&mut es[t], mode);
             put(t as u64, &es[t]);
             break_gt(target_break(t as u64, n), head_of(es))
@@ -213,7 +218,10 @@ fn apply_store_only(
 /// chain-aware adversary). Returns the index from which to recompute.
 fn apply_consistent(es: &mut Vec<JournalEntry>, mode: TamperMode, t: usize, n: u64) -> usize {
     match mode {
-        TamperMode::Edit | TamperMode::BitFlip | TamperMode::Truncate | TamperMode::TimestampSkew => {
+        TamperMode::Edit
+        | TamperMode::BitFlip
+        | TamperMode::Truncate
+        | TamperMode::TimestampSkew => {
             mutate_one(&mut es[t], mode);
             t
         }

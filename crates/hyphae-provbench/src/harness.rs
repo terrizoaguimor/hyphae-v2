@@ -8,16 +8,16 @@
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicU64, Ordering};
 
-use hyphae_storage::{verify_anchored_head, HeadAnchor};
+use hyphae_storage::{HeadAnchor, verify_anchored_head};
 
-use crate::adversary::{profiles, Adversary};
+use crate::PROTOCOL_VERSION;
+use crate::adversary::{Adversary, profiles};
 use crate::fragment::corpus;
-use crate::prng::{seed32, SplitMix64};
+use crate::prng::{SplitMix64, seed32};
 use crate::scoring::{CellAcc, CellResult, Envelope};
 use crate::system::{ProvenanceSystem, VerifyOutcome};
 use crate::systems::{EchoNoJournal, VerbatimJournal};
 use crate::tamper::TamperMode;
-use crate::PROTOCOL_VERSION;
 
 /// Minimum corpus size: we tamper at an interior target in `[1, n-2]`,
 /// so the smallest meaningful corpus has a head, an interior, and a
@@ -40,7 +40,15 @@ pub fn run(n: u64, trials: u64, seed_base: u64) -> Envelope {
         let fp_rate = false_positive_rate(sys.as_ref(), n, trials, seed_base);
         for &mode in &modes {
             for adv in &advs {
-                cells.push(run_cell(sys.as_ref(), mode, adv, n, trials, seed_base, fp_rate));
+                cells.push(run_cell(
+                    sys.as_ref(),
+                    mode,
+                    adv,
+                    n,
+                    trials,
+                    seed_base,
+                    fp_rate,
+                ));
             }
         }
     }
@@ -94,8 +102,10 @@ fn run_cell(
     seed_base: u64,
     fp_rate: f64,
 ) -> CellResult {
-    let mut acc = CellAcc::default();
-    acc.trials = trials;
+    let mut acc = CellAcc {
+        trials,
+        ..Default::default()
+    };
 
     for t in 0..trials {
         let seed = seed_base.wrapping_add(t);
@@ -210,9 +220,11 @@ pub fn render_table(env: &Envelope) -> String {
             out.push_str(&"-".repeat(50));
             out.push('\n');
             for mode in TamperMode::all() {
-                if let Some(c) = env.cells.iter().find(|c| {
-                    c.system == sys && c.adversary == adv && c.tamper_mode == mode.name()
-                }) {
+                if let Some(c) = env
+                    .cells
+                    .iter()
+                    .find(|c| c.system == sys && c.adversary == adv && c.tamper_mode == mode.name())
+                {
                     out.push_str(&format!(
                         "{:<16} {:>6} {:>6} {:>6} {:>6} {:>5.0}%\n",
                         c.tamper_mode,

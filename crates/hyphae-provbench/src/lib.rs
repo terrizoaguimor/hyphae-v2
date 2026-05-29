@@ -45,7 +45,7 @@ mod tests {
     use crate::system::{ProvenanceSystem, VerifyOutcome};
     use crate::systems::{EchoNoJournal, VerbatimJournal};
     use crate::tamper::TamperMode;
-    use hyphae_storage::{verify_anchored_head, HeadAnchor};
+    use hyphae_storage::{HeadAnchor, verify_anchored_head};
     use std::path::PathBuf;
     use std::sync::atomic::{AtomicU64, Ordering};
 
@@ -96,7 +96,11 @@ mod tests {
 
         let gt = sys.tamper(&dir, TamperMode::Edit, 5, 12, true).unwrap();
         assert_eq!(gt.expected_break_seq, None, "consistent by construction");
-        assert_eq!(sys.verify(&dir), VerifyOutcome::Clean, "bare chain defeated");
+        assert_eq!(
+            sys.verify(&dir),
+            VerifyOutcome::Clean,
+            "bare chain defeated"
+        );
 
         let head_after = sys.head(&dir).unwrap();
         assert_ne!(head_after, head_before, "the head necessarily shifted");
@@ -118,10 +122,19 @@ mod tests {
         let anchor = HeadAnchor::from_seed(&seed32(4));
         let anchored = anchor.anchor(head_before);
 
-        sys.tamper(&dir, TamperMode::HeadRollback, 5, 12, false).unwrap();
-        assert_eq!(sys.verify(&dir), VerifyOutcome::Clean, "prefix is consistent");
+        sys.tamper(&dir, TamperMode::HeadRollback, 5, 12, false)
+            .unwrap();
+        assert_eq!(
+            sys.verify(&dir),
+            VerifyOutcome::Clean,
+            "prefix is consistent"
+        );
         let head_after = sys.head(&dir).unwrap();
-        assert!(!verify_anchored_head(&head_after, &anchored, &anchor.verifying_key()));
+        assert!(!verify_anchored_head(
+            &head_after,
+            &anchored,
+            &anchor.verifying_key()
+        ));
         let _ = std::fs::remove_dir_all(&dir);
     }
 
@@ -133,7 +146,11 @@ mod tests {
         let dir = fresh();
         sys.ingest(&dir, &corpus(12, 5));
         assert!(sys.head(&dir).is_none());
-        for mode in [TamperMode::Edit, TamperMode::Delete, TamperMode::HeadRollback] {
+        for mode in [
+            TamperMode::Edit,
+            TamperMode::Delete,
+            TamperMode::HeadRollback,
+        ] {
             sys.tamper(&dir, mode, 5, 12, false);
             assert_eq!(sys.verify(&dir), VerifyOutcome::Clean, "echo cannot detect");
         }

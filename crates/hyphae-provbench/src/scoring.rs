@@ -82,13 +82,7 @@ pub struct CellAcc {
 impl CellAcc {
     /// Finalise into a [`CellResult`].
     #[must_use]
-    pub fn finish(
-        &self,
-        system: &str,
-        tamper_mode: &str,
-        adversary: &str,
-        n: u64,
-    ) -> CellResult {
+    pub fn finish(&self, system: &str, tamper_mode: &str, adversary: &str, n: u64) -> CellResult {
         let trials = self.trials.max(1);
         CellResult {
             system: system.to_string(),
