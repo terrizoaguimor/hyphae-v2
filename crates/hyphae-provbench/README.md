@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
-# hyphae-provbench — a provenance benchmark (`provbench/v1`)
+# hyphae-provbench — a provenance benchmark (`provbench/v2`)
 
 A realizer-independent benchmark that scores **verifiable-generation
 systems** on the axis that actually distinguishes them: when stored,
@@ -73,6 +73,29 @@ boundary is **visible in the result** rather than asserted:
 
 Default profiles: `store-only`, `chain-aware`, `chain-aware+key`.
 
+## Defense escalation (v2, `src/escalation.rs`)
+
+The taxonomy matrix above scores the *journal layer* (bare chain +
+single anchor). The escalation experiment scores the **full provenance
+stack** — bare chain → external head anchor (ADR-0032) → append-only
+ledger (ADR-0033) → external witness (ADR-0034) — against four attacks,
+each constructed so that exactly the next defense layer up is the one
+that catches it:
+
+| attack | bare | anchor | ledger | witness |
+|---|---|---|---|---|
+| in-place edit | ✓ | | | |
+| chain-aware head rewrite | | ✓ | ✓ | ✓ |
+| rollback + stale-anchor replay | | | ✓ | ✓ |
+| withholding (truncated ledger) | | | | ✓ |
+
+The `bare` and `anchor` verdicts come from running the real
+verbatim-journal system; the `ledger` and `witness` verdicts are the
+shipped `hyphae-storage` checks. It is emitted as a companion artifact
+(`*-escalation.json` / `.txt`) and is reproducible from `(n, seed)`.
+Key compromise is recoverable via rotation (ADR-0035); source ingestion
+is the one open boundary (ADR-0034).
+
 ## Expected result shape
 
 - **store-only** → the bare chain detects and localises in-place
@@ -109,10 +132,10 @@ per ingest and once per tamper, so wall-clock grows with
 
 ## Versioning
 
-`PROTOCOL_VERSION = "provbench/v1"`. Bump on any change to the scoring
+`PROTOCOL_VERSION = "provbench/v2"`. Bump on any change to the scoring
 semantics or the matrix so envelopes remain comparable across versions.
 
-## Future work (open in `v1`)
+## Future work
 
 - **Append-only anchor ledger — implemented (ADR-0033).** Beyond the
   single latest-head anchor, `hyphae-storage::ledger` now publishes
@@ -120,9 +143,9 @@ semantics or the matrix so envelopes remain comparable across versions.
   **freshness** (a rolled-back head is rejected even with a genuine
   stale anchor) and **non-equivocation** (forked views are detected).
   See `crates/hyphae-storage/examples/anchor_ledger.rs` and
-  `papers/arxiv-preprint/tables/anchor-ledger.txt`. Folding a
-  ledger-vs-single-anchor axis into this matrix is the next protocol
-  bump (`provbench/v2`).
+  `papers/arxiv-preprint/tables/anchor-ledger.txt`. The
+  ledger-vs-single-anchor axis is now folded in as the v2 defense-
+  escalation experiment (see above).
 - **External witness — implemented (ADR-0034).** A store that
   *withholds* later ledger entries is now caught: an independent witness
   (separate key) signs the ledger tail, and the auditor pins the

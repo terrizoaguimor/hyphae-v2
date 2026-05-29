@@ -25,6 +25,7 @@
 #![warn(missing_docs)]
 
 pub mod adversary;
+pub mod escalation;
 pub mod fragment;
 pub mod harness;
 pub mod prng;
@@ -35,7 +36,11 @@ pub mod tamper;
 
 /// Protocol identifier and version. Bump on any change to the scoring
 /// semantics or the matrix so envelopes remain comparable.
-pub const PROTOCOL_VERSION: &str = "provbench/v1";
+///
+/// v2 adds the defense-escalation experiment ([`escalation`]) that
+/// scores the full provenance stack (bare chain → head anchor → ledger
+/// → witness) alongside the tamper-taxonomy matrix.
+pub const PROTOCOL_VERSION: &str = "provbench/v2";
 
 #[cfg(test)]
 mod tests {

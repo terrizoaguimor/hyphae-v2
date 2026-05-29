@@ -1,0 +1,39 @@
+{
+  "protocol": "provbench/v2",
+  "n_fragments": 128,
+  "seed": 42,
+  "rows": [
+    {
+      "attack": "in_place_edit",
+      "bare": true,
+      "anchor": false,
+      "ledger": false,
+      "ledger_witness": false,
+      "caught_first_by": "bare"
+    },
+    {
+      "attack": "chain_aware_rewrite",
+      "bare": false,
+      "anchor": true,
+      "ledger": true,
+      "ledger_witness": true,
+      "caught_first_by": "anchor"
+    },
+    {
+      "attack": "rollback_stale_anchor",
+      "bare": false,
+      "anchor": false,
+      "ledger": true,
+      "ledger_witness": true,
+      "caught_first_by": "ledger"
+    },
+    {
+      "attack": "withholding",
+      "bare": false,
+      "anchor": false,
+      "ledger": false,
+      "ledger_witness": true,
+      "caught_first_by": "witness"
+    }
+  ]
+}
