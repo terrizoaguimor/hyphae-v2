@@ -1,0 +1,29 @@
+# Ingestion bridge — ADR-0037
+# Signed-at-source provenance INTO the journal. Asserter holds a
+# key of its own; a credential binds a fragment to its origin.
+
+## 1. Attribution (credential signed by named asserter, binds exact bytes)
+verify_credential(good fragment)               PASS
+verify_faithful_excerpt(vs real source)        PASS
+
+## 3. Forged credential (impostor asserter)
+forged credential under trusted key            FAIL
+faithful-excerpt vs a wrong source             FAIL
+
+## 4. The gap — fabricated fragment injected, no credential
+integrity chain verify() (whole journal)       PASS
+ingestion check: genuine fragment              PASS
+ingestion check: injected fragment             FAIL
+
+# Summary:
+#   check                              genuine   injected
+#   integrity chain (verify)            PASS       PASS   <- both faithfully stored
+#   ingestion credential (attribution)  PASS       FAIL   <- the gap the bridge closes
+#
+# Integrity (within the store) and provenance (into the store) are
+# orthogonal: the chain proves the injected fragment was not altered,
+# NOT that it came from anywhere. The ingestion credential is what
+# attributes a fragment to a signed source. Provenance is not truth:
+# it moves trust from the store to the named asserter, and (given the
+# source) proves a faithful excerpt — content validity is orthogonal
+# (RAGShield-style), out of scope. See ADR-0037.
