@@ -48,6 +48,20 @@ pub struct CellResult {
     pub mean_scan_fraction: f64,
 }
 
+/// Per-system proof cost (constant across modes/adversaries): the
+/// inclusion-proof size at the benchmark's corpus size `n`. The axis on
+/// which append-only-log designs differ even when detection ties.
+#[derive(Debug, Clone, Serialize)]
+pub struct ProofCost {
+    /// System name.
+    pub system: String,
+    /// Corpus size the cost is reported at.
+    pub n_fragments: u64,
+    /// Hashes to prove one entry's inclusion against the head, or `null`
+    /// if the system commits to no membership.
+    pub inclusion_proof_hashes: Option<u64>,
+}
+
 /// The full benchmark result.
 #[derive(Debug, Clone, Serialize)]
 pub struct Envelope {
@@ -61,6 +75,8 @@ pub struct Envelope {
     pub seed_base: u64,
     /// All scored cells, in deterministic order.
     pub cells: Vec<CellResult>,
+    /// Per-system inclusion-proof cost at `n_fragments`.
+    pub proof_costs: Vec<ProofCost>,
 }
 
 /// Accumulator for a single cell across trials. Internal tallies the

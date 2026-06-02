@@ -1,5 +1,5 @@
 {
-  "protocol": "provbench/v2",
+  "protocol": "provbench/v3",
   "n_fragments": 128,
   "seed": 42,
   "rows": [

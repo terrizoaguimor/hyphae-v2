@@ -1,4 +1,4 @@
-# Defense escalation — provbench/v2
+# Defense escalation — provbench/v3
 # Full provenance stack vs four attacks (n=128, seed=42).
 # Each attack is caught by exactly the next defense layer up.
 

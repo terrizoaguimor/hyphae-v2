@@ -167,7 +167,16 @@ deliberate simplification, not a limitation of the property; a
 Merkle upgrade is a drop-in for deployments that need to prove
 inclusion or append-only consistency to a verifier without
 streaming the entire log, and it does not change any result in
-this paper.
+this paper. We make this concrete: the provenance benchmark
+(\texttt{hyphae-provbench}) carries a Merkle/RFC-6962 transparency
+log as a comparator system alongside the flat chain. The two
+\emph{match} on every detection cell --- confirming that detection
+is a property of the append-only-log class, not of the flat chain
+specifically --- and differ only on inclusion-proof cost ($O(n)$
+versus $O(\log n)$), which the benchmark reports as a per-system
+axis. A no-chain per-entry-signature log, included as a third
+comparator, catches in-place edits but misses deletion, reordering,
+replay, and rollback, separating ``signing'' from ``chaining.''
 
 \paragraph{External anchor publication and key management.} The
 head anchor we implement signs the head with a key held outside

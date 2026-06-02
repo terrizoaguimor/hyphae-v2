@@ -84,6 +84,12 @@ impl ProvenanceSystem for VerbatimJournal {
         Some(journal.head())
     }
 
+    fn inclusion_proof_hashes(&self, n: u64) -> Option<u64> {
+        // A flat chain has no sublinear inclusion proof: an auditor must
+        // rehash from the entry to the head -> O(n).
+        Some(n)
+    }
+
     fn tamper(
         &self,
         dir: &Path,

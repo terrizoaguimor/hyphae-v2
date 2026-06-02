@@ -1,4 +1,4 @@
-# Provenance benchmark — provbench/v2
+# Provenance benchmark — provbench/v3
 # Realizer-independent: scores the storage layer shared by Hyphae
 # AND echo+journal. Reproducible from (n=128, trials=3, seed=42).
 # Columns: bare = hash-chain verify; loc = localised to exact seq;
@@ -49,6 +49,94 @@ timestamp_skew       0%    n/a     0%     0%   100%
 head_rollback        0%    n/a     0%     0%   100%
 batch                0%    n/a     0%     0%   100%
 
+## System: merkle-log
+
+### Adversary: store-only
+mode               bare    loc anchor     fp   scan
+--------------------------------------------------
+edit               100%   100%     0%     0%    51%
+delete             100%   100%     0%     0%    45%
+insert             100%   100%     0%     0%   101%
+reorder            100%   100%     0%     0%    15%
+bitflip            100%   100%     0%     0%    43%
+truncate           100%   100%     0%     0%    41%
+duplicate          100%   100%     0%     0%   101%
+timestamp_skew       0%    n/a     0%     0%   100%
+head_rollback        0%    n/a   100%     0%   100%
+batch              100%   100%     0%     0%    49%
+
+### Adversary: chain-aware
+mode               bare    loc anchor     fp   scan
+--------------------------------------------------
+edit                 0%    n/a   100%     0%   100%
+delete               0%    n/a   100%     0%   100%
+insert               0%    n/a   100%     0%   100%
+reorder              0%    n/a   100%     0%   100%
+bitflip              0%    n/a   100%     0%   100%
+truncate             0%    n/a   100%     0%   100%
+duplicate            0%    n/a   100%     0%   100%
+timestamp_skew       0%    n/a     0%     0%   100%
+head_rollback        0%    n/a   100%     0%   100%
+batch                0%    n/a   100%     0%   100%
+
+### Adversary: chain-aware+key
+mode               bare    loc anchor     fp   scan
+--------------------------------------------------
+edit                 0%    n/a     0%     0%   100%
+delete               0%    n/a     0%     0%   100%
+insert               0%    n/a     0%     0%   100%
+reorder              0%    n/a     0%     0%   100%
+bitflip              0%    n/a     0%     0%   100%
+truncate             0%    n/a     0%     0%   100%
+duplicate            0%    n/a     0%     0%   100%
+timestamp_skew       0%    n/a     0%     0%   100%
+head_rollback        0%    n/a     0%     0%   100%
+batch                0%    n/a     0%     0%   100%
+
+## System: signed-entries
+
+### Adversary: store-only
+mode               bare    loc anchor     fp   scan
+--------------------------------------------------
+edit               100%   100%    n/a     0%    51%
+delete               0%    n/a    n/a     0%   100%
+insert             100%   100%    n/a     0%   101%
+reorder              0%    n/a    n/a     0%   100%
+bitflip            100%   100%    n/a     0%    43%
+truncate           100%   100%    n/a     0%    41%
+duplicate            0%    n/a    n/a     0%   100%
+timestamp_skew       0%    n/a    n/a     0%   100%
+head_rollback        0%    n/a    n/a     0%   100%
+batch              100%   100%    n/a     0%    49%
+
+### Adversary: chain-aware
+mode               bare    loc anchor     fp   scan
+--------------------------------------------------
+edit               100%   100%    n/a     0%    51%
+delete               0%    n/a    n/a     0%   100%
+insert             100%   100%    n/a     0%   101%
+reorder              0%    n/a    n/a     0%   100%
+bitflip            100%   100%    n/a     0%    43%
+truncate           100%   100%    n/a     0%    41%
+duplicate            0%    n/a    n/a     0%   100%
+timestamp_skew       0%    n/a    n/a     0%   100%
+head_rollback        0%    n/a    n/a     0%   100%
+batch              100%   100%    n/a     0%    49%
+
+### Adversary: chain-aware+key
+mode               bare    loc anchor     fp   scan
+--------------------------------------------------
+edit               100%   100%    n/a     0%    51%
+delete               0%    n/a    n/a     0%   100%
+insert             100%   100%    n/a     0%   101%
+reorder              0%    n/a    n/a     0%   100%
+bitflip            100%   100%    n/a     0%    43%
+truncate           100%   100%    n/a     0%    41%
+duplicate            0%    n/a    n/a     0%   100%
+timestamp_skew       0%    n/a    n/a     0%   100%
+head_rollback        0%    n/a    n/a     0%   100%
+batch              100%   100%    n/a     0%    49%
+
 ## System: echo-no-journal
 
 ### Adversary: store-only
@@ -93,18 +181,29 @@ timestamp_skew       0%    n/a    n/a     0%   100%
 head_rollback        0%    n/a    n/a     0%   100%
 batch                0%    n/a    n/a     0%   100%
 
+## Proof cost (inclusion proof at n)
+system           inclusion-proof hashes
+----------------------------------------
+verbatim-journal                    128
+merkle-log                            7
+signed-entries   — (no membership proof)
+echo-no-journal  — (no membership proof)
+
 # Reading:
-#  * store-only adversary  → bare chain detects + localises in-place
-#    tampering; anchor only fires when the head itself shifts.
-#  * chain-aware adversary → bare chain is defeated (0%); the external
-#    Ed25519 head anchor catches it (100%).
-#  * chain-aware+key       → anchor key compromised → no protection.
-#    This is the guarantee's exact boundary: tamper-evidence holds
-#    against any attacker who does NOT hold the anchor signing key.
-#  * echo-no-journal       → 0% everywhere: no journal, no provenance.
-#    (Hyphae and echo+journal share the verbatim-journal row above;
-#    the provenance property is the addable layer, not the realizer.)
-#  * head_rollback         → consistent by construction, so the bare
-#    chain cannot see it; the single-head anchor catches it via head
-#    mismatch. Non-equivocation across observers needs an external
-#    append-only ledger (see README §Future work).
+#  * verbatim-journal & merkle-log share the SAME detection profile —
+#    store-only detected + localised; chain-aware defeats the bare
+#    check but the external anchor catches it; head_rollback is
+#    consistent-by-construction (anchor catches via head mismatch).
+#    Detection is a property of the append-only-log CLASS, not of the
+#    flat chain. They differ on PROOF COST: flat chain O(n) vs Merkle
+#    O(log n) inclusion proofs (table above).
+#  * signed-entries (no chain) → catches in-place edits and forged
+#    inserts via per-entry signatures, but MISSES delete, reorder,
+#    replay (duplicate) and rollback: signing is not chaining. No
+#    head, so no anchored detection and no membership proof.
+#  * echo-no-journal → 0% everywhere: no journal, no provenance.
+#  * chain-aware+key → anchor key compromised → no protection. The
+#    guarantee's boundary: holds against any attacker who does NOT
+#    hold the anchor signing key.
+#  Hyphae and echo+journal share the verbatim-journal row; the
+#  provenance property is the addable layer, not the realizer.

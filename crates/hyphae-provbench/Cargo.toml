@@ -16,6 +16,8 @@ bincode = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 ed25519-dalek = { workspace = true }
+# RFC 6962 Merkle tree hashing for the merkle-log comparator system (ADR-0038).
+sha2 = { workspace = true }
 
 [[bin]]
 name = "provbench"

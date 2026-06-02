@@ -14,9 +14,9 @@ use crate::PROTOCOL_VERSION;
 use crate::adversary::{Adversary, profiles};
 use crate::fragment::corpus;
 use crate::prng::{SplitMix64, seed32};
-use crate::scoring::{CellAcc, CellResult, Envelope};
+use crate::scoring::{CellAcc, CellResult, Envelope, ProofCost};
 use crate::system::{ProvenanceSystem, VerifyOutcome};
-use crate::systems::{EchoNoJournal, VerbatimJournal};
+use crate::systems::{EchoNoJournal, MerkleLog, SignedEntries, VerbatimJournal};
 use crate::tamper::TamperMode;
 
 /// Minimum corpus size: we tamper at an interior target in `[1, n-2]`,
@@ -28,12 +28,17 @@ pub const MIN_N: u64 = 8;
 #[must_use]
 pub fn run(n: u64, trials: u64, seed_base: u64) -> Envelope {
     let n = n.max(MIN_N);
-    let systems: Vec<Box<dyn ProvenanceSystem>> =
-        vec![Box::new(VerbatimJournal), Box::new(EchoNoJournal)];
+    let systems: Vec<Box<dyn ProvenanceSystem>> = vec![
+        Box::new(VerbatimJournal),
+        Box::new(MerkleLog),
+        Box::new(SignedEntries),
+        Box::new(EchoNoJournal),
+    ];
     let advs = profiles();
     let modes = TamperMode::all();
 
     let mut cells = Vec::new();
+    let mut proof_costs = Vec::new();
     for sys in &systems {
         // False positives depend only on (system, corpus), not on the
         // tamper cell — measure once per system and reuse across cells.
@@ -51,6 +56,11 @@ pub fn run(n: u64, trials: u64, seed_base: u64) -> Envelope {
                 ));
             }
         }
+        proof_costs.push(ProofCost {
+            system: sys.name().to_string(),
+            n_fragments: n,
+            inclusion_proof_hashes: sys.inclusion_proof_hashes(n),
+        });
     }
 
     Envelope {
@@ -59,6 +69,7 @@ pub fn run(n: u64, trials: u64, seed_base: u64) -> Envelope {
         trials_per_cell: trials,
         seed_base,
         cells,
+        proof_costs,
     }
 }
 
@@ -206,7 +217,12 @@ pub fn render_table(env: &Envelope) -> String {
          #          scan = mean fraction of entries read before detection.\n",
     );
 
-    let systems = ["verbatim-journal", "echo-no-journal"];
+    let systems = [
+        "verbatim-journal",
+        "merkle-log",
+        "signed-entries",
+        "echo-no-journal",
+    ];
     let advs = ["store-only", "chain-aware", "chain-aware+key"];
 
     for sys in systems {
@@ -239,22 +255,42 @@ pub fn render_table(env: &Envelope) -> String {
         }
     }
 
+    // Proof cost — the axis on which log designs differ even when
+    // detection ties.
+    out.push_str("\n## Proof cost (inclusion proof at n)\n");
+    out.push_str(&format!(
+        "{:<16} {:>22}\n",
+        "system", "inclusion-proof hashes"
+    ));
+    out.push_str(&"-".repeat(40));
+    out.push('\n');
+    for pcv in &env.proof_costs {
+        let cost = match pcv.inclusion_proof_hashes {
+            Some(h) => h.to_string(),
+            None => "— (no membership proof)".to_string(),
+        };
+        out.push_str(&format!("{:<16} {:>22}\n", pcv.system, cost));
+    }
+
     out.push_str(
         "\n# Reading:\n\
-         #  * store-only adversary  → bare chain detects + localises in-place\n\
-         #    tampering; anchor only fires when the head itself shifts.\n\
-         #  * chain-aware adversary → bare chain is defeated (0%); the external\n\
-         #    Ed25519 head anchor catches it (100%).\n\
-         #  * chain-aware+key       → anchor key compromised → no protection.\n\
-         #    This is the guarantee's exact boundary: tamper-evidence holds\n\
-         #    against any attacker who does NOT hold the anchor signing key.\n\
-         #  * echo-no-journal       → 0% everywhere: no journal, no provenance.\n\
-         #    (Hyphae and echo+journal share the verbatim-journal row above;\n\
-         #    the provenance property is the addable layer, not the realizer.)\n\
-         #  * head_rollback         → consistent by construction, so the bare\n\
-         #    chain cannot see it; the single-head anchor catches it via head\n\
-         #    mismatch. Non-equivocation across observers needs an external\n\
-         #    append-only ledger (see README §Future work).\n",
+         #  * verbatim-journal & merkle-log share the SAME detection profile —\n\
+         #    store-only detected + localised; chain-aware defeats the bare\n\
+         #    check but the external anchor catches it; head_rollback is\n\
+         #    consistent-by-construction (anchor catches via head mismatch).\n\
+         #    Detection is a property of the append-only-log CLASS, not of the\n\
+         #    flat chain. They differ on PROOF COST: flat chain O(n) vs Merkle\n\
+         #    O(log n) inclusion proofs (table above).\n\
+         #  * signed-entries (no chain) → catches in-place edits and forged\n\
+         #    inserts via per-entry signatures, but MISSES delete, reorder,\n\
+         #    replay (duplicate) and rollback: signing is not chaining. No\n\
+         #    head, so no anchored detection and no membership proof.\n\
+         #  * echo-no-journal → 0% everywhere: no journal, no provenance.\n\
+         #  * chain-aware+key → anchor key compromised → no protection. The\n\
+         #    guarantee's boundary: holds against any attacker who does NOT\n\
+         #    hold the anchor signing key.\n\
+         #  Hyphae and echo+journal share the verbatim-journal row; the\n\
+         #  provenance property is the addable layer, not the realizer.\n",
     );
 
     out
