@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
-# hyphae-provbench — a provenance benchmark (`provbench/v2`)
+# hyphae-provbench — a provenance benchmark (`provbench/v3`)
 
 A realizer-independent benchmark that scores **verifiable-generation
 systems** on the axis that actually distinguishes them: when stored,
@@ -42,6 +42,25 @@ independent seeded runs:
 A `-1.0` ("n/a") marks a metric that does not apply to a cell (e.g.
 localisation for a consistent-by-construction tamper, or anchored
 detection for a system with no head).
+
+## Systems under test (`src/systems/`, v3)
+
+Four systems implement the `ProvenanceSystem` trait, so the matrix
+compares provenance *designs*, not just one:
+
+| system | design | detection | inclusion proof |
+|---|---|---|---|
+| **verbatim-journal** | SHA-256 flat hash chain (Hyphae, echo+journal) | full | `O(n)` |
+| **merkle-log** | Merkle/CT transparency log (RFC 6962) | full (ties the chain) | `O(log n)` |
+| **signed-entries** | per-entry Ed25519 signature, no chain | edits + forged inserts only | none |
+| **echo-no-journal** | no provenance structure (negative control) | none | none |
+
+The reading: `merkle-log` **matches** the flat chain on every detection
+cell — provenance detection is a property of the append-only-log *class*
+— and differs only on **proof cost** (`O(n)` vs `O(log n)`), a per-system
+axis the envelope now reports. `signed-entries` **discriminates**: it
+catches in-place edits and forged inserts but misses delete, reorder,
+replay, and rollback — *signing is not chaining*. See ADR-0038.
 
 ## Tampering taxonomy (`src/tamper.rs`)
 
@@ -132,8 +151,10 @@ per ingest and once per tamper, so wall-clock grows with
 
 ## Versioning
 
-`PROTOCOL_VERSION = "provbench/v2"`. Bump on any change to the scoring
+`PROTOCOL_VERSION = "provbench/v3"`. Bump on any change to the scoring
 semantics or the matrix so envelopes remain comparable across versions.
+(v2 added the defense-escalation experiment; v3 added the `merkle-log`
+and `signed-entries` systems and the inclusion-proof-cost axis.)
 
 ## Future work
 

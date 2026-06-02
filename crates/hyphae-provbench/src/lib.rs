@@ -39,8 +39,12 @@ pub mod tamper;
 ///
 /// v2 adds the defense-escalation experiment ([`escalation`]) that
 /// scores the full provenance stack (bare chain → head anchor → ledger
-/// → witness) alongside the tamper-taxonomy matrix.
-pub const PROTOCOL_VERSION: &str = "provbench/v2";
+/// → witness) alongside the tamper-taxonomy matrix. v3 adds two further
+/// systems under test — a Merkle/CT transparency log and a no-chain
+/// signed-entries log — and a per-system inclusion-proof-cost axis, so
+/// the matrix compares provenance *designs* (and is no longer a
+/// single-system benchmark).
+pub const PROTOCOL_VERSION: &str = "provbench/v3";
 
 #[cfg(test)]
 mod tests {
@@ -48,7 +52,7 @@ mod tests {
     use crate::harness::run;
     use crate::prng::seed32;
     use crate::system::{ProvenanceSystem, VerifyOutcome};
-    use crate::systems::{EchoNoJournal, VerbatimJournal};
+    use crate::systems::{EchoNoJournal, MerkleLog, SignedEntries, VerbatimJournal};
     use crate::tamper::TamperMode;
     use hyphae_storage::{HeadAnchor, verify_anchored_head};
     use std::path::PathBuf;
@@ -162,8 +166,80 @@ mod tests {
         let _ = std::fs::remove_dir_all(&dir);
     }
 
+    // ── signed-entries (no chain): catches in-place edits + forged
+    //    inserts, MISSES delete / reorder / replay / rollback. The
+    //    discriminating profile that proves the matrix isn't single-system. ──
+    #[test]
+    fn signed_entries_discriminates() {
+        let sys = SignedEntries;
+        // edit -> detected + localised
+        let d = fresh();
+        sys.ingest(&d, &corpus(12, 1));
+        let gt = sys.tamper(&d, TamperMode::Edit, 5, 12, false).unwrap();
+        assert_eq!(gt.expected_break_seq, Some(5));
+        assert_eq!(sys.verify(&d), VerifyOutcome::Violation { seq: 5 });
+        let _ = std::fs::remove_dir_all(&d);
+
+        // delete / reorder / duplicate(replay) / rollback -> MISS (clean)
+        for mode in [
+            TamperMode::Delete,
+            TamperMode::Reorder,
+            TamperMode::Duplicate,
+            TamperMode::HeadRollback,
+        ] {
+            let d = fresh();
+            sys.ingest(&d, &corpus(12, 2));
+            let gt = sys.tamper(&d, mode, 5, 12, false).unwrap();
+            assert_eq!(
+                gt.expected_break_seq, None,
+                "{mode:?} has no chain to catch it"
+            );
+            assert_eq!(
+                sys.verify(&d),
+                VerifyOutcome::Clean,
+                "{mode:?} slips past signatures"
+            );
+            let _ = std::fs::remove_dir_all(&d);
+        }
+
+        // forged insert -> detected (no valid store signature)
+        let d = fresh();
+        sys.ingest(&d, &corpus(12, 3));
+        sys.tamper(&d, TamperMode::Insert, 5, 12, false).unwrap();
+        assert!(matches!(sys.verify(&d), VerifyOutcome::Violation { .. }));
+        assert!(sys.head(&d).is_none());
+        let _ = std::fs::remove_dir_all(&d);
+    }
+
+    // ── merkle-log mirrors the flat chain's detection: store-only edit
+    //    detected + localised; chain-aware recompute is bare-clean but
+    //    moves the root (anchor catches). ──
+    #[test]
+    fn merkle_log_matches_chain_profile() {
+        let sys = MerkleLog;
+        let d = fresh();
+        let head0 = sys.ingest(&d, &corpus(12, 4)).unwrap();
+        let gt = sys.tamper(&d, TamperMode::Edit, 5, 12, false).unwrap();
+        assert_eq!(gt.expected_break_seq, Some(5));
+        assert_eq!(sys.verify(&d), VerifyOutcome::Violation { seq: 5 });
+        let _ = std::fs::remove_dir_all(&d);
+
+        let d = fresh();
+        sys.ingest(&d, &corpus(12, 4));
+        let gt = sys.tamper(&d, TamperMode::Edit, 5, 12, true).unwrap(); // chain-aware
+        assert_eq!(gt.expected_break_seq, None, "recompute is bare-consistent");
+        assert_eq!(sys.verify(&d), VerifyOutcome::Clean);
+        assert_ne!(
+            gt.head_after.unwrap(),
+            head0,
+            "but the root moved -> anchor catches"
+        );
+        let _ = std::fs::remove_dir_all(&d);
+    }
+
     // ── Aggregate smoke + reproducibility (tiny so the suite stays
-    //    cheap). Asserts the headline cells and byte-stable envelope. ──
+    //    cheap). Asserts headline cells, proof costs, and byte-stable
+    //    envelope across the four systems. ──
     #[test]
     fn matrix_smoke_and_determinism() {
         let a = run(8, 1, 7);
@@ -187,5 +263,28 @@ mod tests {
             edit.anchored_detection_rate, 0.0,
             "compromised key is the guarantee's boundary"
         );
+
+        // Proof-cost axis: flat chain O(n), Merkle O(log n), the rest none.
+        let cost = |s: &str| {
+            a.proof_costs
+                .iter()
+                .find(|p| p.system == s)
+                .unwrap()
+                .inclusion_proof_hashes
+        };
+        assert_eq!(cost("verbatim-journal"), Some(8)); // n
+        assert_eq!(cost("merkle-log"), Some(3)); // ceil(log2 8)
+        assert_eq!(cost("signed-entries"), None);
+        assert_eq!(cost("echo-no-journal"), None);
+
+        // merkle-log ties verbatim-journal on a representative cell.
+        let cell = |sys: &str| {
+            a.cells
+                .iter()
+                .find(|c| c.system == sys && c.adversary == "store-only" && c.tamper_mode == "edit")
+                .unwrap()
+                .bare_detection_rate
+        };
+        assert_eq!(cell("merkle-log"), cell("verbatim-journal"));
     }
 }

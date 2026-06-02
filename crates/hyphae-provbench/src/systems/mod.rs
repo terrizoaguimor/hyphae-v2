@@ -6,6 +6,10 @@
 
 pub mod echo;
 pub mod journal;
+pub mod merkle_log;
+pub mod signed_entries;
 
 pub use echo::EchoNoJournal;
 pub use journal::VerbatimJournal;
+pub use merkle_log::MerkleLog;
+pub use signed_entries::SignedEntries;

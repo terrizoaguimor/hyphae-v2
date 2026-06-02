@@ -85,4 +85,27 @@ pub trait ProvenanceSystem {
         n: u64,
         chain_aware: bool,
     ) -> Option<GroundTruth>;
+
+    /// Number of hashes an auditor must obtain — beyond the trusted head
+    /// — to prove that a single stored entry is included in, and
+    /// consistent with, the committed head, *without streaming the whole
+    /// log*. This is the axis on which append-only-log designs differ
+    /// even when their detection profiles match: a flat hash chain needs
+    /// `O(n)` (rehash to the head), a Merkle log `O(log n)` (an audit
+    /// path). `None` means the system commits to no membership at all
+    /// (nothing to prove inclusion against). Defaults to `None`.
+    fn inclusion_proof_hashes(&self, _n: u64) -> Option<u64> {
+        None
+    }
+}
+
+/// `ceil(log2(n))` — the audit-path length for a Merkle log of `n`
+/// leaves (0 for a single leaf).
+#[must_use]
+pub fn ceil_log2(n: u64) -> u64 {
+    if n <= 1 {
+        0
+    } else {
+        64 - (n - 1).leading_zeros() as u64
+    }
 }
