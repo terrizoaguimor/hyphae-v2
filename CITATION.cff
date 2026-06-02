@@ -28,6 +28,9 @@ identifiers:
     value: 10.5281/zenodo.20436643
     description: "Concept DOI (resolves to the latest version)"
   - type: doi
+    value: 10.5281/zenodo.20512639
+    description: "Version DOI (v0.2.0-preprint, current)"
+  - type: doi
     value: 10.5281/zenodo.20436644
     description: "Version DOI (v0.1.0-preprint)"
 repository-code: "https://github.com/terrizoaguimor/hyphae-v2"
