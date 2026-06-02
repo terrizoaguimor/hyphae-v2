@@ -27,6 +27,51 @@ pipeline, HyDE plus cross-encoder reranking (the canonical
 ground-truth supporting passage directly). The latter isolates
 composition quality from retrieval quality.
 
+\subsection{Attributed and Quote-Grounded Generation}
+\label{sec:related-attribution}
+
+A parallel line keeps the LLM in the answer path but makes the
+output \emph{attributable}. Citation-generation systems emit an
+answer with citation markers and are evaluated by frameworks such as
+ALCE \citep{gao2023alce}, whose citation-NLI metric scores whether
+the cited documents support the claim. \citet{menick2022gophercite}
+(GopherCite) attaches \emph{verbatim} supporting quotes to generated
+answers, learning the answer-to-quote support via reinforcement
+learning from human preferences; ``according to'' prompting
+\citep{weller2023accordingto} steers a model toward quoting its
+pre-training data and measures the tendency with an n-gram-overlap
+(QUIP) statistic. These establish verbatim quotation as an
+attribution device as known prior art: \citet{schuster2023semqa}
+(SEMQA) make it explicit, defining a \emph{semi-extractive} task
+whose answers interleave verbatim source spans with generated
+connectors for ``by-design'' easy-to-verify attribution.
+
+\hyphae{} differs from all of these on one structural axis:
+\emph{there is no model output to attribute}. The answer is not
+generated and then linked to evidence; the answer \emph{is} the
+stored fragment, emitted byte-for-byte, with the binding made
+cryptographically tamper-evident rather than learned (GopherCite),
+prompted (according-to), or textual-only (SEMQA, ALCE). This
+collapses the distinction \citet{wallat2024faithfulness} draw
+between citation \emph{correctness} (the cited source supports the
+claim) and citation \emph{faithfulness} (the model genuinely relied
+on the source rather than post-rationalising from its parametric
+prior, a failure they find afflicts a large fraction of attributed
+answers): a system with no parametric prior, whose answer \emph{is}
+its source, is faithful by construction --- the post-rationalisation
+failure mode is structurally eliminated, not merely reduced. It does
+not collapse \emph{correctness}, which remains a retrieval-relevance
+question; \citet{worledge2024extractive} characterise the resulting
+extractive--abstractive verifiability trade-off, with the
+byte-identical pole maximally verifiable and least abstractive. This
+is consistent with our echo control: correctness is
+realizer-independent, faithfulness is what verbatim emission makes
+trivially true. Our provenance benchmark
+(Section~\ref{sec:results-provenance}) is correspondingly orthogonal
+to attribution benchmarks like ALCE --- it scores cryptographic
+tamper \emph{detection and localisation} over the journal, not
+citation correctness over the answer.
+
 \subsection{Structured Memory and Cognitive Architectures}
 
 Long-context architectures and explicit memory systems offer
