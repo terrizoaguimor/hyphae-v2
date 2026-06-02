@@ -180,10 +180,22 @@ key is recoverable rather than fatal --- is implemented as a signed
 keyring (\texttt{hyphae-storage::keyring}, ADR-0035): successors are
 authorised by their predecessor from a root trusted out-of-band, and
 a ledger spanning rotations verifies under the key active at each
-epoch; what is left is KMS/HSM sourcing of the key material. The one
-genuinely open boundary is source ingestion --- attesting that
-fragments entered the journal faithfully in the first place --- which
-the journal-onward guarantee does not address.
+epoch; what is left is KMS/HSM sourcing of the key material. The
+source-ingestion boundary --- attesting that fragments entered the
+journal faithfully in the first place --- is addressed at the protocol
+level by an \emph{ingestion bridge} (\texttt{hyphae-storage::ingestion},
+ADR-0037): at admission an ingestion source signs a credential, aligned
+to C2PA Content Credentials, binding a fragment's exact bytes to a
+claimed origin document and byte-range locator, and journaled as a typed
+event so it inherits the integrity chain. This makes origin
+\emph{attributable} (who asserted, from where) and, given the source,
+\emph{faithful-excerpt verifiable} (the fragment is byte-for-byte
+\texttt{source[locator]}), moving the trust boundary from the store to a
+named asserter. What it deliberately does not establish is the
+\emph{truth} of the source itself: content validity --- whether a
+faithfully-ingested fragment is correct, e.g.\ a plausible-but-wrong
+poisoned value --- is an orthogonal axis left to complementary
+content-checking work.
 
 \paragraph{Reader preference study.} Human evaluation on a
 subset of the TriviaQA corpus. The template-rigid prose's
