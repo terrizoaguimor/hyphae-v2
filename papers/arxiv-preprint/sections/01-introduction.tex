@@ -64,6 +64,17 @@ Intel Xeon Platinum 8168 server).
     generation destroys the byte-bindability the audit relation
     requires, while extractive emission preserves it --- which is
     what divides auditable from non-auditable retrieval systems.
+    Equivalently, the layer makes citation \emph{faithfulness}
+    --- whether the answer genuinely derives from the cited source
+    rather than post-rationalising from a parametric prior, a
+    distinction \citet{wallat2024faithfulness} show is both real and
+    frequently violated in attributed LLM generation --- trivially
+    true by construction: a realizer with no parametric prior, whose
+    answer \emph{is} the cited fragment, cannot post-rationalise. It
+    does not make answers more \emph{correct} (the echo control
+    forecloses that); correctness is realizer-independent, while
+    faithfulness is exactly what verbatim emission structurally
+    guarantees.
 
     \item \textbf{An echo baseline that bounds what the standard
     benchmark can measure.} We include a trivial control --- emit

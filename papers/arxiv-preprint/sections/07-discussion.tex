@@ -157,6 +157,18 @@ that distinguishes them, the way correctness benchmarks compare
 LLM-RAG systems today. Building it is the natural next
 contribution.
 
+\paragraph{Logarithmic verification.} Our journal is a \emph{flat}
+hash chain: verifying the whole log is $O(n)$. Certificate
+Transparency \citep{laurie2014ct} and its instantiations achieve
+$O(\log n)$ inclusion and consistency proofs with a Merkle tree
+over the same append-only semantics. At the per-fragment
+granularity and audit cadence we target the flat chain is a
+deliberate simplification, not a limitation of the property; a
+Merkle upgrade is a drop-in for deployments that need to prove
+inclusion or append-only consistency to a verifier without
+streaming the entire log, and it does not change any result in
+this paper.
+
 \paragraph{External anchor publication and key management.} The
 head anchor we implement signs the head with a key held outside
 the store, which catches the chain-aware attacker. Publishing those
@@ -205,7 +217,16 @@ usability question the verifiability framing does not resolve.
 \paragraph{Multi-hop benchmark column.} HotpotQA or MuSiQue
 subset. \hyphae{}'s single-fragment composition cannot synthesise
 across hops; the open question is whether it degrades gracefully
-(deferring to limitation acknowledgement) or silently.
+(deferring to limitation acknowledgement) or silently. We are
+explicit that the \emph{principle} of abstaining on insufficient
+support is not new: \citet{menick2022gophercite} abstain on the
+most-uncertain queries in attributed QA, and unanswerable-question
+detection is a standard task since SQuAD~2.0
+\citep{rajpurkar2018squad2}. Our contribution here is narrow and
+measurement-shaped --- an offline harness quantifying that a
+single-span verbatim realizer \emph{silently} fails on multi-hop
+unless an abstention signal is made explicit --- not a new
+abstention method.
 
 \paragraph{Hardware and retrieval extensions.} A GPU server-class
 matrix would close the LLM's biggest performance handicap;
