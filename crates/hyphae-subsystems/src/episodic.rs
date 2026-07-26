@@ -137,6 +137,27 @@ impl Episodic {
         &mut self.params
     }
 
+    /// Gate (CLM-navegado): store a fragment WITHOUT the temporal
+    /// co-encoding pass. Batch corpus ingestion must not create
+    /// time-based edges (everything lands in one window → a near-
+    /// complete graph); the dependency graph is built explicitly
+    /// via [`Self::add_edge`]. O(1) insert.
+    pub fn store_raw(&mut self, fragment: CognitiveFragment) {
+        let id = fragment.id;
+        if !self.fragments.contains_key(&id) {
+            self.insertion_order.push(id);
+        }
+        self.fragments.insert(id, fragment);
+        self.stored += 1;
+    }
+
+    /// Gate (CLM-navegado): add a dependency edge directly to the
+    /// conductivity graph (an `import` / `call` relation) — the
+    /// semantic substitute for temporal co-encoding on code corpora.
+    pub fn add_edge(&mut self, a: FragmentId, b: FragmentId) {
+        self.graph.increment(a, b);
+    }
+
     /// Lifetime fragments stored.
     #[must_use]
     pub fn stored(&self) -> u64 {
